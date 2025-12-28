@@ -8,12 +8,15 @@ import { useClickSound } from "@/components/common/audio/click-sound/ClickSound"
 import { useAudio } from "@/contexts/AudioContext";
 import styles from "./HomeStartButton.module.css";
 import Image from "next/image";
+import { motion } from "motion/react";
+import { useHomeAnimation } from "@/features/home/contexts/HomeAnimationContext";
 
 const HomeStartButton = () => {
 	const router = useRouter();
 	const { user, isLoaded } = useUser();
 	const [isZennConnected, setIsZennConnected] = useState(false);
 	const { isMuted } = useAudio();
+	const { isAnimationStarted, isImageVisible } = useHomeAnimation();
 
 	const { playClickSound } = useClickSound({
 		soundPath: "/audio/start-sound.mp3",
@@ -55,7 +58,14 @@ const HomeStartButton = () => {
 	};
 
 	return (
-		<div className={`${styles["start-btn-container"]}`}>
+		<motion.div
+			className={`${styles["start-btn-container"]} ${
+				isImageVisible ? "pointer-events-auto" : "pointer-events-none"
+			}`}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: isImageVisible ? 1 : 0 }}
+			transition={{ duration: 1.75, ease: "easeInOut" }}
+		>
 			<Link href={destination} className={`${styles["start-btn"]}`} onClick={handleClick}>
 				<Image
 					src="/images/button/start-button.png"
@@ -72,7 +82,7 @@ const HomeStartButton = () => {
 					className={styles["start-btn-image-hover"]}
 				/>
 			</Link>
-		</div>
+		</motion.div>
 	);
 };
 

@@ -3,28 +3,39 @@
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useHomeAnimation } from "@/features/home/contexts/HomeAnimationContext";
 
 type ViewState = "initial" | "video" | "gap" | "image";
 
 export function HeroBg() {
 	const [viewState, setViewState] = useState<ViewState>("initial");
+	const { isAnimationStarted, startAnimation, showImage } = useHomeAnimation();
 
 	useEffect(() => {
-		const hasVisited = sessionStorage.getItem("hero-visited");
+		// const hasVisited = sessionStorage.getItem("hero-visited");
+		const hasVisited = false; // DEBUG: 毎回動画を再生する
 
 		if (!hasVisited) {
 			setViewState("video");
 			sessionStorage.setItem("hero-visited", "true");
 		} else {
 			setViewState("image");
+			startAnimation();
+			showImage();
 		}
-	}, []);
+	}, [startAnimation, showImage]);
 
 	const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
-		const video = e.currentTarget;
-		// 残り時間が1秒（フェードアウト時間）以下になったらフェードアウト開始
-		// これにより動画が止まる前にフェードアウトが始まり、UXが向上する
-		if (viewState === "video" && video.duration - video.currentTime <= 1) {
+		const currentTime = e.currentTarget.currentTime;
+
+		// 1. 動画再生3秒後にタイトルと王冠のアニメーション開始（＆オーバーレイ表示）
+		if (currentTime >= 1.5 && !isAnimationStarted) {
+			startAnimation();
+		}
+
+		// 2. タイトル表示完了後（約6秒後）に動画フェードアウト開始
+		// アニメーション開始(3s) + フェードイン時間(2s) + 余韻(1s)
+		if (viewState === "video" && currentTime >= 5.5) {
 			setViewState("gap");
 		}
 	};
@@ -36,7 +47,7 @@ export function HeroBg() {
 				className="absolute inset-0 size-full"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: viewState === "image" ? 1 : 0 }}
-				transition={{ duration: 1 }}
+				transition={{ duration: 3, ease: "easeInOut" }}
 			>
 				<Image
 					src="/images/top-bg/castle-background.jpg"
@@ -52,10 +63,8 @@ export function HeroBg() {
 			<AnimatePresence
 				onExitComplete={() => {
 					// 動画が完全に消えたら（exitアニメーション完了後）
-					// 0.5秒の暗転期間を経て画像を表示
-					setTimeout(() => {
-						setViewState("image");
-					}, 500);
+					setViewState("image");
+					showImage();
 				}}
 			>
 				{viewState === "video" && (
@@ -74,8 +83,12 @@ export function HeroBg() {
 				)}
 			</AnimatePresence>
 
-			{/* Overlay */}
-			<div className="absolute inset-0 bg-black/10 backdrop-blur-[5px]" />
+			{/* Overlay: アニメーション開始時（3秒後）にフェードインで表示 */}
+			<div
+				className={`absolute inset-0 bg-black/10 backdrop-blur-[3px] transition-opacity duration-2000 ${
+					isAnimationStarted ? "opacity-100" : "opacity-0"
+				}`}
+			/>
 		</div>
 	);
 }

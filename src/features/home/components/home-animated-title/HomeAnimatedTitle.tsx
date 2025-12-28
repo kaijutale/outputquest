@@ -3,21 +3,20 @@
 import { motion } from "motion/react";
 import { FC } from "react";
 import styles from "./HomeAnimatedTitle.module.css";
+import { useHomeAnimation } from "@/features/home/contexts/HomeAnimationContext";
 
-interface HomeAnimatedTitleProps {
-	delay?: number;
-	duration?: number;
-}
+const HomeAnimatedTitle: FC = () => {
+	const { isAnimationStarted } = useHomeAnimation();
 
-const HomeAnimatedTitle: FC<HomeAnimatedTitleProps> = ({ delay = 0.2, duration = 6 }) => {
 	return (
 		<motion.div
 			className={`${styles["title-container"]}`}
-			initial={{ y: -600 }}
-			animate={{ y: 0 }}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: isAnimationStarted ? 1 : 0 }}
 			transition={{
-				delay: delay,
-				duration: duration,
+				duration: 3.5,
+				delay: 0.7,
+				ease: "easeInOut",
 			}}
 		>
 			<h1 className={`${styles["title"]}`}>
