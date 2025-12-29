@@ -12,8 +12,7 @@ export function HeroBg() {
 	const { isAnimationStarted, startAnimation, showImage } = useHomeAnimation();
 
 	useEffect(() => {
-		// const hasVisited = sessionStorage.getItem("hero-visited");
-		const hasVisited = false; // DEBUG: 毎回動画を再生する
+		const hasVisited = sessionStorage.getItem("hero-visited");
 
 		if (!hasVisited) {
 			setViewState("video");
