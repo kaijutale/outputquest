@@ -49,7 +49,7 @@
 
 .header__title {
 	display: block grid;
-	font-size: 1.125rem;
+	font-size: 1.25rem;
 	font-family: "ab-don2", sans-serif;
 	color: var(--color-primary-yellow);
 	letter-spacing: 0.025em;
@@ -70,6 +70,13 @@
 	display: block flex;
 	align-items: center;
 	gap: 0.5rem;
+
+	&:hover {
+		.crown-container {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 }
 
 .header__items {
@@ -87,10 +94,13 @@
 }
 
 .crown-container {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
 	position: absolute;
-	top: -3;
-	left: 104.5px;
-	width: 7px;
+	top: -4;
+	left: 116px;
+	width: 8px;
 	height: auto;
 	filter: drop-shadow(0 0 0.5px color-mix(in srgb, var(--color-primary-orange), transparent 70%))
 		drop-shadow(0 0 0.5px color-mix(in srgb, var(--color-primary-orange), transparent 70%))
