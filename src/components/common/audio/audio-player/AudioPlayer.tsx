@@ -2,83 +2,89 @@
 
 import { useEffect, useState, useCallback, memo } from "react";
 import { Howl } from "howler";
-import { Headphones, HeadphoneOff } from "lucide-react";
+import Image from "next/image";
 import styles from "./AudioPlayer.module.css";
 import { useAudio } from "@/contexts/AudioContext";
+import { usePathname } from "next/navigation";
 
 interface AudioPlayerProps {
 	src: string;
-	size?: number;
-	color?: string;
 	className?: string;
 	volume?: number;
 }
 
-const AudioPlayer = memo(
-	({
-		src,
-		size = 17,
-		color = "currentColor",
-		className = "audio-button",
-		volume = 1,
-	}: AudioPlayerProps) => {
-		const [isPlaying, setIsPlaying] = useState(false);
-		const { isMuted, toggleMute } = useAudio();
-		const [sound, setSound] = useState<Howl | null>(null);
+const AudioPlayer = memo(({ src, className = "audio-button", volume = 1 }: AudioPlayerProps) => {
+	const [isPlaying, setIsPlaying] = useState(false);
+	const { isMuted, toggleMute } = useAudio();
+	const [sound, setSound] = useState<Howl | null>(null);
 
-		const handleClick = useCallback(() => {
-			toggleMute();
-		}, [toggleMute]);
+	const handleClick = useCallback(() => {
+		toggleMute();
+	}, [toggleMute]);
 
-		useEffect(() => {
-			const newSound = new Howl({
-				src: [src],
-				volume: volume,
-				html5: true,
-				autoplay: false,
-				loop: true,
-				onplay: () => setIsPlaying(true),
-				onpause: () => setIsPlaying(false),
-				onstop: () => setIsPlaying(false),
-				onloaderror: (id: number, error: unknown) => console.error("Error loading audio:", error),
-				onplayerror: (id: number, error: unknown) => {
-					console.error("Error playing audio:", error);
-					setIsPlaying(false);
-				},
-			});
+	const pathname = usePathname();
+	const isHome = pathname === "/";
 
-			setSound(newSound);
-			return () => {
-				newSound.unload();
-			};
-		}, [src, volume]);
+	useEffect(() => {
+		const newSound = new Howl({
+			src: [src],
+			volume: volume,
+			html5: true,
+			autoplay: false,
+			loop: true,
+			onplay: () => setIsPlaying(true),
+			onpause: () => setIsPlaying(false),
+			onstop: () => setIsPlaying(false),
+			onloaderror: (id: number, error: unknown) => console.error("Error loading audio:", error),
+			onplayerror: (id: number, error: unknown) => {
+				console.error("Error playing audio:", error);
+				setIsPlaying(false);
+			},
+		});
 
-		useEffect(() => {
-			if (!sound) return;
-			sound.mute(isMuted);
+		setSound(newSound);
+		return () => {
+			newSound.unload();
+		};
+	}, [src, volume]);
 
-			if (!isMuted && !isPlaying) {
-				sound.play();
-			}
-		}, [sound, isMuted, isPlaying]);
+	useEffect(() => {
+		if (!sound) return;
+		sound.mute(isMuted);
 
-		return (
+		if (!isMuted && !isPlaying) {
+			sound.play();
+		}
+	}, [sound, isMuted, isPlaying]);
+
+	return (
+		<div className={styles["audio-button-container"]}>
 			<button
 				onClick={handleClick}
 				className={`hidden lg:block md:sticky md:inset-0 ${styles["audio-button"]} ${className}`}
 				aria-label={isMuted ? "Unmute" : "Mute"}
 			>
-				<div className={styles["audio-button-icon-box"]}>
-					{isMuted ? (
-						<HeadphoneOff size={size} color={color} className={styles["audio-mute"]} />
-					) : (
-						<Headphones size={size} color={color} className={styles["audio-play"]} />
-					)}
-				</div>
+				{isMuted ? (
+					<Image
+						src="/images/button/volume-buttons/volume-button-mute.png"
+						alt="Muted"
+						width={100}
+						height={100}
+						className={`${styles["audio-mute"]} ${isHome ? styles["audio-mute-home"] : ""}`}
+					/>
+				) : (
+					<Image
+						src="/images/button/volume-buttons/volume-button-play.png"
+						alt="Playing"
+						width={100}
+						height={100}
+						className={`${styles["audio-play"]} ${isHome ? styles["audio-play-home"] : ""}`}
+					/>
+				)}
 			</button>
-		);
-	}
-);
+		</div>
+	);
+});
 
 AudioPlayer.displayName = "AudioPlayer";
 

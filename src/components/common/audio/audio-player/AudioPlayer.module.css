@@ -1,26 +1,10 @@
 .audio-button {
 	width: 50px;
-	height: 50px;
-	display: block grid;
-	place-items: center;
-	background-color: var(--color-primary-brown-dark);
-	border: 4px dashed var(--color-primary-brown-light);
-	box-shadow: var(--cmp-primary-shadow);
-	border-radius: 50%;
-	backdrop-filter: blur(5px);
-	transition: var(--transition-box-shadow);
+	height: auto;
 	cursor: pointer;
 	z-index: 1000;
-
-	&:hover {
-		.audio-button-icon-box {
-			border: 1.5px solid var(--color-primary-yellow);
-		}
-
-		.audio-mute {
-			opacity: 1;
-		}
-	}
+	filter: drop-shadow(0px 1px 1px rgb(0 0 0 / 80%));
+	transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 
 	@media (width < 640px) {
 		width: 45px;
@@ -28,28 +12,22 @@
 	}
 }
 
+.audio-button:hover {
+	filter: drop-shadow(0px 1px 1px rgb(0 0 0 / 80%)) brightness(0.8);
+}
+
 .audio-mute {
-	opacity: 0.5;
-	transition: opacity 0.2s ease-in-out;
+	filter: brightness(1.7);
 }
 
-.audio-button-icon-box {
-	display: block grid;
-	place-items: center;
-	background-color: var(--color-primary-brown);
-	border-radius: 50%;
-	border: 1.5px solid var(--color-primary-brown-light);
-	padding-block: 8px;
-	padding-inline: 8px;
-	transition: border 0.2s ease-in-out;
-
-	@media (width < 640px) {
-		padding-block: 6px;
-		padding-inline: 6px;
-	}
+.audio-mute-home {
+	filter: brightness(2);
 }
 
-/* 音楽再生中（Headphonesアイコン表示時）に黄色のボーダーを適用 */
-.audio-button-icon-box:has(.audio-play) {
-	border: 1.5px solid var(--color-primary-yellow);
+.audio-play {
+	filter: brightness(0.9);
+}
+
+.audio-play-home {
+	filter: brightness(1);
 }
