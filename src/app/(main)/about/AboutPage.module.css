@@ -78,6 +78,7 @@
 
 	@media (width < 768px) {
 		padding-inline: 10px;
+		padding-block: 7px;
 	}
 }
 
@@ -90,6 +91,11 @@
 
 	@media (width < 768px) {
 		font-size: 1rem;
+	}
+
+	@media (width < 640px) {
+		font-size: 0.875rem;
+		line-height: var(--leading-x-tight);
 	}
 }
 

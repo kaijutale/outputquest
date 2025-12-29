@@ -34,21 +34,20 @@
 
 .terms-content {
 	display: block grid;
-	gap: 30px;
+	gap: 35px;
 	grid-area: content;
 	overflow-y: scroll;
 }
 
 .terms-article {
 	display: block grid;
-	gap: 50px;
+	gap: 35px;
 	padding-block-end: 50px;
 	padding-inline: 50px;
 	color: var(--color-primary-white);
 
 	@media (width < 768px) {
 		padding-inline: 20px;
-		gap: 40px;
 	}
 }
 
@@ -61,7 +60,7 @@
 .terms-section-title-container {
 	width: fit-content;
 	background-color: var(--color-primary-brown-dark);
-	border: 5.5px dashed var(--color-primary-brown-light);
+	border: 5px dashed var(--color-primary-brown-light);
 	border-radius: var(--border-radius-small);
 	padding-inline: 4px;
 	padding-block: 4px;
@@ -70,11 +69,12 @@
 .terms-section-title-box {
 	background-color: var(--color-primary-red);
 	border: 1.5px solid var(--color-primary-brown-light);
-	padding-inline: 15px;
-	padding-block: 10px 11px;
+	padding-inline: 13px;
+	padding-block: 9px 10px;
 
 	@media (width < 768px) {
 		padding-inline: 10px;
+		padding-block: 7px;
 	}
 }
 
@@ -88,16 +88,21 @@
 	@media (width < 768px) {
 		font-size: 1rem;
 	}
+
+	@media (width < 640px) {
+		font-size: 0.875rem;
+		line-height: var(--leading-x-tight);
+	}
 }
 
 .terms-section-message,
 .terms-section-list-item {
-	font-size: 1rem;
+	font-size: 0.875rem;
 	font-weight: var(--font-weight-normal);
 	line-height: var(--leading-normal);
 
 	@media (width < 768px) {
-		font-size: 0.875rem;
+		font-size: 0.75rem;
 	}
 }
 

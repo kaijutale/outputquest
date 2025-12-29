@@ -13,7 +13,7 @@ const PrivacyPage = () => {
 			<h1 className={`${styles["privacy-title"]}`}>プライバシーポリシー</h1>
 			<div className={`${styles["privacy-container"]}`}>
 				<div className={`${styles["privacy-content"]} w-full`}>
-					<p className="text-base md:text-lg leading-[1.75] font-weight-normal px-[20px] md:px-[50px] pt-[10px] md:pt-[30px]">
+					<p className="text-sm md:text-base leading-[1.75] font-weight-normal px-[20px] md:px-[50px] pt-[10px] md:pt-[30px]">
 						「OUTPUT
 						QUEST　叡智の継承者」（以下、「当サービス」といいます。）は、ユーザーの個人情報について以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
 					</p>
@@ -129,10 +129,10 @@ const PrivacyPage = () => {
 								本ポリシーに関するお問い合わせは、下記の連絡先までお願いいたします。
 							</p>
 							<div className="grid gap-1">
-								<p className="text-base font-bold">【連絡先】</p>
+								<p className="text-sm md:text-base font-bold">【連絡先】</p>
 								<dl className="grid gap-2">
-									<div className="flex items-center w-fit">
-										<dt className="text-base">開発者のメールアドレス：</dt>
+									<div className="flex md:flex-row flex-col md:items-center w-fit">
+										<dt className="md:text-base text-sm">開発者のメールアドレス：</dt>
 										<dd>
 											<SafeMailtoLink
 												user="camoneart"
@@ -141,8 +141,8 @@ const PrivacyPage = () => {
 											/>
 										</dd>
 									</div>
-									<div className="flex items-center w-fit">
-										<dt className="text-base">開発者のX：</dt>
+									<div className="flex md:flex-row flex-col md:items-center w-fit">
+										<dt className="md:text-base text-sm">開発者のX：</dt>
 										<dd>
 											<Link
 												href="https://x.com/camoneart"
