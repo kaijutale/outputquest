@@ -20,7 +20,7 @@ export const Header = () => {
 
 	// audioPlayer の定義をここに移動
 	const audioPlayer = (
-		<AudioPlayer src="/audio/Small_World.mp3" size={17} color="#fff" volume={0.3} />
+		<AudioPlayer src="/audio/outputquest-theme-song.mp3" size={17} color="#fff" volume={0.5} />
 	);
 
 	const toggleMenu = () => {
