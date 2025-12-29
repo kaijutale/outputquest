@@ -68,14 +68,14 @@ const HomeStartButton = () => {
 		>
 			<Link href={destination} className={`${styles["start-btn"]}`} onClick={handleClick}>
 				<Image
-					src="/images/button/start-button.png"
+					src="/images/button/start-button/start-button.png"
 					alt="はじめる"
 					width={1000}
 					height={1000}
 					className={styles["start-btn-image"]}
 				/>
 				<Image
-					src="/images/button/start-button-hover.png"
+					src="/images/button/start-button/start-button-hover.png"
 					alt="はじめる - ホバー"
 					width={1000}
 					height={1000}
