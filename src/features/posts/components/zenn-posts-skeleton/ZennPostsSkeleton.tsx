@@ -1,16 +1,5 @@
 import styles from "./ZennPostsSkeleton.module.css";
 
-/**
- * ZennPostsSkeleton
- *
- * PostsList（Zenn記事一覧）のスケルトンUI
- * Suspense fallbackとして使用し、CLS（Cumulative Layout Shift）を防ぐ
- *
- * レイアウト:
- * - 記事一覧グリッド（15件分のスケルトンカード）
- *
- * 注: posts-headerは含まない（ZennPostsで即座に表示されるため）
- */
 const ZennPostsSkeleton = () => {
 	return (
 		// 記事一覧グリッドのスケルトン

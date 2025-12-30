@@ -1,11 +1,5 @@
 import styles from "./StrengthHeroInfoSkeleton.module.css";
 
-/**
- * StrengthHeroInfoSkeleton
- *
- * StrengthHeroInfo（勇者のレベル情報）のスケルトンUI
- * Suspense fallbackとして使用し、CLS（Cumulative Layout Shift）を防ぐ
- */
 const StrengthHeroInfoSkeleton = () => {
 	return (
 		<div className={styles["skeleton-container"]}>

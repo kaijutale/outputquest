@@ -1,15 +1,5 @@
 import styles from "./EquipmentListSkeleton.module.css";
 
-/**
- * EquipmentListSkeleton
- *
- * EquipmentDetailPageClient（装備品一覧）のスケルトンUI
- * データ読み込み中に表示し、CLS（Cumulative Layout Shift）を防ぐ
- *
- * レイアウト:
- * - 装備品一覧のリスト（6件分のスケルトンカード）
- * - 各カード: 画像、名前、説明文（2行）
- */
 const EquipmentListSkeleton = () => {
 	return (
 		<ul className={styles["skeleton-list"]}>

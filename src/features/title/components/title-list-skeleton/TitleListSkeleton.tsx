@@ -1,14 +1,5 @@
 import styles from "./TitleListSkeleton.module.css";
 
-/**
- * TitleListSkeleton
- *
- * TitleList（称号一覧）のスケルトンUI
- * ローディング中に表示し、CLS（Cumulative Layout Shift）を防ぐ
- *
- * レイアウト:
- * - 称号一覧グリッド（11件分のスケルトンカード）
- */
 const TitleListSkeleton = () => {
 	return (
 		<ul className={styles["skeleton-list"]}>

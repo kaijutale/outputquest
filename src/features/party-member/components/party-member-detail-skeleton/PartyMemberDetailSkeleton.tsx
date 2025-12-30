@@ -1,17 +1,5 @@
 import styles from "./PartyMemberDetailSkeleton.module.css";
 
-/**
- * PartyMemberDetailSkeleton
- *
- * PartyMemberDetail（パーティメンバー詳細）のスケルトンUI
- * データ読み込み中に表示し、CLS（Cumulative Layout Shift）を防ぐ
- *
- * レイアウト:
- * - メンバー画像エリア（200px高さ）
- * - メンバー名エリア
- * - 説明文エリア（2行）
- * - レア度エリア
- */
 const PartyMemberDetailSkeleton = () => {
 	return (
 		<div className={styles["skeleton-card"]}>

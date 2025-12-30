@@ -1,28 +1,9 @@
 import styles from "./DashboardActivitySkeleton.module.css";
 
-/**
- * DashboardActivitySkeleton
- *
- * アクティビティセクションのスケルトンUI
- * Suspense fallbackとして使用し、CLS（Cumulative Layout Shift）を防ぐ
- *
- * 実際のDashboardActivityContentの構造に完全一致：
- * - recent-activity-section (親)
- * - recent-activity-section-title
- * - recent-activity-list (height: 400px, overflow-y: scroll)
- * - recent-activity-item (border: 7px dashed)
- *   - recent-activity-item-link
- *     - recent-activity-item-content
- *       - recent-activity-item-title
- *       - hr
- *       - recent-activity-item-info (category + date)
- *       - recent-activity-item-platform-container (favicon + platform)
- *     - recent-activity-item-exp
- */
 const DashboardActivitySkeleton = () => {
 	return (
 		<section className={styles["skeleton-activity-section"]}>
-			<h2 className={styles["skeleton-activity-title"]}>~ 最近の記録 ~</h2>
+			<h2 className={styles["skeleton-activity-title"]}>最近の記録</h2>
 
 			<ul className={styles["skeleton-activity-list"]}>
 				{[...Array(3)].map((_, index) => (
