@@ -71,6 +71,7 @@ const AudioPlayer = memo(({ src, className = "audio-button", volume = 1 }: Audio
 						width={100}
 						height={100}
 						className={`${styles["audio-mute"]} ${isHome ? styles["audio-mute-home"] : ""}`}
+						priority={true}
 					/>
 				) : (
 					<Image
@@ -79,6 +80,7 @@ const AudioPlayer = memo(({ src, className = "audio-button", volume = 1 }: Audio
 						width={100}
 						height={100}
 						className={`${styles["audio-play"]} ${isHome ? styles["audio-play-home"] : ""}`}
+						priority={true}
 					/>
 				)}
 			</button>
