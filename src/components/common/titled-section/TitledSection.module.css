@@ -14,14 +14,16 @@
 }
 
 .title-box {
+	display: block grid;
+	place-items: center;
 	background-color: var(--color-primary-red);
 	border: 1.5px solid var(--color-primary-brown-light);
-	padding-inline: 10px 2px;
-	padding-block: 8px 9px;
+	padding-inline: 10px;
+	padding-block: 10px;
 
 	@media (width < 768px) {
 		padding-inline: 8px;
-		padding-block: 7px;
+		padding-block: 8px;
 	}
 }
 

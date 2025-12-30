@@ -94,7 +94,7 @@ const PrivacyPage = () => {
 											<SafeMailtoLink
 												user="camoneart"
 												domain="gmail.com"
-												className="underline underline-offset-4 py-1 pr-2"
+												className="md:text-base text-sm underline underline-offset-4 py-1 pr-2"
 											/>
 										</dd>
 									</div>
@@ -103,7 +103,7 @@ const PrivacyPage = () => {
 										<dd>
 											<Link
 												href="https://x.com/camoneart"
-												className="underline underline-offset-4 py-1 pr-2"
+												className="md:text-base text-sm underline underline-offset-4 py-1 pr-2"
 												target="_blank"
 												rel="noopener noreferrer"
 											>

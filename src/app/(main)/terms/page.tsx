@@ -17,7 +17,7 @@ const TermsPage = () => {
 						叡智の継承者」（以下，「当サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，当サービスをご利用いただきます。
 					</p>
 					<article className={styles["terms-article"]}>
-						<TitledSection title="第1条（適用）">
+						<TitledSection title="第1条(適用)">
 							<ol className={styles["terms-section-list"]}>
 								<li className={styles["terms-section-list-item"]}>
 									本規約は，ユーザーと当サービスとの間の当サービスの利用に関わる一切の関係に適用されるものとします。
@@ -31,7 +31,7 @@ const TermsPage = () => {
 							</ol>
 						</TitledSection>
 
-						<TitledSection title="第2条（利用登録）">
+						<TitledSection title="第2条(利用登録)">
 							<ol className={styles["terms-section-list"]}>
 								<li className={styles["terms-section-list-item"]}>
 									当サービスにおいては，登録希望者が本規約に同意の上，当サービスの定める方法によって利用登録を申請し，当サービスが当サービスの利用を承認することによって，利用登録が完了するものとします。
@@ -53,7 +53,7 @@ const TermsPage = () => {
 							</ol>
 						</TitledSection>
 
-						<TitledSection title="第3条（ユーザーIDおよびパスワードの管理）">
+						<TitledSection title="第3条(ユーザーIDおよびパスワードの管理)">
 							<ol className={styles["terms-section-list"]}>
 								<li className={styles["terms-section-list-item"]}>
 									ユーザーは，自己の責任において，当サービスのユーザーIDおよびパスワードを適切に管理するものとします。
@@ -67,7 +67,7 @@ const TermsPage = () => {
 							</ol>
 						</TitledSection>
 
-						<TitledSection title="第4条（利用料金および支払方法）">
+						<TitledSection title="第4条(利用料金および支払方法)">
 							<p className={styles["terms-section-message"]}>
 								ユーザーは，当サービスの有料部分の対価として，当サービスが別途定め，本ウェブサイトに表示する利用料金を，当サービスが指定する方法により支払うものとします。
 								<br />
@@ -75,7 +75,7 @@ const TermsPage = () => {
 							</p>
 						</TitledSection>
 
-						<TitledSection title="第5条（禁止事項）">
+						<TitledSection title="第5条(禁止事項)">
 							<p className={styles["terms-section-message"]}>
 								ユーザーは，当サービスの利用にあたり，以下の行為をしてはなりません。
 							</p>
@@ -124,7 +124,7 @@ const TermsPage = () => {
 							</ol>
 						</TitledSection>
 
-						<TitledSection title="第6条（当サービスの提供の停止等）">
+						<TitledSection title="第6条(当サービスの提供の停止等)">
 							<ol className={styles["terms-section-list"]}>
 								<li className={styles["terms-section-list-item"]}>
 									当サービスは，以下のいずれかの事由があると判断した場合，ユーザーに事前に通知することなく当サービスの全部または一部の提供を停止または中断することができるものとします。
@@ -149,7 +149,7 @@ const TermsPage = () => {
 							</ol>
 						</TitledSection>
 
-						<TitledSection title="第7条（利用制限および登録抹消）">
+						<TitledSection title="第7条(利用制限および登録抹消)">
 							<ol className={styles["terms-section-list"]}>
 								<li className={styles["terms-section-list-item"]}>
 									当サービスは，ユーザーが以下のいずれかに該当する場合には，事前の通知なく，ユーザーに対して，当サービスの全部もしくは一部の利用を制限し，またはユーザーとしての登録を抹消することができるものとします。
@@ -180,7 +180,7 @@ const TermsPage = () => {
 							</ol>
 						</TitledSection>
 
-						<TitledSection title="第8条（退会）">
+						<TitledSection title="第8条(退会)">
 							<p className={styles["terms-section-message"]}>
 								ユーザーは，当サービスの定める退会手続により，当サービスから退会できるものとします。
 							</p>
@@ -203,37 +203,37 @@ const TermsPage = () => {
 							</ol>
 						</TitledSection>
 
-						<TitledSection title="第10条（サービス内容の変更等）">
+						<TitledSection title="第10条(サービス内容の変更等)">
 							<p className={styles["terms-section-message"]}>
 								当サービスは，ユーザーに通知することなく，当サービスの内容を変更しまたは当サービスの提供を中止することができるものとし，これによってユーザーに生じた損害について一切の責任を負いません。
 							</p>
 						</TitledSection>
 
-						<TitledSection title="第11条（利用規約の変更）">
+						<TitledSection title="第11条(利用規約の変更)">
 							<p className={styles["terms-section-message"]}>
 								当サービスは，必要と判断した場合には，ユーザーに通知することなくいつでも本規約を変更することができるものとします。なお，本規約の変更後，当サービスの利用を開始した場合には，当該ユーザーは変更後の規約に同意したものとみなします。
 							</p>
 						</TitledSection>
 
-						<TitledSection title="第12条（個人情報の取扱い）">
+						<TitledSection title="第12条(個人情報の取扱い)">
 							<p className={styles["terms-section-message"]}>
 								当サービスは，当サービスの利用によって取得する個人情報については，当サービス「プライバシーポリシー」に従い適切に取り扱うものとします。
 							</p>
 						</TitledSection>
 
-						<TitledSection title="第13条（通知または連絡）">
+						<TitledSection title="第13条(通知または連絡)">
 							<p className={styles["terms-section-message"]}>
 								ユーザーと当サービスとの間の通知または連絡は，当サービスの定める方法によって行うものとします。当サービスは,ユーザーから,当サービスが別途定める方式に従った変更届け出がない限り,現在登録されている連絡先が有効なものとみなして当該連絡先へ通知または連絡を行い,これらは,発信時にユーザーへ到達したものとみなします。
 							</p>
 						</TitledSection>
 
-						<TitledSection title="第14条（権利義務の譲渡の禁止）">
+						<TitledSection title="第14条(権利義務の譲渡の禁止)">
 							<p className={styles["terms-section-message"]}>
 								ユーザーは，当サービスの書面による事前の承諾なく，利用契約上の地位または本規約に基づく権利もしくは義務を第三者に譲渡し，または担保に供することはできません。
 							</p>
 						</TitledSection>
 
-						<TitledSection title="第15条（準拠法・裁判管轄）">
+						<TitledSection title="第15条(準拠法・裁判管轄)">
 							<ol className={styles["terms-section-list"]}>
 								<li className={styles["terms-section-list-item"]}>
 									本規約の解釈にあたっては，日本法を準拠法とします。
