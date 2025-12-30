@@ -13,7 +13,7 @@ const PrivacyPage = () => {
 			<h1 className={`${styles["privacy-title"]}`}>プライバシーポリシー</h1>
 			<div className={`${styles["privacy-container"]}`}>
 				<div className={`${styles["privacy-content"]} w-full`}>
-					<p className="text-sm md:text-base leading-[1.75] font-weight-normal px-[20px] md:px-[50px] pt-[10px] md:pt-[30px]">
+					<p className="text-xs sm:text-sm md:text-base leading-[1.75] font-weight-normal px-[20px] md:px-[50px] pt-[10px] md:pt-[30px]">
 						「OUTPUT
 						QUEST　叡智の継承者」（以下、「当サービス」といいます。）は、ユーザーの個人情報について以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
 					</p>

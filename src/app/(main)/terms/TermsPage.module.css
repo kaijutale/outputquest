@@ -34,15 +34,15 @@
 
 .terms-content {
 	display: block grid;
-	gap: 35px;
+	gap: 40px;
 	grid-area: content;
 	overflow-y: scroll;
 }
 
 .terms-article {
 	display: block grid;
-	gap: 35px;
-	padding-block-end: 50px;
+	gap: 40px;
+	padding-block-end: 40px;
 	padding-inline: 50px;
 	color: var(--color-primary-white);
 
@@ -62,15 +62,15 @@
 	background-color: var(--color-primary-brown-dark);
 	border: 5px dashed var(--color-primary-brown-light);
 	border-radius: var(--border-radius-small);
-	padding-inline: 4px;
-	padding-block: 4px;
+	padding-inline: 3px;
+	padding-block: 3px;
 }
 
 .terms-section-title-box {
 	background-color: var(--color-primary-red);
 	border: 1.5px solid var(--color-primary-brown-light);
-	padding-inline: 13px;
-	padding-block: 9px 10px;
+	padding-inline: 10px 2px;
+	padding-block: 8px 9px;
 
 	@media (width < 768px) {
 		padding-inline: 10px;
@@ -86,22 +86,26 @@
 	text-shadow: 2px 2px 0 var(--color-primary-black);
 
 	@media (width < 768px) {
-		font-size: 1rem;
+		font-size: 1.125rem;
+		line-height: var(--leading-x-tight);
 	}
 
 	@media (width < 640px) {
 		font-size: 0.875rem;
-		line-height: var(--leading-x-tight);
 	}
 }
 
 .terms-section-message,
 .terms-section-list-item {
-	font-size: 0.875rem;
+	font-size: 1rem;
 	font-weight: var(--font-weight-normal);
 	line-height: var(--leading-normal);
 
 	@media (width < 768px) {
+		font-size: 0.875rem;
+	}
+
+	@media (width < 640px) {
 		font-size: 0.75rem;
 	}
 }
