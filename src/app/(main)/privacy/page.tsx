@@ -4,6 +4,7 @@ import styles from "./PrivacyPage.module.css";
 import AdventureStartLink from "@/components/common/adventure-start-link/AdventureStartLink";
 import SafeMailtoLink from "@/components/common/safe-mailto-link/SafeMailtoLink";
 import Link from "next/link";
+import TitledSection from "@/components/common/titled-section/TitledSection";
 
 export const metadata: Metadata = getPageMetadata("privacy");
 
@@ -15,28 +16,16 @@ const PrivacyPage = () => {
 				<div className={`${styles["privacy-content"]} w-full`}>
 					<p className="text-xs sm:text-sm md:text-base leading-[1.75] font-weight-normal px-[20px] md:px-[50px] pt-[10px] md:pt-[30px]">
 						「OUTPUT
-						QUEST　叡智の継承者」（以下、「当サービス」といいます。）は、ユーザーの個人情報について以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
+						QUEST　叡智の継承者」（以下，「当サービス」といいます。）は、ユーザーの個人情報について以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。
 					</p>
 					<article className={styles["privacy-article"]}>
-						<section className={`${styles["privacy-section"]}`}>
-							<div className={styles["privacy-section-title-container"]}>
-								<div className={styles["privacy-section-title-box"]}>
-									<h2 className={styles["privacy-section-title"]}>1. 個人情報の収集方法</h2>
-								</div>
-							</div>
+						<TitledSection title="1. 個人情報の収集方法">
 							<p className={styles["privacy-section-message"]}>
 								当サービスは、ユーザーが利用登録をする際にメールアドレス、表示名、プロフィール画像などの個人情報をお預かりすることがあります。これらは、Clerkが提供するOAuth認証機能（Google・GitHubなど）を通じて提供される情報を含みます。また、ユーザーと提携先などとの間でなされた取引の状況や内容、サービスの閲覧履歴、および履歴情報特性の情報を収集することがあります。
 							</p>
-						</section>
+						</TitledSection>
 
-						<section className={`${styles["privacy-section"]}`}>
-							<div className={styles["privacy-section-title-container"]}>
-								<div className={styles["privacy-section-title-box"]}>
-									<h2 className={styles["privacy-section-title"]}>
-										2. 個人情報を収集・利用する目的
-									</h2>
-								</div>
-							</div>
+						<TitledSection title="2. 個人情報を収集・利用する目的">
 							<p className={styles["privacy-section-message"]}>
 								当サービスが個人情報を収集・利用する目的は、以下のとおりです。
 							</p>
@@ -60,71 +49,39 @@ const PrivacyPage = () => {
 									ユーザーにご自身の登録情報の閲覧や変更、削除、ご利用状況の閲覧を行っていただくため
 								</li>
 							</ol>
-						</section>
+						</TitledSection>
 
-						<section className={`${styles["privacy-section"]}`}>
-							<div className={styles["privacy-section-title-container"]}>
-								<div className={styles["privacy-section-title-box"]}>
-									<h2 className={styles["privacy-section-title"]}>3. 個人情報の第三者提供</h2>
-								</div>
-							</div>
+						<TitledSection title="3. 個人情報の第三者提供">
 							<p className={styles["privacy-section-message"]}>
 								当サービスは、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。
 							</p>
-						</section>
+						</TitledSection>
 
-						<section className={`${styles["privacy-section"]}`}>
-							<div className={styles["privacy-section-title-container"]}>
-								<div className={styles["privacy-section-title-box"]}>
-									<h2 className={styles["privacy-section-title"]}>4. 個人情報の開示</h2>
-								</div>
-							</div>
+						<TitledSection title="4. 個人情報の開示">
 							<p className={styles["privacy-section-message"]}>
 								当サービスは、本人から個人情報の開示を求められたときは、本人に対し、遅滞なくこれを開示します。ただし、開示することにより次のいずれかに該当する場合は、その全部または一部を開示しないこともあり、開示しない決定をした場合には、その旨を遅滞なく通知します。
 							</p>
-						</section>
+						</TitledSection>
 
-						<section className={`${styles["privacy-section"]}`}>
-							<div className={styles["privacy-section-title-container"]}>
-								<div className={styles["privacy-section-title-box"]}>
-									<h2 className={styles["privacy-section-title"]}>5. 個人情報の訂正および削除</h2>
-								</div>
-							</div>
+						<TitledSection title="5. 個人情報の訂正および削除">
 							<p className={styles["privacy-section-message"]}>
 								ユーザーは、当サービスの保有する自己の個人情報が誤った情報である場合には、当サービスが定める手続きにより、当サービスに対して個人情報の訂正、追加または削除を請求することができます。
 							</p>
-						</section>
+						</TitledSection>
 
-						<section className={`${styles["privacy-section"]}`}>
-							<div className={styles["privacy-section-title-container"]}>
-								<div className={styles["privacy-section-title-box"]}>
-									<h2 className={styles["privacy-section-title"]}>
-										6. Cookie（クッキー）その他技術の利用
-									</h2>
-								</div>
-							</div>
+						<TitledSection title="6. Cookie（クッキー）その他技術の利用">
 							<p className={styles["privacy-section-message"]}>
 								当サービスは、サービスの利便性向上および認証状態の維持のためにCookieを使用しています。Cookieには、Clerkが発行するセッションクッキーなどが含まれます。現時点でGoogleAnalytics等のアクセス解析ツールは利用しておりませんが、導入する場合には本ポリシーを更新し、目的及び収集される情報の範囲を明示いたします。
 							</p>
-						</section>
+						</TitledSection>
 
-						<section className={`${styles["privacy-section"]}`}>
-							<div className={styles["privacy-section-title-container"]}>
-								<div className={styles["privacy-section-title-box"]}>
-									<h2 className={styles["privacy-section-title"]}>7. プライバシーポリシーの変更</h2>
-								</div>
-							</div>
+						<TitledSection title="7. プライバシーポリシーの変更">
 							<p className={styles["privacy-section-message"]}>
 								本ポリシーの内容は、法令その他本ポリシーに別段の定めのある事項を除いて、ユーザーに通知することなく、変更することができるものとします。当サービスが別途定める場合を除いて、変更後のプライバシーポリシーは、本ウェブサイトに掲載したときから効力を生じるものとします。
 							</p>
-						</section>
+						</TitledSection>
 
-						<section className={`${styles["privacy-section"]}`}>
-							<div className={styles["privacy-section-title-container"]}>
-								<div className={styles["privacy-section-title-box"]}>
-									<h2 className={styles["privacy-section-title"]}>8. お問い合わせ</h2>
-								</div>
-							</div>
+						<TitledSection title="8. お問い合わせ">
 							<p className={styles["privacy-section-message"]}>
 								本ポリシーに関するお問い合わせは、下記の連絡先までお願いいたします。
 							</p>
@@ -156,7 +113,7 @@ const PrivacyPage = () => {
 									</div>
 								</dl>
 							</div>
-						</section>
+						</TitledSection>
 
 						<hr />
 

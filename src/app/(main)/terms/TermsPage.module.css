@@ -51,50 +51,6 @@
 	}
 }
 
-.terms-section {
-	width: 100%;
-	display: block grid;
-	gap: 15px;
-}
-
-.terms-section-title-container {
-	width: fit-content;
-	background-color: var(--color-primary-brown-dark);
-	border: 5px dashed var(--color-primary-brown-light);
-	border-radius: var(--border-radius-small);
-	padding-inline: 3px;
-	padding-block: 3px;
-}
-
-.terms-section-title-box {
-	background-color: var(--color-primary-red);
-	border: 1.5px solid var(--color-primary-brown-light);
-	padding-inline: 10px 2px;
-	padding-block: 8px 9px;
-
-	@media (width < 768px) {
-		padding-inline: 10px;
-		padding-block: 7px;
-	}
-}
-
-.terms-section-title {
-	font-size: 1.25rem;
-	font-weight: var(--font-weight-x-bold);
-	line-height: var(--leading-none);
-	color: var(--color-primary-yellow);
-	text-shadow: 2px 2px 0 var(--color-primary-black);
-
-	@media (width < 768px) {
-		font-size: 1.125rem;
-		line-height: var(--leading-x-tight);
-	}
-
-	@media (width < 640px) {
-		font-size: 0.875rem;
-	}
-}
-
 .terms-section-message,
 .terms-section-list-item {
 	font-size: 1rem;
