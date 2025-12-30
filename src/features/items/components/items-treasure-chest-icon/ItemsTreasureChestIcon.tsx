@@ -18,14 +18,14 @@ const ItemsTreasureChestIcon: React.FC<ItemsTreasureChestProps> = ({
 	return (
 		<div className={className}>
 			<Image
-				src="/images/items-page/unacquired-icon/treasure-chest-close01.png"
+				src="/images/items-page/unacquired-icon/treasure-chest-close-icon01.png"
 				alt="未入手のアイテム"
 				width={width}
 				height={height}
 				className={classNameClose}
 			/>
 			<Image
-				src="/images/items-page/unacquired-icon/treasure-chest-open01.png"
+				src="/images/items-page/unacquired-icon/treasure-chest-open-icon01.png"
 				alt="未入手のアイテム"
 				width={width}
 				height={height}
