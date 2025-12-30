@@ -52,3 +52,6 @@ _docs/
 
 # Serena MCP server files
 .serena/
+
+# prisma
+src/generated/
