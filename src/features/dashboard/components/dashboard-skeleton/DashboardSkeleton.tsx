@@ -1,29 +1,11 @@
 import styles from "./DashboardSkeleton.module.css";
 
-/**
- * DashboardSkeleton
- *
- * ダッシュボードコンテンツのスケルトンUI
- * Suspense fallbackとして使用し、CLS（Cumulative Layout Shift）を防ぐ
- *
- * 実際のDashboardContentClientの構造に完全一致：
- * 1. dashboard-content-container (親)
- * 2. DashboardHeroSection
- * 3. <hr />
- * 4. dashboard-zenn-area (2カラムgrid)
- *    - DashboardPlatformStatsSection
- *    - DashboardActivitySection
- * 5. <hr />
- * 6. DashboardLatestPartyMemberSection
- * 7. <hr />
- * 8. DashboardLatestItemSection
- */
 const DashboardSkeleton = () => {
 	return (
 		<div className={styles["skeleton-container"]}>
 			{/* DashboardHeroSection Skeleton */}
 			<section className={styles["skeleton-hero-section"]}>
-				<h2 className={styles["skeleton-hero-title"]}>〜 勇者のレベル 〜</h2>
+				<h2 className={styles["skeleton-hero-title"]}>勇者のレベル</h2>
 				<div className={styles["skeleton-hero-container"]}>
 					<div className={styles["skeleton-hero-info"]}>
 						{/* 左側: アイコン + 名前 */}
