@@ -51,7 +51,16 @@ export const DashboardActivityContent = ({ articles }: DashboardActivityContentP
 
 	return (
 		<section className={`${styles["recent-activity-section"]}`}>
-			<h2 className={`${styles["recent-activity-section-title"]}`}>~ 最近の記録 ~</h2>
+			<h2 className={`${styles["recent-activity-section-title"]}`}>
+				<Image
+					src="/images/crown/crown02.png"
+					alt="王冠"
+					width={100}
+					height={100}
+					className={`${styles["recent-activity-section-title-icon"]}`}
+				/>
+				<span>最近の記録</span>
+			</h2>
 
 			{articles.length > 0 ? (
 				<ul className={`${styles["recent-activity-list"]}`}>

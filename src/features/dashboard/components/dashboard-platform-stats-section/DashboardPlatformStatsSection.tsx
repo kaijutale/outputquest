@@ -7,6 +7,7 @@ import { useHero } from "@/contexts/HeroContext";
 import { getUserInfo } from "@/lib/api/user";
 import { useUser } from "@clerk/nextjs";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
+import Image from "next/image";
 
 type DashboardPlatformStatsSectionProps = {
 	dashboardData: DashboardData;
@@ -18,7 +19,6 @@ const DashboardPlatformStatsSection = ({ dashboardData }: DashboardPlatformStats
 	const [userZennInfo, setUserZennInfo] = useState<{
 		zennUsername?: string;
 	} | null>(null);
-	const [isZennInfoLoaded, setIsZennInfoLoaded] = useState(false);
 
 	// ゲストユーザーの判定
 	const isGuestUser = !isLoaded || !user || !userZennInfo?.zennUsername;
@@ -27,17 +27,13 @@ const DashboardPlatformStatsSection = ({ dashboardData }: DashboardPlatformStats
 	useEffect(() => {
 		const fetchUserZennInfo = async () => {
 			if (!isLoaded) {
-				setIsZennInfoLoaded(false);
 				return;
 			}
 
 			if (!user) {
 				setUserZennInfo(null);
-				setIsZennInfoLoaded(true);
 				return;
 			}
-
-			setIsZennInfoLoaded(false);
 
 			try {
 				const userData = await getUserInfo();
@@ -50,8 +46,6 @@ const DashboardPlatformStatsSection = ({ dashboardData }: DashboardPlatformStats
 			} catch (err) {
 				console.error("ユーザー情報取得エラー:", err);
 				setUserZennInfo(null);
-			} finally {
-				setIsZennInfoLoaded(true);
 			}
 		};
 
@@ -67,7 +61,16 @@ const DashboardPlatformStatsSection = ({ dashboardData }: DashboardPlatformStats
 
 	return (
 		<section className={`${styles["platform-stats-section"]}`}>
-			<h2 className={`${styles["platform-stats-title"]}`}>~ 投稿状況 ~</h2>
+			<h2 className={`${styles["platform-stats-title"]}`}>
+				<Image
+					src="/images/crown/crown02.png"
+					alt="王冠"
+					width={100}
+					height={100}
+					className={`${styles["platform-stats-title-icon"]}`}
+				/>
+				<span>投稿状況</span>
+			</h2>
 			<div className={`${styles["platform-stats-container"]}`}>
 				<div className={`${styles["platform-stats-grid"]}`}>
 					<div className={`${styles["platform-stat-card"]} ${styles["platform-stat-card-zenn"]}`}>

@@ -115,7 +115,16 @@ const DashboardLatestPartyMemberSection: React.FC = () => {
 
 	return (
 		<section className={`${styles["party-member-section"]}`}>
-			<h2 className={`${styles["party-member-title"]}`}>~ 最近仲間に加わったキャラクター ~</h2>
+			<h2 className={`${styles["party-member-title"]}`}>
+				<Image
+					src="/images/crown/crown02.png"
+					alt="王冠"
+					width={100}
+					height={100}
+					className={`${styles["party-member-title-icon"]}`}
+				/>
+				<span>最近仲間に加わったキャラクター</span>
+			</h2>
 			<div className={`${styles["party-member-container"]}`}>
 				{isLoadingState ? (
 					<DashboardLatestPartyMemberSkeleton />

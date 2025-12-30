@@ -113,7 +113,16 @@ const DashboardLatestItemSection: React.FC = () => {
 
 	return (
 		<section className={`${styles["last-item-section"]}`}>
-			<h2 className={`${styles["last-item-title"]}`}>~ 最近入手したアイテム ~</h2>
+			<h2 className={`${styles["last-item-title"]}`}>
+				<Image
+					src="/images/crown/crown02.png"
+					alt="王冠"
+					width={100}
+					height={100}
+					className={`${styles["last-item-title-icon"]}`}
+				/>
+				<span>最近入手したアイテム</span>
+			</h2>
 			<div className={`${styles["last-item-container"]}`}>
 				{isLoadingState ? (
 					<DashboardLatestItemSkeleton />

@@ -7,7 +7,9 @@
 
 .last-item-title {
 	position: relative;
-	display: block grid;
+	display: block flex;
+	align-items: center;
+	gap: 7px;
 	font-size: 1.25rem;
 	font-weight: var(--font-weight-x-bold);
 	line-height: var(--leading-x-tight);
@@ -16,6 +18,11 @@
 		place-self: center;
 		font-size: 1.125rem;
 	}
+}
+
+.last-item-title-icon {
+	width: 20px;
+	height: auto;
 }
 
 .last-item-container {
