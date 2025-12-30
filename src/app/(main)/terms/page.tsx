@@ -186,7 +186,7 @@ const TermsPage = () => {
 							</p>
 						</TitledSection>
 
-						<TitledSection title="第9条（保証の否認および免責事項）">
+						<TitledSection title="第9条(保証の否認および免責事項)">
 							<ol className={styles["terms-section-list"]}>
 								<li className={styles["terms-section-list-item"]}>
 									当サービスは，当サービスに事実上または法律上の瑕疵（安全性，信頼性，正確性，完全性，有効性，特定の目的への適合性，セキュリティなどに関する欠陥，エラーやバグ，権利侵害などを含みます。）がないことを明示的にも黙示的にも保証しておりません。
