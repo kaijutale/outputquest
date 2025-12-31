@@ -2,11 +2,8 @@
 
 import { useState, useEffect } from "react";
 import styles from "./DashboardHeroSection.module.css";
-import Link from "next/link";
 import Image from "next/image";
 import { DashboardData } from "@/features/dashboard/types/dashboard.types";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
-import { useRouter } from "next/navigation";
 import { useHero } from "@/contexts/HeroContext";
 import { useUser } from "@clerk/nextjs";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
@@ -17,7 +14,6 @@ type DashboardHeroSectionProps = {
 };
 
 const DashboardHeroSection = ({ dashboardData }: DashboardHeroSectionProps) => {
-	const router = useRouter();
 	const { user, isLoaded } = useUser();
 	const { heroData, isLoading, error } = useHero();
 	const [zennUsername, setZennUsername] = useState<string>("");
@@ -84,18 +80,6 @@ const DashboardHeroSection = ({ dashboardData }: DashboardHeroSectionProps) => {
 		fetchZennUsername();
 	}, [isLoaded, user?.id]);
 
-	const { playClickSound } = useClickSound({
-		soundPath: "/audio/click-sound_decision.mp3",
-		volume: 0.5,
-		delay: 190, // 190ミリ秒 = 0.19秒の遅延
-	});
-
-	// 遅延付きページ遷移の処理
-	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-		e.preventDefault();
-		playClickSound(() => router.push(path));
-	};
-
 	// 表示するレベル値を決定（HeroContextから取得）
 	const displayLevel = isLoading ? dashboardData.heroData.level : heroData.level;
 
@@ -116,20 +100,14 @@ const DashboardHeroSection = ({ dashboardData }: DashboardHeroSectionProps) => {
 				<div className={`${styles["hero-info"]}`}>
 					<div className={`${styles["hero-info-box"]}`}>
 						<div className={`${styles["hero-info-icon-box"]}`}>
-							<Link
-								href={"/strength/"}
-								className={`${styles["hero-info-icon"]}`}
-								onClick={(e) => handleNavigation(e, "/strength/")}
-							>
-								<Image
-									src={`/images/hero/hero.png`}
-									alt={dashboardData.heroData.name}
-									width={1000}
-									height={1000}
-									priority={true}
-									className={`${styles["hero-info-icon-image"]}`}
-								/>
-							</Link>
+							<Image
+								src={`/images/hero/hero-icon.png`}
+								alt={dashboardData.heroData.name}
+								width={1000}
+								height={1000}
+								priority={true}
+								className={`${styles["hero-info-icon-image"]}`}
+							/>
 						</div>
 						<div className={styles["hero-info-name-box"]}>
 							<h3 className={`${styles["hero-info-name"]}`}>
@@ -138,6 +116,7 @@ const DashboardHeroSection = ({ dashboardData }: DashboardHeroSectionProps) => {
 									alt="王冠"
 									width={100}
 									height={100}
+									priority={true}
 									className={`${styles["hero-info-name-icon"]}`}
 								/>
 								{dashboardData.heroData.name}
