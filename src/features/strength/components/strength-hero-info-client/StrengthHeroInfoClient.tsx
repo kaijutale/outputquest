@@ -50,7 +50,9 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 									height={100}
 									className={`${styles["strength-hero-name-icon"]}`}
 								/>
-								<span>{heroData.name}({zennUsername})</span>
+								<span>
+									{heroData.name}({zennUsername})
+								</span>
 							</h3>
 						</div>
 					</div>

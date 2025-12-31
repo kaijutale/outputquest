@@ -19,9 +19,7 @@ export const Header = () => {
 	});
 
 	// audioPlayer の定義をここに移動
-	const audioPlayer = (
-		<AudioPlayer src="/audio/outputquest-theme-song.mp3" volume={0.5} />
-	);
+	const audioPlayer = <AudioPlayer src="/audio/outputquest-theme-song.mp3" volume={0.5} />;
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);

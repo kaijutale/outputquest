@@ -49,17 +49,13 @@ const GnavItems = () => {
 								</div>
 							</div>
 						) : (
-							<div
-								key={item.href}
-								className={`${styles["gnav-item-link-container"]}`}
-							>
+							<div key={item.href} className={`${styles["gnav-item-link-container"]}`}>
 								<Link
 									href={item.href}
 									className={`${styles["gnav-item-link"]}`}
 									onClick={() => handleLinkClick()}
 								>
-									<div className={`${styles["gnav-item-content"]}`}
-									>
+									<div className={`${styles["gnav-item-content"]}`}>
 										<Image
 											src={item.icon || "/images/nav-icon/default-icon.svg"}
 											alt={item.alt || item.title}
