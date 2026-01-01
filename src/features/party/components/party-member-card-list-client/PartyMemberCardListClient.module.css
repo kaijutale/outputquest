@@ -47,7 +47,7 @@
 
 .acquired-party-member-icon,
 .unacquired-party-member-icon {
-	display: grid;
+	display: block grid;
 	place-items: center;
 	width: 100%;
 	height: auto;
@@ -77,7 +77,6 @@
 	width: 100%;
 	height: auto;
 	object-fit: contain;
-	/* plateは少し後ろに表示したいのでz-indexを一応指定（DOM順序でも下だが念のため） */
 	z-index: 1;
 }
 

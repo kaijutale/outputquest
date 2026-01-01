@@ -31,7 +31,7 @@
 
 .skeleton-icon-wrapper {
 	width: 100%;
-	display: grid;
+	display: block grid;
 	place-items: center;
 }
 
