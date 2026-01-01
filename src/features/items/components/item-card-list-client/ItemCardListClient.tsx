@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import styles from "../item-card-list/ItemCardList.module.css";
+import styles from "./ItemCardListClient.module.css";
 import * as Items from "@/features/items/components/index";
 import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
