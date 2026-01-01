@@ -101,7 +101,7 @@ const DashboardHeroSection = ({ dashboardData }: DashboardHeroSectionProps) => {
 					<div className={`${styles["hero-info-box"]}`}>
 						<div className={`${styles["hero-info-icon-box"]}`}>
 							<Image
-								src={`/images/hero/hero-icon.png`}
+								src={`/images/hero/hero-plate.png`}
 								alt={dashboardData.heroData.name}
 								width={1000}
 								height={1000}
