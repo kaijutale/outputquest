@@ -30,7 +30,7 @@
 
 /* explore-analysis-controls関連のスタイル */
 .explore-analysis-controls {
-	display: grid;
+	display: block grid;
 	place-items: center;
 }
 
@@ -52,7 +52,7 @@
 
 .explore-analyze-button-text {
 	position: relative;
-	display: flex;
+	display: block flex;
 	align-items: center;
 	gap: 8px;
 	width: 100%;
