@@ -36,11 +36,11 @@ export const generatePartyMemberData = (
 		name: partyMemberName,
 		description: partyMemberDescription,
 		rarity:
-			partyId === 30
+			partyId >= 11
 				? rarityComponents.superRare
-				: partyId > 12
+				: partyId >= 7
 					? rarityComponents.rare
 					: rarityComponents.normal,
-		rarityType: partyId === 30 ? "superRare" : partyId > 12 ? "rare" : "normal",
+		rarityType: partyId >= 11 ? "superRare" : partyId >= 7 ? "rare" : "normal",
 	};
 };

@@ -3,6 +3,7 @@ export interface PartyMember {
 	id: number;
 	name: string | null;
 	description?: string | null;
+	imagePath?: string | null;
 	acquired: boolean;
 }
 
