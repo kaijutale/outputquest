@@ -13,10 +13,9 @@
 .party-member-card {
 	width: 360px;
 	height: auto;
-	/* aspect-ratio: 9/16; */
 	/* Gridを使って背景とコンテンツを重ねる */
 	display: block grid;
-	place-items: center; /* または stretch */
+	place-items: center;
 
 	/* 子要素（背景画像とコンテンツ）を同じセルに配置 */
 	& > * {

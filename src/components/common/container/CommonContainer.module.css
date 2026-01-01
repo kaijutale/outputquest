@@ -2,7 +2,6 @@
 	display: block grid;
 	grid-template-rows: auto 1fr auto;
 	height: 100%;
-	/* border: 5px solid var(--color-primary-white); */
 	border-radius: var(--border-radius-small);
 }
 

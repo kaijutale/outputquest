@@ -1,9 +1,8 @@
 /* Card - matches party-member-card */
-/* Card - matches party-member-card */
 .skeleton-card {
 	width: 360px;
 	height: auto;
-	display: grid;
+	display: block grid;
 	place-items: center;
 
 	/* 子要素（背景画像とコンテンツ）を同じセルに配置 */
@@ -25,51 +24,49 @@
 .skeleton-bg {
 	width: 100%;
 	height: 100%;
-	background-color: #222; /* 一覧のトーンに合わせたダークグレー */
-	border: 6px solid #333; /* 実際のカード枠に合わせて太くする */
+	background-color: #222;
+	border: 6px solid #333;
 	border-radius: var(--border-radius-medium);
 	z-index: 1;
 }
 
 /* Card Content - matches party-member-card-content */
-/* Card Content - matches party-member-card-content */
 .skeleton-card-content {
 	width: 100%;
-	height: 534px; /* ユーザー指定: 534px */
-	display: grid;
+	height: 534px;
+	display: block grid;
 	place-items: center;
-	grid-template-rows: 212px auto 1fr; /* 正解: 212px auto 1fr */
+	grid-template-rows: 212px auto 1fr;
 	gap: 15px;
 	padding-inline: 50px;
 	padding-block-end: 12px;
 	z-index: 2;
 
 	@media (width < 768px) {
-		height: 415px; /* ユーザー指定: 415px */
-		grid-template-rows: 157px auto 1fr; /* 正解: 157px auto 1fr */
+		height: 415px;
+		grid-template-rows: 157px auto 1fr;
 		gap: 10px;
 		padding-inline: 40px;
 		padding-block-end: 12px;
 	}
 
 	@media (width < 640px) {
-		height: 385px; /* ユーザー指定: 385px */
+		height: 385px;
 		padding-block-end: 12px;
 	}
 }
 
 /* Image Box - matches party-member-image-box */
-/* Image Box - matches party-member-image-box */
 .skeleton-image-box {
-	display: grid;
+	display: block grid;
 	place-items: center;
 	width: 100%;
 	height: 100%;
-	padding-block: 24px; /* カード枠の厚み分を確保 */
+	padding-block: 24px;
 
 	@media (width < 768px) {
 		height: 150px;
-		padding-block: 16px; /* モバイル時は少し狭く */
+		padding-block: 16px;
 	}
 }
 
@@ -84,18 +81,17 @@
 }
 
 /* Title Box - matches party-member-title-box */
-/* Title Box - matches party-member-title-box */
 .skeleton-title-box {
-	width: 140px; /* タイトルの平均的な長さに合わせる */
-	display: grid;
+	width: 140px;
+	display: block grid;
 	place-items: center;
-	padding: 5px; /* サイズ確保のため */
+	padding: 5px;
 }
 
 /* Title Skeleton */
 .skeleton-title {
 	width: 100%;
-	height: 35px; /* タイトルの高さを確保 */
+	height: 35px;
 	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
@@ -103,11 +99,10 @@
 }
 
 /* Description Box - matches party-member-description-box */
-/* Description Box - matches party-member-description-box */
 .skeleton-description-box {
 	width: 100%;
 	height: 100%;
-	display: grid;
+	display: block grid;
 	place-items: center;
 	padding: 2.5px;
 }
@@ -116,7 +111,7 @@
 .skeleton-description-line {
 	width: 100%;
 	height: 100%;
-	min-height: 80px; /* 説明文エリアの高さを確保 */
+	min-height: 80px;
 	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;

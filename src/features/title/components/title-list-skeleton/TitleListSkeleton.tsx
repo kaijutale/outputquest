@@ -6,7 +6,6 @@ const TitleListSkeleton = () => {
 			{[...Array(11)].map((_, index) => (
 				<li key={index} className={styles["skeleton-item"]}>
 					<div className={styles["skeleton-item-box"]}>
-						{/* 称号名のスケルトン */}
 						<div className={styles["skeleton-title"]} />
 					</div>
 				</li>

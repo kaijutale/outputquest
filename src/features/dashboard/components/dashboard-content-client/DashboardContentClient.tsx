@@ -8,23 +8,9 @@ import { HeroData } from "@/types/hero.types";
 type DashboardContentClientProps = {
 	heroData: HeroData;
 	lastAcquiredItemId: number | null;
-	children: ReactNode; // Server ComponentをCompositionパターンで受け取る
+	children: ReactNode;
 };
 
-/**
- * DashboardContentClient (Client Component)
- *
- * Server Componentから渡されたデータを表示する。
- * インタラクティブな部分はここに配置される。
- *
- * Server ComponentはReactNodeとして受け取り（Compositionパターン）、
- * Client Componentの中にネストできる。
- *
- * 変更点:
- * - useHero(), useState, useEffectを削除
- * - propsでheroDataとlastAcquiredItemIdを受け取る
- * - children（Server Component）をCompositionパターンで受け取る
- */
 const DashboardContentClient = ({
 	heroData,
 	lastAcquiredItemId,

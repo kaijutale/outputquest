@@ -114,6 +114,11 @@
 	object-fit: contain;
 	object-position: center;
 	filter: drop-shadow(0 0 1px var(--color-primary-white));
+
+	/*
+	個別調整用:
+	&.party-member-icon-1 { width: 40px; }
+	*/
 }
 
 .party-member-info {

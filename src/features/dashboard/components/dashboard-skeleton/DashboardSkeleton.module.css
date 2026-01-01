@@ -1,6 +1,3 @@
-/* DashboardSkeleton.module.css */
-/* 実際のDashboardContentClientのスタイルに完全一致 */
-
 /* Container - matches dashboard-content-container */
 .skeleton-container {
 	display: block grid;
@@ -14,8 +11,8 @@
 }
 
 /* ========================================
-   DashboardHeroSection Skeleton
-   ======================================== */
+	DashboardHeroSection Skeleton
+======================================== */
 
 /* matches hero-info-section */
 .skeleton-hero-section {
@@ -228,8 +225,8 @@
 }
 
 /* ========================================
-   dashboard-zenn-area
-   ======================================== */
+	dashboard-zenn-area
+======================================== */
 
 /* matches dashboard-zenn-area */
 .skeleton-zenn-area {
@@ -246,8 +243,8 @@
 }
 
 /* ========================================
-   Section Titles
-   ======================================== */
+	Section Titles
+======================================== */
 
 /* matches platform-stats-title, recent-activity-section-title, etc. */
 .skeleton-section-title {
@@ -265,8 +262,8 @@
 }
 
 /* ========================================
-   DashboardPlatformStatsSection Skeleton
-   ======================================== */
+	DashboardPlatformStatsSection Skeleton
+======================================== */
 
 /* matches platform-stats-section */
 .skeleton-platform-stats {
@@ -313,8 +310,8 @@
 }
 
 /* ========================================
-   DashboardActivitySection Skeleton
-   ======================================== */
+	DashboardActivitySection Skeleton
+======================================== */
 
 /* matches recent-activity-section */
 .skeleton-activity {
@@ -356,8 +353,8 @@
 }
 
 /* ========================================
-   Latest Sections Skeleton
-   ======================================== */
+	Latest Sections Skeleton
+======================================== */
 
 /* matches latest-party-member-section, latest-item-section */
 .skeleton-latest-section {
@@ -433,8 +430,8 @@
 }
 
 /* ========================================
-   Shimmer Animation
-   ======================================== */
+	Shimmer Animation
+======================================== */
 
 @keyframes shimmer {
 	0% {

@@ -1,10 +1,3 @@
-/* DashboardActivitySkeleton.module.css */
-/* 実際のDashboardActivityContentのスタイルに完全一致 */
-
-/* ========================================
-   DashboardActivitySection Skeleton
-   ======================================== */
-
 /* matches recent-activity-section */
 .skeleton-activity-section {
 	width: 100%;
@@ -159,8 +152,8 @@
 }
 
 /* ========================================
-   Shimmer Animation
-   ======================================== */
+	Shimmer Animation
+======================================== */
 
 @keyframes shimmer {
 	0% {
