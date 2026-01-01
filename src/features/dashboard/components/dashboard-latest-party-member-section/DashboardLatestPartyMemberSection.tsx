@@ -8,6 +8,7 @@ import {
 	heroLevelAndMemberRelation,
 	customMemberNames,
 	customMemberDescriptions,
+	customMemberImages,
 } from "@/features/party/data/partyMemberData";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import { useRouter } from "next/navigation";
@@ -150,11 +151,16 @@ const DashboardLatestPartyMemberSection: React.FC = () => {
 							<div className={`${styles["party-member-icon-container"]}`}>
 								<div className={`${styles["party-member-icon-box"]}`}>
 									<Image
-										src={`/images/party-page/acquired-icon/party-member-${memberId}.svg`}
+										src={
+											customMemberImages[memberId] ||
+											"/images/party-page/unacquired-icon/mark_question.svg"
+										}
 										alt={memberName}
 										width={35}
 										height={35}
-										className={`${styles["party-member-icon"]}`}
+										className={`${styles["party-member-icon"]} ${
+											styles[`party-member-icon-${memberId}`]
+										}`}
 									/>
 								</div>
 							</div>
