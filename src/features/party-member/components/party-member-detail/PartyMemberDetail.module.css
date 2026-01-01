@@ -90,7 +90,7 @@
 	height: auto;
 	object-fit: contain;
 	object-position: center;
-	filter: drop-shadow(0 0 10px var(--color-primary-white));
+	filter: drop-shadow(1px 2px 0.5px #454545);
 
 	&.party-member-image-1 {
 		width: 100px;

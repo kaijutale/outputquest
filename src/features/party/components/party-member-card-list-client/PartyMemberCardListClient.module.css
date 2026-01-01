@@ -66,7 +66,7 @@
 .acquired-party-member-icon-image,
 .unacquired-party-member-icon-image {
 	height: auto;
-	filter: drop-shadow(0 0 10px var(--color-primary-white));
+	filter: drop-shadow(1px 2px 0.5px #454545);
 	z-index: 2;
 	transition:
 		filter 0.2s ease-in-out,
