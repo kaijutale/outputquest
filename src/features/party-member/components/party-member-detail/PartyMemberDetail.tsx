@@ -4,26 +4,20 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import styles from "./PartyMemberDetail.module.css";
-import * as PartyMember from "@/features/party-member/components/index";
+
 import PartyMemberDetailSkeleton from "../party-member-detail-skeleton/PartyMemberDetailSkeleton";
 import {
 	heroLevelAndMemberRelation,
 	isAcquiredByHeroLevel,
 	customMemberNames,
 	customMemberDescriptions,
+	customMemberImages,
 } from "@/features/party/data/partyMemberData";
 import { fetchZennArticles } from "@/features/posts/services";
 
 interface PartyMemberDetailProps {
 	partyId: number;
 }
-
-// レア度を判定する関数
-const getMemberRarityType = (partyId: number): "normal" | "rare" | "superRare" => {
-	if (partyId === 30) return "superRare";
-	if (partyId > 12) return "rare";
-	return "normal";
-};
 
 const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 	const { user, isLoaded } = useUser();
@@ -104,23 +98,31 @@ const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 		? customMemberDescriptions[partyId] || `これは${memberName}の説明です。`
 		: null;
 
-	// レア度を取得
-	const rarityType = getMemberRarityType(partyId);
-
 	return (
 		<div className={styles["party-member-content"]}>
 			{isLoading ? (
 				<PartyMemberDetailSkeleton />
 			) : (
 				<div className={styles["party-member-card"]}>
+					<Image
+						src="/images/card/card-bg.png"
+						alt="card background"
+						width={1000}
+						height={1000}
+						className={styles["party-member-card-bg"]}
+						priority={true}
+					/>
 					<div className={styles["party-member-card-content"]}>
 						<div className={styles["party-member-image-box"]}>
 							{isAcquired ? (
 								<Image
-									src={`/images/party-page/acquired-icon/party-member-${partyId}.svg`}
+									src={
+										customMemberImages[partyId] ||
+										"/images/party-page/unacquired-icon/mark_question.svg"
+									}
 									alt={memberName || "勇者の仲間"}
-									width={60}
-									height={60}
+									width={1000}
+									height={1000}
 									priority={true}
 									className={`${styles["party-member-image"]} ${
 										styles[`party-member-image-${partyId}`]
@@ -140,7 +142,9 @@ const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 
 						<div className={styles["party-member-title-box"]}>
 							<h2 className={styles["party-member-title"]}>
-								{isAcquired ? memberName : "まだ見ぬ仲間"}
+								<div className={styles["party-member-title-inner"]}>
+									{isAcquired ? memberName : "まだ見ぬ仲間"}
+								</div>
 							</h2>
 						</div>
 
@@ -148,15 +152,6 @@ const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 							<>
 								<div className={styles["party-member-description-box"]}>
 									<p className={styles["party-member-description"]}>{memberDescription}</p>
-								</div>
-
-								<div className={styles["party-member-rarity-box"]}>
-									<h3 className={styles["party-member-rarity-title"]}>レア度</h3>
-									<div className={styles["party-member-rarity-stars"]}>
-										{rarityType === "normal" && PartyMember.PartyMemberRarityStar.normal}
-										{rarityType === "rare" && PartyMember.PartyMemberRarityStar.rare}
-										{rarityType === "superRare" && PartyMember.PartyMemberRarityStar.superRare}
-									</div>
 								</div>
 							</>
 						) : (
@@ -168,10 +163,8 @@ const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 								) : (
 									<>
 										<p className={styles["party-member-locked-message-text"]}>
-											このキャラはLv{requiredLevel}で仲間に加わるぞ！
-										</p>
-										<p className={styles["party-member-locked-message-text"]}>
-											Lv{requiredLevel}まで、あと{levelDifference}レベル
+											<span>このキャラはLv{requiredLevel}で仲間に加わるぞ！</span>
+											<span>Lv{requiredLevel}まで、あと{levelDifference}レベル</span>
 										</p>
 									</>
 								)}

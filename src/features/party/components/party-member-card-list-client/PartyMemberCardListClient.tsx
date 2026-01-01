@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import styles from "../party-member-card-list/PartyMemberCardList.module.css";
+import styles from "./PartyMemberCardListClient.module.css";
 import Image from "next/image";
 import * as Party from "@/features/party/components/index";
 import { useRouter } from "next/navigation";
@@ -37,21 +37,23 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 						className={styles["party-member-card"]}
 						onClick={(e) => handleNavigation(e, `/party/${partyMember.id}`)}
 					>
-						{isGuestUser ? (
-							<div className={styles["unacquired-party-member-icon"]}>
-								<Party.PartyQuestionIcon
-									width={40}
-									height={40}
-									className={styles["unacquired-party-member-icon-image"]}
-								/>
-							</div>
-						) : partyMember.acquired ? (
+						{!isGuestUser && partyMember.acquired ? (
 							<div className={styles["acquired-party-member-icon"]}>
 								<Image
-									src={`/images/party-page/acquired-icon/party-member-${partyMember.id}.svg`}
+									src="/images/plate/plate01.png"
+									alt="plate"
+									width={1000}
+									height={1000}
+									priority={true}
+									className={styles["acquired-party-member-icon-plate"]}
+								/>
+								<Image
+									src={
+										partyMember.imagePath || "/images/party-page/unacquired-icon/mark_question.svg"
+									}
 									alt={partyMember.name || "勇者の仲間"}
-									width={40}
-									height={40}
+									width={1000}
+									height={1000}
 									className={`${styles["acquired-party-member-icon-image"]} ${
 										styles[`acquired-party-member-icon-image-${partyMember.id}`]
 									}`}
@@ -59,15 +61,25 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 							</div>
 						) : (
 							<div className={styles["unacquired-party-member-icon"]}>
+								<Image
+									src="/images/plate/plate01.png"
+									alt="plate"
+									width={1000}
+									height={1000}
+									priority={true}
+									className={styles["acquired-party-member-icon-plate"]}
+								/>
 								<Party.PartyQuestionIcon
-									width={40}
-									height={40}
+									width={60}
+									height={60}
 									className={styles["unacquired-party-member-icon-image"]}
 								/>
 							</div>
 						)}
 						<h2 className={styles["party-member-name"]}>
-							{isGuestUser || !partyMember.acquired ? "???" : partyMember.name}
+							<div className={styles["party-member-name-box"]}>
+								{isGuestUser || !partyMember.acquired ? "???" : partyMember.name}
+							</div>
 						</h2>
 					</Link>
 				</div>

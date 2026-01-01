@@ -7,8 +7,8 @@ interface TreasureChestProps {
 }
 
 const PartyQuestionIcon: React.FC<TreasureChestProps> = ({
-	width = 35,
-	height = 35,
+	width = 60,
+	height = 60,
 	className,
 }) => {
 	return (
