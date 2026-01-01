@@ -1,12 +1,13 @@
 "use client";
 
-import { createContext, use, useState, ReactNode } from "react";
+import { createContext, use, useState, useEffect, ReactNode } from "react";
 
 interface HomeAnimationContextType {
 	isAnimationStarted: boolean;
 	startAnimation: () => void;
 	isImageVisible: boolean;
 	showImage: () => void;
+	isFirstVisit: boolean | null;
 }
 
 const HomeAnimationContext = createContext<HomeAnimationContextType | null>(null);
@@ -14,6 +15,20 @@ const HomeAnimationContext = createContext<HomeAnimationContextType | null>(null
 export const HomeAnimationProvider = ({ children }: { children: ReactNode }) => {
 	const [isAnimationStarted, setIsAnimationStarted] = useState(false);
 	const [isImageVisible, setIsImageVisible] = useState(false);
+	const [isFirstVisit, setIsFirstVisit] = useState<boolean | null>(null);
+
+	useEffect(() => {
+		const hasVisited = sessionStorage.getItem("hero-visited");
+
+		if (hasVisited) {
+			setIsFirstVisit(false);
+			setIsAnimationStarted(true);
+			setIsImageVisible(true);
+		} else {
+			setIsFirstVisit(true);
+			sessionStorage.setItem("hero-visited", "true");
+		}
+	}, []);
 
 	const startAnimation = () => {
 		setIsAnimationStarted(true);
@@ -23,7 +38,15 @@ export const HomeAnimationProvider = ({ children }: { children: ReactNode }) => 
 	};
 
 	return (
-		<HomeAnimationContext value={{ isAnimationStarted, startAnimation, isImageVisible, showImage }}>
+		<HomeAnimationContext
+			value={{
+				isAnimationStarted,
+				startAnimation,
+				isImageVisible,
+				showImage,
+				isFirstVisit,
+			}}
+		>
 			{children}
 		</HomeAnimationContext>
 	);
@@ -39,6 +62,7 @@ export const useHomeAnimation = () => {
 			startAnimation: () => {},
 			isImageVisible: true,
 			showImage: () => {},
+			isFirstVisit: false,
 		};
 	}
 	return context;

@@ -9,20 +9,17 @@ type ViewState = "initial" | "video" | "gap" | "image";
 
 export function HeroBg() {
 	const [viewState, setViewState] = useState<ViewState>("initial");
-	const { isAnimationStarted, startAnimation, showImage } = useHomeAnimation();
+	const { isAnimationStarted, startAnimation, showImage, isFirstVisit } = useHomeAnimation();
 
 	useEffect(() => {
-		const hasVisited = sessionStorage.getItem("hero-visited");
+		if (isFirstVisit === null) return;
 
-		if (!hasVisited) {
+		if (isFirstVisit) {
 			setViewState("video");
-			sessionStorage.setItem("hero-visited", "true");
 		} else {
 			setViewState("image");
-			startAnimation();
-			showImage();
 		}
-	}, [startAnimation, showImage]);
+	}, [isFirstVisit]);
 
 	const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
 		const currentTime = e.currentTarget.currentTime;
@@ -46,7 +43,7 @@ export function HeroBg() {
 				className="absolute inset-0 size-full"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: viewState === "image" ? 1 : 0 }}
-				transition={{ duration: 3, ease: "easeInOut" }}
+				transition={{ duration: isFirstVisit ? 3 : 0, ease: "easeInOut" }}
 			>
 				<Image
 					src="/images/top-bg/castle-background.jpg"
@@ -84,9 +81,9 @@ export function HeroBg() {
 
 			{/* Overlay: アニメーション開始時（3秒後）にフェードインで表示 */}
 			<div
-				className={`absolute inset-0 bg-black/10 backdrop-blur-[3px] transition-opacity duration-2000 ${
-					isAnimationStarted ? "opacity-100" : "opacity-0"
-				}`}
+				className={`absolute inset-0 bg-black/10 backdrop-blur-[3px] ${
+					isFirstVisit ? "transition-opacity duration-2000" : ""
+				} ${isAnimationStarted ? "opacity-100" : "opacity-0"}`}
 			/>
 		</div>
 	);

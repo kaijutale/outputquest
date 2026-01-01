@@ -16,7 +16,7 @@ const HomeStartButton = () => {
 	const { user, isLoaded } = useUser();
 	const [isZennConnected, setIsZennConnected] = useState(false);
 	const { isMuted } = useAudio();
-	const { isAnimationStarted, isImageVisible } = useHomeAnimation();
+	const { isAnimationStarted, isImageVisible, isFirstVisit } = useHomeAnimation();
 
 	const { playClickSound } = useClickSound({
 		soundPath: "/audio/start-sound.mp3",
@@ -64,7 +64,7 @@ const HomeStartButton = () => {
 			}`}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: isImageVisible ? 1 : 0 }}
-			transition={{ duration: 1.75, ease: "easeInOut" }}
+			transition={{ duration: isFirstVisit ? 1.75 : 0, ease: "easeInOut" }}
 		>
 			<Link href={destination} className={`${styles["start-btn"]}`} onClick={handleClick}>
 				<Image
