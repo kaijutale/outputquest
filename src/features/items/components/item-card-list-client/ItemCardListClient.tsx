@@ -28,7 +28,7 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 	return (
 		<div className={styles["items-grid"]}>
 			{items.map((item) => (
-				<div className={`${styles["item-card-content"]}`} key={item.id}>
+				<div className={styles["item-card-content"]} key={item.id}>
 					<Link
 						href={`/items/${item.id}`}
 						className={styles["item-card"]}
@@ -36,6 +36,14 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 					>
 						{isGuestUser ? (
 							<div className={styles["unacquired-item-icon"]}>
+								<Image
+									src="/images/plate/plate01.png"
+									alt="plate"
+									width={1000}
+									height={1000}
+									priority={true}
+									className={styles["acquired-item-icon-plate"]}
+								/>
 								<Items.ItemsTreasureChestIcon
 									width={100}
 									height={100}
@@ -46,6 +54,14 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 							</div>
 						) : item.acquired ? (
 							<div className={styles["acquired-item-icon"]}>
+								<Image
+									src="/images/plate/plate01.png"
+									alt="plate"
+									width={1000}
+									height={1000}
+									priority={true}
+									className={styles["acquired-item-icon-plate"]}
+								/>
 								<Image
 									src={`/images/items-page/acquired-icon/item-${item.id}.svg`}
 									alt={item.name || "アイテム"}
@@ -58,6 +74,14 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 							</div>
 						) : (
 							<div className={styles["unacquired-item-icon"]}>
+								<Image
+									src="/images/plate/plate01.png"
+									alt="plate"
+									width={1000}
+									height={1000}
+									priority={true}
+									className={styles["acquired-item-icon-plate"]}
+								/>
 								<Items.ItemsTreasureChestIcon
 									width={100}
 									height={100}
@@ -68,7 +92,9 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 							</div>
 						)}
 						<h2 className={styles["item-name"]}>
-							{isGuestUser || !item.acquired ? "???" : item.name}
+							<div className={styles["item-name-box"]}>
+								{isGuestUser || !item.acquired ? "???" : item.name}
+							</div>
 						</h2>
 					</Link>
 				</div>

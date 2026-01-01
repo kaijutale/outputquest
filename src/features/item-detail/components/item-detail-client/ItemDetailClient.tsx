@@ -18,13 +18,6 @@ interface ItemDetailClientProps {
 	itemId: number;
 }
 
-// レア度を判定する関数
-const getItemRarityType = (itemId: number): "normal" | "rare" | "superRare" => {
-	if (itemId === 30) return "superRare";
-	if (itemId > 12) return "rare";
-	return "normal";
-};
-
 const ItemDetailClient: React.FC<ItemDetailClientProps> = ({ itemId }) => {
 	const { user, isLoaded } = useUser();
 	// Zenn連携アカウントのレベル取得状態
@@ -104,23 +97,28 @@ const ItemDetailClient: React.FC<ItemDetailClientProps> = ({ itemId }) => {
 		? customItemDescriptions[itemId] || `これは${itemName}の説明です。`
 		: null;
 
-	// レア度を取得
-	const rarityType = getItemRarityType(itemId);
-
 	return (
 		<div className={styles["item-detail-content"]}>
 			{isLoading ? (
 				<ItemDetailSkeleton />
 			) : (
 				<div className={styles["item-detail-card"]}>
+					<Image
+						src="/images/card/card-bg.png"
+						alt="card background"
+						width={1000}
+						height={1000}
+						className={styles["item-detail-card-bg"]}
+						priority={true}
+					/>
 					<div className={styles["item-detail-card-content"]}>
 						<div className={styles["item-detail-image-box"]}>
 							{isAcquired ? (
 								<Image
 									src={`/images/items-page/acquired-icon/item-${itemId}.svg`}
 									alt={itemName || "アイテム"}
-									width={60}
-									height={60}
+									width={1000}
+									height={1000}
 									priority={true}
 									className={`${styles["item-detail-image"]} ${
 										styles[`item-detail-image-${itemId}`]
@@ -133,14 +131,16 @@ const ItemDetailClient: React.FC<ItemDetailClientProps> = ({ itemId }) => {
 									width={60}
 									height={60}
 									priority={true}
-									className={styles["item-detail-unknown-icon-image"]}
+									className={styles["item-detail-unknown-image"]}
 								/>
 							)}
 						</div>
 
 						<div className={styles["item-detail-title-box"]}>
 							<h2 className={styles["item-detail-title"]}>
-								{isAcquired ? itemName : "未入手のアイテム"}
+								<div className={styles["item-detail-title-inner"]}>
+									{isAcquired ? itemName : "未入手のアイテム"}
+								</div>
 							</h2>
 						</div>
 
@@ -148,15 +148,6 @@ const ItemDetailClient: React.FC<ItemDetailClientProps> = ({ itemId }) => {
 							<>
 								<div className={styles["item-detail-description-box"]}>
 									<p className={styles["item-detail-description"]}>{itemDescription}</p>
-								</div>
-
-								<div className={styles["item-detail-rarity-box"]}>
-									<h3 className={styles["item-detail-rarity-title"]}>レア度</h3>
-									<div className={styles["item-detail-rarity-stars"]}>
-										{rarityType === "normal" && itemDetail.ItemDetailRarityStar.normal}
-										{rarityType === "rare" && itemDetail.ItemDetailRarityStar.rare}
-										{rarityType === "superRare" && itemDetail.ItemDetailRarityStar.superRare}
-									</div>
 								</div>
 							</>
 						) : (
@@ -168,10 +159,10 @@ const ItemDetailClient: React.FC<ItemDetailClientProps> = ({ itemId }) => {
 								) : (
 									<>
 										<p className={styles["item-detail-locked-message-text"]}>
-											このアイテムは、Lv{requiredLevel}で入手できるぞ！
-										</p>
-										<p className={styles["item-detail-locked-message-text"]}>
-											Lv{requiredLevel}まで、あと{levelDifference}レベル
+											<span>このアイテムは、Lv{requiredLevel}で入手できるぞ！</span>
+											<span>
+												Lv{requiredLevel}まで、あと{levelDifference}レベル
+											</span>
 										</p>
 									</>
 								)}
