@@ -3,6 +3,7 @@ import styles from "./PartyMemberDetailSkeleton.module.css";
 const PartyMemberDetailSkeleton = () => {
 	return (
 		<div className={styles["skeleton-card"]}>
+			<div className={styles["skeleton-bg"]} />
 			<div className={styles["skeleton-card-content"]}>
 				{/* メンバー画像のスケルトン */}
 				<div className={styles["skeleton-image-box"]}>
@@ -17,12 +18,6 @@ const PartyMemberDetailSkeleton = () => {
 				{/* 説明文のスケルトン */}
 				<div className={styles["skeleton-description-box"]}>
 					<div className={styles["skeleton-description-line"]} />
-				</div>
-
-				{/* レア度のスケルトン */}
-				<div className={styles["skeleton-rarity-box"]}>
-					<div className={styles["skeleton-rarity-label"]} />
-					<div className={styles["skeleton-rarity-stars"]} />
 				</div>
 			</div>
 		</div>
