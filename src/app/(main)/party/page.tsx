@@ -15,7 +15,7 @@ const PartyPage = () => {
 			<div className={`${styles["party-container"]}`}>
 				<div className={`${styles["party-header"]}`}>
 					<p>勇者の仲間を確認できます。</p>
-					<p>仲間になるキャラクターは最大で30人です。</p>
+					<p>仲間になるキャラクターは最大で12人です。</p>
 					<p>仲間をクリックすると、仲間の詳細を確認できます。</p>
 				</div>
 
