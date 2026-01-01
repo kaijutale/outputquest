@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import styles from "../strength-hero-info/StrengthHeroInfo.module.css";
+import styles from "./StrengthHeroInfoClient.module.css";
 
 type StrengthHeroInfoClientProps = {
 	heroData: {
@@ -14,12 +14,6 @@ type StrengthHeroInfoClientProps = {
 	zennUsername: string;
 };
 
-/**
- * StrengthHeroInfoClient (Client Component)
- *
- * 勇者のレベル情報を表示するClient Component
- * StrengthHeroInfo（Server Component）から分離
- */
 const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClientProps) => {
 	// 経験値の進捗率をパーセンテージで計算
 	const expProgressPercent = (heroData.currentExp / heroData.nextLevelExp) * 100;
