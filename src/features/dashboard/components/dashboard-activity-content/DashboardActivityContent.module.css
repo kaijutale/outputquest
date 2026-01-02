@@ -46,18 +46,17 @@
 	display: block flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 7px dashed var(--color-primary-brown-light);
-	padding-inline: 5px;
-	padding-block: 5px;
-	border-radius: var(--border-radius-small);
-	background-color: var(--color-primary-brown-dark);
+	border: 3mm ridge #b69973;
+	background-color: #453424;
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
 }
 
 .recent-activity-item-link {
 	width: 100%;
 	display: block grid;
 	color: var(--color-primary-white);
-	background-color: var(--color-primary-brown);
+	background-color: #ae926e;
 	border: 2px solid var(--color-primary-brown-light);
 	padding-inline: 15px;
 	padding-block: 12px 10px;
@@ -104,23 +103,17 @@
 .recent-activity-item-date-container {
 	display: block grid;
 	place-items: center;
-	background-color: var(--color-primary-brown-dark);
-	--matched-radius-padding: 2px;
-	--matched-radius-inner-size: 2px;
-	padding: var(--matched-radius-padding);
-	border-radius: calc(var(--matched-radius-inner-size) + var(--matched-radius-padding));
-	box-shadow: 0px 0px 2px var(--color-primary-brown-dark);
+	background-color: #453424;
+	padding: 2px;
 }
 
 .recent-activity-item-category,
 .recent-activity-item-date {
-	font-size: 0.875rem;
+	font-size: 0.75rem;
 	font-weight: var(--font-weight-x-bold);
 	line-height: var(--leading-none);
 	letter-spacing: 0.025em;
-	background-color: var(--color-primary-brown-dark);
-	border: 2px solid var(--color-primary-brown-light);
-	border-radius: var(--matched-radius-inner-size);
+	border: 2px solid #b69973;
 	padding-inline: 8.5px;
 	padding-block: 5.5px;
 }
@@ -131,6 +124,7 @@
 	align-items: center;
 	gap: 5px;
 	margin-block-start: 10px;
+	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
 }
 
 /* ファビコンスタイル */
@@ -151,6 +145,7 @@
 	font-size: 1rem;
 	font-weight: var(--font-weight-x-bold);
 	color: var(--color-primary-yellow);
+	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
 }
 
 .error-message {

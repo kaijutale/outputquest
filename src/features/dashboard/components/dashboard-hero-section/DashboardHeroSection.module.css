@@ -74,25 +74,24 @@
 
 .hero-info-name-box {
 	grid-area: name;
-	background-color: var(--color-primary-brown-dark);
-	border: 2px solid var(--color-primary-brown-light);
-	border-radius: var(--border-radius-small);
-	padding-inline: 2.5px;
-	padding-block: 2.5px;
+	background-color: #453424;
+	border: 1.5px solid var(--color-primary-brown-light);
+	padding-inline: 2px;
+	padding-block: 2px;
 }
 
 .hero-info-name {
-	display: block flex;
-	align-items: center;
-	gap: 5px;
 	font-size: 0.75rem;
 	font-weight: var(--font-weight-normal);
-	line-height: var(--leading-none);
-	padding-block: 3px 5px;
-	padding-inline: 7px;
-	border: 1px solid var(--color-primary-brown-light);
-	background-color: var(--color-primary-brown);
+	line-height: var(--leading-tight);
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	background-color: var(--color-primary-brown);
+	border: 1px solid var(--color-primary-brown-light);
+	align-items: center;
+	gap: 5px;
+	padding-block: 2px 3px;
+	padding-inline: 7px;
+	display: block flex;
 }
 
 .hero-info-name-icon {
@@ -161,15 +160,14 @@
 }
 
 .hero-info-level-display-container {
-	min-width: 150px;
-	height: 100px;
+	background-color: #453424;
+	border: 2.7mm ridge #b69973;
+	width: min-content;
+	height: 105px;
+	padding-block: 2.5px;
+	padding-inline: 2.5px;
 	display: block grid;
 	place-self: end;
-	background-color: var(--color-primary-brown-dark);
-	border: 7px dashed var(--color-primary-brown-light);
-	border-radius: var(--border-radius-small);
-	padding-inline: 5px;
-	padding-block: 5px;
 
 	@media (width < 768px) {
 		place-self: center;
@@ -177,12 +175,12 @@
 }
 
 .hero-info-level-display-box {
-	display: block grid;
-	place-items: center;
-	place-content: center;
-	background-color: var(--color-primary-brown);
+	background-color: #ae926e;
 	border: 2px solid var(--color-primary-brown-light);
-	padding-inline: 10px;
+	place-content: center;
+	place-items: center;
+	padding-inline: 12px;
+	display: grid;
 }
 
 .loading-indicator {

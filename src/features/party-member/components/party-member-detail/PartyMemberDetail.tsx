@@ -142,9 +142,7 @@ const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 
 						<div className={styles["party-member-title-box"]}>
 							<h2 className={styles["party-member-title"]}>
-								<div className={styles["party-member-title-inner"]}>
-									{isAcquired ? memberName : "まだ見ぬ仲間"}
-								</div>
+								{isAcquired ? memberName : "まだ見ぬ仲間"}
 							</h2>
 						</div>
 

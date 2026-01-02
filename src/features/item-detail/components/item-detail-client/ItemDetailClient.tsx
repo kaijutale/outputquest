@@ -137,9 +137,7 @@ const ItemDetailClient: React.FC<ItemDetailClientProps> = ({ itemId }) => {
 
 						<div className={styles["item-detail-title-box"]}>
 							<h2 className={styles["item-detail-title"]}>
-								<div className={styles["item-detail-title-inner"]}>
-									{isAcquired ? itemName : "未入手のアイテム"}
-								</div>
+								{isAcquired ? itemName : "未入手のアイテム"}
 							</h2>
 						</div>
 

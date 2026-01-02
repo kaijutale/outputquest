@@ -56,40 +56,40 @@
 	display: block grid;
 	grid-template-rows: auto auto;
 	place-items: center;
-	gap: 13px;
+	gap: 15px;
 }
 
 .strength-hero-icon-box {
-	width: 75px;
-	height: 86.25px;
+	width: 110px;
 	display: block grid;
 	place-items: center;
 }
 
 .strength-hero-icon-image {
-	width: 70px;
+	width: 100%;
 	height: auto;
-	object-fit: contain;
-	object-position: center;
-	filter: drop-shadow(0 0 3px var(--color-primary-white));
+	display: block flow;
 }
 
 .strength-hero-name-box {
-	background-color: var(--color-primary-dark-gray);
+	background-color: #453424;
+	border: 1.5px solid var(--color-primary-brown-light);
+	padding-inline: 2px;
+	padding-block: 2px;
 }
 
 .strength-hero-name {
-	display: block flex;
-	align-items: center;
-	gap: 4px;
 	font-size: 0.75rem;
 	font-weight: var(--font-weight-normal);
-	line-height: var(--leading-none);
-	color: var(--color-primary-white);
-	border: 2px solid var(--color-primary-white);
-	padding-block: 6px 7px;
-	padding-inline: 9px;
-	border-radius: var(--border-radius-small);
+	line-height: var(--leading-tight);
+	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	background-color: var(--color-primary-brown);
+	border: 1px solid var(--color-primary-brown-light);
+	align-items: center;
+	gap: 5px;
+	padding-block: 2px 3px;
+	padding-inline: 7px;
+	display: block flex;
 }
 
 .strength-hero-name-icon {
@@ -103,17 +103,12 @@
 	place-items: center;
 }
 
-.strength-level-display-container {
-	display: block grid;
-	background-color: var(--color-primary-dark-gray);
-	border: 2.5px solid var(--color-primary-white);
-	border-radius: var(--border-radius-small);
-}
-
 .strength-level-display-box {
 	display: block grid;
-	padding-block: 10px;
-	padding-inline: 10px;
+	background-color: #453424;
+	border: 2.7mm ridge #b69973;
+	padding-block: 2.5px;
+	padding-inline: 2.5px;
 }
 
 .strength-level-display {
@@ -124,6 +119,11 @@
 	line-height: var(--leading-none);
 	letter-spacing: var(--letter-spacing-wide);
 	color: var(--color-primary-white);
+	padding-block: 10px;
+	padding-inline: 10px;
+	border: 2px solid var(--color-primary-brown-light);
+	background-color: #ae926e;
+	text-shadow: 2px 2px 0px var(--color-primary-black);
 }
 
 .strength-level-display-text {
