@@ -164,7 +164,9 @@ const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 									<>
 										<p className={styles["party-member-locked-message-text"]}>
 											<span>このキャラはLv{requiredLevel}で仲間に加わるぞ！</span>
-											<span>Lv{requiredLevel}まで、あと{levelDifference}レベル</span>
+											<span>
+												Lv{requiredLevel}まで、あと{levelDifference}レベル
+											</span>
 										</p>
 									</>
 								)}

@@ -20,7 +20,6 @@ const StrengthPage = () => {
 					</Suspense>
 					{/* （右上）称号 */}
 					<Strength.StrengthTitleInfo />
-
 					{/* （右下）冒険ログ */}
 					<Strength.StrengthLogInfo />
 				</div>
