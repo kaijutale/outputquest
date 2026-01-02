@@ -1,6 +1,6 @@
 import { useState, useOptimistic, startTransition } from "react";
 import { useHero } from "@/contexts/HeroContext";
-import { useEquipment } from "@/features/equipment/contexts/EquipmentContext";
+
 import { UserInfo } from "../types";
 import { cleanUsername, isValidZennUsernameFormat } from "../utils";
 import { SUSPICIOUS_FIXED_COUNT } from "../constants";
@@ -26,7 +26,7 @@ export const useZennSync = ({
 	setError,
 }: UseZennSyncProps) => {
 	const { refetchHeroData } = useHero();
-	const { resetEquipment } = useEquipment();
+
 	const [loading, setLoading] = useState(false);
 
 	// 楽観的 UI 用
@@ -104,9 +104,6 @@ export const useZennSync = ({
 							});
 							setZennUsername("");
 							setError("連携中のアカウントの記事数が0件になったため連携を解除しました");
-
-							// 自動連携解除時に装備をリセット
-							resetEquipment();
 						} else {
 							console.error("自動連携解除エラー:", releaseData.error);
 							setError("記事数が0件のため連携解除を試みましたが、処理に失敗しました");
@@ -172,9 +169,6 @@ export const useZennSync = ({
 					level: 1, // 連携解除時にlevelもリセット
 				});
 				setZennUsername("");
-
-				// Zenn連携解除時に装備もリセット
-				resetEquipment();
 
 				// HeroContextのキャッシュをクリアして最新データを取得
 				try {
