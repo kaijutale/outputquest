@@ -20,9 +20,9 @@
 	display: block grid;
 	grid-template-rows: subgrid;
 	grid-row: span 4;
-	border: 7px dashed var(--color-primary-brown-light);
-	background-color: var(--color-primary-brown-dark);
+	background-color: #453424;
+	border: 3mm ridge #b69973;
 	border-radius: var(--border-radius-small);
-	padding-inline: 5px;
-	padding-block: 5px;
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
 }
