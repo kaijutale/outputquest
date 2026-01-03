@@ -71,6 +71,10 @@
 		--color-primary-white: #fff;
 		--king-blue: #020763;
 
+		/* 影 */
+		--character-shadow-small: 1px 1px 0.5px #454545;
+		--character-shadow-medium: 1px 2px 0.5px #454545;
+
 		/* メッセージ関連のカラー */
 		--bg-color-message-release: #000;
 		--bg-color-message-error: #d71313;
