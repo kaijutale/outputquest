@@ -110,7 +110,7 @@
 	aspect-ratio: 1 / 1;
 	object-fit: contain;
 	object-position: center;
-	filter: drop-shadow(var(--character-shadow));
+	filter: drop-shadow(var(--character-shadow-small));
 }
 
 .party-member-info {

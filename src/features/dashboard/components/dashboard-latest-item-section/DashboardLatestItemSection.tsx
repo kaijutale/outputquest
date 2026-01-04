@@ -8,6 +8,7 @@ import {
 	heroLevelAndItemRelation,
 	customItemNames,
 	customItemDescriptions,
+	customItemImages,
 } from "@/features/items/data/itemsData";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import { useRouter } from "next/navigation";
@@ -106,6 +107,8 @@ const DashboardLatestItemSection: React.FC = () => {
 	const itemName = itemId !== null ? customItemNames[itemId] || "不明なアイテム" : "";
 	const itemDescription = itemId !== null ? customItemDescriptions[itemId] || "詳細不明" : "";
 
+	const itemImage = itemId !== null ? customItemImages[itemId] : null;
+
 	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
 		e.preventDefault();
 		playClickSound(() => router.push(path));
@@ -143,19 +146,29 @@ const DashboardLatestItemSection: React.FC = () => {
 							className={`${styles["last-item-link"]}`}
 							onClick={(e) => handleNavigation(e, `/items/${itemId}`)}
 						>
-							<div className={`${styles["last-item-icon-container"]}`}>
-								<div className={`${styles["last-item-icon-box"]}`}>
+							<div className={`${styles["last-item-icon-box"]}`}>
+								<Image
+									src="/images/plate/plate01.png"
+									alt="plate"
+									width={1000}
+									height={1000}
+									priority={true}
+									className={styles["last-item-icon-plate"]}
+								/>
+								{itemImage && (
 									<Image
-										src={`/images/items-page/acquired-icon/item-${itemId}.svg`}
+										src={`/images/items-page/acquired-icon/${itemImage}`}
 										alt={itemName}
-										width={35}
-										height={35}
+										width={1000}
+										height={1000}
 										className={`${styles["last-item-icon"]}`}
 									/>
-								</div>
+								)}
 							</div>
 							<div className={`${styles["last-item-info"]}`}>
-								<h3 className={`${styles["last-item-name"]}`}>{itemName}</h3>
+								<div className={`${styles["last-item-name-box"]}`}>
+									<h3 className={`${styles["last-item-name"]}`}>{itemName}</h3>
+								</div>
 								<p className={`${styles["last-item-description"]}`}>{itemDescription}</p>
 							</div>
 						</Link>

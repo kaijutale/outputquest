@@ -148,24 +148,32 @@ const DashboardLatestPartyMemberSection: React.FC = () => {
 							className={`${styles["party-member-link"]}`}
 							onClick={(e) => handleNavigation(e, `/party/${memberId}`)}
 						>
-							<div className={`${styles["party-member-icon-container"]}`}>
-								<div className={`${styles["party-member-icon-box"]}`}>
-									<Image
-										src={
-											customMemberImages[memberId] ||
-											"/images/party-page/unacquired-icon/mark_question.svg"
-										}
-										alt={memberName}
-										width={35}
-										height={35}
-										className={`${styles["party-member-icon"]} ${
-											styles[`party-member-icon-${memberId}`]
-										}`}
-									/>
-								</div>
+							<div className={`${styles["party-member-icon-box"]}`}>
+								<Image
+									src="/images/plate/plate01.png"
+									alt="plate"
+									width={1000}
+									height={1000}
+									priority={true}
+									className={styles["party-member-icon-plate"]}
+								/>
+								<Image
+									src={
+										customMemberImages[memberId] ||
+										"/images/party-page/unacquired-icon/mark_question.svg"
+									}
+									alt={memberName}
+									width={1000}
+									height={1000}
+									className={`${styles["party-member-icon"]} ${
+										styles[`party-member-icon-${memberId}`]
+									}`}
+								/>
 							</div>
 							<div className={`${styles["party-member-info"]}`}>
-								<h3 className={`${styles["party-member-name"]}`}>{memberName}</h3>
+								<div className={`${styles["party-member-name-box"]}`}>
+									<h3 className={`${styles["party-member-name"]}`}>{memberName}</h3>
+								</div>
 								<p className={`${styles["party-member-description"]}`}>{memberDescription}</p>
 							</div>
 						</Link>

@@ -56,17 +56,16 @@
 	display: block grid;
 	text-decoration: none;
 	background-color: var(--color-primary-brown-dark);
-	border: 7px dashed var(--color-primary-brown-light);
-	padding-inline: 5px;
-	padding-block: 5px;
-	border-radius: var(--border-radius-small);
+	border: 2.7mm ridge #b69973;
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
 }
 
 .last-item-link {
 	display: block grid;
 	grid-template-columns: auto 1fr;
 	gap: 25px;
-	background-color: var(--color-primary-brown);
+	background-color: #ae926e;
 	border: 2px solid var(--color-primary-brown-light);
 	padding-block: 15px;
 	padding-inline: 20px;
@@ -87,42 +86,48 @@
 	}
 }
 
-.last-item-icon-container {
+.last-item-icon-box {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	display: block grid;
+	place-items: center;
 	place-self: center;
-	background-color: var(--color-primary-brown-dark);
-	--matched-radius-padding: 2px;
-	--matched-radius-inner-size: 4px;
-	padding: var(--matched-radius-padding);
-	border-radius: calc(var(--matched-radius-inner-size) + var(--matched-radius-padding));
-	box-shadow: 0px 0px 4px var(--color-primary-brown-dark);
 }
 
-.last-item-icon-box {
-	min-width: 35px;
-	min-height: 35px;
-	display: block grid;
-	place-self: center;
-	background-color: var(--color-primary-brown-dark);
-	border: 3px solid var(--color-primary-brown-light);
-	padding-inline: 8px;
-	padding-block: 8px;
-	border-radius: var(--matched-radius-inner-size);
+.last-item-icon-plate {
+	grid-area: 1 / 1;
+	width: 100%;
+	height: auto;
+	z-index: 0;
 }
 
 .last-item-icon {
+	grid-area: 1 / 1;
+	z-index: 1;
+	width: 60%;
+	height: auto;
 	aspect-ratio: 1 / 1;
 	object-fit: contain;
 	object-position: center;
-	filter: drop-shadow(0 0 1px var(--color-primary-white));
+	filter: drop-shadow(var(--character-shadow-small));
 }
 
 .last-item-info {
 	display: block grid;
 	gap: 5px;
+	padding-block: 2px;
 
 	@media (width < 640px) {
 		place-items: center;
 	}
+}
+
+.last-item-name-box {
+	width: fit-content;
+	height: fit-content;
+	background-color: #453424;
+	padding: 2px;
 }
 
 .last-item-name {
@@ -131,6 +136,9 @@
 	line-height: var(--leading-tight);
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
 	transition: text-shadow 0.15s ease-in-out;
+	border: 2px solid #b69973;
+	padding-block: 2px;
+	padding-inline: 8.5px;
 }
 
 .last-item-description {
