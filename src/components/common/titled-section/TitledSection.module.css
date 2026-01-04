@@ -6,11 +6,10 @@
 
 .title-container {
 	width: fit-content;
-	background-color: var(--color-primary-brown-dark);
-	border: 5px dashed var(--color-primary-brown-light);
-	border-radius: var(--border-radius-small);
-	padding-inline: 3px;
-	padding-block: 3px;
+	background-color: #453424;
+	border: 2mm ridge #b69973;
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
 }
 
 .title-box {
