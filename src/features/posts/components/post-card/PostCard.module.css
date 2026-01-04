@@ -20,10 +20,6 @@
 
 	&:hover {
 		border: 2px solid var(--color-platform-zenn);
-
-		.post-card__title {
-			text-shadow: 0 0 8px rgb(255 255 255 / 0.5);
-		}
 	}
 }
 

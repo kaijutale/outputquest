@@ -63,11 +63,7 @@
 	transition: border 0.2s ease-in-out;
 
 	&:hover {
-		border: 2px solid var(--color-primary-yellow);
-
-		.recent-activity-item-title {
-			text-shadow: 0 0 8px rgb(255 255 255 / 0.5);
-		}
+		border: 2px solid var(--color-platform-zenn);
 	}
 }
 
