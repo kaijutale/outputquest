@@ -27,12 +27,12 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 					<div className={styles["strength-hero-box"]}>
 						<div className={styles["strength-hero-icon-box"]}>
 							<Image
-								src="/images/hero/hero.png"
-								alt="勇者"
+								src={`/images/hero/hero-plate.png`}
+								alt={"勇者"}
 								width={1000}
 								height={1000}
 								priority={true}
-								className={styles["strength-hero-icon-image"]}
+								className={`${styles["strength-hero-icon-image"]}`}
 							/>
 						</div>
 						<div className={styles["strength-hero-name-box"]}>
@@ -42,6 +42,7 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 									alt="王冠"
 									width={100}
 									height={100}
+									priority={true}
 									className={`${styles["strength-hero-name-icon"]}`}
 								/>
 								<span>
@@ -52,14 +53,12 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 					</div>
 					{/* レベル表示 */}
 					<div className={styles["strength-level-info"]}>
-						<div className={`${styles["strength-level-display-container"]}`}>
-							<div className={`${styles["strength-level-display-box"]}`}>
-								<div className={`${styles["strength-level-display"]}`}>
-									<span className={`${styles["strength-level-display-text"]}`}>Lv</span>
-									<span className={`${styles["strength-level-display-value"]}`}>
-										{heroData.level}
-									</span>
-								</div>
+						<div className={`${styles["strength-level-display-box"]}`}>
+							<div className={`${styles["strength-level-display"]}`}>
+								<span className={`${styles["strength-level-display-text"]}`}>Lv</span>
+								<span className={`${styles["strength-level-display-value"]}`}>
+									{heroData.level}
+								</span>
 							</div>
 						</div>
 					</div>

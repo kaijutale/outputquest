@@ -1,5 +1,6 @@
 /*（左上）勇者のコンテンツ */
 .strength-hero-info {
+	height: 100%;
 	padding-inline: 5px;
 	padding-block: 5px;
 	background-color: var(--color-primary-brown-dark);
@@ -106,9 +107,9 @@
 .strength-level-display-box {
 	display: block grid;
 	background-color: #453424;
-	border: 2.7mm ridge #b69973;
-	padding-block: 2.5px;
-	padding-inline: 2.5px;
+	border: 2.5mm ridge #b69973;
+	padding-block: 2px;
+	padding-inline: 2px;
 }
 
 .strength-level-display {
@@ -117,7 +118,6 @@
 	gap: 5px;
 	font-weight: var(--font-weight-x-bold);
 	line-height: var(--leading-none);
-	letter-spacing: var(--letter-spacing-wide);
 	color: var(--color-primary-white);
 	padding-block: 10px;
 	padding-inline: 10px;
@@ -138,7 +138,6 @@
 	display: block grid;
 	place-items: end;
 	font-size: 2rem;
-	letter-spacing: var(--letter-spacing-wide);
 }
 
 .loading-indicator {

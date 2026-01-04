@@ -17,7 +17,9 @@ const StrengthHeroInfoSkeleton = () => {
 
 					{/* レベル表示 */}
 					<div className={styles["skeleton-level-box"]}>
-						<div className={styles["skeleton-level"]} />
+						<div className={styles["skeleton-level-display-box"]}>
+							<div className={styles["skeleton-level"]} />
+						</div>
 					</div>
 				</div>
 

@@ -15,13 +15,15 @@ const StrengthPage = () => {
 			<div className={`${styles["strength-container"]}`}>
 				<div className={styles["strength-content"]}>
 					{/* （左上）勇者のコンテンツ */}
-					<Suspense fallback={<StrengthHeroInfoSkeleton />}>
-						<StrengthHeroInfo />
-					</Suspense>
-					{/* （右上）称号 */}
-					<Strength.StrengthTitleInfo />
-					{/* （右下）冒険ログ */}
+					<div className={styles["strength-hero-wrapper"]}>
+						<Suspense fallback={<StrengthHeroInfoSkeleton />}>
+							<StrengthHeroInfo />
+						</Suspense>
+					</div>
+					{/* （右上）冒険ログ */}
 					<Strength.StrengthLogInfo />
+					{/* （下）称号 */}
+					<Strength.StrengthTitleInfo />
 				</div>
 			</div>
 		</>

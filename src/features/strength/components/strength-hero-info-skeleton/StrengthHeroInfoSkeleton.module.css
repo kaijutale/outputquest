@@ -1,5 +1,6 @@
 /* Container - matches strength-hero-info */
 .skeleton-container {
+	height: 100%;
 	padding-inline: 5px;
 	padding-block: 5px;
 	background-color: var(--color-primary-brown-dark);
@@ -39,7 +40,7 @@
 	display: block grid;
 	grid-template-columns: auto auto;
 	place-content: center;
-	gap: 12px;
+	gap: 25px;
 	background-color: var(--color-primary-dark-gray);
 	border: 2px solid var(--color-primary-white);
 	border-radius: var(--border-radius-small);
@@ -62,13 +63,13 @@
 	display: block grid;
 	grid-template-rows: auto auto;
 	place-items: center;
-	gap: 12px;
+	gap: 15px;
 }
 
 /* Icon Skeleton */
 .skeleton-icon {
-	width: 50px;
-	height: 53px;
+	width: 110px;
+	height: 110px;
 	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
@@ -92,10 +93,19 @@
 	place-items: center;
 }
 
+/* Level Display Box - matches strength-level-display-box */
+.skeleton-level-display-box {
+	display: block grid;
+	background-color: #453424;
+	border: 2.5mm ridge #b69973;
+	padding-block: 2px;
+	padding-inline: 2px;
+}
+
 /* Level Skeleton */
 .skeleton-level {
 	width: 100px;
-	height: 52px;
+	height: 56px;
 	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;

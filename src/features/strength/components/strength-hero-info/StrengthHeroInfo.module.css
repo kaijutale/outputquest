@@ -1,5 +1,6 @@
 /*（左上）勇者のコンテンツ */
 .strength-hero-info {
+	height: 100%;
 	padding-inline: 5px;
 	padding-block: 5px;
 	background-color: var(--color-primary-brown-dark);
