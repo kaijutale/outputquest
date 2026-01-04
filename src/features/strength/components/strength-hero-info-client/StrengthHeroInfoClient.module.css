@@ -108,8 +108,8 @@
 	display: block grid;
 	background-color: #453424;
 	border: 2.5mm ridge #b69973;
-	padding-block: 2px;
-	padding-inline: 2px;
+	padding-block: 2.5px;
+	padding-inline: 2.5px;
 }
 
 .strength-level-display {
