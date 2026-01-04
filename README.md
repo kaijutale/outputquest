@@ -91,11 +91,11 @@ Next.js + Tailwind CSS + TypeScriptで開発し、Vercelにデプロイしてい
 
 ![ダッシュボード](public/gifs/readme/dashboard-page.gif)
 
-### **学びの書**
+### **投稿一覧**
 
-Zennの記事を「これまでの学び」として記録する場所。Zennで投稿した記事が一覧表示され、学びの記録として振り返ることができます。記事はアプリ内ではカード型UIで表示され、クリックすることでZennの記事ページにアクセスできます。
+Zennの記事を「これまでの学び」として振り返る場所。Zennで投稿した記事が一覧表示され、学びの記録として振り返ることができます。記事はアプリ内ではカード型UIで表示され、クリックすることでZennの記事ページにアクセスできます。
 
-![学びの書](public/gifs/readme/posts-page.gif)
+![投稿一覧](public/gifs/readme/posts-page.gif)
 
 ### **記事探索**
 

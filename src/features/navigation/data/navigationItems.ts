@@ -12,10 +12,10 @@ export const navigationItems: NavigationItem[] = [
 	},
 	{
 		id: 2,
-		title: "学びの書",
+		title: "投稿一覧",
 		href: "/posts",
 		icon: "/images/nav-icon/book-of-learning-icon.png",
-		alt: "学びの書",
+		alt: "投稿一覧",
 		width: 100,
 		height: 100,
 	},
