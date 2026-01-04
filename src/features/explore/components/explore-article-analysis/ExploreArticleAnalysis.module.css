@@ -115,18 +115,18 @@
 
 .explore-results-content {
 	overflow: hidden;
-	background-color: var(--color-primary-brown-dark);
-	border: 6px dashed var(--color-primary-brown-light);
+	background-color: #453424;
+	border: 5mm ridge #b69973;
 	border-radius: var(--border-radius-small);
-	padding-block: 5px;
-	padding-inline: 5px;
+	padding-block: 3px;
+	padding-inline: 3px;
 }
 
 .explore-results-content-inner {
 	height: 100%;
 	overflow-y: clip;
-	background-color: var(--color-primary-brown);
-	border: 2px solid var(--color-primary-brown-light);
+	background-color: #ae926e;
+	border: 3px solid var(--color-primary-brown-light);
 	/* padding-inline: 20px; */
 	padding-block: 7px 40px;
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);

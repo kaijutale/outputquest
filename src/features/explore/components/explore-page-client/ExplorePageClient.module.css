@@ -40,10 +40,10 @@
 	font-weight: var(--font-weight-x-bold);
 	line-height: var(--leading-none);
 	border-radius: var(--border-radius-small);
-	padding-block: 3px;
-	padding-inline: 3px;
-	background-color: var(--color-primary-brown-dark);
-	border: 2px solid var(--color-primary-brown-light);
+	padding-block: 2.5px;
+	padding-inline: 2.5px;
+	background-color: #5a4734;
+	border: 2.5px solid #b69973;
 }
 
 .explore-analyze-button:hover .explore-analyze-button-text {
@@ -56,7 +56,7 @@
 	align-items: center;
 	gap: 8px;
 	width: 100%;
-	background-color: var(--color-primary-brown);
+	background-color: #ae926e;
 	border: 1.5px solid var(--color-primary-brown-light);
 	padding-block: 10px 11px;
 	padding-inline: 15px;
