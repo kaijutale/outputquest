@@ -76,11 +76,11 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 								/>
 							</div>
 						)}
-						<h2 className={styles["party-member-name"]}>
-							<div className={styles["party-member-name-box"]}>
+						<div className={styles["party-member-name-box"]}>
+							<h2 className={styles["party-member-name"]}>
 								{isGuestUser || !partyMember.acquired ? "???" : partyMember.name}
-							</div>
-						</h2>
+							</h2>
+						</div>
 					</Link>
 				</div>
 			))}

@@ -66,11 +66,9 @@
 .acquired-party-member-icon-image,
 .unacquired-party-member-icon-image {
 	height: auto;
-	filter: drop-shadow(1px 2px 0.5px #454545);
+	filter: drop-shadow(var(--character-shadow-medium));
 	z-index: 2;
-	transition:
-		filter 0.2s ease-in-out,
-		transform 0.2s ease-in-out;
+	transition: transform 0.2s ease-in-out;
 }
 
 .acquired-party-member-icon-plate {

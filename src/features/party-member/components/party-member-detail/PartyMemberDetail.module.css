@@ -248,9 +248,9 @@
 	display: block grid;
 	place-items: center;
 	background-color: #453424;
-	border: 1.5px solid var(--color-primary-brown-light);
-	padding-inline: 2px;
-	padding-block: 2px;
+	border: 1mm ridge #b69973;
+	padding-inline: 1.5px;
+	padding-block: 1.5px;
 }
 
 .party-member-title {
@@ -277,8 +277,9 @@
 	display: block grid;
 	place-items: center;
 	background-color: #453424;
-	border: 1.5px solid var(--color-primary-brown-light);
-	padding: 2px;
+	border: 1mm ridge #b69973;
+	padding-inline: 1.5px;
+	padding-block: 1.5px;
 }
 
 .party-member-description {
