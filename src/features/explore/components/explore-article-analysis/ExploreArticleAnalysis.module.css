@@ -115,7 +115,7 @@
 
 .explore-results-content {
 	overflow: hidden;
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 5mm ridge #b69973;
 	border-radius: var(--border-radius-small);
 	padding-block: 3px;

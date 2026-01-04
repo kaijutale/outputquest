@@ -6,7 +6,7 @@
 
 .title-container {
 	width: fit-content;
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 2mm ridge #b69973;
 	padding-inline: 2.5px;
 	padding-block: 2.5px;

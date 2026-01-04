@@ -132,7 +132,7 @@
 }
 
 .party-member-name-box {
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 1.5px solid var(--color-primary-brown-light);
 	padding-inline: 2px;
 	padding-block: 2px;

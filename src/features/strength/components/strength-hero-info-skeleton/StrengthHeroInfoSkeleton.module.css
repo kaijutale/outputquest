@@ -96,7 +96,7 @@
 /* Level Display Box - matches strength-level-display-box */
 .skeleton-level-display-box {
 	display: block grid;
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 2.5mm ridge #b69973;
 	padding-block: 2px;
 	padding-inline: 2px;

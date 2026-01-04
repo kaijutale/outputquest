@@ -73,7 +73,7 @@
 }
 
 .strength-hero-name-box {
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 1.5px solid var(--color-primary-brown-light);
 	padding-inline: 2px;
 	padding-block: 2px;
@@ -106,7 +106,7 @@
 
 .strength-level-display-box {
 	display: block grid;
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 2.5mm ridge #b69973;
 	padding-block: 2.5px;
 	padding-inline: 2.5px;

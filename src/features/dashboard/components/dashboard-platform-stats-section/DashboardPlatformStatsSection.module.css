@@ -47,7 +47,7 @@
 .platform-stat-card {
 	min-width: 200px;
 	height: 135.5px;
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 3mm ridge #b69973;
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
@@ -126,7 +126,7 @@
 
 	&:hover {
 		.platform-stat-share-link-text {
-			color: var(--color-primary-yellow);
+			color: var(--color-platform-zenn);
 		}
 	}
 }

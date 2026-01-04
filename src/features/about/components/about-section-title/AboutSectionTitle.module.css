@@ -1,5 +1,5 @@
 .about-section-title-container {
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 2mm ridge #b69973;
 	width: fit-content;
 	padding-inline: 2.5px;

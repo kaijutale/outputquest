@@ -4,11 +4,10 @@
 	max-width: 100%;
 	margin-inline: auto;
 	margin-block-start: 10px;
-	border: 8px dashed var(--color-primary-brown-light);
+	border: 4mm ridge #b69973;
 	background-color: var(--color-primary-brown-dark);
-	border-radius: var(--border-radius-small);
-	padding-inline: 5px;
-	padding-block: 5px;
+	padding-inline: 3px;
+	padding-block: 3px;
 
 	@media (width < 768px) {
 		min-width: 250px;
@@ -20,13 +19,18 @@
 	place-items: center;
 	gap: 20px;
 	border: 2px solid var(--color-primary-brown-light);
-	background-color: var(--color-primary-brown);
+	background-color: #ae926e;
 	padding-inline: 20px;
 	padding-block: 15px 25px;
 
 	@media (width < 768px) {
 		gap: 25px;
 	}
+}
+
+.zenn-info-title-box {
+	background-color: var(--color-primary-brown-dark);
+	padding: 2.5px;
 }
 
 .zenn-info-title {
@@ -37,9 +41,7 @@
 	font-size: 0.875rem;
 	font-weight: var(--font-weight-normal);
 	line-height: var(--leading-x-tight);
-	background-color: var(--color-primary-dark-gray);
-	border: 1.5px solid var(--color-primary-white);
-	border-radius: var(--border-radius-small);
+	border: 2px solid #b69973;
 	padding-block: 7px 8px;
 	padding-inline: 15px;
 
@@ -53,7 +55,7 @@
 	height: 16px;
 	object-fit: contain;
 	object-position: center;
-	filter: drop-shadow(0 0 0.5px var(--color-primary-white));
+	filter: drop-shadow(0.5px 0.5px 0px #fff);
 }
 
 .user-info-list {
@@ -68,9 +70,6 @@
 }
 
 .user-info-title {
-	display: block flex;
-	align-items: center;
-	gap: 6px;
 	font-size: 1rem;
 	font-weight: var(--font-weight-bold);
 	line-height: var(--leading-x-tight);
@@ -79,12 +78,6 @@
 .user-info-title-text {
 	padding-block-end: 2px;
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
-}
-
-.user-info-icon {
-	object-fit: contain;
-	object-position: center;
-	filter: drop-shadow(0 0 1px var(--color-primary-white));
 }
 
 .user-info-description {

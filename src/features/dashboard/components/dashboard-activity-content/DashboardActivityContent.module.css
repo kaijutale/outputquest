@@ -47,7 +47,7 @@
 	justify-content: space-between;
 	align-items: center;
 	border: 3mm ridge #b69973;
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
 }
@@ -99,7 +99,7 @@
 .recent-activity-item-date-container {
 	display: block grid;
 	place-items: center;
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	padding: 2px;
 }
 

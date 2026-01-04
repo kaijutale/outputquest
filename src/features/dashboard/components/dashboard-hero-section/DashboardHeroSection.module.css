@@ -74,7 +74,7 @@
 
 .hero-info-name-box {
 	grid-area: name;
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 1.5px solid var(--color-primary-brown-light);
 	padding-inline: 2px;
 	padding-block: 2px;
@@ -160,7 +160,7 @@
 }
 
 .hero-info-level-display-container {
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 3mm ridge #b69973;
 	width: min-content;
 	height: 105px;

@@ -48,7 +48,7 @@
 .post-card__date-box {
 	display: block grid;
 	place-items: center;
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	padding: 2px;
 }
 

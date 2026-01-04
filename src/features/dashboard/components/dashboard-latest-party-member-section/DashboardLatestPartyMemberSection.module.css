@@ -121,7 +121,7 @@
 .party-member-name-box {
 	width: fit-content;
 	height: fit-content;
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	padding: 2px;
 }
 
