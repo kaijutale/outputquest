@@ -1,10 +1,9 @@
 .about-section-title-container {
-	background-color: var(--color-primary-brown-dark);
-	border: 5px dashed var(--color-primary-brown-light);
-	border-radius: var(--border-radius-small);
+	background-color: #453424;
+	border: 2mm ridge #b69973;
 	width: fit-content;
-	padding-block: 3px;
-	padding-inline: 3px;
+	padding-block: 1.8px;
+	padding-inline: 1.8px;
 }
 
 .about-section-title-box {
