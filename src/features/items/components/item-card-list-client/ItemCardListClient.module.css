@@ -75,11 +75,9 @@
 .unacquired-item-icon-image {
 	width: 80px;
 	height: auto;
-	filter: drop-shadow(1px 2px 0.5px #454545);
+	filter: drop-shadow(var(--pixel-shadow-medium));
 	z-index: 2;
-	transition:
-		filter 0.2s ease-in-out,
-		transform 0.2s ease-in-out;
+	transition: transform 0.2s ease-in-out;
 }
 
 .unacquired-item-icon-image {
@@ -88,7 +86,125 @@
 
 /* アイテムごとの個別サイズ調整（必要に応じて追加） */
 .acquired-item-icon-image-1 {
-	width: 50px;
+	width: 100px;
+}
+
+.acquired-item-icon-image-2 {
+	width: 150px;
+}
+
+.acquired-item-icon-image-3 {
+	width: 105px;
+	margin-inline-end: 15px;
+	margin-block-end: 7px;
+}
+
+.acquired-item-icon-image-4 {
+	width: 115px;
+}
+
+.acquired-item-icon-image-5 {
+	width: 90px;
+}
+
+.acquired-item-icon-image-6 {
+	width: 115px;
+}
+
+.acquired-item-icon-image-7 {
+	width: 115px;
+}
+
+.acquired-item-icon-image-8 {
+	width: 115px;
+}
+
+.acquired-item-icon-image-9 {
+	width: 115px;
+}
+
+.acquired-item-icon-image-10 {
+	width: 80px;
+}
+
+.acquired-item-icon-image-11 {
+	width: 135px;
+}
+
+.acquired-item-icon-image-12 {
+	width: 135px;
+}
+
+.acquired-item-icon-image-13 {
+	width: 85px;
+}
+
+.acquired-item-icon-image-14 {
+	width: 95px;
+}
+
+.acquired-item-icon-image-15 {
+	width: 105px;
+}
+
+.acquired-item-icon-image-16 {
+	width: 85px;
+}
+
+.acquired-item-icon-image-17 {
+	width: 78px;
+}
+
+.acquired-item-icon-image-18 {
+	width: 95px;
+}
+
+.acquired-item-icon-image-19 {
+	width: 85px;
+}
+
+.acquired-item-icon-image-20 {
+	width: 110px;
+}
+
+.acquired-item-icon-image-21 {
+	width: 130px;
+}
+
+.acquired-item-icon-image-22 {
+	width: 75px;
+}
+
+.acquired-item-icon-image-23 {
+	width: 105px;
+}
+
+.acquired-item-icon-image-24 {
+	width: 105px;
+}
+
+.acquired-item-icon-image-25 {
+	width: 75px;
+}
+
+.acquired-item-icon-image-26 {
+	width: 90px;
+}
+
+.acquired-item-icon-image-27 {
+	width: 95px;
+}
+
+.acquired-item-icon-image-28 {
+	width: 75px;
+}
+
+.acquired-item-icon-image-29 {
+	width: 160px;
+}
+
+.acquired-item-icon-image-30 {
+	width: 135px;
 }
 
 /* 宝箱の開閉スタイル（既存のスタイルを維持または調整） */
@@ -111,7 +227,7 @@
 }
 
 .item-name-box {
-	background-color: #453424;
+	background-color: var(--color-primary-brown-dark);
 	border: 1.5px solid var(--color-primary-brown-light);
 	padding-inline: 2px;
 	padding-block: 2px;

@@ -45,8 +45,8 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									className={styles["acquired-item-icon-plate"]}
 								/>
 								<Items.ItemsTreasureChestIcon
-									width={100}
-									height={100}
+									width={1000}
+									height={1000}
 									className={styles["unacquired-item-icon-image"]}
 									classNameClose={styles["treasure-chest-close"]}
 									classNameOpen={styles["treasure-chest-open"]}
@@ -63,10 +63,10 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									className={styles["acquired-item-icon-plate"]}
 								/>
 								<Image
-									src={`/images/items-page/acquired-icon/item-${item.id}.svg`}
+									src={`/images/items-page/acquired-icon/${item.image}`}
 									alt={item.name || "アイテム"}
-									width={40}
-									height={40}
+									width={1000}
+									height={1000}
 									className={`${styles["acquired-item-icon-image"]} ${
 										styles[`acquired-item-icon-image-${item.id}`]
 									}`}
@@ -83,19 +83,19 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									className={styles["acquired-item-icon-plate"]}
 								/>
 								<Items.ItemsTreasureChestIcon
-									width={100}
-									height={100}
+									width={1000}
+									height={1000}
 									className={styles["unacquired-item-icon-image"]}
 									classNameClose={styles["treasure-chest-close"]}
 									classNameOpen={styles["treasure-chest-open"]}
 								/>
 							</div>
 						)}
-						<h2 className={styles["item-name"]}>
-							<div className={styles["item-name-box"]}>
+						<div className={styles["item-name-box"]}>
+							<h2 className={styles["item-name"]}>
 								{isGuestUser || !item.acquired ? "???" : item.name}
-							</div>
-						</h2>
+							</h2>
+						</div>
 					</Link>
 				</div>
 			))}

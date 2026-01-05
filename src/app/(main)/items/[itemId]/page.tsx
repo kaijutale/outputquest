@@ -36,8 +36,8 @@ export default async function ItemDetailPage({ params }: { params: Promise<{ ite
 
 			<h1 className={styles["item-detail-page-title"]}>アイテム詳細</h1>
 			<div className={styles["item-detail-container"]}>
-				{/* クライアントコンポーネントとしてItemDetailClientを使用 */}
-				<itemDetail.ItemDetailClient itemId={itemIdNum} />
+				{/* クライアントコンポーネントとしてItemDetailを使用 */}
+				<itemDetail.ItemDetail itemId={itemIdNum} />
 
 				<hr />
 
