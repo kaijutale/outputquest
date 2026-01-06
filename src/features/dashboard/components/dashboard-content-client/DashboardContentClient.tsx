@@ -2,7 +2,10 @@
 
 import { ReactNode } from "react";
 import styles from "./DashboardContentClient.module.css";
-import * as Dashboard from "@/features/dashboard/components";
+import DashboardHeroSection from "../dashboard-hero-section/DashboardHeroSection";
+import DashboardPlatformStatsSection from "../dashboard-platform-stats-section/DashboardPlatformStatsSection";
+import DashboardLatestPartyMemberSection from "../dashboard-latest-party-member-section/DashboardLatestPartyMemberSection";
+import DashboardLatestItemSection from "../dashboard-latest-item-section/DashboardLatestItemSection";
 import { HeroData } from "@/types/hero.types";
 
 type DashboardContentClientProps = {
@@ -26,12 +29,12 @@ const DashboardContentClient = ({
 
 	return (
 		<div className={`${styles["dashboard-content-container"]}`}>
-			<Dashboard.DashboardHeroSection dashboardData={dashboardData} />
+			<DashboardHeroSection dashboardData={dashboardData} />
 
 			<hr />
 
 			<div className={styles["dashboard-zenn-area"]}>
-				<Dashboard.DashboardPlatformStatsSection dashboardData={dashboardData} />
+				<DashboardPlatformStatsSection dashboardData={dashboardData} />
 
 				<hr className="block md:hidden" />
 
@@ -40,10 +43,10 @@ const DashboardContentClient = ({
 			</div>
 
 			<hr />
-			<Dashboard.DashboardLatestPartyMemberSection />
+			<DashboardLatestPartyMemberSection />
 
 			<hr />
-			<Dashboard.DashboardLatestItemSection />
+			<DashboardLatestItemSection />
 		</div>
 	);
 };
