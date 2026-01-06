@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./DashboardPage.module.css";
-import DashboardContent from "@/features/dashboard/components/dashboard-content/DashboardContent";
-import DashboardSkeleton from "@/features/dashboard/components/dashboard-skeleton/DashboardSkeleton";
+import * as Dashboard from "@/features/dashboard/components";
 
 export const metadata: Metadata = getPageMetadata("dashboard");
 
@@ -12,8 +11,8 @@ const DashboardPage = () => {
 		<>
 			<h1 className={`${styles["dashboard-title"]}`}>ダッシュボード</h1>
 			<div className={styles["dashboard-content-wrapper"]}>
-				<Suspense fallback={<DashboardSkeleton />}>
-					<DashboardContent />
+				<Suspense fallback={<Dashboard.DashboardActivitySkeleton />}>
+					<Dashboard.DashboardContent />
 				</Suspense>
 			</div>
 		</>

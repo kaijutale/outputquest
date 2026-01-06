@@ -1,9 +1,7 @@
 import { Suspense } from "react";
 import { getDashboardHeroData } from "@/features/dashboard/_lib/fetcher";
 import { heroLevelAndItemRelation } from "@/features/items/data/itemsData";
-import DashboardContentClient from "../dashboard-content-client/DashboardContentClient";
-import DashboardActivitySection from "../dashboard-activity-section/DashboardActivitySection";
-import DashboardActivitySkeleton from "../dashboard-activity-skeleton/DashboardActivitySkeleton";
+import * as Dashboard from "@/features/dashboard/components";
 
 /**
  * DashboardContent (Server Component)
@@ -33,11 +31,11 @@ const DashboardContent = async () => {
 	// Client Componentにデータを渡す
 	// Server ComponentはCompositionパターン（children）で渡す
 	return (
-		<DashboardContentClient heroData={heroData} lastAcquiredItemId={lastAcquiredItemId}>
-			<Suspense fallback={<DashboardActivitySkeleton />}>
-				<DashboardActivitySection />
+		<Dashboard.DashboardContentClient heroData={heroData} lastAcquiredItemId={lastAcquiredItemId}>
+			<Suspense fallback={<Dashboard.DashboardActivitySkeleton />}>
+				<Dashboard.DashboardActivitySection />
 			</Suspense>
-		</DashboardContentClient>
+		</Dashboard.DashboardContentClient>
 	);
 };
 

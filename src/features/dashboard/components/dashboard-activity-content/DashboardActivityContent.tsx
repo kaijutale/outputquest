@@ -24,7 +24,7 @@ type DashboardActivityContentProps = {
 	articles: PostData[];
 };
 
-export const DashboardActivityContent = ({ articles }: DashboardActivityContentProps) => {
+const DashboardActivityContent = ({ articles }: DashboardActivityContentProps) => {
 	const { playClickSound } = useClickSound({
 		soundPath: "/audio/click-sound_decision.mp3",
 		volume: 0.5,
@@ -122,3 +122,5 @@ export const DashboardActivityContent = ({ articles }: DashboardActivityContentP
 		</section>
 	);
 };
+
+export default DashboardActivityContent;

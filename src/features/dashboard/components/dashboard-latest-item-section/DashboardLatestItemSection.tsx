@@ -16,7 +16,7 @@ import { useHero } from "@/contexts/HeroContext";
 import { useUser } from "@clerk/nextjs";
 import { getUserInfo } from "@/lib/api/user";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
-import DashboardLatestItemSkeleton from "../dashboard-latest-item-skeleton/DashboardLatestItemSkeleton";
+import * as Dashboard from "@/features/dashboard/components";
 
 const DashboardLatestItemSection: React.FC = () => {
 	const [itemId, setItemId] = useState<number | null>(null);
@@ -128,7 +128,7 @@ const DashboardLatestItemSection: React.FC = () => {
 			</h2>
 			<div className={`${styles["last-item-container"]}`}>
 				{isLoadingState ? (
-					<DashboardLatestItemSkeleton />
+					<Dashboard.DashboardLatestItemSkeleton />
 				) : isGuestUser ? (
 					<div className={styles["last-item-guest-user-container"]}>
 						<p className={styles["last-item-guest-user-message"]}>
