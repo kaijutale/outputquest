@@ -1,118 +1,36 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import styles from "./DashboardLatestPartyMemberSection.module.css";
-import Link from "next/link";
 import Image from "next/image";
 import {
 	heroLevelAndMemberRelation,
 	customMemberNames,
 	customMemberDescriptions,
-	customMemberImages,
 } from "@/features/party/data/partyMemberData";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
-import { useRouter } from "next/navigation";
-import { useHero } from "@/contexts/HeroContext";
-import { useUser } from "@clerk/nextjs";
-import { getUserInfo } from "@/lib/api/user";
+import { getDashboardHeroData } from "@/features/dashboard/_lib/fetcher";
+import { getUser } from "@/features/user/_lib/fetcher";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
-import DashboardLatestPartyMemberSkeleton from "../dashboard-latest-party-member-skeleton/DashboardLatestPartyMemberSkeleton";
+import { DashboardLatestPartyMemberCard } from "./DashboardLatestPartyMemberCard";
 
-const DashboardLatestPartyMemberSection: React.FC = () => {
-	const [memberId, setMemberId] = useState<number | null>(null);
-	const [isLoadingMember, setIsLoadingMember] = useState<boolean>(true);
-	const [userZennInfo, setUserZennInfo] = useState<{
-		zennUsername?: string;
-	} | null>(null);
-	const { heroData, isLoading: isHeroLoading, error } = useHero();
-	const { user, isLoaded } = useUser();
-	const router = useRouter();
-	const [isUserLoading, setIsUserLoading] = useState<boolean>(true);
+const DashboardLatestPartyMemberSection = async () => {
+	// Request Memoizationにより、他コンポーネントと同じフェッチを共有
+	const [heroData, user] = await Promise.all([getDashboardHeroData(), getUser()]);
 
-	const { playClickSound } = useClickSound({
-		soundPath: "/audio/click-sound_decision.mp3",
-		volume: 0.5,
-		delay: 190,
-	});
+	// ゲストユーザーかどうかの判定
+	const isGuestUser = !user || !user.zennUsername;
 
-	// ゲストユーザーかどうかの判定（Clerkサインイン + Zenn連携の両方が必要）
-	const isGuestUser = !isUserLoading && (!user || !userZennInfo?.zennUsername);
+	// 最新の仲間を計算
+	const articleCount = heroData.level;
+	const acquiredIds = Object.entries(heroLevelAndMemberRelation)
+		.filter(([, reqLevel]) => articleCount >= reqLevel)
+		.map(([id]) => parseInt(id, 10));
 
-	// ユーザーのZenn連携情報を取得
-	useEffect(() => {
-		const fetchUserZennInfo = async () => {
-			if (!isLoaded || !user) {
-				setUserZennInfo(null);
-				setIsUserLoading(false);
-				return;
-			}
-
-			try {
-				const data = await getUserInfo();
-
-				if (data.success && data.user) {
-					setUserZennInfo({ zennUsername: data.user.zennUsername });
-				} else {
-					setUserZennInfo(null);
-				}
-			} catch (err) {
-				console.error("ユーザー情報取得エラー:", err);
-				setUserZennInfo(null);
-			} finally {
-				setIsUserLoading(false);
-			}
-		};
-
-		fetchUserZennInfo();
-	}, [isLoaded, user]);
-
-	useEffect(() => {
-		const calculateMember = () => {
-			// HeroContextがまだ読み込み中の場合は待機
-			if (isHeroLoading) {
-				return;
-			}
-
-			try {
-				setIsLoadingMember(true);
-
-				// HeroContextから記事数（レベル）を取得
-				const articleCount = heroData.level;
-
-				const acquiredIds = Object.entries(heroLevelAndMemberRelation)
-					.filter(([, reqLevel]) => articleCount >= reqLevel)
-					.map(([id]) => parseInt(id, 10));
-
-				if (acquiredIds.length > 0) {
-					setMemberId(Math.max(...acquiredIds));
-				} else {
-					setMemberId(null);
-				}
-			} catch (err) {
-				console.error("なかま計算エラー:", err);
-			} finally {
-				setIsLoadingMember(false);
-			}
-		};
-
-		calculateMember();
-	}, [isHeroLoading, heroData.level]); // HeroContextの状態に依存
-
-	// エラー時は何も表示しない
-	if (error) {
-		return null;
+	let memberId: number | null = null;
+	if (acquiredIds.length > 0) {
+		memberId = Math.max(...acquiredIds);
 	}
-
-	const isLoadingState = isHeroLoading || isLoadingMember || isUserLoading;
 
 	const memberName = memberId !== null ? customMemberNames[memberId] || "まだ見ぬ仲間" : "";
 	const memberDescription =
 		memberId !== null ? customMemberDescriptions[memberId] || "詳細不明" : "";
-
-	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-		e.preventDefault();
-		playClickSound(() => router.push(path));
-	};
 
 	return (
 		<section className={`${styles["party-member-section"]}`}>
@@ -127,9 +45,7 @@ const DashboardLatestPartyMemberSection: React.FC = () => {
 				<span>最近仲間に加わったキャラクター</span>
 			</h2>
 			<div className={`${styles["party-member-container"]}`}>
-				{isLoadingState ? (
-					<DashboardLatestPartyMemberSkeleton />
-				) : isGuestUser ? (
+				{isGuestUser ? (
 					<div className={styles["party-member-guest-user-container"]}>
 						<p className={styles["party-member-guest-user-message"]}>
 							ログインすると仲間の情報が表示されます。
@@ -142,43 +58,11 @@ const DashboardLatestPartyMemberSection: React.FC = () => {
 						</p>
 					</div>
 				) : (
-					<div className={`${styles["party-member-box"]}`}>
-						<Link
-							href={`/party/${memberId}`}
-							className={`${styles["party-member-link"]}`}
-							onClick={(e) => handleNavigation(e, `/party/${memberId}`)}
-						>
-							<div className={`${styles["party-member-icon-box"]}`}>
-								<Image
-									src="/images/plate/plate01.png"
-									alt="plate"
-									width={1000}
-									height={1000}
-									priority={true}
-									className={styles["party-member-icon-plate"]}
-								/>
-								<Image
-									src={
-										customMemberImages[memberId]
-											? `/images/party-page/acquired-icon/${customMemberImages[memberId]}`
-											: "/images/party-page/unacquired-icon/mark_question.svg"
-									}
-									alt={memberName}
-									width={1000}
-									height={1000}
-									className={`${styles["party-member-icon"]} ${
-										styles[`party-member-icon-${memberId}`]
-									}`}
-								/>
-							</div>
-							<div className={`${styles["party-member-info"]}`}>
-								<div className={`${styles["party-member-name-box"]}`}>
-									<h3 className={`${styles["party-member-name"]}`}>{memberName}</h3>
-								</div>
-								<p className={`${styles["party-member-description"]}`}>{memberDescription}</p>
-							</div>
-						</Link>
-					</div>
+					<DashboardLatestPartyMemberCard
+						memberId={memberId}
+						memberName={memberName}
+						memberDescription={memberDescription}
+					/>
 				)}
 			</div>
 			{/* Xへのシェアリンク */}

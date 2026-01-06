@@ -2,15 +2,14 @@ import styles from "./DashboardLatestItemSkeleton.module.css";
 
 const DashboardLatestItemSkeleton = () => {
 	return (
-		<div className={styles["skeleton-box"]}>
-			<div className={styles["skeleton-link"]}>
-				<div className={styles["skeleton-icon"]} />
-				<div className={styles["skeleton-info"]}>
-					<div className={styles["skeleton-name"]} />
-					<div className={styles["skeleton-description"]} />
-				</div>
+		<section className={styles["skeleton-latest-section"]}>
+			<h2 className={styles["skeleton-section-title"]} />
+			<div className={styles["skeleton-last-item-container"]}>
+				<div className={styles["skeleton-last-item-guest"]} />
 			</div>
-		</div>
+			{/* Last Item Share Link */}
+			<div className={styles["skeleton-item-share"]} />
+		</section>
 	);
 };
 

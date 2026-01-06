@@ -2,15 +2,14 @@ import styles from "./DashboardLatestPartyMemberSkeleton.module.css";
 
 const DashboardLatestPartyMemberSkeleton = () => {
 	return (
-		<div className={styles["skeleton-box"]}>
-			<div className={styles["skeleton-link"]}>
-				<div className={styles["skeleton-icon"]} />
-				<div className={styles["skeleton-info"]}>
-					<div className={styles["skeleton-name"]} />
-					<div className={styles["skeleton-description"]} />
-				</div>
+		<section className={styles["skeleton-latest-section"]}>
+			<h2 className={styles["skeleton-section-title"]} />
+			<div className={styles["skeleton-party-member-container"]}>
+				<div className={styles["skeleton-party-member-guest"]} />
 			</div>
-		</div>
+			{/* Party Member Share Link */}
+			<div className={styles["skeleton-party-share"]} />
+		</section>
 	);
 };
 

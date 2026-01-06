@@ -1,118 +1,35 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import styles from "./DashboardLatestItemSection.module.css";
-import Link from "next/link";
 import Image from "next/image";
 import {
 	heroLevelAndItemRelation,
 	customItemNames,
 	customItemDescriptions,
-	customItemImages,
 } from "@/features/items/data/itemsData";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
-import { useRouter } from "next/navigation";
-import { useHero } from "@/contexts/HeroContext";
-import { useUser } from "@clerk/nextjs";
-import { getUserInfo } from "@/lib/api/user";
+import { getDashboardHeroData } from "@/features/dashboard/_lib/fetcher";
+import { getUser } from "@/features/user/_lib/fetcher";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
-import DashboardLatestItemSkeleton from "../dashboard-latest-item-skeleton/DashboardLatestItemSkeleton";
+import { DashboardLatestItemCard } from "./DashboardLatestItemCard";
 
-const DashboardLatestItemSection: React.FC = () => {
-	const [itemId, setItemId] = useState<number | null>(null);
-	const [isLoadingItem, setIsLoadingItem] = useState<boolean>(true);
-	const [userZennInfo, setUserZennInfo] = useState<{
-		zennUsername?: string;
-	} | null>(null);
-	const { heroData, isLoading: isHeroLoading, error } = useHero();
-	const { user, isLoaded } = useUser();
-	const router = useRouter();
-	const [isUserLoading, setIsUserLoading] = useState<boolean>(true);
+const DashboardLatestItemSection = async () => {
+	// Request Memoizationにより、他コンポーネントと同じフェッチを共有
+	const [heroData, user] = await Promise.all([getDashboardHeroData(), getUser()]);
 
-	const { playClickSound } = useClickSound({
-		soundPath: "/audio/click-sound_decision.mp3",
-		volume: 0.5,
-		delay: 190,
-	});
+	// ゲストユーザーかどうかの判定
+	const isGuestUser = !user || !user.zennUsername;
 
-	// ゲストユーザーかどうかの判定（Clerkサインイン + Zenn連携の両方が必要）
-	const isGuestUser = !isUserLoading && (!user || !userZennInfo?.zennUsername);
+	// 最新のアイテムを計算
+	const articleCount = heroData.level;
+	const acquiredIds = Object.entries(heroLevelAndItemRelation)
+		.filter(([, reqLevel]) => articleCount >= reqLevel)
+		.map(([id]) => parseInt(id, 10));
 
-	// ユーザーのZenn連携情報を取得
-	useEffect(() => {
-		const fetchUserZennInfo = async () => {
-			if (!isLoaded || !user) {
-				setUserZennInfo(null);
-				setIsUserLoading(false);
-				return;
-			}
-
-			try {
-				const data = await getUserInfo();
-
-				if (data.success && data.user) {
-					setUserZennInfo({ zennUsername: data.user.zennUsername });
-				} else {
-					setUserZennInfo(null);
-				}
-			} catch (err) {
-				console.error("ユーザー情報取得エラー:", err);
-				setUserZennInfo(null);
-			}
-			setIsUserLoading(false);
-		};
-
-		fetchUserZennInfo();
-	}, [isLoaded, user]);
-
-	useEffect(() => {
-		const calculateItem = () => {
-			// HeroContextがまだ読み込み中の場合は待機
-			if (isHeroLoading) {
-				return;
-			}
-
-			try {
-				setIsLoadingItem(true);
-
-				// HeroContextから記事数（レベル）を取得
-				const articleCount = heroData.level;
-
-				const acquiredIds = Object.entries(heroLevelAndItemRelation)
-					.filter(([, reqLevel]) => articleCount >= reqLevel)
-					.map(([id]) => parseInt(id, 10));
-
-				if (acquiredIds.length > 0) {
-					setItemId(Math.max(...acquiredIds));
-				} else {
-					setItemId(null);
-				}
-			} catch (err) {
-				console.error("アイテム計算エラー:", err);
-			} finally {
-				setIsLoadingItem(false);
-			}
-		};
-
-		calculateItem();
-	}, [isHeroLoading, heroData.level]); // HeroContextの状態に依存
-
-	// エラー時は何も表示しない
-	if (error) {
-		return null;
+	let itemId: number | null = null;
+	if (acquiredIds.length > 0) {
+		itemId = Math.max(...acquiredIds);
 	}
-
-	const isLoadingState = isHeroLoading || isLoadingItem || isUserLoading;
 
 	const itemName = itemId !== null ? customItemNames[itemId] || "不明なアイテム" : "";
 	const itemDescription = itemId !== null ? customItemDescriptions[itemId] || "詳細不明" : "";
-
-	const itemImage = itemId !== null ? customItemImages[itemId] : null;
-
-	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-		e.preventDefault();
-		playClickSound(() => router.push(path));
-	};
 
 	return (
 		<section className={`${styles["last-item-section"]}`}>
@@ -127,9 +44,7 @@ const DashboardLatestItemSection: React.FC = () => {
 				<span>最近入手したアイテム</span>
 			</h2>
 			<div className={`${styles["last-item-container"]}`}>
-				{isLoadingState ? (
-					<DashboardLatestItemSkeleton />
-				) : isGuestUser ? (
+				{isGuestUser ? (
 					<div className={styles["last-item-guest-user-container"]}>
 						<p className={styles["last-item-guest-user-message"]}>
 							ログインするとアイテムの情報が表示されます。
@@ -140,39 +55,11 @@ const DashboardLatestItemSection: React.FC = () => {
 						<p className={styles["last-item-null-message"]}>まだ入手したアイテムはありません。</p>
 					</div>
 				) : (
-					<div className={`${styles["last-item-box"]}`}>
-						<Link
-							href={`/items/${itemId}`}
-							className={`${styles["last-item-link"]}`}
-							onClick={(e) => handleNavigation(e, `/items/${itemId}`)}
-						>
-							<div className={`${styles["last-item-icon-box"]}`}>
-								<Image
-									src="/images/plate/plate01.png"
-									alt="plate"
-									width={1000}
-									height={1000}
-									priority={true}
-									className={styles["last-item-icon-plate"]}
-								/>
-								{itemImage && (
-									<Image
-										src={`/images/items-page/acquired-icon/${itemImage}`}
-										alt={itemName}
-										width={1000}
-										height={1000}
-										className={`${styles["last-item-icon"]}`}
-									/>
-								)}
-							</div>
-							<div className={`${styles["last-item-info"]}`}>
-								<div className={`${styles["last-item-name-box"]}`}>
-									<h3 className={`${styles["last-item-name"]}`}>{itemName}</h3>
-								</div>
-								<p className={`${styles["last-item-description"]}`}>{itemDescription}</p>
-							</div>
-						</Link>
-					</div>
+					<DashboardLatestItemCard
+						itemId={itemId}
+						itemName={itemName}
+						itemDescription={itemDescription}
+					/>
 				)}
 			</div>
 			{/* Xへのシェアリンク */}

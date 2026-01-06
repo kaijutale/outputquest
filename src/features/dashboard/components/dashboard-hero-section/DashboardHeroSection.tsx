@@ -1,87 +1,20 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import styles from "./DashboardHeroSection.module.css";
 import Image from "next/image";
-import { DashboardData } from "@/features/dashboard/types/dashboard.types";
-import { useHero } from "@/contexts/HeroContext";
-import { useUser } from "@clerk/nextjs";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
-import { getUserInfo } from "@/lib/api/user";
+import { getDashboardHeroData } from "@/features/dashboard/_lib/fetcher";
+import { getUser } from "@/features/user/_lib/fetcher";
 
-type DashboardHeroSectionProps = {
-	dashboardData: DashboardData;
-};
+const DashboardHeroSection = async () => {
+	// Request Memoizationにより、他コンポーネントと同じフェッチを共有
+	const [heroData, user] = await Promise.all([getDashboardHeroData(), getUser()]);
 
-const DashboardHeroSection = ({ dashboardData }: DashboardHeroSectionProps) => {
-	const { user, isLoaded } = useUser();
-	const { heroData, isLoading, error } = useHero();
-	const [zennUsername, setZennUsername] = useState<string>("");
-	const [isZennUsernameLoaded, setIsZennUsernameLoaded] = useState(false);
-	const [userZennInfo, setUserZennInfo] = useState<{
-		zennUsername?: string;
-	} | null>(null);
-	const [isZennInfoLoaded, setIsZennInfoLoaded] = useState(false);
+	// ゲストユーザーかどうかの判定
+	const isGuestUser = !user || !user.zennUsername;
+	const zennUsername = user?.zennUsername ? `@${user.zennUsername}` : "@aoyamadev";
 
 	// 経験値ゲージを常に40%表示に固定
-	const expProgressPercent = isLoading ? 0 : 40;
-
-	// 次のレベルまでの残り記事数は常に1
+	const expProgressPercent = 40;
 	const remainingArticles = 1;
-
-	// ゲストユーザーの判定
-	const isGuestUser = !isLoaded || !user || !userZennInfo?.zennUsername;
-
-	// Zennユーザー名を取得
-	useEffect(() => {
-		const fetchZennUsername = async () => {
-			try {
-				if (!isLoaded) {
-					setIsZennInfoLoaded(false);
-					return;
-				}
-
-				if (!user) {
-					setUserZennInfo(null);
-					setIsZennInfoLoaded(true);
-					setZennUsername("@aoyamadev");
-					setIsZennUsernameLoaded(true);
-					return;
-				}
-
-				setIsZennInfoLoaded(false);
-
-				const userData = await getUserInfo();
-
-				if (userData.success && userData.user) {
-					setUserZennInfo(userData.user);
-					if (userData.user.zennUsername) {
-						setZennUsername(`@${userData.user.zennUsername}`);
-					} else {
-						// デフォルトは@aoyamadev
-						setZennUsername("@aoyamadev");
-					}
-				} else {
-					setUserZennInfo(null);
-					// デフォルトは@aoyamadev
-					setZennUsername("@aoyamadev");
-				}
-			} catch (error) {
-				console.error("Zennユーザー名取得エラー:", error);
-				setUserZennInfo(null);
-				// エラー時はデフォルト値を使用
-				setZennUsername("@aoyamadev");
-			} finally {
-				setIsZennUsernameLoaded(true);
-				setIsZennInfoLoaded(true);
-			}
-		};
-
-		fetchZennUsername();
-	}, [isLoaded, user?.id]);
-
-	// 表示するレベル値を決定（HeroContextから取得）
-	const displayLevel = isLoading ? dashboardData.heroData.level : heroData.level;
 
 	return (
 		<section className={`${styles["hero-info-section"]}`}>
@@ -102,7 +35,7 @@ const DashboardHeroSection = ({ dashboardData }: DashboardHeroSectionProps) => {
 						<div className={`${styles["hero-info-icon-box"]}`}>
 							<Image
 								src={`/images/hero/hero-plate.png`}
-								alt={dashboardData.heroData.name}
+								alt={heroData.name}
 								width={1000}
 								height={1000}
 								priority={true}
@@ -119,20 +52,8 @@ const DashboardHeroSection = ({ dashboardData }: DashboardHeroSectionProps) => {
 									priority={true}
 									className={`${styles["hero-info-name-icon"]}`}
 								/>
-								{dashboardData.heroData.name}
-								{!isZennUsernameLoaded || !zennUsername ? (
-									<>
-										(
-										<span className={styles["loading-dots"]}>
-											<span className={styles["loading-dot"]}>.</span>
-											<span className={styles["loading-dot"]}>.</span>
-											<span className={styles["loading-dot"]}>.</span>
-										</span>
-										)
-									</>
-								) : (
-									`(${zennUsername})`
-								)}
+								{heroData.name}
+								{`(${zennUsername})`}
 							</h3>
 						</div>
 					</div>
@@ -144,26 +65,16 @@ const DashboardHeroSection = ({ dashboardData }: DashboardHeroSectionProps) => {
 									<div className={`${styles["hero-info-level-display"]}`}>
 										<span className={`${styles["hero-info-level-display-text"]}`}>Lv</span>
 										<span className={`${styles["hero-info-level-display-value"]}`}>
-											{isLoading ? (
-												<span className={styles["loading-dots"]}>
-													<span className={styles["loading-dot"]}>.</span>
-													<span className={styles["loading-dot"]}>.</span>
-													<span className={styles["loading-dot"]}>.</span>
-												</span>
-											) : error ? (
-												<div className={styles["error-value"]}>1</div>
-											) : (
-												displayLevel
-											)}
+											{heroData.level}
 										</span>
 									</div>
 								</div>
 							</div>
 							{/* Xへのシェアリンク */}
 							<XShareButton
-								level={displayLevel}
+								level={heroData.level}
 								username=""
-								customShareText={`【レベルアップ！】\n\n⭐️ 勇者は レベル${displayLevel}に 上がった！\n\n`}
+								customShareText={`【レベルアップ！】\n\n⭐️ 勇者は レベル${heroData.level}に 上がった！\n\n`}
 								className={`${styles["hero-info-share-link"]}`}
 								iconWrapClassName={`${styles["hero-info-share-icon-wrap"]}`}
 								iconClassName={`${styles["hero-info-share-icon"]}`}
@@ -180,17 +91,9 @@ const DashboardHeroSection = ({ dashboardData }: DashboardHeroSectionProps) => {
 									次のレベルまで：
 								</span>
 								<div className={`${styles["hero-info-level-progress-value-info"]}`}>
-									{isLoading ? (
-										<div className={styles["loading-dots-small"]}>
-											<span className={styles["loading-dot-small"]}>.</span>
-											<span className={styles["loading-dot-small"]}>.</span>
-											<span className={styles["loading-dot-small"]}>.</span>
-										</div>
-									) : (
-										<em className={`${styles["hero-info-level-progress-value"]}`}>
-											{remainingArticles}
-										</em>
-									)}
+									<em className={`${styles["hero-info-level-progress-value"]}`}>
+										{remainingArticles}
+									</em>
 									<span className={`${styles["hero-info-level-progress-unit"]}`}>記事</span>
 								</div>
 							</div>
