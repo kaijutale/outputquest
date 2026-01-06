@@ -1,6 +1,6 @@
 import { getUser } from "@/features/user/_lib/fetcher";
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";
-import { DashboardActivityContent } from "../dashboard-activity-content/DashboardActivityContent";
+import * as Dashboard from "@/features/dashboard/components";
 
 /**
  * DashboardActivitySection (Server Component)
@@ -25,7 +25,7 @@ const DashboardActivitySection = async () => {
 	const articles = await getZennArticles(username, { limit: 5 });
 
 	// Client Componentにデータを渡す
-	return <DashboardActivityContent articles={articles} />;
+	return <Dashboard.DashboardActivityContent articles={articles} />;
 };
 
 export default DashboardActivitySection;
