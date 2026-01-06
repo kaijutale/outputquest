@@ -34,19 +34,7 @@ const UserIconButton = ({
 	}
 
 	if (!userId) {
-		return (
-			<div className={`${styles["not-login-icon-container"]}`}>
-				<div className={`${styles["not-login-icon-box"]}`}>
-					<Image
-						src="/images/icon/mark_question_white.png"
-						alt="ログインしていません"
-						width={65}
-						height={65}
-					/>
-				</div>
-				<p className={`${styles["not-login-icon-name"]}`}>???</p>
-			</div>
-		);
+		return null;
 	}
 
 	if (userId) {
