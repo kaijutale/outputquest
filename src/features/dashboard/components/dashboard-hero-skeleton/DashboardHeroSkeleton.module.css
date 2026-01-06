@@ -1,0 +1,207 @@
+/* matches hero-info-section */
+.skeleton-hero-section {
+	display: grid;
+	gap: 35px;
+	padding-block-start: 10px;
+	padding-inline: 20px;
+}
+
+/* matches hero-info-title */
+.skeleton-hero-title {
+	position: relative;
+	display: grid;
+	font-size: 1.25rem;
+	font-weight: var(--font-weight-x-bold);
+	line-height: var(--leading-x-tight);
+	color: var(--color-primary-white);
+	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+
+	@media (max-width: 1023px) {
+		place-self: center;
+		font-size: 1.125rem;
+	}
+}
+
+/* matches hero-info-container */
+.skeleton-hero-container {
+	width: 100%;
+	display: grid;
+	place-items: center;
+	padding-inline: 20px;
+
+	@media (max-width: 1023px) {
+		padding-inline: 0;
+	}
+}
+
+/* matches hero-info */
+.skeleton-hero-info {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	gap: 20px;
+
+	@media (max-width: 767px) {
+		grid-template-columns: repeat(1, auto);
+	}
+}
+
+/* matches hero-info-box */
+.skeleton-hero-box {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto auto 1fr;
+	grid-template-areas:
+		"icon"
+		"name"
+		".";
+	place-items: center;
+	gap: 15px;
+}
+
+/* matches hero-info-icon-box */
+.skeleton-hero-icon-box {
+	grid-area: icon;
+	width: 170px;
+	height: 170px;
+	display: grid;
+	place-items: center;
+
+	@media (max-width: 767px) {
+		width: 130px;
+		height: 130px;
+	}
+}
+
+/* matches hero-info-icon */
+.skeleton-hero-icon {
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	background-color: var(--color-primary-brown);
+	/* border-radius: var(--border-rounded); UI has no border radius on image usually, but keep if needed */
+}
+
+/* matches hero-info-name-box */
+.skeleton-hero-name-box {
+	grid-area: name;
+	background-color: var(--color-primary-brown-dark);
+	border: 1.5px solid var(--color-primary-brown-light);
+	padding-inline: 2px;
+	padding-block: 2px;
+}
+
+/* matches hero-info-name */
+.skeleton-hero-name {
+	width: 140px;
+	height: 28px;
+	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	border: 1px solid var(--color-primary-brown-light);
+	background-color: var(--color-primary-brown);
+	/* border-radius: var(--border-radius-small); */
+}
+
+/* matches hero-info-level */
+.skeleton-hero-level {
+	display: grid;
+	grid-template-columns: auto;
+	gap: 60px;
+}
+
+/* matches hero-info-level-header */
+.skeleton-hero-level-header {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto;
+	justify-content: end;
+	gap: 10px;
+
+	@media (max-width: 767px) {
+		justify-content: center;
+		gap: 15px;
+	}
+}
+
+/* matches hero-info-level-display-container */
+.skeleton-hero-level-display {
+	min-width: 150px;
+	height: 105px;
+	display: grid;
+	place-self: end;
+	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	background-color: var(--color-primary-brown-dark);
+	border: 3mm ridge #b69973;
+
+	@media (max-width: 767px) {
+		place-self: center;
+	}
+}
+
+/* matches hero-info-share-link */
+.skeleton-hero-share {
+	width: 80px;
+	height: 20px;
+	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	border-radius: 4px;
+}
+
+/* matches hero-info-level-progress-box */
+.skeleton-hero-progress-box {
+	display: grid;
+	gap: 12px;
+}
+
+/* matches hero-info-level-progress-text-box */
+.skeleton-hero-progress-text {
+	height: 24px;
+	width: 200px;
+	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	border-radius: 4px;
+}
+
+/* matches hero-info-level-progress-gauge-container */
+.skeleton-hero-progress-gauge-container {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* matches hero-info-level-progress-exp-icon */
+.skeleton-hero-exp-icon {
+	width: 35px;
+	height: 16.33px;
+	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	border-radius: 4px;
+}
+
+/* matches hero-info-level-progress-gauge-box */
+.skeleton-hero-progress-gauge {
+	width: 100%;
+	height: 20px;
+	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	border: 2px solid var(--color-primary-white);
+	border-radius: var(--border-rounded);
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}
