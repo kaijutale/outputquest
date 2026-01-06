@@ -2,10 +2,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./ItemCardListClient.module.css";
-import * as Items from "@/features/items/components/index";
 import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import { Item } from "@/features/items/types/items.types";
+import { customItemSilhouetteImages } from "@/features/items/data/itemsData";
 
 interface ItemCardListClientProps {
 	items: Item[];
@@ -44,12 +44,14 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									priority={true}
 									className={styles["acquired-item-icon-plate"]}
 								/>
-								<Items.ItemsTreasureChestIcon
+								<Image
+									src={`/images/items-page/unacquired-icon/${customItemSilhouetteImages[item.id]}`}
+									alt="未入手のアイテム"
 									width={1000}
 									height={1000}
-									className={styles["unacquired-item-icon-image"]}
-									classNameClose={styles["treasure-chest-close"]}
-									classNameOpen={styles["treasure-chest-open"]}
+									className={`${styles["unacquired-item-icon-image"]} ${
+										styles[`unacquired-item-icon-image-${item.id}`]
+									}`}
 								/>
 							</div>
 						) : item.acquired ? (
@@ -82,12 +84,14 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									priority={true}
 									className={styles["acquired-item-icon-plate"]}
 								/>
-								<Items.ItemsTreasureChestIcon
+								<Image
+									src={`/images/items-page/unacquired-icon/${customItemSilhouetteImages[item.id]}`}
+									alt="未入手のアイテム"
 									width={1000}
 									height={1000}
-									className={styles["unacquired-item-icon-image"]}
-									classNameClose={styles["treasure-chest-close"]}
-									classNameOpen={styles["treasure-chest-open"]}
+									className={`${styles["unacquired-item-icon-image"]} ${
+										styles[`unacquired-item-icon-image-${item.id}`]
+									}`}
 								/>
 							</div>
 						)}

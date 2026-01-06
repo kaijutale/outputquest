@@ -139,6 +139,41 @@ export const customItemImages: { [key: number]: string } = {
 	30: "tome_of_wisdom_icon.png", // 叡智の書
 };
 
+// 未入手アイテムのシルエット画像のファイル名定義
+// public/images/items-page/unacquired-icon/ 配下のファイル名
+export const customItemSilhouetteImages: { [key: number]: string } = {
+	1: "medicinal_herbs_silhouette_icon.png",
+	2: "meat_silhouette_icon.png",
+	3: "mysterious_fruit_silhouette_icon.png",
+	4: "fruit-of-the-sun_silhouette_icon.png",
+	5: "fruit_of_the_moon_silhouette_icon.png",
+	6: "ore_silhouette_icon.png",
+	7: "gold-ore_silhouette_icon.png",
+	8: "platinum_ore_silhouette_icon.png",
+	9: "diamond_ore_silhouette_icon.png",
+	10: "star_fragment_silhouette_icon.png",
+	11: "book_of_learning_silhouette_icon.png",
+	12: "adventure_log_silhouette_icon.png",
+	13: "seed_of_strength_silhouette_icon.png",
+	14: "seed_of_protection_silhouette_icon.png",
+	15: "seed_of_speed_silhouette_icon.png",
+	16: "seed_of_life_silhouette_icon.png",
+	17: "seed_of_sound_silhouette_icon.png",
+	18: "seed_of_wisdom_silhouette_icon.png",
+	19: "seed_of_ancients_silhouette_icon.png",
+	20: "dragon_scales_silhouette_icon.png",
+	21: "journey_clock_silhouette_icon.png",
+	22: "philosophers_stone_silhouette_icon.png",
+	23: "white_dragon_feather_silhouette_icon.png",
+	24: "phoenix_feather_silhouette_icon.png",
+	25: "spirit_tear_silhouette_icon.png",
+	26: "wisdom_ring_silhouette_icon.png",
+	27: "wisdom_omamori_silhouette_icon.png",
+	28: "stone_of_wisdom_silhouette_icon.png",
+	29: "sword_of_wisdom_silhouette_icon.png",
+	30: "tome_of_wisdom_silhouette_icon.png",
+};
+
 // カスタムアイテム説明文の定義
 export const customItemDescriptions: { [key: number]: string } = {
 	1: "学習で疲れた体力を回復させるための薬草。基本的な疲れはこれで癒せる。",

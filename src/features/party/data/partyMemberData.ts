@@ -50,19 +50,37 @@ export const customMemberDescriptions: { [key: number]: string } = {
 };
 
 // 仲間画像パスの定義
+// 仲間画像パスの定義
 export const customMemberImages: { [key: number]: string } = {
-	1: "/images/characters/merchant_dot01.png",
-	2: "/images/characters/warrior_dot01.png",
-	3: "/images/characters/monk_dot01.png",
-	4: "/images/characters/bow_dot01.png",
-	5: "/images/characters/knight-man_dot01.png",
-	6: "/images/characters/old-wise-man_dot01.png",
-	7: "/images/characters/knight-woman_dot01.png",
-	8: "/images/characters/ogre-hero_dot01.png",
-	9: "/images/characters/demon01_dot01.png",
-	10: "/images/characters/demon02_dot01.png",
-	11: "/images/characters/queen_dot01.png",
-	12: "/images/characters/king_dot01.png",
+	1: "merchant_dot01.png",
+	2: "warrior_dot01.png",
+	3: "priest_dot01.png",
+	4: "bow_dot01.png",
+	5: "paladin_dot01.png",
+	6: "old_wise_man_dot01.png",
+	7: "knight_dot01.png",
+	8: "ogre_hero_dot01.png",
+	9: "demon01_dot01.png",
+	10: "demon02_dot01.png",
+	11: "queen_dot01.png",
+	12: "king_dot01.png",
+};
+
+// 未加入仲間のシルエット画像のファイル名定義
+// public/images/party-page/unacquired-icon/ 配下のファイル名
+export const customMemberSilhouetteImages: { [key: number]: string } = {
+	1: "merchant_silhouette_icon.png",
+	2: "warrior_silhouette_icon.png",
+	3: "monk_silhouette_icon.png",
+	4: "bow_silhouette_icon.png",
+	5: "paladin_silhouette_icon.png",
+	6: "old_wise_man_silhouette_icon.png",
+	7: "knight_silhouette_icon.png",
+	8: "ogre_hero_silhouette_icon.png",
+	9: "poseidon_silhouette_icon.png",
+	10: "demon_silhouette_icon.png",
+	11: "queen_silhouette_icon.png",
+	12: "king_silhouette_icon.png",
 };
 
 // レベルに応じて獲得できる仲間かどうかを判定する関数

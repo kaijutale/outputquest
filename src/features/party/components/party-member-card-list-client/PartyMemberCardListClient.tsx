@@ -2,10 +2,10 @@
 import Link from "next/link";
 import styles from "./PartyMemberCardListClient.module.css";
 import Image from "next/image";
-import * as Party from "@/features/party/components/index";
 import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import { PartyMember } from "@/features/party/types/party.types";
+import { customMemberSilhouetteImages } from "@/features/party/data/partyMemberData";
 
 interface PartyMemberCardListClientProps {
 	members: PartyMember[];
@@ -48,9 +48,7 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 									className={styles["acquired-party-member-icon-plate"]}
 								/>
 								<Image
-									src={
-										partyMember.imagePath || "/images/party-page/unacquired-icon/mark_question.svg"
-									}
+									src={`/images/party-page/acquired-icon/${partyMember.imagePath}`}
 									alt={partyMember.name || "勇者の仲間"}
 									width={1000}
 									height={1000}
@@ -69,10 +67,14 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 									priority={true}
 									className={styles["acquired-party-member-icon-plate"]}
 								/>
-								<Party.PartyQuestionIcon
-									width={60}
-									height={60}
-									className={styles["unacquired-party-member-icon-image"]}
+								<Image
+									src={`/images/party-page/unacquired-icon/${customMemberSilhouetteImages[partyMember.id]}`}
+									alt="まだ見ぬ仲間"
+									width={1000}
+									height={1000}
+									className={`${styles["unacquired-party-member-icon-image"]} ${
+										styles[`unacquired-party-member-icon-image-${partyMember.id}`]
+									}`}
 								/>
 							</div>
 						)}

@@ -80,130 +80,156 @@
 	transition: transform 0.2s ease-in-out;
 }
 
-.unacquired-item-icon-image {
-	position: relative; /* 子要素のabsolute配置の起点 */
-}
-
 /* アイテムごとの個別サイズ調整（必要に応じて追加） */
-.acquired-item-icon-image-1 {
+.acquired-item-icon-image-1,
+.unacquired-item-icon-image-1 {
 	width: 100px;
 }
 
-.acquired-item-icon-image-2 {
+.acquired-item-icon-image-2,
+.unacquired-item-icon-image-2 {
 	width: 150px;
 }
 
-.acquired-item-icon-image-3 {
+.acquired-item-icon-image-3,
+.unacquired-item-icon-image-3 {
 	width: 105px;
 	margin-inline-end: 15px;
 	margin-block-end: 7px;
 }
 
-.acquired-item-icon-image-4 {
+.acquired-item-icon-image-4,
+.unacquired-item-icon-image-4 {
 	width: 115px;
 }
 
-.acquired-item-icon-image-5 {
+.acquired-item-icon-image-5,
+.unacquired-item-icon-image-5 {
 	width: 90px;
 }
 
-.acquired-item-icon-image-6 {
-	width: 115px;
-}
-
-.acquired-item-icon-image-7 {
-	width: 115px;
-}
-
-.acquired-item-icon-image-8 {
-	width: 115px;
-}
-
-.acquired-item-icon-image-9 {
-	width: 115px;
-}
-
-.acquired-item-icon-image-10 {
-	width: 80px;
-}
-
-.acquired-item-icon-image-11 {
-	width: 135px;
-}
-
-.acquired-item-icon-image-12 {
-	width: 135px;
-}
-
-.acquired-item-icon-image-13 {
-	width: 85px;
-}
-
-.acquired-item-icon-image-14 {
-	width: 95px;
-}
-
-.acquired-item-icon-image-15 {
-	width: 105px;
-}
-
-.acquired-item-icon-image-16 {
-	width: 85px;
-}
-
-.acquired-item-icon-image-17 {
-	width: 78px;
-}
-
-.acquired-item-icon-image-18 {
-	width: 95px;
-}
-
-.acquired-item-icon-image-19 {
-	width: 85px;
-}
-
-.acquired-item-icon-image-20 {
+.acquired-item-icon-image-6,
+.unacquired-item-icon-image-6 {
 	width: 110px;
 }
 
-.acquired-item-icon-image-21 {
-	width: 130px;
+.acquired-item-icon-image-7,
+.unacquired-item-icon-image-7 {
+	width: 110px;
 }
 
-.acquired-item-icon-image-22 {
-	width: 75px;
+.acquired-item-icon-image-8,
+.unacquired-item-icon-image-8 {
+	width: 110px;
 }
 
-.acquired-item-icon-image-23 {
-	width: 105px;
+.acquired-item-icon-image-9,
+.unacquired-item-icon-image-9 {
+	width: 110px;
 }
 
-.acquired-item-icon-image-24 {
-	width: 105px;
+.acquired-item-icon-image-10,
+.unacquired-item-icon-image-10 {
+	width: 80px;
 }
 
-.acquired-item-icon-image-25 {
-	width: 75px;
+.acquired-item-icon-image-11,
+.unacquired-item-icon-image-11 {
+	width: 135px;
 }
 
-.acquired-item-icon-image-26 {
-	width: 90px;
+.acquired-item-icon-image-12,
+.unacquired-item-icon-image-12 {
+	width: 135px;
 }
 
-.acquired-item-icon-image-27 {
+.acquired-item-icon-image-13,
+.unacquired-item-icon-image-13 {
+	width: 85px;
+}
+
+.acquired-item-icon-image-14,
+.unacquired-item-icon-image-14 {
 	width: 95px;
 }
 
-.acquired-item-icon-image-28 {
+.acquired-item-icon-image-15,
+.unacquired-item-icon-image-15 {
+	width: 105px;
+}
+
+.acquired-item-icon-image-16,
+.unacquired-item-icon-image-16 {
+	width: 85px;
+}
+
+.acquired-item-icon-image-17,
+.unacquired-item-icon-image-17 {
+	width: 78px;
+}
+
+.acquired-item-icon-image-18,
+.unacquired-item-icon-image-18 {
+	width: 95px;
+}
+
+.acquired-item-icon-image-19,
+.unacquired-item-icon-image-19 {
+	width: 85px;
+}
+
+.acquired-item-icon-image-20,
+.unacquired-item-icon-image-20 {
+	width: 110px;
+}
+
+.acquired-item-icon-image-21,
+.unacquired-item-icon-image-21 {
+	width: 130px;
+}
+
+.acquired-item-icon-image-22,
+.unacquired-item-icon-image-22 {
 	width: 75px;
 }
 
-.acquired-item-icon-image-29 {
+.acquired-item-icon-image-23,
+.unacquired-item-icon-image-23 {
+	width: 105px;
+}
+
+.acquired-item-icon-image-24,
+.unacquired-item-icon-image-24 {
+	width: 105px;
+}
+
+.acquired-item-icon-image-25,
+.unacquired-item-icon-image-25 {
+	width: 75px;
+}
+
+.acquired-item-icon-image-26,
+.unacquired-item-icon-image-26 {
+	width: 90px;
+}
+
+.acquired-item-icon-image-27,
+.unacquired-item-icon-image-27 {
+	width: 85px;
+}
+
+.acquired-item-icon-image-28,
+.unacquired-item-icon-image-28 {
+	width: 75px;
+}
+
+.acquired-item-icon-image-29,
+.unacquired-item-icon-image-29 {
 	width: 160px;
 }
 
-.acquired-item-icon-image-30 {
+.acquired-item-icon-image-30,
+.unacquired-item-icon-image-30 {
 	width: 135px;
 }
 
