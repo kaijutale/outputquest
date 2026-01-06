@@ -48,7 +48,6 @@ export default function ConnectionPageClient() {
 		isLoaded,
 		setWasLoggedOut,
 		setIsNewSession,
-		setUserInfo: () => {}, // 後でuseUserInfoのsetUserInfoを使用
 		setZennUsername,
 	});
 

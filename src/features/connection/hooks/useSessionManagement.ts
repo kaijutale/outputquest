@@ -4,21 +4,11 @@ import { useEffect, Dispatch, SetStateAction } from "react";
 import { UserResource } from "@clerk/types";
 import { SESSION_ID_KEY, LOGOUT_FLAG_KEY } from "@/features/connection/constants";
 
-interface UserInfo {
-	id: string;
-	clerkId: string;
-	displayName?: string;
-	zennUsername?: string;
-	profileImage?: string;
-	zennArticleCount: number;
-}
-
 interface UseSessionManagementProps {
 	user: UserResource | null | undefined;
 	isLoaded: boolean;
 	setWasLoggedOut: Dispatch<SetStateAction<boolean>>;
 	setIsNewSession: Dispatch<SetStateAction<boolean>>;
-	setUserInfo: Dispatch<SetStateAction<UserInfo | null>>;
 	setZennUsername: Dispatch<SetStateAction<string>>;
 }
 
@@ -27,7 +17,6 @@ export const useSessionManagement = ({
 	isLoaded,
 	setWasLoggedOut,
 	setIsNewSession,
-	setUserInfo,
 	setZennUsername,
 }: UseSessionManagementProps) => {
 	useEffect(() => {
@@ -58,5 +47,5 @@ export const useSessionManagement = ({
 				localStorage.setItem(LOGOUT_FLAG_KEY, "true");
 			}
 		}
-	}, [user, isLoaded, setWasLoggedOut, setIsNewSession, setUserInfo, setZennUsername]);
+	}, [user, isLoaded, setWasLoggedOut, setIsNewSession, setZennUsername]);
 };
