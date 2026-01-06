@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";
 import { strengthHeroData } from "@/features/strength/data/strengthHeroData";
-import StrengthHeroInfoClient from "../strength-hero-info-client/StrengthHeroInfoClient";
+import * as Strength from "@/features/strength/components/index"
 import styles from "./StrengthHeroInfo.module.css";
 
 /**
@@ -61,7 +61,7 @@ const StrengthHeroInfo = async () => {
 		const displayZennUsername = `@${zennUsername}`;
 
 		// Client Componentにデータを渡す
-		return <StrengthHeroInfoClient heroData={heroData} zennUsername={displayZennUsername} />;
+		return <Strength.StrengthHeroInfoClient heroData={heroData} zennUsername={displayZennUsername} />;
 	} catch (error) {
 		console.error("Zenn記事の取得エラー:", error);
 		return (

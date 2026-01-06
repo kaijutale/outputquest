@@ -1,4 +1,13 @@
+import StrengthHeroInfo from "./strength-hero-info/StrengthHeroInfo";
+import StrengthHeroInfoClient from "./strength-hero-info-client/StrengthHeroInfoClient";
+import StrengthHeroInfoSkeleton from "./strength-hero-info-skeleton/StrengthHeroInfoSkeleton";
 import StrengthLogInfo from "./strength-log-info/StrengthLogInfo";
 import StrengthTitleInfo from "./strength-title-info/StrengthTitleInfo";
 
-export { StrengthLogInfo, StrengthTitleInfo };
+export {
+	StrengthHeroInfo,
+	StrengthHeroInfoClient,
+	StrengthHeroInfoSkeleton,
+	StrengthLogInfo,
+	StrengthTitleInfo,
+};
