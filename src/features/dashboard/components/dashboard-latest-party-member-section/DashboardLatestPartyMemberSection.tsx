@@ -159,8 +159,9 @@ const DashboardLatestPartyMemberSection: React.FC = () => {
 								/>
 								<Image
 									src={
-										customMemberImages[memberId] ||
-										"/images/party-page/unacquired-icon/mark_question.svg"
+										customMemberImages[memberId]
+											? `/images/party-page/acquired-icon/${customMemberImages[memberId]}`
+											: "/images/party-page/unacquired-icon/mark_question.svg"
 									}
 									alt={memberName}
 									width={1000}
