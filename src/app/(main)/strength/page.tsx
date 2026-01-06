@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./StrengthPage.module.css";
-import * as Strength from "@/features/strength/components/index";
+import * as Strength from "@/features/strength/components";
 
 export const metadata: Metadata = getPageMetadata("strength");
 

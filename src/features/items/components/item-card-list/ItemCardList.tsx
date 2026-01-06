@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { fetchZennArticles } from "@/features/posts/services";
 import { updateItemsByLevel } from "@/features/items/data/itemsData";
-import * as Items from "@/features/items/components/index";
+import * as Items from "@/features/items/components";
 import styles from "./ItemCardList.module.css";
 
 const ItemCardList = async () => {

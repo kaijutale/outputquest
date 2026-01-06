@@ -1,5 +1,5 @@
 import AdventureStartLink from "@/components/common/adventure-start-link/AdventureStartLink";
-import * as About from "@/features/about/components/index";
+import * as About from "@/features/about/components";
 import styles from "./AboutOutroSection.module.css";
 
 export default function AboutOutroSection() {

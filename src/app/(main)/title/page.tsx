@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./TitlePage.module.css";
-import * as Title from "@/features/title/components/index";
+import * as Title from "@/features/title/components";
 
 export const metadata: Metadata = getPageMetadata("title");
 

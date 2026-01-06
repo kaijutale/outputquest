@@ -2,20 +2,10 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";
 import { PlatformType } from "@/features/posts/types";
-import PostsList from "../posts-list/PostsList";
+import * as Posts from "@/features/posts/components";
 import styles from "./PostsListWithData.module.css";
 
-/**
- * PostsListWithData (Server Component)
- *
- * データフェッチとPostsList表示を担当
- * ZennPostsから分離されたデータ取得ロジック
- *
- * データフェッチ:
- * - auth() でユーザー認証
- * - prisma でzennUsername取得
- * - getZennArticles() で記事取得（Request Memoization + "use cache"）
- */
+
 const PostsListWithData = async () => {
 	try {
 		// 認証情報を取得
@@ -47,7 +37,7 @@ const PostsListWithData = async () => {
 			platformType: "zenn" as PlatformType,
 		}));
 
-		return <PostsList postsData={postsData} />;
+		return <Posts.PostsList postsData={postsData} />;
 	} catch (error) {
 		console.error("Zenn記事の取得エラー:", error);
 		return (

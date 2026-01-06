@@ -1,4 +1,4 @@
-import * as Posts from "@/features/posts/components/index";
+import * as Posts from "@/features/posts/components";
 import styles from "./PostsList.module.css";
 import { PostData } from "@/features/posts/types";
 

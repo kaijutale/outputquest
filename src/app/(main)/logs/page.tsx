@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./LogsPage.module.css";
-import * as Logs from "@/features/logs/components/index";
+import * as Logs from "@/features/logs/components";
 
 export const metadata: Metadata = getPageMetadata("logs");
 

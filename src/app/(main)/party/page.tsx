@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./PartyPage.module.css";
-import * as Party from "@/features/party/components/index";
+import * as Party from "@/features/party/components";
 
 export const metadata: Metadata = getPageMetadata("party");
 

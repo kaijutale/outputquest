@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import styles from "./Home.module.css";
-import * as Home from "@/features/home/components/index";
+import * as Home from "@/features/home/components";
 import * as Hero from "@/features/hero/components";
 import { HomeAnimationProvider } from "@/features/home/contexts/HomeAnimationContext";
 

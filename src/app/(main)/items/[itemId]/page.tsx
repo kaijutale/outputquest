@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import styles from "./ItemDetailPage.module.css";
-import * as itemDetail from "@/features/item-detail/components/index";
+import * as itemDetail from "@/features/item-detail/components";
 import { generateItemMetadata } from "@/features/item-detail/metadata/generateItemMetadata";
 
 export async function generateStaticParams() {

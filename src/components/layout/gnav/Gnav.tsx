@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./Gnav.module.css";
-import * as GnavComponents from "@/features/gnav/components/index";
+import * as GnavComponents from "@/features/gnav/components";
 
 interface GnavProps {
 	isMenuOpen?: boolean;

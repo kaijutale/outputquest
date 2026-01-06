@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import styles from "./TitlePageClient.module.css";
-import * as Title from "@/features/title/components/index";
+import * as Title from "@/features/title/components";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 
 const TitlePageClient = () => {

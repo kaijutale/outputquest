@@ -1,4 +1,4 @@
-import * as Main from "@/features/main/components/index";
+import * as Main from "@/features/main/components";
 import styles from "./MainLayout.module.css";
 
 import Gnav from "@/components/layout/gnav/Gnav";

@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./ItemsPage.module.css";
-import * as Items from "@/features/items/components/index";
+import * as Items from "@/features/items/components";
 
 export const metadata: Metadata = getPageMetadata("items");
 

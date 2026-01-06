@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import styles from "./ItemDetail.module.css";
-import ItemDetailSkeleton from "../item-detail-skeleton/ItemDetailSkeleton";
+import * as ItemDetailComponents from "@/features/item-detail/components";
 import {
 	isAcquiredByHeroLevel,
 	heroLevelAndItemRelation,
 	customItemNames,
 	customItemDescriptions,
 	customItemImages,
+	customItemSilhouetteImages,
 } from "@/features/items/data/itemsData";
 import { fetchZennArticles } from "@/features/posts/services";
 
@@ -100,7 +101,7 @@ const ItemDetail: React.FC<ItemDetailProps> = ({ itemId }) => {
 	return (
 		<div className={styles["item-detail-content"]}>
 			{isLoading ? (
-				<ItemDetailSkeleton />
+				<ItemDetailComponents.ItemDetailSkeleton />
 			) : (
 				<div className={styles["item-detail-card"]}>
 					<Image
@@ -130,12 +131,14 @@ const ItemDetail: React.FC<ItemDetailProps> = ({ itemId }) => {
 								/>
 							) : (
 								<Image
-									src="/images/items-page/unacquired-icon/treasure-chest-close-icon01.png"
+									src={`/images/items-page/unacquired-icon/${customItemSilhouetteImages[itemId]}`}
 									alt="未入手のアイテム"
 									width={60}
 									height={60}
 									priority={true}
-									className={styles["item-detail-unknown-image"]}
+									className={`${styles["item-detail-image"]} ${
+										styles[`item-detail-image-${itemId}`]
+									}`}
 								/>
 							)}
 						</div>

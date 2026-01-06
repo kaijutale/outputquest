@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { fetchZennArticles } from "@/features/posts/services";
 import { updatePartyMembersByLevel } from "@/features/party/data/partyMemberData";
-import * as Party from "@/features/party/components/index";
+import * as Party from "@/features/party/components";
 import styles from "./PartyMemberCardList.module.css";
 
 const PartyMemberCardList = async () => {
