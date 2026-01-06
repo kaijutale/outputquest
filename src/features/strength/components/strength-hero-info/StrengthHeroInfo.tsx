@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";
 import { strengthHeroData } from "@/features/strength/data/strengthHeroData";
-import * as Strength from "@/features/strength/components"
+import * as Strength from "@/features/strength/components";
 import styles from "./StrengthHeroInfo.module.css";
 
 /**

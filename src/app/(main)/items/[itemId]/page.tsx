@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import styles from "./ItemDetailPage.module.css";
-import * as itemDetail from "@/features/item-detail/components";
+import * as ItemDetail from "@/features/item-detail/components";
 import { generateItemMetadata } from "@/features/item-detail/metadata/generateItemMetadata";
 
 export async function generateStaticParams() {
@@ -32,16 +32,16 @@ export default async function ItemDetailPage({ params }: { params: Promise<{ ite
 	return (
 		<>
 			{/* 動的にHeadを更新するコンポーネント */}
-			<itemDetail.ItemDynamicHead itemId={itemIdNum} />
+			<ItemDetail.ItemDynamicHead itemId={itemIdNum} />
 
 			<h1 className={styles["item-detail-page-title"]}>アイテム詳細</h1>
 			<div className={styles["item-detail-container"]}>
 				{/* クライアントコンポーネントとしてItemDetailを使用 */}
-				<itemDetail.ItemDetail itemId={itemIdNum} />
+				<ItemDetail.ItemDetail itemId={itemIdNum} />
 
 				<hr />
 
-				<itemDetail.ItemDetailFooter />
+				<ItemDetail.ItemDetailFooter />
 			</div>
 		</>
 	);
