@@ -1,18 +1,7 @@
 import { Suspense } from "react";
-import PostsListWithData from "../posts-list-with-data/PostsListWithData";
-import ZennPostsSkeleton from "../zenn-posts-skeleton/ZennPostsSkeleton";
 import styles from "./ZennPosts.module.css";
+import * as Posts from "@/features/posts/components";
 
-/**
- * ZennPosts (Server Component - Synchronous)
- *
- * Zenn記事一覧表示のコンテナコンポーネント
- * posts-headerを即座に表示し、PostsListWithDataをSuspenseで囲む
- *
- * レイアウト:
- * - posts-header: 静的テキスト（即座に表示）
- * - PostsListWithData: Suspense境界内（データフェッチ中はスケルトン表示）
- */
 const ZennPosts = () => {
 	return (
 		<div className={styles["posts-container"]}>
@@ -23,8 +12,8 @@ const ZennPosts = () => {
 
 			<hr className={styles["posts-container-line"]} />
 
-			<Suspense fallback={<ZennPostsSkeleton />}>
-				<PostsListWithData />
+			<Suspense fallback={<Posts.ZennPostsSkeleton />}>
+				<Posts.PostsListWithData />
 			</Suspense>
 		</div>
 	);
