@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { fetchZennArticles } from "@/features/posts/services";
 import { updatePartyMembersByLevel } from "@/features/party/data/partyMemberData";
-import PartyMemberCardListClient from "../party-member-card-list-client/PartyMemberCardListClient";
+import * as Party from "@/features/party/components/index";
 import styles from "./PartyMemberCardList.module.css";
 
 const PartyMemberCardList = async () => {
@@ -37,7 +37,7 @@ const PartyMemberCardList = async () => {
 		const members = updatePartyMembersByLevel(articleCount);
 
 		// Client Componentにデータを渡す
-		return <PartyMemberCardListClient members={members} isGuestUser={isGuestUser} />;
+		return <Party.PartyMemberCardListClient members={members} isGuestUser={isGuestUser} />;
 	} catch (error) {
 		console.error("仲間データ取得エラー:", error);
 		return <p className={styles["error-message"]}>仲間データの取得に失敗しました。</p>;
