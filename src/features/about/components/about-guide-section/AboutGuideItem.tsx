@@ -13,6 +13,7 @@ export default function AboutGuideItem({ title, description, iconSrc, alt }: Pro
 					alt={alt}
 					width={1000}
 					height={1000}
+					priority={true}
 					className={`${styles["about-section-list-content-icon"]}`}
 				/>
 				<span>{title}</span>
