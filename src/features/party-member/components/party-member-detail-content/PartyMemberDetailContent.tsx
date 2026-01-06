@@ -3,23 +3,23 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
-import styles from "./PartyMemberDetail.module.css";
-
-import PartyMemberDetailSkeleton from "../party-member-detail-skeleton/PartyMemberDetailSkeleton";
+import styles from "./PartyMemberDetailContent.module.css";
+import * as PartyMemberDetail from "@/features/party-member/components"
 import {
 	heroLevelAndMemberRelation,
 	isAcquiredByHeroLevel,
 	customMemberNames,
 	customMemberDescriptions,
 	customMemberImages,
+	customMemberSilhouetteImages,
 } from "@/features/party/data/partyMemberData";
 import { fetchZennArticles } from "@/features/posts/services";
 
-interface PartyMemberDetailProps {
+interface PartyMemberDetailContentProps {
 	partyId: number;
 }
 
-const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
+const PartyMemberDetailContent: React.FC<PartyMemberDetailContentProps> = ({ partyId }) => {
 	const { user, isLoaded } = useUser();
 	// Zenn連携アカウントのレベル取得状態
 	const [currentLevel, setCurrentLevel] = useState<number>(1);
@@ -95,13 +95,13 @@ const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 	// 仲間の名前と説明文を取得
 	const memberName = isAcquired ? customMemberNames[partyId] || `勇者の仲間${partyId}` : null;
 	const memberDescription = isAcquired
-		? customMemberDescriptions[partyId] || `これは${memberName}の説明です。`
+		? customMemberDescriptions[partyId] || `このキャラクターの説明はありません。`
 		: null;
 
 	return (
 		<div className={styles["party-member-content"]}>
 			{isLoading ? (
-				<PartyMemberDetailSkeleton />
+				<PartyMemberDetail.PartyMemberDetailSkeleton />
 			) : (
 				<div className={styles["party-member-card"]}>
 					<Image
@@ -116,10 +116,7 @@ const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 						<div className={styles["party-member-image-box"]}>
 							{isAcquired ? (
 								<Image
-									src={
-										customMemberImages[partyId] ||
-										"/images/party-page/unacquired-icon/mark_question.svg"
-									}
+									src={`/images/party-page/acquired-icon/${customMemberImages[partyId]}`}
 									alt={memberName || "勇者の仲間"}
 									width={1000}
 									height={1000}
@@ -130,12 +127,14 @@ const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 								/>
 							) : (
 								<Image
-									src="/images/party-page/unacquired-icon/mark_question.svg"
+									src={`/images/party-page/unacquired-icon/${customMemberSilhouetteImages[partyId]}`}
 									alt="まだ見ぬ仲間"
 									width={60}
 									height={60}
 									priority={true}
-									className={styles["party-member-unknown-image"]}
+									className={`${styles["party-member-image"]} ${
+										styles[`party-member-image-${partyId}`]
+									}`}
 								/>
 							)}
 						</div>
@@ -177,4 +176,4 @@ const PartyMemberDetail: React.FC<PartyMemberDetailProps> = ({ partyId }) => {
 	);
 };
 
-export default PartyMemberDetail;
+export default PartyMemberDetailContent;
