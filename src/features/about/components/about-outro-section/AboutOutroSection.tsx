@@ -1,12 +1,12 @@
 import AdventureStartLink from "@/components/common/adventure-start-link/AdventureStartLink";
-import { AboutSectionTitle } from "..";
+import * as About from "@/features/about/components/index";
 import styles from "./AboutOutroSection.module.css";
 
 export default function AboutOutroSection() {
 	return (
 		<>
 			<section className={`${styles["about-section"]}`}>
-				<AboutSectionTitle title="冒険を始める" />
+				<About.AboutSectionTitle title="冒険を始める" />
 
 				<p className={styles["about-section-message"]}>
 					アウトプットは知識を定着させる最も効果的な方法です。
