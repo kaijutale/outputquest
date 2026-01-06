@@ -59,14 +59,10 @@
 	}
 }
 
-.unacquired-party-member-icon-image {
-	width: 60px;
-}
-
 .acquired-party-member-icon-image,
 .unacquired-party-member-icon-image {
 	height: auto;
-	filter: drop-shadow(var(--character-shadow-medium));
+	filter: drop-shadow(var(--pixel-shadow-medium));
 	z-index: 2;
 	transition: transform 0.2s ease-in-out;
 }
@@ -79,56 +75,71 @@
 }
 
 /* 画像ごとの個別サイズ調整用 */
-.acquired-party-member-icon-image {
-	/* キャラクターはplateの上に表示 */
+/* キャラクターはplateの上に表示 */
+.acquired-party-member-icon-image,
+.unacquired-party-member-icon-image {
 	z-index: 2;
-	&.acquired-party-member-icon-image-1 {
-		width: 100px;
-	}
+}
 
-	&.acquired-party-member-icon-image-2 {
-		width: 115px;
-	}
+.acquired-party-member-icon-image-1,
+.unacquired-party-member-icon-image-1 {
+	width: 100px;
+}
 
-	&.acquired-party-member-icon-image-3 {
-		width: 87px;
-	}
+.acquired-party-member-icon-image-2,
+.unacquired-party-member-icon-image-2 {
+	width: 115px;
+}
 
-	&.acquired-party-member-icon-image-4 {
-		width: 125px;
-	}
+.acquired-party-member-icon-image-3,
+.unacquired-party-member-icon-image-3 {
+	width: 87px;
+}
 
-	&.acquired-party-member-icon-image-5 {
-		width: 155px;
-	}
+.acquired-party-member-icon-image-4,
+.unacquired-party-member-icon-image-4 {
+	width: 125px;
+}
 
-	&.acquired-party-member-icon-image-6 {
-		width: 92px;
-	}
+.acquired-party-member-icon-image-5,
+.unacquired-party-member-icon-image-5 {
+	width: 155px;
+}
 
-	&.acquired-party-member-icon-image-7 {
-		width: 118px;
-	}
+.acquired-party-member-icon-image-6,
+.unacquired-party-member-icon-image-6 {
+	width: 92px;
+}
 
-	&.acquired-party-member-icon-image-8 {
-		width: 123px;
-	}
+.acquired-party-member-icon-image-7,
+.unacquired-party-member-icon-image-7 {
+	width: 115px;
+	margin-block-end: 8px;
+}
 
-	&.acquired-party-member-icon-image-9 {
-		width: 115px;
-	}
+.acquired-party-member-icon-image-8,
+.unacquired-party-member-icon-image-8 {
+	width: 123px;
+}
 
-	&.acquired-party-member-icon-image-10 {
-		width: 115px;
-	}
+.acquired-party-member-icon-image-9,
+.unacquired-party-member-icon-image-9 {
+	width: 115px;
+}
 
-	&.acquired-party-member-icon-image-11 {
-		width: 120px;
-	}
+.acquired-party-member-icon-image-10,
+.unacquired-party-member-icon-image-10 {
+	width: 115px;
+}
 
-	&.acquired-party-member-icon-image-12 {
-		width: 107px;
-	}
+.acquired-party-member-icon-image-11,
+.unacquired-party-member-icon-image-11 {
+	width: 120px;
+}
+
+.acquired-party-member-icon-image-12,
+.unacquired-party-member-icon-image-12 {
+	width: 107px;
 }
 
 .party-member-name-box {
