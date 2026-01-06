@@ -16,7 +16,7 @@ import { useHero } from "@/contexts/HeroContext";
 import { useUser } from "@clerk/nextjs";
 import { getUserInfo } from "@/lib/api/user";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
-import * as Dashboard from "@/features/dashboard/components";
+import DashboardLatestPartyMemberSkeleton from "../dashboard-latest-party-member-skeleton/DashboardLatestPartyMemberSkeleton";
 
 const DashboardLatestPartyMemberSection: React.FC = () => {
 	const [memberId, setMemberId] = useState<number | null>(null);
@@ -128,7 +128,7 @@ const DashboardLatestPartyMemberSection: React.FC = () => {
 			</h2>
 			<div className={`${styles["party-member-container"]}`}>
 				{isLoadingState ? (
-					<Dashboard.DashboardLatestPartyMemberSkeleton />
+					<DashboardLatestPartyMemberSkeleton />
 				) : isGuestUser ? (
 					<div className={styles["party-member-guest-user-container"]}>
 						<p className={styles["party-member-guest-user-message"]}>
