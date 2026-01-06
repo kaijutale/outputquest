@@ -2,8 +2,7 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./ItemsPage.module.css";
-import ItemCardList from "@/features/items/components/item-card-list/ItemCardList";
-import ItemListSkeleton from "@/features/items/components/item-list-skeleton/ItemListSkeleton";
+import * as Items from "@/features/items/components/index";
 
 export const metadata: Metadata = getPageMetadata("items");
 
@@ -21,8 +20,8 @@ const ItemsPage = () => {
 
 				<hr className={styles["items-line"]} />
 
-				<Suspense fallback={<ItemListSkeleton />}>
-					<ItemCardList />
+				<Suspense fallback={<Items.ItemListSkeleton />}>
+					<Items.ItemCardList />
 				</Suspense>
 			</div>
 		</>

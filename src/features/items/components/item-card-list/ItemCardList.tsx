@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { fetchZennArticles } from "@/features/posts/services";
 import { updateItemsByLevel } from "@/features/items/data/itemsData";
-import ItemCardListClient from "../item-card-list-client/ItemCardListClient";
+import * as Items from "@/features/items/components/index";
 import styles from "./ItemCardList.module.css";
 
 const ItemCardList = async () => {
@@ -37,7 +37,7 @@ const ItemCardList = async () => {
 		const items = updateItemsByLevel(articleCount);
 
 		// Client Componentにデータを渡す
-		return <ItemCardListClient items={items} isGuestUser={isGuestUser} />;
+		return <Items.ItemCardListClient items={items} isGuestUser={isGuestUser} />;
 	} catch (error) {
 		console.error("アイテムデータ取得エラー:", error);
 		return <p className={styles["error-message"]}>アイテムデータの取得に失敗しました。</p>;
