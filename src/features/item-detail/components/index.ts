@@ -1,7 +1,6 @@
-import ItemDetailRarityStar from "./item-detail-rarity-star/ItemDetailRarityStar";
+import ItemDetailContent from "./item-detail-content/ItemDetailContent";
 import ItemDetailFooter from "./item-detail-footer/ItemDetailFooter";
-import ItemDynamicHead from "./item-dynamic-head/ItemDynamicHead";
-import ItemDetail from "./item-detail/ItemDetail";
 import ItemDetailSkeleton from "./item-detail-skeleton/ItemDetailSkeleton";
+import ItemDynamicHead from "./item-dynamic-head/ItemDynamicHead";
 
-export { ItemDetailRarityStar, ItemDetailFooter, ItemDynamicHead, ItemDetail, ItemDetailSkeleton };
+export { ItemDetailContent, ItemDetailFooter, ItemDetailSkeleton, ItemDynamicHead };

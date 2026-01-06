@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
-import styles from "./ItemDetail.module.css";
-import * as ItemDetailComponents from "@/features/item-detail/components";
+import styles from "./ItemDetailContent.module.css";
+import * as ItemDetail from "@/features/item-detail/components";
 import {
 	isAcquiredByHeroLevel,
 	heroLevelAndItemRelation,
@@ -19,7 +19,7 @@ interface ItemDetailProps {
 	itemId: number;
 }
 
-const ItemDetail: React.FC<ItemDetailProps> = ({ itemId }) => {
+const ItemDetailContent: React.FC<ItemDetailProps> = ({ itemId }) => {
 	const { user, isLoaded } = useUser();
 	// Zenn連携アカウントのレベル取得状態
 	const [currentLevel, setCurrentLevel] = useState<number>(1);
@@ -101,7 +101,7 @@ const ItemDetail: React.FC<ItemDetailProps> = ({ itemId }) => {
 	return (
 		<div className={styles["item-detail-content"]}>
 			{isLoading ? (
-				<ItemDetailComponents.ItemDetailSkeleton />
+				<ItemDetail.ItemDetailSkeleton />
 			) : (
 				<div className={styles["item-detail-card"]}>
 					<Image
@@ -180,4 +180,4 @@ const ItemDetail: React.FC<ItemDetailProps> = ({ itemId }) => {
 	);
 };
 
-export default ItemDetail;
+export default ItemDetailContent;
