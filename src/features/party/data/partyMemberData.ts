@@ -35,39 +35,37 @@ export const customMemberNames: { [key: number]: string } = {
 
 // カスタム仲間説明文の定義
 export const customMemberDescriptions: { [key: number]: string } = {
-	1: "アイテムの売買を生業とする商人。旅の相場に詳しい。",
-	2: "剣の道を志す若者。力強い一撃が得意。",
-	3: "素手で戦う武闘家。己の肉体を極めんとする。",
-	4: "弓矢の名手。遠くの敵も逃さない。",
-	5: "王国に忠誠を誓う騎士。攻守のバランスが良い。",
-	6: "古の魔法を知る賢者。豊富な知識で一行を導く。",
-	7: "神聖な力を帯びた剣技を操る女騎士。",
-	8: "圧倒的な腕力を持つ鬼の戦士。情に厚い。",
-	9: "異界から迷い込んだ悪魔。契約により力を貸してくれる。",
-	10: "強大な魔力を持つ高位の悪魔。強力な魔法を操る。",
-	11: "国を統べる女王。そのカリスマ性で味方を鼓舞する。",
-	12: "かつて世界を救ったといわれる伝説の王。",
+	1: "世界を股にかける商人。珍しい品々と情報に通じている。",
+	2: "戦いの技術を磨いた戦士。攻守に優れた頼れる前衛。",
+	3: "慈愛の心を持つ聖職者。祈りの力で傷ついた仲間を癒やす。",
+	4: "自然と共に生きる狩人。弓矢を用いて遠距離から敵を射抜く。",
+	5: "王国に仕える忠実な兵士。機動力を活かした戦いを得意とする。",
+	6: "深淵な知識を持つ賢者。古代の魔法と知恵で旅を導く。",
+	7: "神聖な加護を受けた騎士。邪悪な力を退ける聖なる盾。",
+	8: "強靭な肉体を持つ巨漢。その剛腕はあらゆるものを粉砕する。",
+	9: "大海原を統べる海の神。荒波を操り、敵を深海へと誘う。",
+	10: "闇を統べる王。圧倒的なカリスマと魔力で他を陵駕する。",
+	11: "国母として慕われる王妃。優雅な振る舞いで味方を鼓舞する。",
+	12: "国を治める賢王。王としての威厳と統率力で皆を導く。",
 };
 
 // 仲間画像パスの定義
-// 仲間画像パスの定義
 export const customMemberImages: { [key: number]: string } = {
-	1: "merchant_dot01.png",
-	2: "warrior_dot01.png",
-	3: "priest_dot01.png",
-	4: "bow_dot01.png",
-	5: "paladin_dot01.png",
-	6: "old_wise_man_dot01.png",
-	7: "knight_dot01.png",
-	8: "ogre_hero_dot01.png",
-	9: "demon01_dot01.png",
-	10: "demon02_dot01.png",
-	11: "queen_dot01.png",
-	12: "king_dot01.png",
+	1: "merchant_icon.png",
+	2: "warrior_icon.png",
+	3: "priest_icon.png",
+	4: "bow_icon.png",
+	5: "paladin_icon.png",
+	6: "old_wise_man_icon.png",
+	7: "knight_icon.png",
+	8: "ogre_hero_icon.png",
+	9: "poseidon_icon.png",
+	10: "demon_icon.png",
+	11: "queen_icon.png",
+	12: "king_icon.png",
 };
 
 // 未加入仲間のシルエット画像のファイル名定義
-// public/images/party-page/unacquired-icon/ 配下のファイル名
 export const customMemberSilhouetteImages: { [key: number]: string } = {
 	1: "merchant_silhouette_icon.png",
 	2: "warrior_silhouette_icon.png",
