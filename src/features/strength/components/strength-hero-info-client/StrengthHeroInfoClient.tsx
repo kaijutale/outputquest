@@ -27,7 +27,7 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 					<div className={styles["strength-hero-box"]}>
 						<div className={styles["strength-hero-icon-box"]}>
 							<Image
-								src={`/images/hero/hero-plate.png`}
+								src={`/images/hero/hero_plate.png`}
 								alt={"勇者"}
 								width={1000}
 								height={1000}

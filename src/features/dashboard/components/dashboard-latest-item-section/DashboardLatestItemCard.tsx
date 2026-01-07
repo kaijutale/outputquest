@@ -26,8 +26,6 @@ export const DashboardLatestItemCard = ({ itemId, itemName, itemDescription }: P
 		playClickSound(() => router.push(path));
 	};
 
-	const itemImage = customItemImages[itemId];
-
 	return (
 		<div className={`${styles["last-item-box"]}`}>
 			<Link
@@ -44,15 +42,17 @@ export const DashboardLatestItemCard = ({ itemId, itemName, itemDescription }: P
 						priority={true}
 						className={styles["last-item-icon-plate"]}
 					/>
-					{itemImage && (
-						<Image
-							src={`/images/items-page/acquired-icon/${itemImage}`}
-							alt={itemName}
-							width={1000}
-							height={1000}
-							className={`${styles["last-item-icon"]}`}
-						/>
-					)}
+					<Image
+						src={
+							customItemImages[itemId]
+								? `/images/items-page/acquired-icon/${customItemImages[itemId]}`
+								: "/images/items-page/unacquired-icon/mark_question.svg"
+						}
+						alt={itemName}
+						width={1000}
+						height={1000}
+						className={`${styles["last-item-icon"]} ${styles[`last-item-icon-${itemId}`]}`}
+					/>
 				</div>
 				<div className={`${styles["last-item-info"]}`}>
 					<div className={`${styles["last-item-name-box"]}`}>
