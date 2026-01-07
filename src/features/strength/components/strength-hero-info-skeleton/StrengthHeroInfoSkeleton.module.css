@@ -30,7 +30,7 @@
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
 	color: var(--color-primary-white);
 
-	@media (width < 768px) {
+	@media (max-width: 767px) {
 		font-size: 1.125rem;
 	}
 }
@@ -47,12 +47,12 @@
 	padding-block: 15px;
 	padding-inline: 15px;
 
-	@media (width < 1280px) {
+	@media (max-width: 1279px) {
 		padding-block: 40px;
 		padding-inline: 10px;
 	}
 
-	@media (width < 768px) {
+	@media (max-width: 767px) {
 		grid-template-columns: auto;
 	}
 }
@@ -97,7 +97,7 @@
 .skeleton-level-display-box {
 	display: block grid;
 	background-color: var(--color-primary-brown-dark);
-	border: 2.5mm ridge #b69973;
+	border: 3mm ridge #b69973;
 	padding-block: 2px;
 	padding-inline: 2px;
 }

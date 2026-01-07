@@ -7,11 +7,11 @@
 	padding-inline: 20px;
 	overflow-y: scroll;
 
-	@media (width < 1024px) {
+	@media (max-width: 1023px) {
 		overflow-y: visible;
 	}
 
-	@media (width < 640px) {
+	@media (max-width: 639px) {
 		grid-template-columns: 1fr;
 	}
 }
@@ -21,11 +21,11 @@
 	display: block grid;
 	grid-template-rows: subgrid;
 	grid-row: span 4;
-	border: 7px dashed var(--color-primary-brown-light);
 	background-color: var(--color-primary-brown-dark);
+	border: 3mm ridge #b69973;
 	border-radius: var(--border-radius-small);
-	padding-inline: 5px;
-	padding-block: 5px;
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
 }
 
 /* Card - matches post-card layout */
@@ -37,7 +37,7 @@
 	padding-inline: 15px;
 	padding-block: 15px;
 	border: 2px solid var(--color-primary-brown-light);
-	background-color: var(--color-primary-brown);
+	background-color: #ae926e;
 	min-height: 150px; /* CLS prevention */
 }
 
@@ -50,7 +50,7 @@
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
 
-	@media (width < 1024px) {
+	@media (max-width: 1023px) {
 		height: 20px;
 	}
 }
