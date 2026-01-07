@@ -11,6 +11,7 @@ import "../styles/globals.css";
 import { ControlViewport } from "@/components/layout/control-viewport/ControlViewport";
 import { AudioProvider } from "@/contexts/AudioContext";
 import { SignOutHandler } from "@/contexts/SignOutHandler";
+import { HomeAnimationProvider } from "@/features/home/contexts/HomeAnimationContext";
 
 const dotGothic16 = DotGothic16({
 	weight: "400",
@@ -54,12 +55,14 @@ export default function RootLayout({
 					<SignOutHandler>
 						<AudioProvider>
 							<HeroProvider>
-								<CommonContainer>
-									<ControlViewport />
-									<Header />
-									{children}
-									<Footer />
-								</CommonContainer>
+								<HomeAnimationProvider>
+									<CommonContainer>
+										<ControlViewport />
+										<Header />
+										{children}
+										<Footer />
+									</CommonContainer>
+								</HomeAnimationProvider>
 							</HeroProvider>
 						</AudioProvider>
 					</SignOutHandler>
