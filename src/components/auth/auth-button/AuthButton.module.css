@@ -1,20 +1,17 @@
-.login-btn,
-.sign-up-btn {
+.login-btn {
 	position: relative;
 	font-size: 0.875rem;
 	font-weight: var(--font-weight-x-bold);
 	line-height: var(--leading-none);
 	border-radius: var(--border-radius-small);
-	padding-block: 3px;
-	padding-inline: 3px;
-	background-color: var(--color-primary-brown-dark);
-	border: 2px solid var(--color-primary-brown-light);
-	border-radius: var(--border-radius-small);
+	padding-block: 2.5px;
+	padding-inline: 2.5px;
+	background-color: #5a4734;
+	border: 2.5px solid #b69973;
 	cursor: pointer;
 
 	&:hover {
-		.login-btn-text,
-		.sign-up-btn-text {
+		.login-btn-text {
 			padding-inline-start: 31px;
 
 			&::before {
@@ -24,31 +21,12 @@
 	}
 }
 
-.login-btn {
-	background-color: var(--color-primary-brown-dark);
-	color: var(--color-primary-white);
-
-	&:hover {
-		background-color: var(--color-primary-brown-dark);
-	}
-}
-
-.sign-up-btn {
-	background-color: var(--color-primary-brown-dark);
-	color: var(--color-primary-yellow);
-
-	&:hover {
-		background-color: var(--color-primary-brown-dark);
-	}
-}
-
-.login-btn-text,
-.sign-up-btn-text {
+.login-btn-text {
 	min-width: 115px;
 	position: relative;
 	display: block flow;
 	width: 100%;
-	background-color: var(--color-primary-brown);
+	background-color: #ae926e;
 	border: 1.5px solid var(--color-primary-brown-light);
 	padding-block: 10px 11px;
 	padding-inline: 15px;

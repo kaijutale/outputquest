@@ -5,10 +5,11 @@
 }
 
 .connect-button {
-	background-color: var(--color-primary-brown-dark);
-	border: 2px solid var(--color-primary-brown-light);
-	padding: 3px;
-	border-radius: 0.25rem;
+	border-radius: var(--border-radius-small);
+	padding-block: 2.5px;
+	padding-inline: 2.5px;
+	background-color: #5a4734;
+	border: 2.5px solid #b69973;
 
 	&.active:hover {
 		.connect-button-content {
@@ -18,7 +19,7 @@
 }
 
 .connect-button-content {
-	background-color: var(--color-primary-brown);
+	background-color: #ae926e;
 	border: 1.5px solid var(--color-primary-brown-light);
 	place-items: center;
 	padding-block: 5px;
