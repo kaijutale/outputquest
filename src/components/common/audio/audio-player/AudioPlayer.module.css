@@ -25,7 +25,7 @@
 }
 
 .audio-mute {
-	filter: brightness(1.7);
+	filter: brightness(1.75);
 }
 
 .audio-mute-home {
@@ -33,9 +33,9 @@
 }
 
 .audio-play {
-	filter: brightness(0.9);
+	filter: brightness(0.95);
 }
 
 .audio-play-home {
-	filter: brightness(1);
+	filter: brightness(1.05);
 }
