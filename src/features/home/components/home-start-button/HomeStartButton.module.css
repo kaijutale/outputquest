@@ -2,6 +2,14 @@
 	display: block grid;
 	place-items: center;
 	margin-block-start: 135px;
+
+	@media (width < 1280px) {
+		margin-block-start: 70px;
+	}
+
+	@media (width < 768px) {
+		margin-block-start: 50px;
+	}
 }
 
 .start-btn {
@@ -9,6 +17,14 @@
 	height: auto;
 	position: relative;
 	filter: drop-shadow(0px 1px 1px rgb(0 0 0 / 80%));
+
+	@media (width < 1280px) {
+		width: 150px;
+	}
+
+	@media (width < 768px) {
+		width: 130px;
+	}
 }
 
 .start-btn-image {
@@ -21,6 +37,14 @@
 	left: 0px;
 	height: 62px;
 	opacity: 0;
+
+	@media (width < 1280px) {
+		height: 56px;
+	}
+
+	@media (width < 768px) {
+		height: 48.5px;
+	}
 }
 
 .start-btn:hover .start-btn-image {

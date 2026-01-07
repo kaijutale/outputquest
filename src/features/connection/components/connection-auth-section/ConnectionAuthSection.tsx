@@ -60,13 +60,13 @@ const ConnectionAuthSection: React.FC<ConnectionAuthSectionProps> = ({
 					<span>Zennユーザー名</span>
 					<strong className="text-[#ffc630]">(必須)</strong>
 				</label>
-				<div className="flex gap-3 opacity-40 select-none">
+				<div className="flex sm:gap-2 gap-1 opacity-40 select-none">
 					<input
 						id="zenn-username"
 						type="text"
 						value=""
 						onChange={() => {}}
-						className="flex-1 border-[3px] border-gray-400 bg-white rounded px-3 py-2 text-black cursor-not-allowed"
+						className="flex-1 border-[3px] border-gray-400 bg-white rounded px-3 py-2 text-black cursor-not-allowed min-w-0"
 						placeholder="例: aoyamadev"
 						disabled
 					/>
@@ -74,11 +74,15 @@ const ConnectionAuthSection: React.FC<ConnectionAuthSectionProps> = ({
 						onClick={() => updateUserProfile()}
 						className={`${styles["connect-button"]} ${
 							!loading && zennUsername ? styles["active"] : ""
-						} ${loading || !zennUsername ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+						} ${loading || !zennUsername ? "opacity-50 cursor-not-allowed" : "cursor-pointer"} shrink-0`}
 						disabled={loading || !zennUsername}
 					>
-						<div className={`${styles["connect-button-content"]}`}>
-							{loading ? <LoadingIndicator text="連携中" /> : "連携"}
+						<div className={`${styles["connect-button-content"]} whitespace-nowrap`}>
+							{loading ? (
+								<LoadingIndicator text="連携中" className={styles["loading-indicator"]} />
+							) : (
+								"連携"
+							)}
 						</div>
 					</button>
 				</div>

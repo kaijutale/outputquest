@@ -180,7 +180,7 @@ const StrengthTitleInfo = () => {
 								className={`${styles["strength-title-detail-content"]} ${getCurrentTitleClass()}`}
 							>
 								{isLoadingTitle || !isReady ? (
-									<LoadingIndicator text="読み込み中" fontSize="1.125rem" />
+									<LoadingIndicator text="読み込み中" className={styles["loading-indicator"]} />
 								) : (
 									<h3 className={styles["strength-title-detail-text"]}>{getLatestTitle()}</h3>
 								)}

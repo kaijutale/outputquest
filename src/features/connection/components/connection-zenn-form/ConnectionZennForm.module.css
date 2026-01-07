@@ -34,6 +34,18 @@
 	gap: 6px;
 }
 
+.loading-indicator {
+	font-size: 1.125rem;
+
+	@media (width < 768px) {
+		font-size: 1rem;
+	}
+
+	@media (width < 640px) {
+		font-size: 0.875rem;
+	}
+}
+
 .zenn-logo-sm {
 	width: 16px;
 	height: 16px;

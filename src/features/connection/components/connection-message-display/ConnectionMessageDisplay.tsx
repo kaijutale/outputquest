@@ -26,7 +26,11 @@ const ConnectionMessageDisplay: React.FC<ConnectionMessageDisplayProps> = ({
 		<>
 			{error && (
 				<strong className={styles["error-message"]}>
-					{isLoadingError ? <LoadingIndicator text={loadingMessage} fontSize="0.875rem" /> : error}
+					{isLoadingError ? (
+						<LoadingIndicator text={loadingMessage} className={styles["loading-indicator"]} />
+					) : (
+						error
+					)}
 				</strong>
 			)}
 			{!error && success && <p className={styles["success-message"]}>{success}</p>}

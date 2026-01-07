@@ -193,6 +193,11 @@
 			"Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 		font-weight: 600;
 		font-style: normal;
+
+		@media (width < 640px) {
+			padding-inline: 7px;
+			padding-block-start: 7px;
+		}
 	}
 
 	main {

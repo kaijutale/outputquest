@@ -16,7 +16,7 @@ const ExplorePage = () => {
 				<Suspense
 					fallback={
 						<div className="grid place-items-center pt-4">
-							<LoadingIndicator text="読み込み中" fontSize="1.125rem" />
+							<LoadingIndicator text="読み込み中" className={styles["loading-indicator"]} />
 						</div>
 					}
 				>
