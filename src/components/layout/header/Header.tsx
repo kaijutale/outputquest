@@ -9,6 +9,8 @@ import HamburgerMenu from "@/components/elements/hamburger-menu/HamburgerMenu";
 import Gnav from "@/components/layout/gnav/Gnav";
 import styles from "./Header.module.css";
 import Crown from "@/components/common/crown/Crown";
+import { motion } from "motion/react";
+import { useHomeAnimation } from "@/features/home/contexts/HomeAnimationContext";
 
 export const Header = () => {
 	const pathname = usePathname();
@@ -18,8 +20,25 @@ export const Header = () => {
 		volume: 0.5,
 	});
 
+	// Audio player animation control
+	const { isImageVisible, isFirstVisit } = useHomeAnimation();
+	const isHome = pathname === "/";
+	const shouldAnimateAudio = isHome;
+
 	// audioPlayer の定義をここに移動
-	const audioPlayer = <AudioPlayer src="/audio/outputquest-theme-song.mp3" volume={0.5} />;
+	const audioPlayer = (
+		<motion.div
+			initial={shouldAnimateAudio ? { opacity: 0 } : { opacity: 1 }}
+			animate={shouldAnimateAudio ? { opacity: isImageVisible ? 1 : 0 } : { opacity: 1 }}
+			transition={
+				shouldAnimateAudio
+					? { duration: isFirstVisit ? 1.75 : 0, ease: "easeInOut" }
+					: { duration: 0 }
+			}
+		>
+			<AudioPlayer src="/audio/outputquest-theme-song.mp3" volume={0.5} />
+		</motion.div>
+	);
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
