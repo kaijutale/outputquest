@@ -11,7 +11,7 @@ const DashboardPlatformStatsSection = async () => {
 	// ゲストユーザーかどうかの判定
 	const isGuestUser = !user || !user.zennUsername;
 
-	// 実際のZennデータとモックデータを組み合わせてstatsを作成
+	// 実際のZennデータと定義データを組み合わせてstatsを作成
 	const zennStat = {
 		platform: "Zenn",
 		count: heroData.level,

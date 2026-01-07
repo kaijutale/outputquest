@@ -221,8 +221,8 @@ export const isAcquiredByHeroLevel = (itemId: number, heroLevel: number): boolea
 	return true;
 };
 
-// アイテムのモックデータ生成関数
-const generateMockItems = (heroLevel: number = 1): Item[] => {
+// アイテムのデータ生成関数
+const generateItems = (heroLevel: number = 1): Item[] => {
 	return Object.keys(customItemNames).map((key) => {
 		const id = Number(key);
 		const acquired = isAcquiredByHeroLevel(id, heroLevel);
@@ -238,14 +238,14 @@ const generateMockItems = (heroLevel: number = 1): Item[] => {
 };
 
 // 初期状態では仮のレベル1としてアイテムを生成
-const initialItems = generateMockItems(1);
+const initialItems = generateItems(1);
 
-// エクスポートするモックデータ
+// エクスポートするデータ
 export const itemsData: ItemsData = {
 	items: initialItems,
 };
 
 // レベルに応じてアイテムデータを更新する関数
 export const updateItemsByLevel = (level: number): Item[] => {
-	return generateMockItems(level);
+	return generateItems(level);
 };

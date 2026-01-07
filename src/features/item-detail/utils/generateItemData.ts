@@ -20,7 +20,7 @@ export const generateItemData = (
 		return null;
 	}
 
-	// モックデータからアイテム名と説明文を取得
+	// 定義データからアイテム名と説明文を取得
 	const item = itemsData.items.find((item) => item.id === itemId);
 	const itemName = item && item.name ? item.name : `アイテム${itemId}`;
 	const itemDescription =

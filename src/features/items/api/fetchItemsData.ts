@@ -3,7 +3,7 @@ import { itemsData } from "../data/itemsData";
 
 /**
  * アイテムデータを取得する関数
- * 現在はモックデータを返しますが、将来的にはAPIからデータを取得するように変更予定
+ * アプリケーションの定義データ（ItemsData）を返します
  */
 export async function fetchItemsData(): Promise<ItemsData> {
 	// TODO: 実際のAPIが実装されたら、ここでフェッチ処理を行う
@@ -20,6 +20,6 @@ export async function fetchItemsData(): Promise<ItemsData> {
 	//   return itemsData;
 	// }
 
-	// 現時点ではモックデータを返す
+	// 定義データを返す
 	return Promise.resolve(itemsData);
 }

@@ -9,7 +9,7 @@ export async function fetchDashboardData(): Promise<DashboardData> {
 		return await response.json();
 	} catch (error) {
 		console.error("ダッシュボードデータの取得エラー:", error);
-		// エラー時にはモックデータを返すか、エラーを投げる
+		// 開発用の初期データを返すか、エラーを投げる
 		throw error;
 	}
 }

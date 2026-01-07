@@ -1,6 +1,6 @@
 import { DashboardData } from "../types/dashboard.types";
 
-// 開発用のモックデータ
+// 開発用の初期データ
 export const dashboardData: DashboardData = {
 	heroData: {
 		name: "勇者",

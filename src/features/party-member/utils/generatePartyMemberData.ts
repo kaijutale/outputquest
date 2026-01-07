@@ -20,7 +20,7 @@ export const generatePartyMemberData = (
 		return null;
 	}
 
-	// モックデータからアイテム名と説明文を取得
+	// 定義データからアイテム名と説明文を取得
 	const partyMember = partyMemberData.partyMembers.find(
 		(partyMember) => partyMember.id === partyId
 	);

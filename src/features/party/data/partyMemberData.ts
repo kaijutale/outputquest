@@ -96,8 +96,8 @@ export const isAcquiredByHeroLevel = (memberId: number, heroLevel: number): bool
 	return true;
 };
 
-// 仲間のモックデータ生成関数
-const generateMockMembers = (heroLevel: number = 1): PartyMember[] => {
+// 仲間のデータ生成関数
+const generateMembers = (heroLevel: number = 1): PartyMember[] => {
 	// 12人の仲間を定義
 	return Array(12)
 		.fill(null)
@@ -115,14 +115,14 @@ const generateMockMembers = (heroLevel: number = 1): PartyMember[] => {
 };
 
 // 初期状態では仮のレベル1として仲間を生成
-const initialPartyMembers = generateMockMembers(1);
+const initialPartyMembers = generateMembers(1);
 
-// エクスポートするモックデータ
+// エクスポートするデータ
 export const partyMemberData: PartyData = {
 	partyMembers: initialPartyMembers,
 };
 
 // レベルに応じて仲間データを更新する関数
 export const updatePartyMembersByLevel = (level: number): PartyMember[] => {
-	return generateMockMembers(level);
+	return generateMembers(level);
 };
