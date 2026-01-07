@@ -50,7 +50,7 @@ export const navigationItems: NavigationItem[] = [
 		id: 6,
 		title: "アイテム",
 		href: "/items",
-		icon: "/images/nav-icon/treasure-chest-close-icon01.png",
+		icon: "/images/nav-icon/medicinal_herbs_icon.png",
 		alt: "アイテム",
 		width: 100,
 		height: 100,
