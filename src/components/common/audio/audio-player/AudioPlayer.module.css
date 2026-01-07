@@ -1,3 +1,8 @@
+.audio-button-container {
+	display: block grid;
+	place-items: center;
+}
+
 .audio-button {
 	width: 50px;
 	height: auto;
@@ -6,9 +11,12 @@
 	filter: drop-shadow(0px 1px 1px rgb(0 0 0 / 80%));
 	transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-	@media (width < 640px) {
+	@media (width < 1024px) {
 		width: 45px;
-		height: 45px;
+	}
+
+	@media (width < 768px) {
+		width: 40px;
 	}
 }
 

@@ -52,8 +52,7 @@ const ConnectionButtonGroup: React.FC<ConnectionButtonGroupProps> = ({
 					{loading ? (
 						<LoadingIndicator
 							text="同期中"
-							className={styles["sync-button-text"]}
-							fontSize="0.875rem"
+							className={`${styles["sync-button-text"]} ${styles["loading-indicator"]}`}
 						/>
 					) : (
 						<span className={styles["sync-button-text"]}>同期する</span>

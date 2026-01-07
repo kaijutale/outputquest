@@ -136,13 +136,13 @@ export default function ConnectionPageClient() {
 
 	return (
 		<>
+			<div className={styles["title-bg"]}></div>
 			<h1 className={`${styles["profile-title"]}`}>連携</h1>
 			<div className={`${styles["profile-container"]}`}>
 				{!isLoaded ? (
 					<LoadingIndicator
 						text="読み込み中"
-						className="px-4 pb-[40px] text-center"
-						fontSize="1.125rem"
+						className={`${styles["loading-indicator"]} px-4 pb-[40px] text-center`}
 					/>
 				) : !user ? (
 					<Connection.ConnectionAuthSection
@@ -160,7 +160,10 @@ export default function ConnectionPageClient() {
 
 						<div className={styles["connection-info-container"]}>
 							{!isZennInfoLoaded ? (
-								<LoadingIndicator text="読み込み中" className="p-4 text-center" />
+								<LoadingIndicator
+									text="読み込み中"
+									className={`${styles["loading-indicator"]} p-4 text-center`}
+								/>
 							) : displayUser?.zennUsername ? (
 								<>
 									<div className={styles["connection-info-zenn"]}>

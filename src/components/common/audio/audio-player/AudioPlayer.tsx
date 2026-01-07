@@ -61,7 +61,7 @@ const AudioPlayer = memo(({ src, className = "audio-button", volume = 1 }: Audio
 		<div className={styles["audio-button-container"]}>
 			<button
 				onClick={handleClick}
-				className={`hidden lg:block md:sticky md:inset-0 ${styles["audio-button"]} ${className}`}
+				className={`${styles["audio-button"]} ${className}`}
 				aria-label={isMuted ? "Unmute" : "Mute"}
 			>
 				{isMuted ? (

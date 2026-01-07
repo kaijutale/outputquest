@@ -24,7 +24,7 @@ const ExploreArticleAnalysis = dynamic(
 					height: "100%",
 				}}
 			>
-				<LoadingIndicator text="読み込み中" fontSize="1.125rem" />
+				<LoadingIndicator text="読み込み中" className={styles["loading-indicator"]} />
 			</div>
 		),
 	}
@@ -160,7 +160,7 @@ const ExplorePageClient = () => {
 
 					{!isLoaded || !isZennInfoLoaded ? (
 						<div className="grid place-items-center px-4">
-							<LoadingIndicator text="読み込み中" fontSize="0.875rem" />
+							<LoadingIndicator text="読み込み中" className={styles["loading-indicator"]} />
 						</div>
 					) : !isGuestUser ? (
 						<div className={styles["explore-analysis-controls"]}>

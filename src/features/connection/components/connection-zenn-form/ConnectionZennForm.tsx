@@ -82,7 +82,7 @@ const ConnectionZennForm = memo<ConnectionZennFormProps>(function ConnectionZenn
 			) : (
 				<div className="text-center mt-[12px]">
 					{loading && isZennInfoLoaded ? (
-						<LoadingIndicator text="連携中" />
+						<LoadingIndicator text="連携中" className={styles["loading-indicator"]} />
 					) : (
 						<p>Zennと連携が必要です。</p>
 					)}
