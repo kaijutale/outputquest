@@ -9,7 +9,7 @@
 	padding-block: 40px;
 	padding-inline: 20px;
 
-	@media (width < 1024px) {
+	@media (max-width: 1023px) {
 		overflow-y: visible;
 	}
 }
@@ -20,7 +20,7 @@
 	grid-template-rows: subgrid;
 	grid-row: span 1;
 	background-color: var(--color-primary-brown-dark);
-	border: 7px dashed var(--color-primary-brown-light);
+	border: 3mm ridge #b69973;
 	padding-inline: 5px;
 	padding-block: 5px;
 	border-radius: var(--border-radius-small);

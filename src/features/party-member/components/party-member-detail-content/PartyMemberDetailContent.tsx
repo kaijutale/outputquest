@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import styles from "./PartyMemberDetailContent.module.css";
-import * as PartyMemberDetail from "@/features/party-member/components"
+import * as PartyMemberDetail from "@/features/party-member/components";
 import {
 	heroLevelAndMemberRelation,
 	isAcquiredByHeroLevel,

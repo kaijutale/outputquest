@@ -1,113 +1,108 @@
-/* Card - matches item-detail-card */
 .skeleton-card {
 	width: 360px;
-	height: auto;
+	height: 534.23px;
 	display: block grid;
 	place-items: center;
+	background-color: var(--color-primary-brown-dark);
+	border: 5mm ridge #b69973;
+	padding-block: 2.5px;
+	padding-inline: 2.5px;
 
-	/* 子要素（背景画像とコンテンツ）を同じセルに配置 */
 	& > * {
 		grid-area: 1 / 1;
 		width: 100%;
 		height: 100%;
 	}
 
-	@media (width < 768px) {
+	@media (max-width: 767px) {
 		width: 280px;
+		height: 415.52px;
 	}
 
-	@media (width < 640px) {
+	@media (max-width: 639px) {
 		width: 260px;
+		height: 385.84px;
 	}
 }
 
 .skeleton-bg {
 	width: 100%;
 	height: 100%;
-	background-color: #222;
-	border: 6px solid #333;
-	border-radius: var(--border-radius-medium);
-	z-index: 1;
-}
-
-/* Card Content - matches item-detail-card-content */
-.skeleton-card-content {
-	width: 100%;
-	height: 534px;
+	background-color: #ae926e;
+	border: 2px solid var(--color-primary-brown-light);
 	display: block grid;
 	place-items: center;
-	grid-template-rows: 212px auto 1fr;
+}
+
+.skeleton-card-content {
+	width: 100%;
+	height: 100%;
+	display: block grid;
+	place-items: center;
+	grid-template-rows: 220px auto 1fr;
 	gap: 15px;
-	padding-inline: 50px;
-	padding-block-end: 12px;
-	z-index: 2;
+	padding-block: 25px;
+	padding-inline: 25px;
 
-	@media (width < 768px) {
-		height: 415px;
-		grid-template-rows: 157px auto 1fr;
+	@media (max-width: 767px) {
+		grid-template-rows: 1fr auto 1fr;
 		gap: 10px;
-		padding-inline: 40px;
-		padding-block-end: 12px;
-	}
-
-	@media (width < 640px) {
-		height: 385px; /* ユーザー指定: 385px */
-		padding-block-end: 12px;
+		padding-block: 15px;
+		padding-inline: 15px;
 	}
 }
 
-/* Image Box - matches item-detail-image-box */
 .skeleton-image-box {
 	display: block grid;
 	place-items: center;
 	width: 100%;
 	height: 100%;
-	padding-block: 24px;
-
-	@media (width < 768px) {
-		height: 150px;
-		padding-block: 16px;
-	}
+	border: 1mm ridge #b69973;
+	padding-block: 2.5px;
+	padding-inline: 2.5px;
 }
 
-/* Image Skeleton */
 .skeleton-image {
 	width: 100%;
 	height: 100%;
-	border-radius: 10px;
 	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 }
 
-/* Title Box - matches item-detail-title-box */
 .skeleton-title-box {
 	width: 140px;
+	height: 38px;
 	display: block grid;
 	place-items: center;
-	padding: 5px;
+	padding: 1.5px;
+	background-color: var(--color-primary-brown-dark);
+	border: 1mm ridge #b69973;
+
+	@media (max-width: 767px) {
+		width: 84px;
+		height: 35px;
+	}
 }
 
-/* Title Skeleton */
 .skeleton-title {
 	width: 100%;
-	height: 35px;
+	height: 100%;
 	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
-	border-radius: var(--border-radius-small);
 }
 
-/* Description Box - matches item-detail-description-box */
 .skeleton-description-box {
 	width: 100%;
 	height: 100%;
 	display: block grid;
 	place-items: center;
-	padding: 2px;
+	padding: 1.5px;
+	background-color: var(--color-primary-brown-dark);
+	border: 1mm ridge #b69973;
 }
 
-/* Description Line Skeleton */
 .skeleton-description-line {
 	width: 100%;
 	height: 100%;
@@ -115,10 +110,8 @@
 	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
-	border-radius: var(--border-radius-small);
 }
 
-/* Shimmer Animation */
 @keyframes shimmer {
 	0% {
 		background-position: 200% 0;
