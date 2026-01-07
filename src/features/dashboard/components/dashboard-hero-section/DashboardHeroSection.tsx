@@ -34,7 +34,7 @@ const DashboardHeroSection = async () => {
 					<div className={`${styles["hero-info-box"]}`}>
 						<div className={`${styles["hero-info-icon-box"]}`}>
 							<Image
-								src={`/images/hero/hero-plate.png`}
+								src={`/images/hero/hero_plate.png`}
 								alt={heroData.name}
 								width={1000}
 								height={1000}
