@@ -32,7 +32,7 @@ export const Footer = () => {
 			>
 				<div className={`${styles["footer-box"]}`}>
 					<small className={`${styles["footer-text"]} block text-[10px] font-black`}>
-						© 2025 {siteData.siteMainTitle}
+						© {siteData.siteMainTitle}
 					</small>
 				</div>
 			</div>
