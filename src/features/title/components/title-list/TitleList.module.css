@@ -21,7 +21,6 @@
 	border: 3mm ridge #b69973;
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
-	border-radius: var(--border-radius-small);
 }
 
 .title-page-list-item-box {
