@@ -1,7 +1,7 @@
 .title-page-list {
 	grid-area: list;
 	display: block grid;
-	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	height: 100%;
 	gap: 30px;
 	overflow-y: scroll;
@@ -18,9 +18,9 @@
 	grid-template-rows: subgrid;
 	grid-row: span 1;
 	background-color: var(--color-primary-brown-dark);
-	border: 7px dashed var(--color-primary-brown-light);
-	padding-inline: 5px;
-	padding-block: 5px;
+	border: 3mm ridge #b69973;
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
 	border-radius: var(--border-radius-small);
 }
 
@@ -30,8 +30,8 @@
 	place-items: center;
 	grid-row: span 1;
 	gap: 15px;
-	background-color: var(--color-primary-brown);
-	border: 1.5px solid var(--color-primary-brown-light);
+	background-color: #ae926e;
+	border: 2px solid var(--color-primary-brown-light);
 	padding-inline: 15px;
 	padding-block: 25px;
 
