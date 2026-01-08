@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { useUser } from "@clerk/nextjs";
 import ReactMarkdown from "react-markdown";
 import styles from "./ExploreArticleAnalysis.module.css";
+import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 import Link from "next/link";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 
@@ -36,9 +37,21 @@ const ExploreArticleAnalysis: React.FC<ExploreArticleAnalysisProps> = ({
 		delay: 190, // 190ミリ秒 = 0.19秒の遅延
 	});
 
-	// 読み込み中は枠だけ保って中身は表示しない（チラつき・レイアウトシフト防止）
+	// 読み込み中はローディングを表示する（遷移時などDynamic Importのloadingが出ない場合への対応）
 	if (!isLoaded || !isZennInfoLoaded) {
-		return <div className={styles["explore-article-analysis-container"]}></div>;
+		return (
+			<div className={styles["explore-article-analysis-container"]}>
+				<div
+					style={{
+						display: "grid",
+						placeItems: "center",
+						height: "100%",
+					}}
+				>
+					<LoadingIndicator text="読み込み中" />
+				</div>
+			</div>
+		);
 	}
 
 	// ゲストユーザーまたはZenn未連携の場合
