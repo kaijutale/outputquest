@@ -32,9 +32,16 @@ export default function RootLayout({
 	const redirectUrl = process.env.NEXT_PUBLIC_CONNECTION_URL || "/connection";
 	return (
 		<html lang="ja" className={`${dotGothic16.variable}`}>
-			<body suppressHydrationWarning>
-				<Script id="adobe-fonts" strategy="afterInteractive">
-					{`
+			<head>
+				<style>{`
+					.wf-loading body {
+						opacity: 0;
+						visibility: hidden;
+					}
+				`}</style>
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
             (function(d) {
               var config = {
                 kitId: 'jqw4oeg',
@@ -43,8 +50,11 @@ export default function RootLayout({
               },
               h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\\bwf-loading\\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
             })(document);
-          `}
-				</Script>
+          `,
+					}}
+				/>
+			</head>
+			<body suppressHydrationWarning>
 				<ClerkProvider
 					signInFallbackRedirectUrl={redirectUrl}
 					signInForceRedirectUrl={redirectUrl}
