@@ -52,6 +52,7 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 									alt={partyMember.name || "勇者の仲間"}
 									width={1000}
 									height={1000}
+									priority={true}
 									className={`${styles["acquired-party-member-icon-image"]} ${
 										styles[`acquired-party-member-icon-image-${partyMember.id}`]
 									}`}
@@ -72,6 +73,7 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 									alt="まだ見ぬ仲間"
 									width={1000}
 									height={1000}
+									priority={true}
 									className={`${styles["unacquired-party-member-icon-image"]} ${
 										styles[`unacquired-party-member-icon-image-${partyMember.id}`]
 									}`}

@@ -49,6 +49,7 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									alt="未入手のアイテム"
 									width={1000}
 									height={1000}
+									priority={true}
 									className={`${styles["unacquired-item-icon-image"]} ${
 										styles[`unacquired-item-icon-image-${item.id}`]
 									}`}
@@ -69,6 +70,7 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									alt={item.name || "アイテム"}
 									width={1000}
 									height={1000}
+									priority={true}
 									className={`${styles["acquired-item-icon-image"]} ${
 										styles[`acquired-item-icon-image-${item.id}`]
 									}`}
