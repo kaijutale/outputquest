@@ -30,15 +30,19 @@ const ExploreArticleAnalysis: React.FC<ExploreArticleAnalysisProps> = ({
 }) => {
 	const { user } = useUser();
 
-	// ゲストユーザーまたはZenn未連携の場合
-	// ローディング中もゲストユーザーとして判定しない（ちらつき防止）
-	const isGuestUser = !isLoaded || !isZennInfoLoaded ? false : !user || !userZennInfo?.zennUsername;
-
 	const { playClickSound } = useClickSound({
 		soundPath: "/audio/click-sound_decision.mp3",
 		volume: 0.5,
 		delay: 190, // 190ミリ秒 = 0.19秒の遅延
 	});
+
+	// 読み込み中は枠だけ保って中身は表示しない（チラつき・レイアウトシフト防止）
+	if (!isLoaded || !isZennInfoLoaded) {
+		return <div className={styles["explore-article-analysis-container"]}></div>;
+	}
+
+	// ゲストユーザーまたはZenn未連携の場合
+	const isGuestUser = !user || !userZennInfo?.zennUsername;
 
 	return (
 		<div className={styles["explore-article-analysis-container"]}>
