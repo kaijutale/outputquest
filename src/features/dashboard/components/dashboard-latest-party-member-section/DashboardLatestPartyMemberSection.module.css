@@ -36,17 +36,16 @@
 
 .party-member-guest-user-container,
 .party-member-null-container {
-	padding-inline: 5px;
-	padding-block: 5px;
 	display: block grid;
-	border: 7px dashed var(--color-primary-brown-light);
-	border-radius: var(--border-radius-small);
+	border: 3mm ridge #b69973;
 	background-color: var(--color-primary-brown-dark);
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
 }
 
 .party-member-guest-user-message,
 .party-member-null-message {
-	background-color: var(--color-primary-brown);
+	background-color: #ae926e;
 	border: 2px solid var(--color-primary-brown-light);
 	padding: 15px;
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);

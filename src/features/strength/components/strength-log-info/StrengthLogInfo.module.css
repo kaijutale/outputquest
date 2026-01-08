@@ -1,9 +1,9 @@
 .strength-log-info {
-	padding-inline: 5px;
-	padding-block: 5px;
+	border: 3mm ridge #b69973;
 	background-color: var(--color-primary-brown-dark);
-	border: 3px solid var(--color-primary-brown-light);
 	border-radius: var(--border-radius-small);
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
 }
 
 .strength-log-info-content {
@@ -11,8 +11,8 @@
 	display: grid;
 	grid-template-columns: auto;
 	gap: 20px;
+	background-color: #ae926e;
 	border: 2px solid var(--color-primary-brown-light);
-	background-color: var(--color-primary-brown);
 }
 
 .strength-log-box {
