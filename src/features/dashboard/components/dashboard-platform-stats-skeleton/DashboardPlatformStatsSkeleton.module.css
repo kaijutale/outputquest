@@ -42,10 +42,8 @@
 	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
-	/* border: 7px dashed var(--color-primary-brown-light); */
 	border: 3mm ridge #b69973;
 	background-color: var(--color-primary-brown-dark);
-	/* border-radius: var(--border-radius-small); */
 }
 
 /* matches platform-stat-share-link-text */

@@ -44,12 +44,10 @@
 	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
-	/* border: 7px dashed var(--color-primary-brown-light); */
 	border: 2.7mm ridge #b69973;
 	background-color: var(--color-primary-brown-dark);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
-	/* border-radius: var(--border-radius-small); */
 }
 
 /* matches latest-item-share-link-text */
