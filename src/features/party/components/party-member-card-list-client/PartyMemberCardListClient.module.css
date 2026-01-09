@@ -13,12 +13,6 @@
 	}
 }
 
-.party-loading-indicator {
-	padding-block-start: 40px;
-	display: block grid;
-	place-items: center;
-}
-
 .party-member-card-content {
 	display: block grid;
 	grid-template-rows: subgrid;

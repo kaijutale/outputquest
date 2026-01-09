@@ -139,20 +139,6 @@
 	font-size: 2rem;
 }
 
-.loading-indicator {
-	display: block grid;
-	place-items: end;
-	height: 32px;
-	font-size: 1.25rem;
-}
-
-.loading-indicator-small {
-	font-size: 1.125rem;
-	font-weight: var(--font-weight-x-bold);
-	line-height: var(--leading-none);
-	color: var(--color-primary-white);
-}
-
 .strength-level-progress-box {
 	display: block grid;
 	gap: 12px;

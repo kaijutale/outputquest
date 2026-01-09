@@ -183,10 +183,6 @@
 	display: grid;
 }
 
-.loading-indicator {
-	font-size: 1.812rem;
-}
-
 .hero-info-level-display {
 	height: 48px;
 	display: block grid;
@@ -251,13 +247,6 @@
 	font-style: normal;
 	text-shadow: 0px 0px 10px var(--color-primary-yellow);
 	color: var(--color-primary-yellow);
-}
-
-.loading-indicator-small {
-	font-size: 1.125rem;
-	font-weight: var(--font-weight-x-bold);
-	line-height: var(--leading-none);
-	color: var(--color-primary-white);
 }
 
 .hero-info-level-progress-unit {
