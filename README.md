@@ -103,14 +103,14 @@ AIが勇者の仲間の「賢者」として、次に書く記事に最適なテ
 
 ![記事探索](public/gifs/readme/explore-page.gif)
 
-**※記事探索機能には、「Gemini 2.5 Pro（無料枠）」をAPIとして利用しています。** <br />
+**※記事探索機能には、「Gemini 3 Flash Preview（無料枠）」をAPIとして利用しています。** <br />
 
-Gemini 2.5 Pro（無料枠）の採用理由は以下の2点です。
+Gemini 3 Flash Preview（無料枠）の採用理由は以下の2点です。
 
 - OUTPUT QUESTは、あくまで「**ポートフォリオ用に開発したWebアプリ**」であり、想定利用者は面接官や自分自身に限定されるため無料枠で十分と判断
 - **執筆や文字数を出すコンテンツ制作（記事探索機能）** において、Geminiの「**1Mコンテキストウィンドウ**」が非常に役立つため
 
-[Gemini 2.5 Pro（無料枠）のレートリミット](https://ai.google.dev/gemini-api/docs/rate-limits?hl=ja&_gl=1*ya4rpo*_up*MQ..*_ga*MTY1MTczOTQ5OS4xNzU0NzIyMTI0*_ga_P1DBVKWT6V*czE3NTQ3MjIxMjMkbzEkZzAkdDE3NTQ3MjIxMjMkajYwJGwwJGg3MDA2OTUzNDY.)
+[Gemini 3 Flash Preview（無料枠）のレートリミット](https://ai.google.dev/gemini-api/docs/rate-limits?hl=ja&_gl=1*ya4rpo*_up*MQ..*_ga*MTY1MTczOTQ5OS4xNzU0NzIyMTI0*_ga_P1DBVKWT6V*czE3NTQ3MjIxMjMkbzEkZzAkdDE3NTQ3MjIxMjMkajYwJGwwJGg3MDA2OTUzNDY.)
 
 | 指標 | 説明                          | 制限値  |
 | ---- | ----------------------------- | ------- |
@@ -199,8 +199,8 @@ OUTPUT QUESTのプライバシーポリシーを確認できます。
 
 ### フロント
 
-- [Next.js(App Router)](https://nextjs.org)：v16.0.7
-- [React](https://react.dev)：v19.2.1
+- [Next.js(App Router)](https://nextjs.org)：v16.1.0
+- [React](https://react.dev)：v19.2.3
 - [TypeScript](https://www.typescriptlang.org/)：v5.9.3
 
 ### スタイル・UI
@@ -218,7 +218,7 @@ OUTPUT QUESTのプライバシーポリシーを確認できます。
 
 ### 認証・データベース
 
-- [Clerk](https://clerk.com/)：v6.34.1（認証）
+- [Clerk](https://clerk.com/)：v6.36.5（認証）
 - [Prisma](https://www.prisma.io/)：v6.18.0（ORM）
 - [Supabase](https://supabase.com/)（PostgreSQL）
 
@@ -331,7 +331,6 @@ outputquest/
 │   │   │   ├── connection/                          # Clerk認証・Zenn連携ページ
 │   │   │   ├── connection-detail/                   # Clerk認証・Zenn連携の解説ページ
 │   │   │   ├── dashboard/                           # ダッシュボードページ
-│   │   │   ├── equipment/                           # 装備ページ
 │   │   │   ├── explore/                             # 記事探索ページ
 │   │   │   ├── items/                               # アイテムページ
 │   │   │   ├── logs/                                # ログページ
@@ -367,10 +366,9 @@ outputquest/
 │   │   ├── connection/                              # Clerk認証・Zenn連携ページ機能
 │   │   ├── connection-detail/                       # Clerk認証・Zenn連携の解説ページ機能
 │   │   ├── dashboard/                               # ダッシュボード機能
-│   │   ├── equipment/                               # 装備機能
-│   │   ├── equipment-detail/                        # 装備詳細機能
 │   │   ├── explore/                                 # 記事探索ページ機能
 │   │   ├── gnav/                                    # グローバルナビゲーション機能
+│   │   ├── hero/                                    # ヒーローセクション機能
 │   │   ├── home/                                    # ホームページ機能
 │   │   ├── item-detail/                             # アイテム詳細機能
 │   │   ├── items/                                   # アイテム機能
@@ -460,7 +458,7 @@ http://localhost:3000/<br>
 
 ### **記事探索機能のアップデート**
 
-- LLMのモデル変更（現在：gemini-2.5-pro）
+- LLMのモデル変更（現在：gemini-3-flash-preview）
 - モデルの回答生成時の口調の変更（現在：老賢者）
 
 ### **連携できるプラットフォームの追加**
