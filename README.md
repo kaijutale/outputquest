@@ -12,7 +12,6 @@ https://outputquest.com
 - [プロジェクト概要](#project-overview)
 - [アプリの利用方法](#how-to-use)
 - [機能紹介](#feature-introduction)
-- [音声解説](#audio-guide)
 - [使用技術](#technology-used)
 - [技術選定理由](#why-technology-choices)
 - [開発構成図](#development-configuration-diagram)
@@ -26,7 +25,7 @@ https://outputquest.com
 
 <h2 id="project-overview">プロジェクト概要</h2>
 
-「OUTPUT QUEST 叡智の継承者」は、Zennで記事を投稿し、勇者を成長させていく「**RPG風学習支援Webアプリ**」です。ゲーミフィケーション要素がアウトプットという行為を「**学びの冒険**」という体験に変え、学習の継続をサポートします。ユーザーが学ぶことを楽しみ、理解を深めることに達成感を覚え、**"幸福度に繋がる体験価値"** の提供で貢献したいという想いで開発しました。
+「OUTPUT QUEST 叡智の継承者」は、Zennで記事を投稿し、勇者を成長させていく**RPG風学習支援Webアプリ**です。ゲーミフィケーション要素がアウトプットという行為を「**学びの冒険**」という体験に変え、学習の継続をサポートします。学ぶ楽しさと理解が深まる達成感をユーザーに届け、**"人生の幸福度を高める体験価値"** を提供したい。そんな想いを込めて開発しました。
 
 Next.js + Tailwind CSS + TypeScriptで開発し、Vercelにデプロイしています。
 
@@ -34,24 +33,19 @@ Next.js + Tailwind CSS + TypeScriptで開発し、Vercelにデプロイしてい
 
 1. **アウトプットを "学びの冒険" へ**
 
-   Zennで技術記事を書くことで勇者がレベルアップしていきます。<br />
-   勇者がレベルアップすることで、「称号の獲得」「アイテムの獲得」「仲間との出会い」などのゲーミフィケーション要素がアウトプットという行為を **"学びの冒険"** という体験に変え、ユーザーの学習の継続をサポート。ユーザーが学ぶことを楽しみ、**理解を深める冒険の旅**へと導きます。
+   Zennで技術記事を書くと、あなたの分身である勇者がレベルアップします。「称号」や「アイテム」の獲得、「仲間」との出会い...。数々のゲーミフィケーション要素が、日々の地道なアウトプットをワクワクする **"学びの冒険"** へと変えます。楽しみながら学習を継続し、知識と理解を深める壮大な旅へとあなたを導きます。
 
 2. **成長の可視化**
 
-   学びの軌跡を **"冒険ログ"** として記録。<br />
-   自分の成長過程を振り返ることで、更なる成長へと導きます。
+   あなたが積み重ねてきた学びの軌跡を、**"冒険ログ"** として自動で記録します。過去の自分が歩んできた道筋を振り返ることは、確かな成長の実感と自信に繋がり、次なる挑戦への原動力となります。
 
 3. **次の学びの冒険へ**
 
-   AIが勇者の仲間の「賢者」として、次に書く記事に最適なテーマを提案。<br />
-   賢者（AI）は、ユーザーのZennの過去の投稿を分析することで、ユーザーの成長に最適な **"学びのタネ"** を見つけ出し、新たな知的好奇心を刺激します。
+   AIが仲間の賢者として、あなたのZennの過去の投稿を分析し、次に書く記事に最適なテーマを提案します。賢者（AI）はあなたの成長に最適な **"学びのタネ"** を見つけ出し、新たな知的好奇心を刺激します。何を書くか迷った時、賢者はきっとあなたの道標となってくれるでしょう。
 
 ### "叡智の継承者"
 
-サブタイトルの「**叡智の継承者**」には、知識を受け継ぎ、新たな叡智を生み出していく学習者の姿を表現しています。<br>
-**"1人1人のアウトプットが、誰かの学びとなり、知識となり、知恵となって継承されていく..."** <br />
-そんな想いが込められています。
+サブタイトルの「**叡智の継承者**」は、先人の知識を受け継ぎ、自らの言葉で新たな価値を生み出す学習者の姿を表しています。「**一人一人のアウトプットが誰かの道しるべとなり、やがて時代を超える叡智として継承されていく...**」そんな願いと、全ての学習者への敬意を込めております。
 
 <h2 id="how-to-use">アプリの利用方法</h2>
 
@@ -81,36 +75,36 @@ Next.js + Tailwind CSS + TypeScriptで開発し、Vercelにデプロイしてい
 
 ### **トップページ**
 
-ゲームのオープニングを彷彿とさせる演出により、冒険のはじまりを視覚的に表現しました。
+ゲームやアニメのオープニングを彷彿とさせる演出により、"冒険の始まり" を視覚的に表現しております。
 
 ![トップページ](public/gifs/readme/top-page.gif)
 
 ### **ダッシュボード**
 
-勇者の冒険の拠点。勇者の成長度合いを示すレベル、Zennでの投稿数、勇者の仲間に加わったキャラや入手したアイテムを確認でき、Xへのシェアが可能です。
+学びの冒険の拠点となるダッシュボード。 現在の勇者のレベルやZennの投稿数、これまでに集めたアイテムや仲間たちを一目で確認でき、Xへシェアすることも可能です。
 
 ![ダッシュボード](public/gifs/readme/dashboard-page.gif)
 
 ### **投稿一覧**
 
-Zennの記事を「これまでの学び」として振り返る場所。Zennで投稿した記事が一覧表示され、学びの記録として振り返ることができます。記事はアプリ内ではカード型UIで表示され、クリックすることでZennの記事ページにアクセスできます。
+Zennで投稿した記事が一覧表示され、学びの記録として振り返ることができます。記事はカード型UIで表示され、クリックすることでZennの記事ページにアクセスできます。
 
 ![投稿一覧](public/gifs/readme/posts-page.gif)
 
 ### **記事探索**
 
-AIが勇者の仲間の「賢者」として、次に書く記事に最適なテーマを提案。賢者（AI）は、ユーザーのZenn記事を探索し、過去の投稿から傾向を探ることで、ユーザーの成長に最適な「学びのタネ」を見つけ出します。
+ボタン一つでAI（賢者）があなたのZennの過去記事を解析し、次に執筆すべきおすすめのテーマや方向性を提案します。提案されたアイデアは次のアウトプットの構想を練る強力なヒントになるはずです。
 
 ![記事探索](public/gifs/readme/explore-page.gif)
 
-**※記事探索機能には、「Gemini 2.5 Pro（無料枠）」をAPIとして利用しています。** <br />
+**※記事探索機能には、「Gemini 3 Flash Preview（無料枠）」をAPIとして利用しています。** <br />
 
-Gemini 2.5 Pro（無料枠）の採用理由は以下の2点です。
+Gemini 3 Flash Preview（無料枠）の採用理由は以下の2点です。
 
 - OUTPUT QUESTは、あくまで「**ポートフォリオ用に開発したWebアプリ**」であり、想定利用者は面接官や自分自身に限定されるため無料枠で十分と判断
 - **執筆や文字数を出すコンテンツ制作（記事探索機能）** において、Geminiの「**1Mコンテキストウィンドウ**」が非常に役立つため
 
-[Gemini 2.5 Pro（無料枠）のレートリミット](https://ai.google.dev/gemini-api/docs/rate-limits?hl=ja&_gl=1*ya4rpo*_up*MQ..*_ga*MTY1MTczOTQ5OS4xNzU0NzIyMTI0*_ga_P1DBVKWT6V*czE3NTQ3MjIxMjMkbzEkZzAkdDE3NTQ3MjIxMjMkajYwJGwwJGg3MDA2OTUzNDY.)
+[Gemini 3 Flash Preview（無料枠）のレートリミット](https://ai.google.dev/gemini-api/docs/rate-limits?hl=ja&_gl=1*ya4rpo*_up*MQ..*_ga*MTY1MTczOTQ5OS4xNzU0NzIyMTI0*_ga_P1DBVKWT6V*czE3NTQ3MjIxMjMkbzEkZzAkdDE3NTQ3MjIxMjMkajYwJGwwJGg3MDA2OTUzNDY.)
 
 | 指標 | 説明                          | 制限値  |
 | ---- | ----------------------------- | ------- |
@@ -120,7 +114,7 @@ Gemini 2.5 Pro（無料枠）の採用理由は以下の2点です。
 
 ### **つよさ**
 
-勇者の成長度合いを示すレベル、レベルアップ報酬で獲得した「称号」の確認、勇者の「装備アイテム」の確認、これまでの学びの軌跡が残る「冒険ログ」の確認ができます。
+勇者の現在のステータスを確認できます。勇者の現在のレベルや獲得した「称号」、これまでの成長過程が刻まれた「冒険ログ」を見返すことができます。
 
 ![つよさ](public/images/readme/strength-page.png)
 
@@ -130,45 +124,39 @@ Gemini 2.5 Pro（無料枠）の採用理由は以下の2点です。
 
 ![称号リスト](public/images/readme/title-page.png)
 
-### **そうび一覧**
-
-勇者の装備アイテムを一覧で確認できます。
-
-![そうび一覧](public/images/readme/equipment-page.png)
-
 ### **冒険ログ**
 
-学びの軌跡が残る「冒険ログ」。これまでの学びの軌跡を時系列で確認できます。
+これまでの学びの軌跡を時系列で確認できます。
 
 ![冒険ログ](public/images/readme/logs-page.png)
 
 ### **なかま**
 
-勇者の仲間に加わったキャラクターを確認できます。1人1人のキャラクターの詳細情報も確認できます。
+勇者の仲間に加わったキャラクターを確認できます。一人一人のキャラクターの詳細情報も確認できます。
 
 ![なかま](public/gifs/readme/party-page.gif)
 
 ### **アイテム**
 
-勇者がレベルアップ報酬で入手したアイテムを確認できます。1つ1つのアイテムの詳細情報も確認できます。
+勇者がレベルアップ報酬で入手したアイテムを確認できます。一つ一つのアイテムの詳細情報も確認できます。
 
 ![アイテム](public/gifs/readme/items-page.gif)
 
 ### **連携**
 
-Clerk認証によるログイン、Zennのアカウント連携を管理できます。ログインとZenn連携をすることで、Zennの投稿データがアプリ内のUIに反映されます。アプリはログイン無しでも利用できます。
+Clerk認証によるログイン、Zennのアカウント連携を管理できます。ログインとZenn連携をすることで、Zennの投稿データがアプリ内のUIに反映されます。アプリはログイン無し（ゲストユーザー）でも一部の機能を体験できます。
 
 ![連携](public/gifs/readme/connection-page.gif)
 
 ### **Zenn連携について**
 
-OUTPUT QUESTとZennアカウントを連携させることで得られるメリットや、ゲストユーザーとしてアプリを手軽に体験する方法について解説します。自分に合った方法で、OUTPUT QUESTの世界を体験できます。
+Zenn連携をしてアプリの全機能を活用するメリットや、ゲストユーザーとしてアプリを手軽に体験する方法について解説します。自分に合った方法でOUTPUT QUESTの世界を体験できます。
 
 ![Zenn連携について](public/images/readme/connection-detail-page.png)
 
 ### **OUTPUT QUESTとは ?**
 
-OUTPUT QUESTの世界観と使い方、アウトプットを通じて成長する「RPG風学習支援Webアプリ」の始め方を解説します。アプリの概要、コンセプト、主要機能について紹介します。
+OUTPUT QUESTの世界観と使い方、アウトプットを通じて成長する「RPG風学習支援Webアプリ」の始め方を解説します。アプリの概要、コンセプト、主要機能について紹介しております。
 
 ![OUTPUT QUESTとは ?](public/gifs/readme/about-page.gif)
 
@@ -184,10 +172,6 @@ OUTPUT QUESTのプライバシーポリシーを確認できます。
 
 ![プライバシーポリシー](public/gifs/readme/privacy-page.gif)
 
-<h2 id="audio-guide">音声解説</h2>
-
-[音声解説（NotebookLM）](https://notebooklm.google.com/notebook/f1b1104c-6080-4bde-8d84-b24dd31b65c4?artifactId=3f65ff4f-68d5-46c8-b2ee-b2c47e4e3db7)でアプリの概要や使い方について知ることが出来ます。
-
 <h2 id="technology-used">使用技術</h2>
 
 <img src="https://img.shields.io/badge/-node.js-444.svg?logo=node.js&style=for-the-badge"> <img src="https://img.shields.io/badge/-pnpm-444.svg?logo=pnpm&style=for-the-badge"> <img src="https://img.shields.io/badge/-next.js-444.svg?logo=next.js&style=for-the-badge"> <img src="https://img.shields.io/badge/-react-444.svg?logo=react&style=for-the-badge"> <img src="https://img.shields.io/badge/-typescript-444.svg?logo=typescript&style=for-the-badge"> <img src="https://img.shields.io/badge/-tailwindcss-444.svg?logo=tailwindcss&style=for-the-badge"> <img src="https://img.shields.io/badge/-shadcn/ui-444.svg?logo=shadcn/ui&style=for-the-badge"> <img src="https://img.shields.io/badge/-motion-444.svg?logo=motion&style=for-the-badge"> <img src="https://img.shields.io/badge/-howler.js-444.svg?logo=howler.js&style=for-the-badge"> <img src="https://img.shields.io/badge/-clerk-444.svg?logo=clerk&style=for-the-badge"> <img src="https://img.shields.io/badge/-prisma-444.svg?logo=prisma&style=for-the-badge"> <img src="https://img.shields.io/badge/-supabase-444.svg?logo=supabase&style=for-the-badge"> <img src="https://img.shields.io/badge/-zod-444.svg?logo=zod&style=for-the-badge"> <img src="https://img.shields.io/badge/-Vercel%20AI%20SDK-444.svg?logo=Vercel%20AI%20SDK&style=for-the-badge"> <img src="https://img.shields.io/badge/-react%20markdown-444.svg?logo=react%20markdown&style=for-the-badge"> <img src="https://img.shields.io/badge/-Vercel-444.svg?logo=Vercel&style=for-the-badge">
@@ -199,8 +183,8 @@ OUTPUT QUESTのプライバシーポリシーを確認できます。
 
 ### フロント
 
-- [Next.js(App Router)](https://nextjs.org)：v16.0.7
-- [React](https://react.dev)：v19.2.1
+- [Next.js(App Router)](https://nextjs.org)：v16.1.0
+- [React](https://react.dev)：v19.2.3
 - [TypeScript](https://www.typescriptlang.org/)：v5.9.3
 
 ### スタイル・UI
@@ -218,7 +202,7 @@ OUTPUT QUESTのプライバシーポリシーを確認できます。
 
 ### 認証・データベース
 
-- [Clerk](https://clerk.com/)：v6.34.1（認証）
+- [Clerk](https://clerk.com/)：v6.36.5（認証）
 - [Prisma](https://www.prisma.io/)：v6.18.0（ORM）
 - [Supabase](https://supabase.com/)（PostgreSQL）
 
@@ -295,7 +279,7 @@ OUTPUT QUESTのプライバシーポリシーを確認できます。
 
 <h2 id="development-configuration-diagram">開発構成図</h2>
 
-[開発構成図](https://camoneart.github.io/output-quest-development-configuration-diagram/)はHTMLインフォグラフィックで表現しました。
+[開発構成図](https://camoneart.github.io/outputquest-development-configuration-diagram/)はHTMLインフォグラフィックで表現しました。
 
 <h2 id="directory-design">ディレクトリ構造</h2>
 
@@ -312,18 +296,24 @@ outputquest/
 ├── public/                                          # 静的ファイル
 │   ├── audio/                                       # 音声ファイル
 │   ├── gifs/                                        # アニメーション画像ファイル
-│   └── images/                                      # 画像ファイル
-│       ├── arrow/                                   # 矢印画像
-│       ├── common/                                  # 共通画像
-│       ├── connection/                              # Zenn連携情報用画像
-│       ├── home-character-icon/                     # トップページのキャラクターアイコン
-│       ├── icon/                                    # アイコン類
-│       ├── items-page/                              # アイテムページ用画像
-│       ├── nav-icon/                                # ナビゲーションアイコン
-│       ├── opengraph/                               # OGP用画像
-│       ├── party-page/                              # なかまページ用画像
-│       ├── readme/                                  # README用画像
-│       └── sns/                                     # SNSアイコン用画像
+│   ├── images/                                      # 画像ファイル
+│   │   ├── arrow/                                   # 矢印画像
+│   │   ├── button/                                  # ボタン画像
+│   │   ├── card/                                    # カード画像
+│   │   ├── common/                                  # 共通画像
+│   │   ├── connection/                              # Zenn連携情報用画像
+│   │   ├── crown/                                   # 王冠画像
+│   │   ├── hero/                                    # 勇者画像
+│   │   ├── icon/                                    # アイコン類
+│   │   ├── items-page/                              # アイテムページ用画像
+│   │   ├── nav-icon/                                # ナビゲーションアイコン
+│   │   ├── opengraph/                               # OGP用画像
+│   │   ├── party-page/                              # なかまページ用画像
+│   │   ├── plate/                                   # プレート画像
+│   │   ├── readme/                                  # README用画像
+│   │   ├── sns/                                     # SNSアイコン用画像
+│   │   └── top-bg/                                  # トップページ背景用画像
+│   └── videos/                                      # 動画ファイル
 ├── src/
 │   ├── app/                                         # ルートディレクトリ（ルーティング管理）
 │   │   ├── (main)/                                  # メイン（Route Groups）
@@ -331,7 +321,6 @@ outputquest/
 │   │   │   ├── connection/                          # Clerk認証・Zenn連携ページ
 │   │   │   ├── connection-detail/                   # Clerk認証・Zenn連携の解説ページ
 │   │   │   ├── dashboard/                           # ダッシュボードページ
-│   │   │   ├── equipment/                           # 装備ページ
 │   │   │   ├── explore/                             # 記事探索ページ
 │   │   │   ├── items/                               # アイテムページ
 │   │   │   ├── logs/                                # ログページ
@@ -364,13 +353,13 @@ outputquest/
 │   ├── consts/                                      # 不変定数 (enum, アイコン/色/文言マッピング, サイト情報, ページサイズなど) ※全環境共通
 │   ├── contexts/                                    # React Context・グローバル状態管理
 │   ├── features/                                    # componentsでは共通化が難しい、特定の機能やドメイン固有のコンポーネントを管理するディレクトリ
+│   │   ├── about/                                   # Aboutページ機能
 │   │   ├── connection/                              # Clerk認証・Zenn連携ページ機能
 │   │   ├── connection-detail/                       # Clerk認証・Zenn連携の解説ページ機能
 │   │   ├── dashboard/                               # ダッシュボード機能
-│   │   ├── equipment/                               # 装備機能
-│   │   ├── equipment-detail/                        # 装備詳細機能
 │   │   ├── explore/                                 # 記事探索ページ機能
 │   │   ├── gnav/                                    # グローバルナビゲーション機能
+│   │   ├── hero/                                    # ヒーローセクション機能
 │   │   ├── home/                                    # ホームページ機能
 │   │   ├── item-detail/                             # アイテム詳細機能
 │   │   ├── items/                                   # アイテム機能
@@ -391,11 +380,12 @@ outputquest/
 │   ├── styles/                                      # スタイルファイル(globals.css)
 │   ├── types/                                       # TypeScript型定義
 │   ├── utils/                                       # ユーティリティ関数
-│   └── middleware.ts                                # ミドルウェア
+│   └── proxy.ts                                     # ミドルウェアロジック
 ├── .depcheckrc.json                                 # 依存関係チェックツール depcheck の設定ファイル
 ├── .env                                             # 環境変数の設定ファイル
 ├── .env.example                                     # 環境変数のテンプレートファイル
 ├── .gitignore                                       # GitHubの差分に含まないものを格納
+├── .mcp.json                                        # MCP設定ファイル
 ├── .npmrc                                           # pnpmの設定ファイル
 ├── .prettierrc.json                                 # Prettierの設定ファイル
 ├── components.json                                  # shadcn/ui設定ファイル
@@ -460,7 +450,7 @@ http://localhost:3000/<br>
 
 ### **記事探索機能のアップデート**
 
-- LLMのモデル変更（現在：gemini-2.5-pro）
+- LLMのモデル変更（現在：gemini-3-flash-preview）
 - モデルの回答生成時の口調の変更（現在：老賢者）
 
 ### **連携できるプラットフォームの追加**
