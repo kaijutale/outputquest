@@ -312,18 +312,24 @@ outputquest/
 ├── public/                                          # 静的ファイル
 │   ├── audio/                                       # 音声ファイル
 │   ├── gifs/                                        # アニメーション画像ファイル
-│   └── images/                                      # 画像ファイル
-│       ├── arrow/                                   # 矢印画像
-│       ├── common/                                  # 共通画像
-│       ├── connection/                              # Zenn連携情報用画像
-│       ├── home-character-icon/                     # トップページのキャラクターアイコン
-│       ├── icon/                                    # アイコン類
-│       ├── items-page/                              # アイテムページ用画像
-│       ├── nav-icon/                                # ナビゲーションアイコン
-│       ├── opengraph/                               # OGP用画像
-│       ├── party-page/                              # なかまページ用画像
-│       ├── readme/                                  # README用画像
-│       └── sns/                                     # SNSアイコン用画像
+│   ├── images/                                      # 画像ファイル
+│   │   ├── arrow/                                   # 矢印画像
+│   │   ├── button/                                  # ボタン画像
+│   │   ├── card/                                    # カード画像
+│   │   ├── common/                                  # 共通画像
+│   │   ├── connection/                              # Zenn連携情報用画像
+│   │   ├── crown/                                   # 王冠画像
+│   │   ├── hero/                                    # 勇者画像
+│   │   ├── icon/                                    # アイコン類
+│   │   ├── items-page/                              # アイテムページ用画像
+│   │   ├── nav-icon/                                # ナビゲーションアイコン
+│   │   ├── opengraph/                               # OGP用画像
+│   │   ├── party-page/                              # なかまページ用画像
+│   │   ├── plate/                                   # プレート画像
+│   │   ├── readme/                                  # README用画像
+│   │   ├── sns/                                     # SNSアイコン用画像
+│   │   └── top-bg/                                  # トップページ背景用画像
+│   └── videos/                                      # 動画ファイル
 ├── src/
 │   ├── app/                                         # ルートディレクトリ（ルーティング管理）
 │   │   ├── (main)/                                  # メイン（Route Groups）
@@ -363,6 +369,7 @@ outputquest/
 │   ├── consts/                                      # 不変定数 (enum, アイコン/色/文言マッピング, サイト情報, ページサイズなど) ※全環境共通
 │   ├── contexts/                                    # React Context・グローバル状態管理
 │   ├── features/                                    # componentsでは共通化が難しい、特定の機能やドメイン固有のコンポーネントを管理するディレクトリ
+│   │   ├── about/                                   # Aboutページ機能
 │   │   ├── connection/                              # Clerk認証・Zenn連携ページ機能
 │   │   ├── connection-detail/                       # Clerk認証・Zenn連携の解説ページ機能
 │   │   ├── dashboard/                               # ダッシュボード機能
@@ -389,11 +396,12 @@ outputquest/
 │   ├── styles/                                      # スタイルファイル(globals.css)
 │   ├── types/                                       # TypeScript型定義
 │   ├── utils/                                       # ユーティリティ関数
-│   └── middleware.ts                                # ミドルウェア
+│   └── proxy.ts                                     # ミドルウェアロジック
 ├── .depcheckrc.json                                 # 依存関係チェックツール depcheck の設定ファイル
 ├── .env                                             # 環境変数の設定ファイル
 ├── .env.example                                     # 環境変数のテンプレートファイル
 ├── .gitignore                                       # GitHubの差分に含まないものを格納
+├── .mcp.json                                        # MCP設定ファイル
 ├── .npmrc                                           # pnpmの設定ファイル
 ├── .prettierrc.json                                 # Prettierの設定ファイル
 ├── components.json                                  # shadcn/ui設定ファイル
