@@ -75,9 +75,9 @@
 .hero-info-name-box {
 	grid-area: name;
 	background-color: var(--color-primary-brown-dark);
-	border: 1.5px solid var(--color-primary-brown-light);
-	padding-inline: 2px;
-	padding-block: 2px;
+	border: 1.5mm ridge #b69973;
+	padding-block: 1.5px;
+	padding-inline: 1.5px;
 }
 
 .hero-info-name {
@@ -85,8 +85,8 @@
 	font-weight: var(--font-weight-normal);
 	line-height: var(--leading-tight);
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
-	background-color: var(--color-primary-brown);
 	border: 1px solid var(--color-primary-brown-light);
+	background-color: #ae926e;
 	align-items: center;
 	gap: 5px;
 	padding-block: 2px 3px;
