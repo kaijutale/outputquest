@@ -11,13 +11,38 @@ const LogsList = () => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		// ローカルストレージからログを取得
-		const savedLogs = localStorage.getItem(LOGS_STORAGE_KEY);
-		if (savedLogs) {
-			// 取得した文字列を配列に変換
-			setLogs(JSON.parse(savedLogs));
-		}
-		setLoading(false);
+		// APIからログを取得
+		const fetchLogs = async () => {
+			try {
+				const res = await fetch("/api/logs");
+				const data = await res.json();
+				if (data.success && Array.isArray(data.logs)) {
+					const formattedLogs = data.logs.map((log: any) => {
+						const date = new Date(log.occurredAt);
+						const formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1)
+							.toString()
+							.padStart(2, "0")}/${date.getDate().toString().padStart(2, "0")} ${date
+							.getHours()
+							.toString()
+							.padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date
+							.getSeconds()
+							.toString()
+							.padStart(2, "0")}`;
+						return `${formattedDate} ${log.content}`;
+					});
+					setLogs(formattedLogs);
+				} else {
+					setLogs([]);
+				}
+			} catch (err) {
+				console.error("Failed to fetch logs:", err);
+				setLogs([]);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchLogs();
 	}, []);
 
 	return (

@@ -7,19 +7,31 @@ datasource db {
 }
 
 model User {
-  id               String   @id @default(uuid())
-  clerkId          String   @unique
-  username         String   @unique
-  email            String   @unique
+  id               String         @id @default(uuid())
+  clerkId          String         @unique
+  username         String         @unique
+  email            String         @unique
   displayName      String?
   profileImage     String?
   zennUsername     String?
-  zennArticleCount Int      @default(0)
-  level            Int      @default(1)
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  zennArticleCount Int            @default(0)
+  level            Int            @default(1)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  adventureLogs    AdventureLog[]
 
-  @@index([clerkId])
-  @@index([username])
   @@index([email])
+}
+
+model AdventureLog {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type       String // "LEVEL_UP", "ITEM_GET", "PARTY_JOIN", "TITLE_GET"
+  content    String
+  occurredAt DateTime
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([occurredAt])
 }

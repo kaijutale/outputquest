@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./StrengthLogInfo.module.css";
 import { fetchZennArticles } from "@/features/posts/services";
 import Link from "next/link";
@@ -15,6 +15,7 @@ const StrengthLogInfo = () => {
 	const [logs, setLogs] = useState<string[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
+	const hasSynced = useRef(false);
 
 	const router = useRouter();
 	const { playClickSound } = useClickSound({
@@ -31,9 +32,11 @@ const StrengthLogInfo = () => {
 	useEffect(() => {
 		// コンポーネントマウント時に実行される
 		const initializeLogs = async () => {
+			if (hasSynced.current) return;
+			hasSynced.current = true;
+
 			try {
-				// 全記事分のログを生成
-				await generateLogs();
+				await syncAndFetchLogs();
 			} catch (err) {
 				console.error("ログの初期化エラー:", err);
 				setError("ログデータの初期化中にエラーが発生しました。");
@@ -45,57 +48,54 @@ const StrengthLogInfo = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []); // 依存配列は空のまま（初回マウント時のみ実行）
 
-	// Zenn記事からログを生成する関数
-	const generateLogs = async () => {
+	// ログを同期・取得する関数
+	const syncAndFetchLogs = async () => {
 		try {
 			setLoading(true);
 
-			// 連携済みユーザー情報を取得
+			// 1. Zennユーザー名取得
 			const userRes = await fetch("/api/user");
 			const userData = await userRes.json();
-
-			let username = null;
-
-			if (!userData.success || !userData.user.zennUsername) {
-				// ゲストユーザーまたは連携未設定の場合は@aoyamadevのデータを使用
-				username = "aoyamadev";
-			} else {
+			let username = "aoyamadev";
+			if (userData.success && userData.user.zennUsername) {
 				username = userData.user.zennUsername;
 			}
-			// Zenn記事を取得
+
+			// 2. Zenn記事取得（すべての記事）
 			const articles = await fetchZennArticles(username, {
 				fetchAll: true,
 			});
 
-			if (articles.length === 0) {
-				const defaultLogs = generateDefaultLogs();
-				saveLogs(defaultLogs);
-				setLogs(defaultLogs);
-				return;
-			}
-
-			// 全記事をループしてログ配列を生成（最新順）
-			const totalCount = articles.length;
-			const newLogs = articles.map((article, index) => {
-				const dateStr =
-					article.publishedAt ??
-					(typeof article.date === "string" ? article.date : article.date?.toISOString());
-				const date = dateStr ? new Date(dateStr) : new Date();
-				const formattedDate = formatDate(date);
-				const level = totalCount - index;
-				return `${formattedDate} 経験値を1獲得！勇者は「Lv${level}」にあがった！`;
+			// 3. ログ同期APIを呼び出し（記事データを送信してDBを更新）
+			await fetch("/api/logs/sync", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ articles }),
 			});
 
-			// 保存して状態にセット
-			saveLogs(newLogs);
-			setLogs(newLogs);
-		} catch (err) {
-			console.error("Zenn記事の取得エラー:", err);
+			// 4. DBから最新のログを取得
+			const logsRes = await fetch("/api/logs");
+			const logsData = await logsRes.json();
 
-			// エラー時はデフォルトログを表示
-			const defaultLogs = generateDefaultLogs();
-			saveLogs(defaultLogs);
-			setLogs(defaultLogs);
+			if (logsData.success && Array.isArray(logsData.logs)) {
+				// ログデータを文字列配列に変換してセット（既存UIとの互換性のため）
+				// adventureLog: { content: string, occurredAt, ... }
+				// 日付を含めるかどうかは呼び出し元次第だが、サーバー側で生成した content だけ使うか
+				// 元の実装では "yyyy/mm/dd hh:mm content" 形式だった
+				const formattedLogs = logsData.logs.map((log: any) => {
+					const date = new Date(log.occurredAt);
+					const formattedDate = formatDate(date);
+					return `${formattedDate} ${log.content}`;
+				});
+				setLogs(formattedLogs);
+			} else {
+				// ログがない場合
+				setLogs(generateDefaultLogs());
+			}
+		} catch (err) {
+			console.error("ログ同期エラー:", err);
+			// エラー時はデフォルトログ
+			setLogs(generateDefaultLogs());
 		} finally {
 			setLoading(false);
 		}
@@ -119,19 +119,7 @@ const StrengthLogInfo = () => {
 		return ["冒険ログはまだありません", "---"];
 	};
 
-	// ログを保存する関数
-	const saveLogs = (logs: string[]) => {
-		if (typeof window === "undefined") return;
-
-		try {
-			// 保存前に重複を取り除く
-			const uniqueLogs = Array.from(new Set(logs));
-			localStorage.setItem(ADVENTURE_LOGS_KEY, JSON.stringify(uniqueLogs));
-		} catch (e) {
-			console.error("ログの保存エラー:", e);
-		}
-	};
-
+	// エラー表示
 	if (error) {
 		return (
 			<div className={styles["strength-log-info"]}>

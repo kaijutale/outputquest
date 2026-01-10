@@ -4,7 +4,6 @@ export interface Item {
 	description?: string | null;
 	image?: string | null;
 	acquired: boolean;
-	type: string;
 }
 
 export interface ItemsData {
