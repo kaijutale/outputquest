@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./DashboardPage.module.css";
 import * as Dashboard from "@/features/dashboard/components";
