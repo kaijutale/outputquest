@@ -42,6 +42,7 @@
 	display: block grid;
 	justify-content: start;
 	cursor: default;
+	pointer-events: none;
 
 	&::before {
 		opacity: 1;
