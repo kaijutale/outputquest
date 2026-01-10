@@ -26,50 +26,31 @@ const GnavItems = () => {
 
 				return (
 					<li key={item.href} className={`${styles["gnav-item"]}`}>
-						{isActive ? (
-							<div
-								key={item.href}
-								className={`${styles["gnav-item-link-container"]} ${styles["gnav-item-active"]}`}
+						<div
+							className={`${styles["gnav-item-link-container"]} ${isActive ? styles["gnav-item-active"] : ""}`}
+						>
+							<Link
+								href={item.href}
+								className={`${styles["gnav-item-link"]} ${isActive ? styles["gnav-item-not-link"] : ""}`}
+								onClick={isActive ? (e) => e.preventDefault() : () => handleLinkClick()}
+								aria-current={isActive ? "page" : undefined}
 							>
-								<div className={`${styles["gnav-item-not-link"]}`}>
-									<div
-										className={`${styles["gnav-item-content"]} ${styles["gnav-item-content-active"]}`}
-									>
-										<Image
-											src={item.icon || "/images/nav-icon/default-icon.svg"}
-											alt={item.alt || item.title}
-											width={item.width || 20}
-											height={item.height || 20}
-											priority={true}
-											className={`${styles["gnav-item-icon"]}`}
-											data-nav-id={item.id}
-										/>
-										<h3 className={`${styles["gnav-item-title"]}`}>{item.title}</h3>
-									</div>
-								</div>
-							</div>
-						) : (
-							<div key={item.href} className={`${styles["gnav-item-link-container"]}`}>
-								<Link
-									href={item.href}
-									className={`${styles["gnav-item-link"]}`}
-									onClick={() => handleLinkClick()}
+								<div
+									className={`${styles["gnav-item-content"]} ${isActive ? styles["gnav-item-content-active"] : ""}`}
 								>
-									<div className={`${styles["gnav-item-content"]}`}>
-										<Image
-											src={item.icon || "/images/nav-icon/default-icon.svg"}
-											alt={item.alt || item.title}
-											width={item.width || 20}
-											height={item.height || 20}
-											priority={true}
-											className={`${styles["gnav-item-icon"]}`}
-											data-nav-id={item.id}
-										/>
-										<h3 className={`${styles["gnav-item-title"]}`}>{item.title}</h3>
-									</div>
-								</Link>
-							</div>
-						)}
+									<Image
+										src={item.icon || "/images/nav-icon/default-icon.svg"}
+										alt={item.alt || item.title}
+										width={item.width || 20}
+										height={item.height || 20}
+										priority={true}
+										className={`${styles["gnav-item-icon"]}`}
+										data-nav-id={item.id}
+									/>
+									<h3 className={`${styles["gnav-item-title"]}`}>{item.title}</h3>
+								</div>
+							</Link>
+						</div>
 					</li>
 				);
 			})}
