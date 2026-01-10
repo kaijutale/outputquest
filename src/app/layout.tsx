@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
 	const redirectUrl = process.env.NEXT_PUBLIC_CONNECTION_URL || "/connection";
 	return (
-		<html lang="ja" className={`${dotGothic16.variable}`}>
+		<html lang="ja" className={`${dotGothic16.variable}`} suppressHydrationWarning>
 			<head>
 				<style>{`
 					.wf-loading body {
