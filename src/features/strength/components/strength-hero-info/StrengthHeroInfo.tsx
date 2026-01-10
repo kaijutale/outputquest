@@ -61,7 +61,9 @@ const StrengthHeroInfo = async () => {
 		const displayZennUsername = `@${zennUsername}`;
 
 		// Client Componentにデータを渡す
-		return <Strength.StrengthHeroInfoClient heroData={heroData} zennUsername={displayZennUsername} />;
+		return (
+			<Strength.StrengthHeroInfoClient heroData={heroData} zennUsername={displayZennUsername} />
+		);
 	} catch (error) {
 		console.error("Zenn記事の取得エラー:", error);
 		return (

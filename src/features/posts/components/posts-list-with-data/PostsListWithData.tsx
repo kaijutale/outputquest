@@ -5,7 +5,6 @@ import { PlatformType } from "@/features/posts/types";
 import * as Posts from "@/features/posts/components";
 import styles from "./PostsListWithData.module.css";
 
-
 const PostsListWithData = async () => {
 	try {
 		// 認証情報を取得
