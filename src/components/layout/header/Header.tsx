@@ -101,13 +101,12 @@ export const Header = () => {
 						{pathname !== "/" && <HamburgerMenu toggleMenu={toggleMenu} isOpen={isMenuOpen} />}
 					</div>
 				</div>
-				{pathname !== "/" && (
-					<Gnav
-						isMenuOpen={isMenuOpen}
-						toggleMenu={toggleMenu}
-						className={`${styles["header-gnav"]}`}
-					/>
-				)}
+
+				<Gnav
+					isMenuOpen={isMenuOpen}
+					toggleMenu={toggleMenu}
+					className={`${styles["header-gnav"]}`}
+				/>
 			</div>
 		</header>
 	);
