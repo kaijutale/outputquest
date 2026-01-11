@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";
@@ -18,6 +19,9 @@ import styles from "./StrengthHeroInfo.module.css";
  * - レベル計算（記事数 = レベル）
  */
 const StrengthHeroInfo = async () => {
+	// Dynamic Renderingを強制（cacheComponents有効時のプリレンダリング対策）
+	await connection();
+
 	try {
 		// 認証情報を取得
 		const { userId } = await auth();
