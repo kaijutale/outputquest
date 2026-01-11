@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { fetchZennArticles } from "@/features/posts/services";
@@ -6,6 +7,9 @@ import * as Party from "@/features/party/components";
 import styles from "./PartyMemberCardList.module.css";
 
 const PartyMemberCardList = async () => {
+	// Dynamic Renderingを強制（cacheComponents有効時のプリレンダリング対策）
+	await connection();
+
 	try {
 		// 認証情報を取得
 		const { userId } = await auth();

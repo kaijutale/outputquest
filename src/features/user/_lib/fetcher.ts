@@ -1,6 +1,7 @@
 import "server-only"; // Part 1推奨: サーバー専用コードの保護
 import { cache } from "react";
 import { cacheTag } from "next/cache";
+import { connection } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { CacheTags } from "@/lib/cache-tags";
@@ -68,6 +69,9 @@ async function getCachedUserData(clerkId: string): Promise<User> {
  * @returns ユーザー情報（認証されていない場合はnull）
  */
 export const getUser = cache(async (): Promise<User> => {
+	// Dynamic Renderingを強制（cacheComponents有効時のプリレンダリング対策）
+	await connection();
+
 	try {
 		// 認証チェック（キャッシュしない、動的API）
 		const { userId } = await auth();
