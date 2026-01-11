@@ -18,6 +18,9 @@ export const useSignOutHandler = ({
 
 	// ログアウト時のイベントハンドラー
 	useEffect(() => {
+		// SSR中はwindow/localStorageにアクセスしない
+		if (typeof window === "undefined") return;
+
 		const handleBeforeUnload = () => {
 			// ユーザーがブラウザを閉じたり更新したりする際に、セッション情報を保持
 			if (user) {
