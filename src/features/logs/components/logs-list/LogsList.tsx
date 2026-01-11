@@ -55,7 +55,7 @@ const LogsList = () => {
 				</li>
 			) : logs.length === 0 ? (
 				<li className={styles["logs-page-list-item"]}>
-					<p className={styles["logs-page-list-item-text"]}>まだ冒険ログがありません。</p>
+					<p className={styles["logs-page-list-item-text"]}>表示できる冒険ログがありません</p>
 				</li>
 			) : (
 				logs.map((log, index) => (
