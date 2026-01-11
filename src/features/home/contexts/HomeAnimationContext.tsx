@@ -18,6 +18,9 @@ export const HomeAnimationProvider = ({ children }: { children: ReactNode }) => 
 	const [isFirstVisit, setIsFirstVisit] = useState<boolean | null>(null);
 
 	useEffect(() => {
+		// SSR中はsessionStorageにアクセスしない
+		if (typeof window === "undefined") return;
+
 		const hasVisited = sessionStorage.getItem("hero-visited");
 
 		if (hasVisited) {
