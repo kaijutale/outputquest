@@ -1,6 +1,6 @@
 # OUTPUT QUEST　叡智の継承者
 
-![トップページ](public/gifs/readme/top-page.gif)
+<video src="public/videos/readme/opening.mp4" controls width="100%"></video>
 
 Webアプリは以下からアクセスできます。
 
@@ -77,7 +77,7 @@ Next.js + Tailwind CSS + TypeScriptで開発し、Vercelにデプロイしてい
 
 ゲームやアニメのオープニングを彷彿とさせる演出により、"冒険の始まり" を視覚的に表現しております。
 
-![トップページ](public/gifs/readme/top-page.gif)
+<video src="public/videos/readme/opening.mp4" controls width="100%"></video>
 
 ### **ダッシュボード**
 
