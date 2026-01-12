@@ -100,9 +100,8 @@ const ItemDetailContent: React.FC<ItemDetailProps> = ({ itemId }) => {
 
 	return (
 		<div className={styles["item-detail-content"]}>
-			{isLoading ? (
-				<ItemDetail.ItemDetailSkeleton />
-			) : (
+			<div className={styles["item-detail-card-wrapper"]}>
+				{/* 実コンテンツ - 常にマウント（priority属性が効く） */}
 				<div className={styles["item-detail-card"]}>
 					<Image
 						src="/images/card/card-bg.png"
@@ -150,11 +149,9 @@ const ItemDetailContent: React.FC<ItemDetailProps> = ({ itemId }) => {
 						</div>
 
 						{isAcquired ? (
-							<>
-								<div className={styles["item-detail-description-box"]}>
-									<p className={styles["item-detail-description"]}>{itemDescription}</p>
-								</div>
-							</>
+							<div className={styles["item-detail-description-box"]}>
+								<p className={styles["item-detail-description"]}>{itemDescription}</p>
+							</div>
 						) : (
 							<div className={styles["item-detail-locked-message-box"]}>
 								{isGuestUser ? (
@@ -162,20 +159,27 @@ const ItemDetailContent: React.FC<ItemDetailProps> = ({ itemId }) => {
 										ログインすると入手したアイテムについての詳細情報がここに表示されます。
 									</p>
 								) : (
-									<>
-										<p className={styles["item-detail-locked-message-text"]}>
-											<span>このアイテムは、Lv{requiredLevel}で入手できるぞ！</span>
-											<span>
-												Lv{requiredLevel}まで、あと{levelDifference}レベル
-											</span>
-										</p>
-									</>
+									<p className={styles["item-detail-locked-message-text"]}>
+										<span>このアイテムは、Lv{requiredLevel}で入手できるぞ！</span>
+										<span>
+											Lv{requiredLevel}まで、あと{levelDifference}レベル
+										</span>
+									</p>
 								)}
 							</div>
 						)}
 					</div>
 				</div>
-			)}
+
+				{/* Skeletonオーバーレイ - ローディング時のみ表示 */}
+				<div
+					className={`${styles["skeleton-overlay"]} ${
+						isLoading ? styles["skeleton-overlay-visible"] : styles["skeleton-overlay-hidden"]
+					}`}
+				>
+					<ItemDetail.ItemDetailSkeleton />
+				</div>
+			</div>
 		</div>
 	);
 };
