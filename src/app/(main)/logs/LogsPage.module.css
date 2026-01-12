@@ -69,3 +69,17 @@
 		margin-inline: auto;
 	}
 }
+
+/* スケルトン用スタイル */
+.logs-page-list-skeleton {
+	grid-area: list;
+	display: block grid;
+	place-items: center;
+	height: 100%;
+	padding-block: 15px;
+	padding-inline: 20px;
+}
+
+.logs-page-list-item-skeleton {
+	color: var(--color-primary-white);
+}

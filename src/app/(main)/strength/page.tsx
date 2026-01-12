@@ -19,7 +19,11 @@ const StrengthPage = () => {
 						</Suspense>
 					</div>
 					{/* （右上）冒険ログ */}
-					<Strength.StrengthLogInfo />
+					<div className={styles["strength-log-wrapper"]}>
+						<Suspense fallback={<Strength.StrengthLogInfoSkeleton />}>
+							<Strength.StrengthLogInfoWrapper />
+						</Suspense>
+					</div>
 					{/* （下）称号 */}
 					<Strength.StrengthTitleInfo />
 				</div>

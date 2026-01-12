@@ -1,0 +1,14 @@
+.skeleton-link {
+	font-size: 0.875rem;
+	font-weight: var(--font-weight-bold);
+	color: var(--color-primary-white);
+	opacity: 0.5;
+	text-shadow: 1px 1px 0px var(--color-primary-black);
+}
+
+/* 実際のコンテンツと同じ高さを確保 */
+.skeleton-list {
+	min-height: 208px;
+	display: grid;
+	place-items: center;
+}

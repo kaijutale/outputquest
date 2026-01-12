@@ -1,4 +1,5 @@
 .strength-log-info {
+	height: 100%;
 	border: 3mm ridge #b69973;
 	background-color: var(--color-primary-brown-dark);
 	border-radius: var(--border-radius-small);
