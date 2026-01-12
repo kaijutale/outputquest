@@ -130,3 +130,61 @@ const getDateStr = (article: Article): string => {
 		(typeof article.date === "string" ? article.date : new Date().toISOString())
 	);
 };
+
+/**
+ * ログをフォーマットするための型
+ */
+export interface FormattedLog {
+	id: string;
+	type: string;
+	content: string;
+	occurredAt: Date;
+	formattedDate: string;
+}
+
+/**
+ * 日付をフォーマットする関数
+ */
+const formatDate = (date: Date): string => {
+	return `${date.getFullYear()}/${(date.getMonth() + 1)
+		.toString()
+		.padStart(2, "0")}/${date.getDate().toString().padStart(2, "0")} ${date
+		.getHours()
+		.toString()
+		.padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date
+		.getSeconds()
+		.toString()
+		.padStart(2, "0")}`;
+};
+
+/**
+ * サーバーサイドでAdventureLogを取得する関数
+ * Zenn連携しているユーザーのみログを返す
+ */
+export const getAdventureLogs = async (clerkId: string): Promise<FormattedLog[]> => {
+	// ユーザーを取得
+	const user = await prisma.user.findUnique({
+		where: { clerkId },
+		select: { id: true, zennUsername: true },
+	});
+
+	// ユーザーが存在しない、またはZenn未連携の場合は空配列
+	if (!user || !user.zennUsername) {
+		return [];
+	}
+
+	// AdventureLogを取得
+	const logs = await prisma.adventureLog.findMany({
+		where: { userId: user.id },
+		orderBy: { occurredAt: "desc" },
+	});
+
+	// フォーマットして返す
+	return logs.map((log) => ({
+		id: log.id,
+		type: log.type,
+		content: log.content,
+		occurredAt: log.occurredAt,
+		formattedDate: formatDate(log.occurredAt),
+	}));
+};
