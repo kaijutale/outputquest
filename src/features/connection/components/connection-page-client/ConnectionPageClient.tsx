@@ -23,11 +23,16 @@ declare global {
 	}
 }
 
+type Props = {
+	initialZennUsername: string | null;
+};
+
 // ユーザープロフィールページ
-export default function ConnectionPageClient() {
+export default function ConnectionPageClient({ initialZennUsername }: Props) {
 	const { user, isLoaded } = useUser();
 	const router = useRouter();
-	const [zennUsername, setZennUsername] = useState("");
+	// サーバーサイドで取得した初期値を使用
+	const [zennUsername, setZennUsername] = useState(initialZennUsername ?? "");
 	const [wasLoggedOut, setWasLoggedOut] = useState(false);
 	const [isNewSession, setIsNewSession] = useState(false);
 
@@ -65,6 +70,7 @@ export default function ConnectionPageClient() {
 		setWasLoggedOut,
 		setIsNewSession,
 		setZennUsername,
+		initialZennUsername,
 	});
 
 	// Zenn連携管理

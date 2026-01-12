@@ -9,6 +9,7 @@ interface UseUserInfoProps {
 	setWasLoggedOut: (value: boolean) => void;
 	setIsNewSession: (value: boolean) => void;
 	setZennUsername: (value: string) => void;
+	initialZennUsername?: string | null;
 }
 
 export const useUserInfo = ({
@@ -17,11 +18,16 @@ export const useUserInfo = ({
 	setWasLoggedOut,
 	setIsNewSession,
 	setZennUsername,
+	initialZennUsername,
 }: UseUserInfoProps) => {
 	const { user, isLoaded } = useUser();
-	const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
-	const [isZennInfoLoaded, setIsZennInfoLoaded] = useState(false);
-	const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
+	// サーバーサイドで取得した初期値がある場合、初期状態として使用
+	const hasInitialData = initialZennUsername !== undefined && initialZennUsername !== null;
+	const [userInfo, setUserInfo] = useState<UserInfo | null>(
+		hasInitialData ? { zennUsername: initialZennUsername } as UserInfo : null
+	);
+	const [isZennInfoLoaded, setIsZennInfoLoaded] = useState(hasInitialData);
+	const [hasLoadedOnce, setHasLoadedOnce] = useState(hasInitialData);
 
 	useEffect(() => {
 		const fetchAndSetUserInfo = async () => {
