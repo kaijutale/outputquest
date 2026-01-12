@@ -197,18 +197,18 @@ OUTPUT QUESTのプライバシーポリシーを確認できます。
 
 ### フロント
 
-- [Next.js(App Router)](https://nextjs.org)：v16.1.0
+- [Next.js(App Router)](https://nextjs.org)：v16.1.1
 - [React](https://react.dev)：v19.2.3
 - [TypeScript](https://www.typescriptlang.org/)：v5.9.3
 
 ### スタイル・UI
 
-- [Tailwind CSS](https://tailwindcss.com/)：v4.1.16
+- [Tailwind CSS](https://tailwindcss.com/)：v4.1.18
 - [shadcn/ui](https://ui.shadcn.com/)
 
 ### アニメーション
 
-- [Motion](https://motion.dev/)：v12.23.24
+- [Motion](https://motion.dev/)：v12.25.0
 
 ### オーディオ
 
@@ -216,19 +216,19 @@ OUTPUT QUESTのプライバシーポリシーを確認できます。
 
 ### 認証・データベース
 
-- [Clerk](https://clerk.com/)：v6.36.5（認証）
-- [Prisma](https://www.prisma.io/)：v6.18.0（ORM）
+- [Clerk](https://clerk.com/)：v6.36.7（認証）
+- [Prisma](https://www.prisma.io/)：v7.2.0（ORM）
 - [Supabase](https://supabase.com/)（PostgreSQL）
 
 ### スキーマバリデーション
 
-- [zod](https://zod.dev/)：v4.1.12
+- [zod](https://zod.dev/)：v4.3.5
 
 ### AI
 
-- [Vercel AI SDK](https://ai-sdk.dev/)：v5.0.78（TypeScript Toolkit）
-- [AI SDK Core](https://ai-sdk.dev/docs/ai-sdk-core/overview)：v2.0.23（LLM：Gemini(gemini-2.5-pro)）
-- [AI SDK UI](https://ai-sdk.dev/docs/ai-sdk-ui/overview)：v2.0.78（UI）
+- [Vercel AI SDK](https://ai-sdk.dev/)：v6.0.24（TypeScript Toolkit）
+- [AI SDK Core](https://ai-sdk.dev/docs/ai-sdk-core/overview)：v3.0.6（LLM：Gemini(gemini-2.5-pro)）
+- [AI SDK UI](https://ai-sdk.dev/docs/ai-sdk-ui/overview)：v3.0.25（UI）
 
 ### Markdown
 
