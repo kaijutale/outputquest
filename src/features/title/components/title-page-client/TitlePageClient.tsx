@@ -1,57 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import styles from "./TitlePageClient.module.css";
 import * as Title from "@/features/title/components";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 
-const TitlePageClient = () => {
+type Props = {
+	initialZennUsername: string | null;
+};
+
+const TitlePageClient = ({ initialZennUsername }: Props) => {
 	const { user, isLoaded } = useUser();
-	const [userZennInfo, setUserZennInfo] = useState<{
-		zennUsername?: string;
-	} | null>(null);
-	const [isZennInfoLoaded, setIsZennInfoLoaded] = useState(false);
+	// サーバーサイドで取得した初期値を使用（useEffectでのフェッチ不要）
+	const [userZennInfo] = useState<{ zennUsername?: string } | null>(
+		initialZennUsername ? { zennUsername: initialZennUsername } : null
+	);
 
-	// ユーザーのZenn連携情報を取得
-	useEffect(() => {
-		const fetchUserZennInfo = async () => {
-			if (!isLoaded) {
-				// Clerkの認証状態がまだ確定していない場合は何もしない
-				setIsZennInfoLoaded(false);
-				return;
-			}
-
-			if (!user) {
-				// ユーザーがログインしていない場合
-				setUserZennInfo(null);
-				setIsZennInfoLoaded(true);
-				return;
-			}
-
-			// ユーザーがログイン済みの場合、Zenn情報を取得
-			try {
-				const response = await fetch("/api/user");
-				const data = await response.json();
-
-				if (data.success && data.user) {
-					setUserZennInfo({ zennUsername: data.user.zennUsername });
-				} else {
-					setUserZennInfo(null);
-				}
-			} catch (err) {
-				console.error("ユーザー情報取得エラー:", err);
-				setUserZennInfo(null);
-			} finally {
-				setIsZennInfoLoaded(true);
-			}
-		};
-
-		fetchUserZennInfo();
-	}, [isLoaded, user]);
-
-	// ロード中の判定
-	const isLoading = !isLoaded || (user && !isZennInfoLoaded);
+	// ロード中の判定（サーバーサイドで取得済みのため、Clerk認証状態のみ確認）
+	const isLoading = !isLoaded;
 
 	// ゲストユーザーかどうかの判定（Clerkサインイン + Zenn連携の両方が必要）
 	const isGuestUser = !user || !userZennInfo?.zennUsername;
