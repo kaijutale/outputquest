@@ -59,7 +59,6 @@ outputquest/
 │   │   │   ├── connection/                          # Clerk認証・Zenn連携ページ
 │   │   │   ├── connection-detail/                   # Clerk認証・Zenn連携の解説ページ
 │   │   │   ├── dashboard/                           # ダッシュボードページ
-│   │   │   ├── equipment/                           # 装備ページ
 │   │   │   ├── explore/                             # 記事探索ページ
 │   │   │   ├── items/                               # アイテムページ
 │   │   │   ├── logs/                                # ログページ
@@ -95,8 +94,6 @@ outputquest/
 │   │   ├── connection/                              # Clerk認証・Zenn連携ページ機能
 │   │   ├── connection-detail/                       # Clerk認証・Zenn連携の解説ページ機能
 │   │   ├── dashboard/                               # ダッシュボード機能
-│   │   ├── equipment/                               # 装備機能
-│   │   ├── equipment-detail/                        # 装備詳細機能
 │   │   ├── explore/                                 # 記事探索ページ機能
 │   │   ├── gnav/                                    # グローバルナビゲーション機能
 │   │   ├── home/                                    # ホームページ機能

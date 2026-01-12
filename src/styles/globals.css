@@ -87,13 +87,6 @@
 		--bg-progress-gauge: #4a4a4a;
 		--color-progress-fill: #d98500;
 
-		/* 装備品のカラー */
-		--color-equipment-weapon: #c82f2f;
-		--color-equipment-shield: #094bb0;
-		--color-equipment-helmet: #094bb0;
-		--color-equipment-armor: #094bb0;
-		--color-equipment-accessory: #d8a90b;
-
 		/* 称号の背景色 */
 		--color-title-bg-loading: var(--color-primary-brown-dark);
 		--color-title-bg-default: #80160d;
