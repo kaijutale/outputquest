@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
@@ -30,12 +30,16 @@ const ExploreArticleAnalysis = dynamic(
 	}
 );
 
-const ExplorePageClient = () => {
+type Props = {
+	initialZennUsername: string | null;
+};
+
+const ExplorePageClient = ({ initialZennUsername }: Props) => {
 	const { user, isLoaded } = useUser();
-	const [userZennInfo, setUserZennInfo] = useState<{
-		zennUsername?: string;
-	} | null>(null);
-	const [isZennInfoLoaded, setIsZennInfoLoaded] = useState(false);
+	// サーバーサイドで取得した初期値を使用（useEffectでのフェッチ不要）
+	const [userZennInfo] = useState<{ zennUsername?: string } | null>(
+		initialZennUsername ? { zennUsername: initialZennUsername } : null
+	);
 	const [isAnalyzing, setIsAnalyzing] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
@@ -60,6 +64,7 @@ const ExplorePageClient = () => {
 	});
 
 	// ゲストユーザーまたはZenn未連携の場合
+	// サーバーサイドで取得した初期値を使用するため、isLoadedのみチェック
 	const isGuestUser = !isLoaded || !user || !userZennInfo?.zennUsername;
 
 	const handleAnalyzeArticles = async () => {
@@ -112,42 +117,6 @@ const ExplorePageClient = () => {
 		}
 	};
 
-	// ユーザーのZenn連携情報を取得
-	useEffect(() => {
-		const fetchUserZennInfo = async () => {
-			if (!isLoaded) {
-				setIsZennInfoLoaded(false);
-				return;
-			}
-
-			if (!user) {
-				setUserZennInfo(null);
-				setIsZennInfoLoaded(true);
-				return;
-			}
-
-			setIsZennInfoLoaded(false);
-
-			try {
-				const userRes = await fetch("/api/user");
-				const userData = await userRes.json();
-
-				if (userData.success) {
-					setUserZennInfo(userData.user);
-				} else {
-					setUserZennInfo(null);
-				}
-			} catch (err) {
-				console.error("ユーザー情報取得エラー:", err);
-				setUserZennInfo(null);
-			} finally {
-				setIsZennInfoLoaded(true);
-			}
-		};
-
-		fetchUserZennInfo();
-	}, [isLoaded, user?.id]);
-
 	return (
 		<>
 			<div className={`${styles["explorer-header"]}`}>
@@ -158,7 +127,7 @@ const ExplorePageClient = () => {
 						<p>あなたの成長に最適な「学びのタネ」を見つけ出します。</p>
 					</div>
 
-					{!isLoaded || !isZennInfoLoaded ? (
+					{!isLoaded ? (
 						<div className="grid place-items-center px-4">
 							<LoadingIndicator text="読み込み中" className={styles["loading-indicator"]} />
 						</div>
@@ -220,7 +189,7 @@ const ExplorePageClient = () => {
 			<ExploreArticleAnalysis
 				userZennInfo={userZennInfo}
 				isLoaded={isLoaded}
-				isZennInfoLoaded={isZennInfoLoaded}
+				isZennInfoLoaded={true}
 				messages={messages}
 				status={status}
 				isAnalyzing={isAnalyzing}
