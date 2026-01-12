@@ -32,65 +32,59 @@ const StrengthTitleInfo = () => {
 	// ゲストユーザーかどうかの判定（Clerkサインイン + Zenn連携の両方が必要）
 	const isGuestUser = isReady && (!user || !userZennInfo?.zennUsername);
 
-	// ユーザーのZenn連携情報を取得
+	// ユーザー情報取得と記事数からレベルを計算（1回のAPI呼び出しに統合）
 	useEffect(() => {
-		const fetchUserZennInfo = async () => {
+		const fetchUserDataAndLevel = async () => {
 			setIsZennInfoLoaded(false);
+			setIsLoadingTitle(true);
+
+			// 未ログインの場合
 			if (!isLoaded || !user) {
 				setUserZennInfo(null);
 				setIsZennInfoLoaded(true);
+				// ゲストユーザーは@aoyamadevのデータを使用
+				try {
+					const articles = await fetchZennArticles("aoyamadev", { fetchAll: true });
+					setHeroLevel(articles.length);
+				} catch {
+					setHeroLevel(1);
+				} finally {
+					setIsLoadingTitle(false);
+				}
 				return;
 			}
 
 			try {
+				// /api/user は1回だけ呼び出す
 				const response = await fetch("/api/user");
-				const data = await response.json();
+				const userData = await response.json();
 
-				if (data.success && data.user) {
-					setUserZennInfo({ zennUsername: data.user.zennUsername });
+				if (userData.success && userData.user) {
+					const zennUsername = userData.user.zennUsername;
+					setUserZennInfo({ zennUsername });
+
+					// Zenn連携済みならそのユーザーの記事、未連携なら@aoyamadevのデータ
+					const username = zennUsername || "aoyamadev";
+					const articles = await fetchZennArticles(username, { fetchAll: true });
+					setHeroLevel(articles.length);
 				} else {
 					setUserZennInfo(null);
+					// 連携未設定の場合は@aoyamadevのデータを使用
+					const articles = await fetchZennArticles("aoyamadev", { fetchAll: true });
+					setHeroLevel(articles.length);
 				}
 			} catch (err) {
 				console.error("ユーザー情報取得エラー:", err);
 				setUserZennInfo(null);
-			} finally {
-				setIsZennInfoLoaded(true);
-			}
-		};
-
-		fetchUserZennInfo();
-	}, [isLoaded, user]);
-
-	// 記事数からレベルを計算して設定
-	useEffect(() => {
-		const loadLevel = async () => {
-			try {
-				setIsLoadingTitle(true);
-				const userRes = await fetch("/api/user");
-				const userData = await userRes.json();
-
-				let username = null;
-
-				if (!userData.success || !userData.user.zennUsername) {
-					// ゲストユーザーまたは連携未設定の場合は@aoyamadevのデータを使用
-					username = "aoyamadev";
-				} else {
-					username = userData.user.zennUsername;
-				}
-
-				const articles = await fetchZennArticles(username, {
-					fetchAll: true,
-				});
-				setHeroLevel(articles.length);
-			} catch {
 				setHeroLevel(1);
 			} finally {
+				setIsZennInfoLoaded(true);
 				setIsLoadingTitle(false);
 			}
 		};
-		loadLevel();
-	}, []);
+
+		fetchUserDataAndLevel();
+	}, [isLoaded, user]);
 
 	// 勇者のレベルに応じて直近で獲得した称号のIDを取得
 	const getLatestTitleId = () => {
