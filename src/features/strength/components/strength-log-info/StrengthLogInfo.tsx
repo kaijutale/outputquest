@@ -8,9 +8,6 @@ import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 
-// ローカルストレージのキー
-const ADVENTURE_LOGS_KEY = "adventure_logs";
-
 const StrengthLogInfo = () => {
 	const [logs, setLogs] = useState<string[]>([]);
 	const [loading, setLoading] = useState(true);
@@ -78,10 +75,6 @@ const StrengthLogInfo = () => {
 			const logsData = await logsRes.json();
 
 			if (logsData.success && Array.isArray(logsData.logs)) {
-				// ログデータを文字列配列に変換してセット（既存UIとの互換性のため）
-				// adventureLog: { content: string, occurredAt, ... }
-				// 日付を含めるかどうかは呼び出し元次第だが、サーバー側で生成した content だけ使うか
-				// 元の実装では "yyyy/mm/dd hh:mm content" 形式だった
 				const formattedLogs = logsData.logs.map((log: any) => {
 					const date = new Date(log.occurredAt);
 					const formattedDate = formatDate(date);
@@ -116,7 +109,7 @@ const StrengthLogInfo = () => {
 
 	// デフォルトのログを生成
 	const generateDefaultLogs = (): string[] => {
-		return ["表示できる冒険ログがありません"];
+		return ["表示できる冒険ログはまだありません"];
 	};
 
 	// エラー表示
@@ -149,7 +142,7 @@ const StrengthLogInfo = () => {
 									</li>
 								) : (
 									// 最大15件のログのみ表示
-									logs.slice(0, 7).map((log, index) => (
+									logs.slice(0, 15).map((log, index) => (
 										<li key={index} className={styles["strength-log-item"]}>
 											<p className={styles["strength-log-text"]}>{log}</p>
 										</li>
