@@ -21,7 +21,6 @@ export async function revalidateUserCache(clerkId: string): Promise<void> {
 	try {
 		revalidateTag(CacheTags.user(clerkId), "max");
 		revalidateTag(CacheTags.dashboard(clerkId), "max");
-		console.log(`Revalidated cache for user: ${clerkId}`);
 	} catch (error) {
 		console.error("Failed to revalidate user cache:", error);
 		throw error;
@@ -41,7 +40,6 @@ export async function revalidateUserCache(clerkId: string): Promise<void> {
 export async function revalidateZennArticlesCache(username: string): Promise<void> {
 	try {
 		revalidateTag(CacheTags.zennArticles(username), "max");
-		console.log(`Revalidated cache for Zenn articles: ${username}`);
 	} catch (error) {
 		console.error("Failed to revalidate Zenn articles cache:", error);
 		throw error;

@@ -36,8 +36,6 @@ export const syncAdventureLogs = async (userId: string, articles: Article[]) => 
 
 	let currentLevel = 0;
 
-	console.log("Syncing adventure logs with offsets for userId:", userId);
-
 	// Process each article
 	for (const article of sortedArticles) {
 		currentLevel++;
