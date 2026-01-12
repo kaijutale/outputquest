@@ -58,17 +58,12 @@ export const metadata: Record<string, Metadata> = {
 		...baseMetadata,
 		title: "つよさ",
 		description:
-			"勇者の成長度合いを示すレベル、レベルアップ報酬で獲得した「称号」の確認、勇者の「装備アイテム」の確認、学びの記録を時系列で確認できる「冒険ログ」の確認ができます。",
+			"勇者の成長度合いを示すレベル、レベルアップ報酬で獲得した「称号」の確認、学びの記録を時系列で確認できる「冒険ログ」の確認ができます。",
 	},
 	title: {
 		...baseMetadata,
 		title: "称号リスト",
 		description: "勇者がレベルアップ報酬で獲得した称号を一覧で確認できます。",
-	},
-	equipment: {
-		...baseMetadata,
-		title: "そうび一覧",
-		description: "勇者の装備アイテムを一覧で確認できます。",
 	},
 	logs: {
 		...baseMetadata,
