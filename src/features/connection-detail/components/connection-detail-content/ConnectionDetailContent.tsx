@@ -125,11 +125,6 @@ const ConnectionDetailContent = () => {
 										>
 											アプリの機能を一通り見てみたい
 										</li>
-										<li
-											className={`${styles["connection-detail-list-item"]} text-sm leading-[1.75] w-full`}
-										>
-											Zennと連携することで、勇者の成長にどう繋がるのか見てみたい
-										</li>
 									</ul>
 								</div>
 								<div className="grid gap-1">
@@ -142,7 +137,7 @@ const ConnectionDetailContent = () => {
 										<li
 											className={`${styles["connection-detail-list-item"]} text-sm leading-[1.75] w-full`}
 										>
-											Xへのシェア機能
+											Xへのシェア
 										</li>
 										<li
 											className={`${styles["connection-detail-list-item"]} text-sm leading-[1.75] w-full`}
@@ -152,22 +147,22 @@ const ConnectionDetailContent = () => {
 										<li
 											className={`${styles["connection-detail-list-item"]} text-sm leading-[1.75] w-full`}
 										>
-											装備機能
+											冒険ログ
 										</li>
 										<li
 											className={`${styles["connection-detail-list-item"]} text-sm leading-[1.75] w-full`}
 										>
-											称号の確認
+											称号の獲得
 										</li>
 										<li
 											className={`${styles["connection-detail-list-item"]} text-sm leading-[1.75] w-full`}
 										>
-											なかまの確認
+											なかまの獲得
 										</li>
 										<li
 											className={`${styles["connection-detail-list-item"]} text-sm leading-[1.75] w-full`}
 										>
-											アイテムの確認
+											アイテムの獲得
 										</li>
 									</ul>
 								</div>
