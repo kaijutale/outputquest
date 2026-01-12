@@ -124,17 +124,17 @@ Gemini 3 Flash Preview（無料枠）の採用理由は以下の2点です。
 
 ![つよさ](public/images/readme/strength-page.png)
 
-### **称号リスト**
-
-勇者がレベルアップ報酬で獲得した称号を一覧で確認できます。
-
-![称号リスト](public/images/readme/)
-
 ### **冒険ログ**
 
 これまでの学びの軌跡を時系列で確認できます。
 
 ![冒険ログ](public/images/readme/logs-page.png)
+
+### **称号リスト**
+
+勇者がレベルアップ報酬で獲得した称号を一覧で確認できます。
+
+![称号リスト](public/images/readme/title-page.png)
 
 ### **なかま**
 
@@ -156,21 +156,11 @@ Gemini 3 Flash Preview（無料枠）の採用理由は以下の2点です。
 
 Clerk認証によるログイン、Zennのアカウント連携を管理できます。ログインとZenn連携をすることで、Zennの投稿データがアプリ内のUIに反映されます。アプリはログイン無し（ゲストユーザー）でも一部の機能を体験できます。
 
-<table>
-  <tr>
-    <td width="50%">
-      <img src="public/images/readme/connection-page/connection-page01.png" alt="連携" width="100%" />
-    </td>
-    <td width="50%">
-      <img src="public/images/readme/connection-page/connection-page02.png" alt="連携" width="100%" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <img src="public/images/readme/connection-page/connection-page03.png" alt="連携" width="100%" />
-    </td>
-  </tr>
-</table>
+![連携](public/images/readme/connection-page/connection-page01.png)
+
+![連携](public/images/readme/connection-page/connection-page02.png)
+
+![連携](public/images/readme/connection-page/connection-page03.png)
 
 ### **Zenn連携について**
 
