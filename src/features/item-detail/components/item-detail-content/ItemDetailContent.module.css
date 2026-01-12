@@ -614,3 +614,30 @@
 	border: 1px solid var(--color-primary-brown-light);
 	padding: 4px 10px;
 }
+
+/* カードとスケルトンを重ねるラッパー */
+.item-detail-card-wrapper {
+	display: block grid;
+	place-items: center;
+
+	& > * {
+		grid-area: 1 / 1;
+	}
+}
+
+/* Skeletonオーバーレイ */
+.skeleton-overlay {
+	z-index: 10;
+	transition: opacity 0.3s ease-out;
+	pointer-events: none;
+}
+
+.skeleton-overlay-visible {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.skeleton-overlay-hidden {
+	opacity: 0;
+	pointer-events: none;
+}

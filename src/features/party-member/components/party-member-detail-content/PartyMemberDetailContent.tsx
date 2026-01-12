@@ -100,9 +100,8 @@ const PartyMemberDetailContent: React.FC<PartyMemberDetailContentProps> = ({ par
 
 	return (
 		<div className={styles["party-member-content"]}>
-			{isLoading ? (
-				<PartyMemberDetail.PartyMemberDetailSkeleton />
-			) : (
+			<div className={styles["party-member-card-wrapper"]}>
+				{/* 実コンテンツ - 常にマウント（priority属性が効く） */}
 				<div className={styles["party-member-card"]}>
 					<Image
 						src="/images/card/card-bg.png"
@@ -146,11 +145,9 @@ const PartyMemberDetailContent: React.FC<PartyMemberDetailContentProps> = ({ par
 						</div>
 
 						{isAcquired ? (
-							<>
-								<div className={styles["party-member-description-box"]}>
-									<p className={styles["party-member-description"]}>{memberDescription}</p>
-								</div>
-							</>
+							<div className={styles["party-member-description-box"]}>
+								<p className={styles["party-member-description"]}>{memberDescription}</p>
+							</div>
 						) : (
 							<div className={styles["party-member-locked-message-box"]}>
 								{isGuestUser ? (
@@ -158,20 +155,27 @@ const PartyMemberDetailContent: React.FC<PartyMemberDetailContentProps> = ({ par
 										ログインすると勇者の仲間に加わったキャラクターの詳細情報がここに表示されます。
 									</p>
 								) : (
-									<>
-										<p className={styles["party-member-locked-message-text"]}>
-											<span>このキャラはLv{requiredLevel}で仲間に加わるぞ！</span>
-											<span>
-												Lv{requiredLevel}まで、あと{levelDifference}レベル
-											</span>
-										</p>
-									</>
+									<p className={styles["party-member-locked-message-text"]}>
+										<span>このキャラはLv{requiredLevel}で仲間に加わるぞ！</span>
+										<span>
+											Lv{requiredLevel}まで、あと{levelDifference}レベル
+										</span>
+									</p>
 								)}
 							</div>
 						)}
 					</div>
 				</div>
-			)}
+
+				{/* Skeletonオーバーレイ - ローディング時のみ表示 */}
+				<div
+					className={`${styles["skeleton-overlay"]} ${
+						isLoading ? styles["skeleton-overlay-visible"] : styles["skeleton-overlay-hidden"]
+					}`}
+				>
+					<PartyMemberDetail.PartyMemberDetailSkeleton />
+				</div>
+			</div>
 		</div>
 	);
 };
