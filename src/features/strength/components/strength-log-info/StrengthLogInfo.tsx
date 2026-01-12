@@ -116,7 +116,7 @@ const StrengthLogInfo = () => {
 
 	// デフォルトのログを生成
 	const generateDefaultLogs = (): string[] => {
-		return ["冒険ログはまだありません", "---"];
+		return ["表示できる冒険ログがありません"];
 	};
 
 	// エラー表示
@@ -149,7 +149,7 @@ const StrengthLogInfo = () => {
 									</li>
 								) : (
 									// 最大15件のログのみ表示
-									logs.slice(0, 15).map((log, index) => (
+									logs.slice(0, 7).map((log, index) => (
 										<li key={index} className={styles["strength-log-item"]}>
 											<p className={styles["strength-log-text"]}>{log}</p>
 										</li>
