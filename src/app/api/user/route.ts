@@ -2,11 +2,6 @@ import { NextResponse } from "next/server";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 
-// キャッシュヘッダーを定義
-const CACHE_HEADERS = {
-	"Cache-Control": "public, max-age=60, stale-while-revalidate=300",
-} as const;
-
 const NO_CACHE_HEADERS = {
 	"Cache-Control": "no-cache, no-store, must-revalidate",
 	Pragma: "no-cache",
@@ -41,8 +36,6 @@ const retryOperation = async <T>(
 
 // ユーザー情報の取得API
 export async function GET() {
-	const startTime = Date.now();
-
 	try {
 		const { userId } = await auth();
 
@@ -129,7 +122,6 @@ export async function GET() {
 			}
 		);
 	} catch (error) {
-		const elapsedTime = Date.now() - startTime;
 		console.error("ユーザー取得エラー:", error);
 		return NextResponse.json(
 			{ success: false, error: "ユーザー情報の取得に失敗しました" },
@@ -143,8 +135,6 @@ export async function GET() {
 
 // ユーザー情報の更新API
 export async function POST(request: Request) {
-	const startTime = Date.now();
-
 	try {
 		const { userId } = await auth();
 		const clerkUser = await currentUser();
@@ -295,7 +285,6 @@ export async function POST(request: Request) {
 			}
 		);
 	} catch (error) {
-		const elapsedTime = Date.now() - startTime;
 		console.error("ユーザー更新エラー:", error);
 
 		// Prismaエラーの場合は詳細を出力
@@ -332,8 +321,6 @@ export async function POST(request: Request) {
 
 // Zenn記事数の更新API
 export async function PUT(request: Request) {
-	const startTime = Date.now();
-
 	try {
 		const { userId } = await auth();
 
@@ -392,7 +379,6 @@ export async function PUT(request: Request) {
 			}
 		);
 	} catch (error) {
-		const elapsedTime = Date.now() - startTime;
 		console.error("記事数更新エラー:", error);
 
 		// ユーザーが存在しない場合の特別なハンドリング

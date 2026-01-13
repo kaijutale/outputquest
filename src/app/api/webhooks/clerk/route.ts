@@ -101,8 +101,6 @@ async function ensureUserExists(
 }
 
 export async function POST(request: Request) {
-	const startTime = Date.now();
-
 	// 環境変数チェック
 	const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SIGNING_SECRET;
 	if (!WEBHOOK_SECRET) {
@@ -268,7 +266,6 @@ export async function POST(request: Request) {
 
 		return NextResponse.json({ success: true });
 	} catch (error) {
-		const elapsedTime = Date.now() - startTime;
 		console.error("ウェブフックエラー:", error);
 		return NextResponse.json(
 			{ success: false, error: "ウェブフック処理に失敗しました" },
