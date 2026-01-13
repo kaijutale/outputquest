@@ -7,7 +7,7 @@ import {
 import { titleNameData } from "@/shared/data/titleNameDate";
 
 interface Article {
-	id: number;
+	id: number | string;
 	title: string;
 	publishedAt?: string | null;
 	date?: string | Date;
