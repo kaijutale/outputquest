@@ -24,7 +24,11 @@ export const useSignOutHandler = ({
 		const handleBeforeUnload = () => {
 			// ユーザーがブラウザを閉じたり更新したりする際に、セッション情報を保持
 			if (user) {
-				localStorage.setItem(SESSION_ID_KEY, user.id);
+				try {
+					localStorage.setItem(SESSION_ID_KEY, user.id);
+				} catch (error) {
+					// Cache Componentsモードでstorageアクセスが制限される場合は無視
+				}
 			}
 		};
 
@@ -40,12 +44,16 @@ export const useSignOutHandler = ({
 		if (typeof window !== "undefined") {
 			// 同期的な連携解除実行関数
 			const syncResetZennConnection = () => {
-				// 確実にフラグを設定
-				localStorage.setItem(LOGOUT_FLAG_KEY, "true");
+				try {
+					// 確実にフラグを設定
+					localStorage.setItem(LOGOUT_FLAG_KEY, "true");
 
-				// 現在のユーザーIDを保存（ログ用）
-				if (user?.id) {
-					localStorage.setItem("zenn_previous_user", user.id);
+					// 現在のユーザーIDを保存（ログ用）
+					if (user?.id) {
+						localStorage.setItem("zenn_previous_user", user.id);
+					}
+				} catch (error) {
+					// Cache Componentsモードでstorageアクセスが制限される場合は無視
 				}
 
 				// 画面上の状態をクリア
@@ -62,21 +70,33 @@ export const useSignOutHandler = ({
 					syncResetZennConnection();
 
 					// 次にセッション関連の状態をクリア
-					localStorage.setItem(LOGOUT_FLAG_KEY, "true");
-					localStorage.removeItem(SESSION_ID_KEY);
+					try {
+						localStorage.setItem(LOGOUT_FLAG_KEY, "true");
+						localStorage.removeItem(SESSION_ID_KEY);
+					} catch (error) {
+						// Cache Componentsモードでstorageアクセスが制限される場合は無視
+					}
 
 					// DBのデータ（zennUsername、zennArticleCount、level）は一切変更しない
 					// 画面上の表示のみクリアする
 					// サインアウト後も次回ログイン時にZenn連携が維持されるようにする
 
 					// 最後の保険として、再度ログアウトフラグを設定
-					localStorage.setItem(LOGOUT_FLAG_KEY, "true");
-					localStorage.removeItem(SESSION_ID_KEY);
+					try {
+						localStorage.setItem(LOGOUT_FLAG_KEY, "true");
+						localStorage.removeItem(SESSION_ID_KEY);
+					} catch (error) {
+						// Cache Componentsモードでstorageアクセスが制限される場合は無視
+					}
 				} catch (err) {
 					console.error("サインアウトハンドラーエラー:", err);
 					// エラーが発生しても必ずログアウトフラグは維持する
-					localStorage.setItem(LOGOUT_FLAG_KEY, "true");
-					localStorage.removeItem(SESSION_ID_KEY);
+					try {
+						localStorage.setItem(LOGOUT_FLAG_KEY, "true");
+						localStorage.removeItem(SESSION_ID_KEY);
+					} catch (error) {
+						// Cache Componentsモードでstorageアクセスが制限される場合は無視
+					}
 				}
 			};
 

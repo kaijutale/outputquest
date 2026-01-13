@@ -21,15 +21,21 @@ export const HomeAnimationProvider = ({ children }: { children: ReactNode }) => 
 		// SSR中はsessionStorageにアクセスしない
 		if (typeof window === "undefined") return;
 
-		const hasVisited = sessionStorage.getItem("hero-visited");
+		try {
+			const hasVisited = sessionStorage.getItem("hero-visited");
 
-		if (hasVisited) {
-			setIsFirstVisit(false);
-			setIsAnimationStarted(true);
-			setIsImageVisible(true);
-		} else {
+			if (hasVisited) {
+				setIsFirstVisit(false);
+				setIsAnimationStarted(true);
+				setIsImageVisible(true);
+			} else {
+				setIsFirstVisit(true);
+				sessionStorage.setItem("hero-visited", "true");
+			}
+		} catch (error) {
+			// Cache Componentsモードでstorageアクセスが制限される場合は
+			// 初回訪問として扱う
 			setIsFirstVisit(true);
-			sessionStorage.setItem("hero-visited", "true");
 		}
 	}, []);
 

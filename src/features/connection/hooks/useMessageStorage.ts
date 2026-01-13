@@ -20,25 +20,29 @@ export const useMessageStorage = ({
 }: UseMessageStorageProps) => {
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			// 成功メッセージを取得
-			const savedSuccessMessage = localStorage.getItem(SUCCESS_MESSAGE_KEY);
-			if (savedSuccessMessage) {
-				setSuccess(savedSuccessMessage);
-				localStorage.removeItem(SUCCESS_MESSAGE_KEY);
-			}
+			try {
+				// 成功メッセージを取得
+				const savedSuccessMessage = localStorage.getItem(SUCCESS_MESSAGE_KEY);
+				if (savedSuccessMessage) {
+					setSuccess(savedSuccessMessage);
+					localStorage.removeItem(SUCCESS_MESSAGE_KEY);
+				}
 
-			// 連携解除メッセージを取得
-			const savedReleaseMessage = localStorage.getItem(RELEASE_MESSAGE_KEY);
-			if (savedReleaseMessage) {
-				setReleaseMessage(savedReleaseMessage);
-				localStorage.removeItem(RELEASE_MESSAGE_KEY);
-			}
+				// 連携解除メッセージを取得
+				const savedReleaseMessage = localStorage.getItem(RELEASE_MESSAGE_KEY);
+				if (savedReleaseMessage) {
+					setReleaseMessage(savedReleaseMessage);
+					localStorage.removeItem(RELEASE_MESSAGE_KEY);
+				}
 
-			// ログアウトフラグを確認
-			const logoutFlag = localStorage.getItem(LOGOUT_FLAG_KEY);
-			if (logoutFlag === "true") {
-				setWasLoggedOut(true);
-				localStorage.removeItem(LOGOUT_FLAG_KEY);
+				// ログアウトフラグを確認
+				const logoutFlag = localStorage.getItem(LOGOUT_FLAG_KEY);
+				if (logoutFlag === "true") {
+					setWasLoggedOut(true);
+					localStorage.removeItem(LOGOUT_FLAG_KEY);
+				}
+			} catch (error) {
+				// Cache Componentsモードでstorageアクセスが制限される場合は無視
 			}
 		}
 	}, [setSuccess, setReleaseMessage, setWasLoggedOut]);
