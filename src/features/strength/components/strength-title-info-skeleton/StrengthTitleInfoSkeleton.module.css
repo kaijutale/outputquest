@@ -1,8 +1,13 @@
 .skeleton-container {
+	grid-column: span 2;
 	border: 3mm ridge #b69973;
 	background-color: var(--color-primary-brown-dark);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
+
+	@media (width < 1280px) {
+		grid-column: span 1;
+	}
 }
 
 .skeleton-content {
