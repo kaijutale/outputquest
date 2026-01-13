@@ -24,7 +24,7 @@ export const useUserInfo = ({
 	// サーバーサイドで取得した初期値がある場合、初期状態として使用
 	const hasInitialData = initialZennUsername !== undefined && initialZennUsername !== null;
 	const [userInfo, setUserInfo] = useState<UserInfo | null>(
-		hasInitialData ? { zennUsername: initialZennUsername } as UserInfo : null
+		hasInitialData ? ({ zennUsername: initialZennUsername } as UserInfo) : null
 	);
 	const [isZennInfoLoaded, setIsZennInfoLoaded] = useState(hasInitialData);
 	const [hasLoadedOnce, setHasLoadedOnce] = useState(hasInitialData);

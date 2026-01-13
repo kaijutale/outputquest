@@ -7,6 +7,7 @@
 - クライアント公開キーは `NEXT_PUBLIC_` プレフィックス
 
 ### 機密キー（サーバーのみ）
+
 - Clerk secrets
 - Supabase service role key
 - Gemini API key

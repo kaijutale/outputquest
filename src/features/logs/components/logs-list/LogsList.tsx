@@ -8,9 +8,7 @@ interface LogsListProps {
 const LogsList = ({ logs }: LogsListProps) => {
 	// ログがない場合のデフォルトメッセージ
 	const displayLogs =
-		logs.length > 0
-			? logs.map((log) => `${log.formattedDate} ${log.content}`)
-			: [];
+		logs.length > 0 ? logs.map((log) => `${log.formattedDate} ${log.content}`) : [];
 
 	return (
 		<ul className={styles["logs-page-list"]}>

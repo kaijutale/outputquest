@@ -16,10 +16,7 @@ const StrengthLogInfoSkeleton = () => {
 							<ul className={`${styles["strength-log-list"]} ${skeletonStyles["skeleton-list"]}`}>
 								<li className={styles["strength-log-item"]}>
 									<div className={styles["strength-log-loading-text"]}>
-										<LoadingIndicator
-											text="読み込み中"
-											className={styles["loading-indicator"]}
-										/>
+										<LoadingIndicator text="読み込み中" className={styles["loading-indicator"]} />
 									</div>
 								</li>
 							</ul>
