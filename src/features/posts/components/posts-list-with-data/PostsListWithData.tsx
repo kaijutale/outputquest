@@ -6,6 +6,18 @@ import { PlatformType } from "@/features/posts/types";
 import * as Posts from "@/features/posts/components";
 import styles from "./PostsListWithData.module.css";
 
+/**
+ * PostsListWithData (Server Component)
+ *
+ * Zenn記事一覧を取得して表示するServer Component
+ *
+ * データフェッチ:
+ * - connection() + auth() + prisma: ユーザー認証とDB取得（動的）
+ * - getZennArticles(): Zenn記事取得（Request Memoization + use cache）
+ *
+ * 注意: getUser()を使うとキャッシュの問題でユーザー間でデータが混在する
+ * 可能性があるため、認証関連は直接呼び出しを維持
+ */
 const PostsListWithData = async () => {
 	// Dynamic Renderingを強制（cacheComponents有効時のプリレンダリング対策）
 	await connection();
@@ -31,7 +43,7 @@ const PostsListWithData = async () => {
 			}
 		}
 
-		// Zenn記事を取得（全件取得）
+		// Zenn記事を取得（全件取得）- use cache + Request Memoization
 		const articles = await getZennArticles(zennUsername, { fetchAll: true });
 
 		// platformType: "zenn" を各記事に設定
