@@ -1,199 +1,70 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import { connection } from "next/server";
+import { auth } from "@clerk/nextjs/server";
+import { prisma } from "@/lib/prisma";
+import { getZennArticles } from "@/features/zenn/_lib/fetcher";
+import StrengthTitleInfoClient from "./StrengthTitleInfoClient";
 import styles from "./StrengthTitleInfo.module.css";
-import Link from "next/link";
-import { titleNameData } from "@/shared/data/titleNameDate";
-import { useRouter } from "next/navigation";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
-import { fetchZennArticles } from "@/features/posts/services";
-import { useUser } from "@clerk/nextjs";
-import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 
-const StrengthTitleInfo = () => {
-	const router = useRouter();
-	const { user, isLoaded } = useUser();
-	const { playClickSound } = useClickSound({
-		soundPath: "/audio/click-sound_decision.mp3",
-		volume: 0.5,
-		delay: 190, // 190ミリ秒 = 0.19秒の遅延
-	});
+/**
+ * StrengthTitleInfo (Server Component)
+ *
+ * 称号情報を取得してStrengthTitleInfoClientに渡す
+ * StrengthHeroInfoと同じパターンで2層分離
+ *
+ * データフェッチ:
+ * - auth() でユーザー認証
+ * - prisma でzennUsername取得
+ * - getZennArticles() で記事数取得（Request Memoization + "use cache"）
+ * - レベル計算（記事数 = レベル）
+ */
+const StrengthTitleInfo = async () => {
+	// Dynamic Renderingを強制（cacheComponents有効時のプリレンダリング対策）
+	await connection();
 
-	// ローカルレベル取得状態
-	const [heroLevel, setHeroLevel] = useState<number>(1);
-	const [isLoadingTitle, setIsLoadingTitle] = useState<boolean>(true);
-	const [isZennInfoLoaded, setIsZennInfoLoaded] = useState<boolean>(false);
-	const [userZennInfo, setUserZennInfo] = useState<{
-		zennUsername?: string;
-	} | null>(null);
+	try {
+		// 認証情報を取得
+		const { userId } = await auth();
 
-	// 読み込み状態の統合
-	const isReady = isLoaded && isZennInfoLoaded;
-	// ゲストユーザーかどうかの判定（Clerkサインイン + Zenn連携の両方が必要）
-	const isGuestUser = isReady && (!user || !userZennInfo?.zennUsername);
+		// ゲストユーザーの判定
+		let zennUsername: string | null = null;
+		let isGuestUser = true;
 
-	// ユーザー情報取得と記事数からレベルを計算（1回のAPI呼び出しに統合）
-	useEffect(() => {
-		const fetchUserDataAndLevel = async () => {
-			setIsZennInfoLoaded(false);
-			setIsLoadingTitle(true);
+		if (userId) {
+			// 認証済みユーザーの場合、DBからzennUsernameを取得
+			const user = await prisma.user.findUnique({
+				where: { clerkId: userId },
+				select: {
+					zennUsername: true,
+				},
+			});
 
-			// 未ログインの場合
-			if (!isLoaded || !user) {
-				setUserZennInfo(null);
-				setIsZennInfoLoaded(true);
-				// ゲストユーザーは@aoyamadevのデータを使用
-				try {
-					const articles = await fetchZennArticles("aoyamadev", { fetchAll: true });
-					setHeroLevel(articles.length);
-				} catch {
-					setHeroLevel(1);
-				} finally {
-					setIsLoadingTitle(false);
-				}
-				return;
+			if (user?.zennUsername) {
+				zennUsername = user.zennUsername;
+				isGuestUser = false;
 			}
-
-			try {
-				// /api/user は1回だけ呼び出す
-				const response = await fetch("/api/user");
-				const userData = await response.json();
-
-				if (userData.success && userData.user) {
-					const zennUsername = userData.user.zennUsername;
-					setUserZennInfo({ zennUsername });
-
-					// Zenn連携済みならそのユーザーの記事、未連携なら@aoyamadevのデータ
-					const username = zennUsername || "aoyamadev";
-					const articles = await fetchZennArticles(username, { fetchAll: true });
-					setHeroLevel(articles.length);
-				} else {
-					setUserZennInfo(null);
-					// 連携未設定の場合は@aoyamadevのデータを使用
-					const articles = await fetchZennArticles("aoyamadev", { fetchAll: true });
-					setHeroLevel(articles.length);
-				}
-			} catch (err) {
-				console.error("ユーザー情報取得エラー:", err);
-				setUserZennInfo(null);
-				setHeroLevel(1);
-			} finally {
-				setIsZennInfoLoaded(true);
-				setIsLoadingTitle(false);
-			}
-		};
-
-		fetchUserDataAndLevel();
-	}, [isLoaded, user]);
-
-	// 勇者のレベルに応じて直近で獲得した称号のIDを取得
-	const getLatestTitleId = () => {
-		if (isLoadingTitle || !isReady) return 0;
-
-		// 最終称号（Lv99）の特別処理
-		if (heroLevel >= 99) return 11;
-
-		// レベルに応じた称号インデックスを計算（10レベルごとに新しい称号）
-		// Math.floor(heroLevel / 10)で10レベルごとのグループを特定
-		const titleIndex = Math.min(Math.floor(heroLevel / 10), 9);
-
-		// インデックス → ID（インデックスは0から始まるが、IDは1から始まる）
-		return titleIndex + 1;
-	};
-
-	// 勇者のレベルに応じて直近で獲得した称号を取得
-	const getLatestTitle = () => {
-		if (isLoadingTitle || !isReady) return "";
-
-		// ゲストユーザーの場合は「ゲストユーザー」を表示
-		if (isGuestUser) return "ゲストユーザー";
-
-		// 最終称号（Lv99）の特別処理
-		if (heroLevel >= 99) return `${titleNameData[10].name}（Lv99）`;
-
-		// レベルに応じた称号インデックスを計算（10レベルごとに新しい称号）
-		const titleIndex = Math.min(Math.floor(heroLevel / 10), 9);
-
-		// インデックス0は初期称号
-		if (titleIndex === 0) {
-			return `${titleNameData[0].name}（初期称号）`;
 		}
 
-		// それ以外はレベル要件と共に表示
-		const requiredLevel = titleIndex * 10;
-		return `${titleNameData[titleIndex].name}（Lv${requiredLevel}）`;
-	};
+		// Zenn記事数を取得（全件取得）
+		// ゲストユーザーは@aoyamadevのデータを使用
+		const username = zennUsername || "aoyamadev";
+		const articles = await getZennArticles(username, { fetchAll: true });
+		const heroLevel = Math.max(articles.length, 1); // 最低レベル1
 
-	// 現在の称号に対応するクラス名を取得
-	const getCurrentTitleClass = () => {
-		// ローディング中はローディング用のクラスを返す
-		if (isLoadingTitle || !isReady) {
-			return styles["strength-title-detail-content-loading"];
-		}
-
-		// ゲストユーザーの場合は専用のクラス名を返す
-		if (isGuestUser) {
-			return styles["strength-title-detail-content-default"];
-		}
-
-		const titleId = getLatestTitleId();
-
-		// ローディング中の場合
-		if (titleId === 0) {
-			return styles["strength-title-detail-content-loading"];
-		}
-
-		// 初期称号の場合
-		if (titleId === 1) return styles["strength-title-detail-content-default"];
-
-		// 最終称号（Lv99）の特別処理
-		if (titleId === 11) {
-			return heroLevel >= 99
-				? styles["strength-title-detail-content-lv99"]
-				: styles["strength-title-detail-content-default"];
-		}
-
-		// その他の称号の場合はレベルに応じたクラス名を返す
-		const requiredLevel = (titleId - 1) * 10;
-		return styles[`strength-title-detail-content-lv${requiredLevel}`];
-	};
-
-	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-		e.preventDefault();
-		playClickSound(() => router.push(path));
-	};
-
-	return (
-		<div className={styles["strength-title-info"]}>
-			<div className={styles["strength-title-info-content"]}>
-				<div className={styles["strength-title-box"]}>
-					<h2 className={styles["strength-title-title"]}>称号</h2>
-					<div className={styles["strength-title-detail-bg"]}>
-						<div className={styles["strength-title-detail"]}>
-							<div
-								className={`${styles["strength-title-detail-content"]} ${getCurrentTitleClass()}`}
-							>
-								{isLoadingTitle || !isReady ? (
-									<LoadingIndicator text="読み込み中" className={styles["loading-indicator"]} />
-								) : (
-									<h3 className={styles["strength-title-detail-text"]}>{getLatestTitle()}</h3>
-								)}
-							</div>
-						</div>
-					</div>
-					<div className={styles["strength-title-list-link-box"]}>
-						<Link
-							href="/title"
-							className={styles["strength-title-list-link"]}
-							onClick={(e) => handleNavigation(e, "/title")}
-						>
-							称号リストを確認する
-						</Link>
+		// Client Componentにデータを渡す
+		return <StrengthTitleInfoClient heroLevel={heroLevel} isGuestUser={isGuestUser} />;
+	} catch (error) {
+		console.error("称号情報の取得エラー:", error);
+		return (
+			<div className={styles["strength-title-info"]}>
+				<div className={styles["strength-title-info-content"]}>
+					<div className={styles["strength-title-box"]}>
+						<h2 className={styles["strength-title-title"]}>称号</h2>
+						<div className={styles["error-text"]}>データの取得中にエラーが発生しました。</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 };
 
 export default StrengthTitleInfo;

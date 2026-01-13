@@ -1,0 +1,111 @@
+.skeleton-container {
+	border: 3mm ridge #b69973;
+	background-color: var(--color-primary-brown-dark);
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
+}
+
+.skeleton-content {
+	height: 100%;
+	display: block grid;
+	grid-template-columns: auto;
+	gap: 20px;
+	background-color: #ae926e;
+	border: 2px solid var(--color-primary-brown-light);
+}
+
+.skeleton-box {
+	display: block grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto 1fr auto;
+	gap: 10px;
+	padding-inline: 10px;
+	padding-block: 10px;
+}
+
+.skeleton-title {
+	font-size: 1.25rem;
+	font-weight: var(--font-weight-x-bold);
+	text-align: center;
+	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+
+	@media (width < 768px) {
+		font-size: 1.125rem;
+	}
+}
+
+.skeleton-detail-bg {
+	display: block grid;
+	place-items: center;
+	background-color: var(--color-primary-dark-gray);
+	border: 2px solid var(--color-primary-white);
+	border-radius: var(--border-radius-small);
+	padding-block: 15px;
+	padding-inline: 15px;
+
+	@media (width < 1280px) {
+		padding-block: 40px;
+		padding-inline: 10px;
+	}
+}
+
+.skeleton-detail {
+	display: block grid;
+	place-items: center;
+	background-color: var(--color-primary-brown-dark);
+	border: 3mm ridge #b69973;
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
+}
+
+.skeleton-detail-content {
+	min-width: 300px;
+	display: block grid;
+	place-items: center;
+	border: 2px solid var(--color-primary-brown-light);
+	padding-block: 25px;
+	background: var(--color-title-bg-loading);
+
+	@media (width < 640px) {
+		min-width: auto;
+		padding-block: 20px;
+		padding-inline: 10px;
+	}
+}
+
+.skeleton-text {
+	width: 180px;
+	height: 24px;
+	background: linear-gradient(90deg, #444 25%, #555 50%, #444 75%);
+	background-size: 200% 100%;
+	animation: skeleton-shimmer 1.5s infinite;
+	border-radius: 4px;
+
+	@media (width < 640px) {
+		width: 140px;
+		height: 20px;
+	}
+}
+
+.skeleton-link-box {
+	display: block grid;
+	place-items: center;
+}
+
+.skeleton-link {
+	width: 140px;
+	height: 16px;
+	background: linear-gradient(90deg, #888 25%, #999 50%, #888 75%);
+	background-size: 200% 100%;
+	animation: skeleton-shimmer 1.5s infinite;
+	border-radius: 4px;
+}
+
+@keyframes skeleton-shimmer {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}

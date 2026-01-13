@@ -5,6 +5,8 @@ import StrengthLogInfo from "./strength-log-info/StrengthLogInfo";
 import StrengthLogInfoSkeleton from "./strength-log-info-skeleton/StrengthLogInfoSkeleton";
 import StrengthLogInfoWrapper from "./strength-log-info/StrengthLogInfoWrapper";
 import StrengthTitleInfo from "./strength-title-info/StrengthTitleInfo";
+import StrengthTitleInfoClient from "./strength-title-info/StrengthTitleInfoClient";
+import StrengthTitleInfoSkeleton from "./strength-title-info-skeleton/StrengthTitleInfoSkeleton";
 
 export {
 	StrengthHeroInfo,
@@ -14,4 +16,6 @@ export {
 	StrengthLogInfoSkeleton,
 	StrengthLogInfoWrapper,
 	StrengthTitleInfo,
+	StrengthTitleInfoClient,
+	StrengthTitleInfoSkeleton,
 };

@@ -25,7 +25,9 @@ const StrengthPage = () => {
 						</Suspense>
 					</div>
 					{/* （下）称号 */}
-					<Strength.StrengthTitleInfo />
+					<Suspense fallback={<Strength.StrengthTitleInfoSkeleton />}>
+						<Strength.StrengthTitleInfo />
+					</Suspense>
 				</div>
 			</div>
 		</>
