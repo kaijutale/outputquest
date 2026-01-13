@@ -1,5 +1,5 @@
 import { DotGothic16 } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProviderWrapper } from "@/components/auth/clerk-provider-wrapper";
 import { baseMetadata } from "@/config/metadata";
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/header/Header";
@@ -54,7 +54,7 @@ export default function RootLayout({
 				/>
 			</head>
 			<body suppressHydrationWarning>
-				<ClerkProvider
+				<ClerkProviderWrapper
 					signInFallbackRedirectUrl={redirectUrl}
 					signInForceRedirectUrl={redirectUrl}
 					signUpFallbackRedirectUrl={redirectUrl}
@@ -75,7 +75,7 @@ export default function RootLayout({
 							</HeroProvider>
 						</AudioProvider>
 					</SignOutHandler>
-				</ClerkProvider>
+				</ClerkProviderWrapper>
 			</body>
 		</html>
 	);
