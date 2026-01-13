@@ -13,10 +13,11 @@ import styles from "./StrengthHeroInfo.module.css";
  * ItemCardList/PartyMemberCardListと同じパターンで2層分離
  *
  * データフェッチ:
- * - auth() でユーザー認証
- * - prisma でzennUsername取得
- * - getZennArticles() で記事数取得（Request Memoization + "use cache"）
- * - レベル計算（記事数 = レベル）
+ * - connection() + auth() + prisma: ユーザー認証とDB取得（動的）
+ * - getZennArticles(): Zenn記事取得（Request Memoization + use cache）
+ *
+ * 注意: getUser()を使うとキャッシュの問題でユーザー間でデータが混在する
+ * 可能性があるため、認証関連は直接呼び出しを維持
  */
 const StrengthHeroInfo = async () => {
 	// Dynamic Renderingを強制（cacheComponents有効時のプリレンダリング対策）
