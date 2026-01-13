@@ -1,5 +1,4 @@
 import { DotGothic16 } from "next/font/google";
-import Script from "next/script";
 import { ClerkProvider } from "@clerk/nextjs";
 import { baseMetadata } from "@/config/metadata";
 import type { Metadata } from "next";

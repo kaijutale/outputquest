@@ -16,7 +16,7 @@ const HomeStartButton = () => {
 	const { user, isLoaded } = useUser();
 	const [isZennConnected, setIsZennConnected] = useState(false);
 	const { isMuted } = useAudio();
-	const { isAnimationStarted, isImageVisible, isFirstVisit } = useHomeAnimation();
+	const { isImageVisible, isFirstVisit } = useHomeAnimation();
 
 	const { playClickSound } = useClickSound({
 		soundPath: "/audio/start-sound.mp3",

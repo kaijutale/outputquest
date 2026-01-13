@@ -1,27 +1,6 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware } from "@clerk/nextjs/server";
 
-const isPublicRoute = createRouteMatcher([
-	"/",
-	"/about",
-	"/connection(.*)",
-	"/audio(.*)",
-	"/api/user(.*)",
-	"/api/webhooks/clerk(.*)",
-	"/privacy",
-	"/terms",
-]);
-const isZennProtectedRoute = createRouteMatcher([
-	"/dashboard(.*)",
-	"/posts(.*)",
-	"/strength(.*)",
-	"/title(.*)",
-	"/equipment(.*)",
-	"/logs(.*)",
-	"/party(.*)",
-	"/items(.*)",
-]);
-
-export default clerkMiddleware((auth, request) => {
+export default clerkMiddleware(() => {
 	// ゲストユーザーでも全ページ閲覧できるようにするため、
 	// middlewareでのリダイレクト処理を削除し、すべてのリクエストを許可する。
 	// 認証状態のチェックは、各ページのコンポーネント層に委ねる。

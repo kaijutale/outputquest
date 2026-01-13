@@ -105,7 +105,6 @@ const fetchWithTimeoutAndRetry = async (
 };
 
 export async function GET(request: Request) {
-	const startTime = Date.now();
 	const { searchParams } = new URL(request.url);
 	const username = searchParams.get("username") || "aoyamadev";
 	const limitParam = searchParams.get("limit");
@@ -295,7 +294,6 @@ export async function GET(request: Request) {
 			}
 		);
 	} catch (error) {
-		const elapsedTime = Date.now() - startTime;
 		console.error("Zenn APIエラー:", error);
 
 		// エラーの種類に応じてより詳細なメッセージを返す
