@@ -10,9 +10,6 @@ export const metadata: Metadata = getPageMetadata("connection");
 
 // Server Componentでユーザー情報を取得するラッパー
 const ConnectionPageContent = async () => {
-	// TODO: スケルトンUI確認用 - 確認後削除
-	await new Promise(() => {});
-
 	const user = await getUser();
 	const initialZennUsername = user?.zennUsername ?? null;
 
