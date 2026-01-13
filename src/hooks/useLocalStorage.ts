@@ -19,9 +19,8 @@ export function useLocalStorage<T>(key: string, initialValue: T): [T, Dispatch<S
 				localStorage.setItem(key, JSON.stringify(initialValue));
 			}
 		} catch (error) {
-			console.error(error);
-			// パースエラーの場合は初期値を使用
-			localStorage.setItem(key, JSON.stringify(initialValue));
+			// Cache Componentsモードでstorageアクセスが制限される場合は
+			// 初期値をそのまま使用
 		}
 	}, [key, initialValue]);
 
@@ -38,7 +37,7 @@ export function useLocalStorage<T>(key: string, initialValue: T): [T, Dispatch<S
 				localStorage.setItem(key, JSON.stringify(valueToStore));
 			}
 		} catch (error) {
-			console.error(error);
+			// Cache Componentsモードでstorageアクセスが制限される場合は無視
 		}
 	};
 
