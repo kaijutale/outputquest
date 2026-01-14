@@ -73,6 +73,7 @@ const HomeStartButton = () => {
 					width={1000}
 					height={1000}
 					className={styles["start-btn-image"]}
+					priority={true}
 				/>
 				<Image
 					src="/images/button/start-button/start-button-hover.png"
@@ -80,6 +81,7 @@ const HomeStartButton = () => {
 					width={1000}
 					height={1000}
 					className={styles["start-btn-image-hover"]}
+					priority={true}
 				/>
 			</Link>
 		</motion.div>
