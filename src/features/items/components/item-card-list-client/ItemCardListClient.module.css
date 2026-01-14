@@ -1,6 +1,6 @@
 .items-grid {
 	grid-area: grid;
-	display: block grid;
+	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	height: 100%;
 	gap: 40px;
@@ -14,13 +14,13 @@
 }
 
 .item-card-content {
-	display: block grid;
+	display: grid;
 	grid-template-rows: subgrid;
 	grid-row: span 2;
 }
 
 .item-card {
-	display: block grid;
+	display: grid;
 	grid-template-rows: subgrid;
 	place-items: center;
 	grid-row: span 2;
@@ -52,7 +52,7 @@
 
 .acquired-item-icon,
 .unacquired-item-icon {
-	display: block grid;
+	display: grid;
 	place-items: center;
 	width: 100%;
 	height: auto;

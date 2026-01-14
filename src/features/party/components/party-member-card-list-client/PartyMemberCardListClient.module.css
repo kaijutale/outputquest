@@ -1,6 +1,6 @@
 .party-grid {
 	grid-area: grid;
-	display: block grid;
+	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	height: 100%;
 	gap: 40px;
@@ -14,13 +14,13 @@
 }
 
 .party-member-card-content {
-	display: block grid;
+	display: grid;
 	grid-template-rows: subgrid;
 	grid-row: span 2;
 }
 
 .party-member-card {
-	display: block grid;
+	display: grid;
 	grid-template-rows: subgrid;
 	place-items: center;
 	grid-row: span 2;
@@ -41,7 +41,7 @@
 
 .acquired-party-member-icon,
 .unacquired-party-member-icon {
-	display: block grid;
+	display: grid;
 	place-items: center;
 	width: 100%;
 	height: auto;
