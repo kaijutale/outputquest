@@ -1,16 +1,10 @@
 .party-grid {
-	grid-area: grid;
 	display: block grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	height: 100%;
 	gap: 40px;
-	overflow-y: scroll;
 	padding-block: 30px 20px;
 	padding-inline: 20px;
-
-	@media (width < 1024px) {
-		overflow-y: visible;
-	}
 }
 
 .party-member-card-content {
@@ -152,4 +146,33 @@
 	background-color: #ae926e;
 	padding-block: 1px 3px;
 	padding-inline: 15px;
+}
+
+/* グリッドとスケルトンを重ねるラッパー */
+.party-grid-wrapper {
+	display: block grid;
+	grid-area: grid;
+	height: 100%;
+	overflow: scroll;
+
+	& > * {
+		grid-area: 1 / 1;
+	}
+}
+
+/* Skeletonオーバーレイ */
+.skeleton-overlay {
+	z-index: 10;
+	transition: opacity 0.3s ease-out;
+	pointer-events: none;
+}
+
+.skeleton-overlay-visible {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.skeleton-overlay-hidden {
+	opacity: 0;
+	pointer-events: none;
 }
