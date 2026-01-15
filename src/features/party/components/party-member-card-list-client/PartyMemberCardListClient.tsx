@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./PartyMemberCardListClient.module.css";
 import Image from "next/image";
@@ -6,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import { PartyMember } from "@/features/party/types/party.types";
 import { customMemberSilhouetteImages } from "@/features/party/data/partyMemberData";
+import PartyListSkeleton from "../party-list-skeleton/PartyListSkeleton";
 
 interface PartyMemberCardListClientProps {
 	members: PartyMember[];
@@ -22,6 +24,17 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 		volume: 0.5,
 		delay: 190,
 	});
+	const [isLoading, setIsLoading] = useState(true);
+
+	// マウント後、最小表示時間を経てスケルトンをフェードアウト
+	// Suspenseのfallbackからの滑らかな切り替えを実現するため
+	useEffect(() => {
+		const MINIMUM_SKELETON_DISPLAY_MS = 300;
+		const timerId = setTimeout(() => {
+			setIsLoading(false);
+		}, MINIMUM_SKELETON_DISPLAY_MS);
+		return () => clearTimeout(timerId);
+	}, []);
 
 	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
 		e.preventDefault();
@@ -29,7 +42,9 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 	};
 
 	return (
-		<div className={styles["party-grid"]}>
+		<div className={styles["party-grid-wrapper"]}>
+			{/* 実コンテンツ - 常にマウント（priority属性が効く） */}
+			<div className={styles["party-grid"]}>
 			{members.map((partyMember) => (
 				<div className={styles["party-member-card-content"]} key={partyMember.id}>
 					<Link
@@ -88,6 +103,16 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 					</Link>
 				</div>
 			))}
+			</div>
+
+			{/* Skeletonオーバーレイ - ローディング時のみ表示 */}
+			<div
+				className={`${styles["skeleton-overlay"]} ${
+					isLoading ? styles["skeleton-overlay-visible"] : styles["skeleton-overlay-hidden"]
+				}`}
+			>
+				<PartyListSkeleton />
+			</div>
 		</div>
 	);
 };

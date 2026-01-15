@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./ItemCardListClient.module.css";
@@ -6,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import { Item } from "@/features/items/types/items.types";
 import { customItemSilhouetteImages } from "@/features/items/data/itemsData";
+import ItemListSkeleton from "../item-list-skeleton/ItemListSkeleton";
 
 interface ItemCardListClientProps {
 	items: Item[];
@@ -19,6 +21,17 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 		volume: 0.5,
 		delay: 190,
 	});
+	const [isLoading, setIsLoading] = useState(true);
+
+	// マウント後、最小表示時間を経てスケルトンをフェードアウト
+	// Suspenseのfallbackからの滑らかな切り替えを実現するため
+	useEffect(() => {
+		const MINIMUM_SKELETON_DISPLAY_MS = 300;
+		const timerId = setTimeout(() => {
+			setIsLoading(false);
+		}, MINIMUM_SKELETON_DISPLAY_MS);
+		return () => clearTimeout(timerId);
+	}, []);
 
 	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
 		e.preventDefault();
@@ -26,7 +39,9 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 	};
 
 	return (
-		<div className={styles["items-grid"]}>
+		<div className={styles["items-grid-wrapper"]}>
+			{/* 実コンテンツ - 常にマウント（priority属性が効く） */}
+			<div className={styles["items-grid"]}>
 			{items.map((item) => (
 				<div className={styles["item-card-content"]} key={item.id}>
 					<Link
@@ -106,6 +121,16 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 					</Link>
 				</div>
 			))}
+			</div>
+
+			{/* Skeletonオーバーレイ - ローディング時のみ表示 */}
+			<div
+				className={`${styles["skeleton-overlay"]} ${
+					isLoading ? styles["skeleton-overlay-visible"] : styles["skeleton-overlay-hidden"]
+				}`}
+			>
+				<ItemListSkeleton />
+			</div>
 		</div>
 	);
 };
