@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./ConnectionZennInfoDisplay.module.css";
+import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 
 interface UserInfo {
 	id: string;
@@ -47,7 +48,11 @@ const ConnectionZennInfoDisplay: React.FC<ConnectionZennInfoDisplayProps> = ({
 							<span className={styles["article-count-title-text"]}>投稿した記事：</span>
 						</dt>
 						<dd className={styles["article-count-description"]}>
-							{loading ? "..." : userInfo.zennArticleCount}件
+							{loading ? (
+								<LoadingIndicator text="" />
+							) : (
+								<>{userInfo.zennArticleCount}件</>
+							)}
 						</dd>
 					</dl>
 				</div>
