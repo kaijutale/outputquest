@@ -1,25 +1,24 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-import pluginPrettier from "eslint-plugin-prettier";
-import eslintConfigPrettier from "eslint-config-prettier";
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+import prettier from "eslint-config-prettier/flat";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-	baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-	// Ignore auto‑generated code (e.g., Prisma client & runtime) so ESLint
-	// doesn’t block builds with warnings we don’t control.
-	{
-		ignores: ["src/generated/**"],
-	},
-	...compat.extends("next/core-web-vitals", "next/typescript"),
-	pluginPrettier.configs.recommended,
-	eslintConfigPrettier,
-];
+const eslintConfig = defineConfig([
+	...nextVitals,
+	...nextTs,
+	prettier,
+	// Override default ignores of eslint-config-next + add project-specific ignores
+	globalIgnores([
+		// Default ignores of eslint-config-next:
+		".next/**",
+		"out/**",
+		"build/**",
+		"next-env.d.ts",
+		// Project-specific ignores:
+		// Ignore auto-generated code (e.g., Prisma client & runtime) so ESLint
+		// doesn't block builds with warnings we don't control.
+		"src/generated/**",
+	]),
+]);
 
 export default eslintConfig;
