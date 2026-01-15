@@ -2,7 +2,8 @@ import styles from "./ItemDetailSkeleton.module.css";
 
 const ItemDetailSkeleton = () => {
 	return (
-		<div className={styles["skeleton-card"]}>
+		<div className={styles["skeleton-wrapper"]}>
+			<div className={styles["skeleton-card"]}>
 			<div className={styles["skeleton-bg"]}>
 				<div className={styles["skeleton-card-content"]}>
 					{/* アイテム画像のスケルトン */}
@@ -21,6 +22,7 @@ const ItemDetailSkeleton = () => {
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 	);
 };

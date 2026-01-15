@@ -1,7 +1,9 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import styles from "./ItemDetailPage.module.css";
 import * as ItemDetail from "@/features/item-detail/components";
+import ItemDetailCard from "@/features/item-detail/components/item-detail-card/ItemDetailCard";
 import { generateItemMetadata } from "@/features/item-detail/metadata/generateItemMetadata";
 
 export async function generateStaticParams() {
@@ -36,8 +38,10 @@ export default async function ItemDetailPage({ params }: { params: Promise<{ ite
 
 			<h1 className={styles["item-detail-page-title"]}>アイテム詳細</h1>
 			<div className={styles["item-detail-container"]}>
-				{/* クライアントコンポーネント */}
-				<ItemDetail.ItemDetailContent itemId={itemIdNum} />
+				{/* Server Component + Suspense パターン */}
+				<Suspense fallback={<ItemDetail.ItemDetailSkeleton />}>
+					<ItemDetailCard itemId={itemIdNum} />
+				</Suspense>
 
 				<hr />
 

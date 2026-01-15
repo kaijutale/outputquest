@@ -1,7 +1,9 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import styles from "./PartyMemberPage.module.css";
 import * as PartyMember from "@/features/party-member/components";
+import PartyMemberDetailCard from "@/features/party-member/components/party-member-detail-card/PartyMemberDetailCard";
 import { generatePartyMemberMetadata } from "@/features/party-member/metadata/generatePartyMemberMetadata";
 
 export async function generateStaticParams() {
@@ -41,8 +43,10 @@ export default async function PartyMemberPage({
 			<h1 className={`${styles["party-member-page-title"]}`}>なかま詳細</h1>
 
 			<div className={styles["party-member-container"]}>
-				{/* クライアントコンポーネント */}
-				<PartyMember.PartyMemberDetailContent partyId={partyIdNum} />
+				{/* Server Component + Suspense パターン */}
+				<Suspense fallback={<PartyMember.PartyMemberDetailSkeleton />}>
+					<PartyMemberDetailCard partyId={partyIdNum} />
+				</Suspense>
 
 				<hr />
 
