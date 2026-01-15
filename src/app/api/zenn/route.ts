@@ -181,7 +181,7 @@ export async function GET(request: Request) {
 							});
 						}
 					}
-				} catch (dbError) {
+				} catch (_dbError) {
 					// データベースエラーは記録のみ
 				}
 			}
@@ -255,7 +255,7 @@ export async function GET(request: Request) {
 
 					userData = await userUpdatePromise;
 				}
-			} catch (dbError) {
+			} catch (_dbError) {
 				// データベースエラーは警告として記録し、APIレスポンスは成功として返す
 				// データベース更新に失敗した場合でも、記事データは取得できているので
 				// 基本的なユーザー情報を作成して返す
@@ -276,7 +276,7 @@ export async function GET(request: Request) {
 							updatedAt: new Date().toISOString(),
 						};
 					}
-				} catch (fallbackError) {
+				} catch (_fallbackError) {
 					// フォールバック処理エラーは無視
 				}
 			}

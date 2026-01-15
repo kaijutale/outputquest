@@ -115,7 +115,7 @@ export const HeroProvider = ({ children }: { children: ReactNode }) => {
 					};
 					setHeroData(newHeroData);
 					setCachedHeroData(guestUserId, newHeroData);
-				} catch (err) {
+				} catch (_err) {
 					if (signal?.aborted) {
 						return;
 					}
@@ -214,7 +214,7 @@ export const HeroProvider = ({ children }: { children: ReactNode }) => {
 							setCachedHeroData(user.id, newHeroData);
 							setIsLoading(false);
 							setError(null);
-						} catch (zennError) {
+						} catch (_zennError) {
 							// Zenn API呼び出しに失敗した場合でも、データベースの値を使用
 							const calculatedLevel = Math.max(dbArticleCount, 1);
 							const newHeroData = {
@@ -253,7 +253,7 @@ export const HeroProvider = ({ children }: { children: ReactNode }) => {
 							};
 							setHeroData(newHeroData);
 							setCachedHeroData(user.id, newHeroData);
-						} catch (guestErr) {
+						} catch (_guestErr) {
 							if (signal?.aborted) {
 								return;
 							}
@@ -283,7 +283,7 @@ export const HeroProvider = ({ children }: { children: ReactNode }) => {
 							setError("データの取得に失敗しました");
 						}
 					}
-				} catch (err) {
+				} catch (_err) {
 					if (signal?.aborted) {
 						return;
 					}

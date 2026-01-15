@@ -4,10 +4,7 @@ import Image from "next/image";
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./ItemsPage.module.css";
 import * as Items from "@/features/items/components";
-import {
-	customItemImages,
-	customItemSilhouetteImages,
-} from "@/features/items/data/itemsData";
+import { customItemImages, customItemSilhouetteImages } from "@/features/items/data/itemsData";
 
 export const metadata: Metadata = getPageMetadata("items");
 

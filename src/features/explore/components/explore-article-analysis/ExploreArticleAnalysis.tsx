@@ -3,6 +3,7 @@
 import { Fragment } from "react";
 import { useUser } from "@clerk/nextjs";
 import ReactMarkdown from "react-markdown";
+import type { UIMessage, TextUIPart } from "ai";
 import styles from "./ExploreArticleAnalysis.module.css";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 import Link from "next/link";
@@ -14,7 +15,7 @@ interface ExploreArticleAnalysisProps {
 	} | null;
 	isLoaded: boolean;
 	isZennInfoLoaded: boolean;
-	messages: any[];
+	messages: UIMessage[];
 	status: "error" | "submitted" | "streaming" | "ready";
 	isAnalyzing: boolean;
 	error: string | null;
@@ -111,8 +112,8 @@ const ExploreArticleAnalysis: React.FC<ExploreArticleAnalysisProps> = ({
 											{messages.map((message, index) => {
 												// AI SDK v5ではmessage.partsから'text'タイプを抽出
 												const textContent = message.parts
-													?.filter((part: any) => part.type === "text")
-													.map((part: any) => part.text)
+													?.filter((part): part is TextUIPart => part.type === "text")
+													.map((part) => part.text)
 													.join("");
 
 												return (

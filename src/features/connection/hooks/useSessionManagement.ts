@@ -47,7 +47,7 @@ export const useSessionManagement = ({
 					// ログアウト時に必ずフラグを設定
 					localStorage.setItem(LOGOUT_FLAG_KEY, "true");
 				}
-			} catch (error) {
+			} catch (_error) {
 				// Cache Componentsモードでstorageアクセスが制限される場合は無視
 			}
 		}

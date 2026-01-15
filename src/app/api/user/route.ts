@@ -289,7 +289,7 @@ export async function POST(request: Request) {
 
 		// Prismaエラーの場合は詳細を出力
 		if (typeof error === "object" && error !== null && "code" in error) {
-			const prismaError = error as { code?: string; meta?: any };
+			const prismaError = error as { code?: string; meta?: Record<string, unknown> };
 
 			// ユニーク制約違反の場合の特別な処理
 			if (prismaError.code === "P2002") {

@@ -74,6 +74,8 @@ const PartyMemberDetailContent: React.FC<PartyMemberDetailContentProps> = ({ par
 			}
 		};
 		loadLevel();
+		// user?.id only - using full user object causes unnecessary re-renders
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLoaded, user?.id]);
 
 	// ロード中の表示
