@@ -32,7 +32,7 @@ export const HomeAnimationProvider = ({ children }: { children: ReactNode }) => 
 				setIsFirstVisit(true);
 				sessionStorage.setItem("hero-visited", "true");
 			}
-		} catch (error) {
+		} catch (_error) {
 			// Cache Componentsモードでstorageアクセスが制限される場合は
 			// 初回訪問として扱う
 			setIsFirstVisit(true);

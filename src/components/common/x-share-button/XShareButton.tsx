@@ -23,7 +23,7 @@ interface XShareButtonProps {
 
 const XShareButton: React.FC<XShareButtonProps> = ({
 	level,
-	username = "",
+	username: _username = "",
 	className = "",
 	iconClassName = "",
 	iconWrapClassName = "",

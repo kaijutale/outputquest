@@ -125,7 +125,7 @@ export const useZennConnection = ({
 						const successMessage = `Zennのアカウント連携が完了しました。記事データは後ほど同期されます。`;
 						showSuccessMessage(successMessage);
 					}
-				} catch (syncError) {
+				} catch (_syncError) {
 					const successMessage = `Zennのアカウント連携が完了しました。記事データは後ほど同期されます。`;
 					showSuccessMessage(successMessage);
 				}

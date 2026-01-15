@@ -60,6 +60,8 @@ const ItemDynamicHead: React.FC<ItemDynamicHeadProps> = ({ itemId }) => {
 		};
 
 		fetchUserZennInfo();
+		// user?.id only - using full user object causes unnecessary re-renders
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLoaded, user?.id]);
 
 	useEffect(() => {

@@ -15,3 +15,15 @@ export interface UserInfo {
 	zennArticleCount: number;
 	level: number;
 }
+
+// Zenn記事の型定義（API変換後）
+export interface ZennArticle {
+	id: string;
+	title: string;
+	url: string;
+	category: string;
+	publishedAt: string;
+	date: string;
+	platformType: "zenn";
+	emoji: string;
+}

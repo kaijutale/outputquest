@@ -41,7 +41,7 @@ export const useMessageStorage = ({
 					setWasLoggedOut(true);
 					localStorage.removeItem(LOGOUT_FLAG_KEY);
 				}
-			} catch (error) {
+			} catch (_error) {
 				// Cache Componentsモードでstorageアクセスが制限される場合は無視
 			}
 		}

@@ -1,4 +1,4 @@
-import { UserInfo } from "../types";
+import { UserInfo, ZennArticle } from "../types";
 
 // ユーザー情報を取得するAPI
 export const fetchUserInfo = async (): Promise<{
@@ -72,7 +72,7 @@ export const checkZennUser = async (
 	username: string
 ): Promise<{
 	success: boolean;
-	articles?: any[];
+	articles?: ZennArticle[];
 	totalCount?: number;
 	error?: string;
 }> => {
@@ -99,7 +99,7 @@ export const syncZennArticles = async (
 ): Promise<{
 	success: boolean;
 	user?: UserInfo;
-	articles?: any[];
+	articles?: ZennArticle[];
 	totalCount?: number;
 	error?: string;
 }> => {

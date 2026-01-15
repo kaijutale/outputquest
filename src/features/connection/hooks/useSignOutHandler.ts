@@ -26,7 +26,7 @@ export const useSignOutHandler = ({
 			if (user) {
 				try {
 					localStorage.setItem(SESSION_ID_KEY, user.id);
-				} catch (error) {
+				} catch (_error) {
 					// Cache Componentsモードでstorageアクセスが制限される場合は無視
 				}
 			}
@@ -52,7 +52,7 @@ export const useSignOutHandler = ({
 					if (user?.id) {
 						localStorage.setItem("zenn_previous_user", user.id);
 					}
-				} catch (error) {
+				} catch (_error) {
 					// Cache Componentsモードでstorageアクセスが制限される場合は無視
 				}
 
@@ -73,7 +73,7 @@ export const useSignOutHandler = ({
 					try {
 						localStorage.setItem(LOGOUT_FLAG_KEY, "true");
 						localStorage.removeItem(SESSION_ID_KEY);
-					} catch (error) {
+					} catch (_error) {
 						// Cache Componentsモードでstorageアクセスが制限される場合は無視
 					}
 
@@ -85,7 +85,7 @@ export const useSignOutHandler = ({
 					try {
 						localStorage.setItem(LOGOUT_FLAG_KEY, "true");
 						localStorage.removeItem(SESSION_ID_KEY);
-					} catch (error) {
+					} catch (_error) {
 						// Cache Componentsモードでstorageアクセスが制限される場合は無視
 					}
 				} catch (err) {
@@ -94,7 +94,7 @@ export const useSignOutHandler = ({
 					try {
 						localStorage.setItem(LOGOUT_FLAG_KEY, "true");
 						localStorage.removeItem(SESSION_ID_KEY);
-					} catch (error) {
+					} catch (_error) {
 						// Cache Componentsモードでstorageアクセスが制限される場合は無視
 					}
 				}
