@@ -58,7 +58,7 @@
 .gnav-item-content {
 	display: block grid;
 	place-items: center;
-	grid-template-columns: 31px 1fr;
+	grid-template-columns: 30px 1fr;
 	gap: 6px;
 	transition: padding-inline-start 0.2s;
 }
@@ -73,11 +73,11 @@
 	}
 
 	&[data-nav-id="2"] {
-		width: 26px;
+		width: 27px;
 	}
 
 	&[data-nav-id="3"] {
-		width: 31px;
+		width: 30px;
 	}
 
 	&[data-nav-id="4"] {
