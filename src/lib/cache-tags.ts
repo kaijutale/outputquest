@@ -1,3 +1,5 @@
+import "server-only";
+
 /**
  * キャッシュタグの定義
  *

@@ -1,3 +1,7 @@
+"use client";
+
+import "client-only";
+
 import { useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { UserInfo } from "../types";

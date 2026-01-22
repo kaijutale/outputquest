@@ -1,3 +1,5 @@
+import "server-only";
+
 import { prisma } from "@/lib/prisma";
 import { heroLevelAndItemRelation, customItemNames } from "@/features/items/data/itemsData";
 import {

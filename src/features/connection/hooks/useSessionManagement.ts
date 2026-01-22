@@ -1,5 +1,7 @@
 "use client";
 
+import "client-only";
+
 import { useEffect, Dispatch, SetStateAction } from "react";
 import { UserResource } from "@clerk/types";
 import { SESSION_ID_KEY, LOGOUT_FLAG_KEY } from "@/features/connection/constants";
