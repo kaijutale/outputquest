@@ -39,7 +39,7 @@ const GnavItems = () => {
 									className={`${styles["gnav-item-content"]} ${isActive ? styles["gnav-item-content-active"] : ""}`}
 								>
 									<Image
-										src={item.icon || "/images/nav-icon/default-icon.svg"}
+										src={item.icon}
 										alt={item.alt || item.title}
 										width={item.width || 20}
 										height={item.height || 20}

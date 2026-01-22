@@ -30,17 +30,6 @@
 		.unacquired-item-icon-image {
 			transform: translateY(-5px);
 		}
-
-		/* 宝箱アイコンのホバー制御 */
-		.treasure-chest-close {
-			opacity: 0;
-			scale: 0.8;
-		}
-
-		.treasure-chest-open {
-			opacity: 1;
-			scale: 1;
-		}
 	}
 }
 
@@ -225,25 +214,6 @@
 .acquired-item-icon-image-30,
 .unacquired-item-icon-image-30 {
 	width: 135px;
-}
-
-/* 宝箱の開閉スタイル（既存のスタイルを維持または調整） */
-.treasure-chest-close,
-.treasure-chest-open {
-	width: 100%;
-	height: auto;
-	transition:
-		opacity 0.2s ease-in-out,
-		transform 0.2s ease-in-out,
-		scale 0.2s ease-in-out;
-	position: absolute; /* 重ねて表示するためにabsoluteにする */
-	inset: 0;
-	margin: auto;
-}
-
-.treasure-chest-open {
-	opacity: 0;
-	scale: 0.8;
 }
 
 .item-name-box {

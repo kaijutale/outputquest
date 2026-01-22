@@ -16,9 +16,6 @@ const ItemsPage = () => {
 	const preloadImages = [
 		// プレート画像（共通）
 		"/images/plate/plate01.png",
-		// 宝箱画像
-		"/images/items-page/treasure-chest-close.png",
-		"/images/items-page/treasure-chest-open.png",
 		// 最初の8個分のアイテム画像
 		...Object.entries(customItemImages)
 			.slice(0, PRELOAD_ITEM_COUNT)
