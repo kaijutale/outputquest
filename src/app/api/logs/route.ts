@@ -23,12 +23,6 @@ export async function GET() {
 			orderBy: { occurredAt: "desc" },
 		});
 
-		// Map to string array for compatibility with current UI expectations if needed?
-		// Or return full objects.
-		// Current UI expects string[].
-		// But new UI might want more details (type, etc).
-		// For now, let's return the objects, and the client can format them.
-
 		return NextResponse.json({ success: true, logs });
 	} catch (error) {
 		console.error("Fetch logs error:", error);

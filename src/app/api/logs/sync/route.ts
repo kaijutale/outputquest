@@ -10,12 +10,6 @@ export async function POST(request: Request) {
 			return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
 		}
 
-		// Find user in DB (we need the DB ID, not Clerk ID for existing check?
-		// Actually logService uses userId. Schema says userId is a String referncing User.id.
-		// Wait, User model: id (uuid), clerkId (String @unique).
-		// logs.userId refers to User.id.
-		// So we must fetch User.id via clerkId.
-
 		const user = await prisma.user.findUnique({
 			where: { clerkId: userId },
 			select: { id: true },

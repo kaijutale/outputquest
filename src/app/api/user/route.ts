@@ -176,9 +176,6 @@ export async function POST(request: Request) {
 					?.emailAddress || clerkUser.emailAddresses[0]?.emailAddress;
 
 			if (!emailFromClerk) {
-				// emailFromClerk が undefined の場合、エラーを投げるか、
-				// デフォルトのメールアドレスを設定するなどの対応が必要
-				// ここではエラーを投げる例を示す
 				throw new Error("Clerkからメールアドレスが取得できませんでした。");
 			}
 
