@@ -1,5 +1,7 @@
 "use client";
 
+import "client-only";
+
 import { createContext, useState, useCallback, use, ReactNode } from "react";
 
 interface AudioContextType {

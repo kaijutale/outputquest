@@ -1,5 +1,7 @@
 "use client";
 
+import "client-only";
+
 import { useEffect, Dispatch, SetStateAction } from "react";
 import { LOGOUT_FLAG_KEY } from "@/features/connection/constants";
 

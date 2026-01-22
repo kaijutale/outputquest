@@ -1,3 +1,5 @@
+import "server-only";
+
 import { cache } from "react";
 import { getUser } from "@/features/user/_lib/fetcher";
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";

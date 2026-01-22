@@ -1,5 +1,7 @@
 "use client";
 
+import "client-only";
+
 import { useEffect, useState, useCallback, memo } from "react";
 import { Howl } from "howler";
 import Image from "next/image";

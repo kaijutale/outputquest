@@ -1,5 +1,7 @@
 "use client";
 
+import "client-only";
+
 import { useCallback, useEffect, useState } from "react";
 import { Howl } from "howler";
 import styles from "./ClickSound.module.css";
