@@ -92,7 +92,7 @@ const ItemDynamicHead: React.FC<ItemDynamicHeadProps> = ({ itemId }) => {
 			const guestDescription =
 				"ログインすると入手したアイテムについての詳細情報がここに表示されます。";
 			const guestOgTitle = `${guestTitle}｜OUTPUT QUEST`;
-			const guestImageUrl = "/images/items-page/unacquired-icon/treasure-chest.svg";
+			const guestImageUrl = "/images/items-page/unacquired-icon/treasure-chest-close-icon01.png";
 
 			// 基本メタデータ
 			if (titleElement) titleElement.textContent = `${guestTitle}｜OUTPUT QUEST`;
@@ -151,7 +151,7 @@ const ItemDynamicHead: React.FC<ItemDynamicHeadProps> = ({ itemId }) => {
 				: itemId;
 			const unacquiredDescription = `このアイテムはレベル${requiredLevel}で入手できます。冒険を続けて探索しましょう。`;
 			const unacquiredOgTitle = `${unacquiredTitle}｜アイテム詳細`;
-			const unacquiredImageUrl = "/images/items-page/unacquired-icon/treasure-chest.svg";
+			const unacquiredImageUrl = "/images/items-page/unacquired-icon/treasure-chest-close-icon01.png";
 
 			// 基本メタデータ
 			if (titleElement) titleElement.textContent = `${unacquiredTitle}｜OUTPUT QUEST`;
