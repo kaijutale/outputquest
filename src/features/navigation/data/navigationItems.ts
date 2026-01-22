@@ -14,7 +14,7 @@ export const navigationItems: NavigationItem[] = [
 		id: 2,
 		title: "投稿一覧",
 		href: "/posts",
-		icon: "/images/nav-icon/book-of-learning-icon.png",
+		icon: "/images/nav-icon/book_of_learning_icon.png",
 		alt: "投稿一覧",
 		width: 100,
 		height: 100,
