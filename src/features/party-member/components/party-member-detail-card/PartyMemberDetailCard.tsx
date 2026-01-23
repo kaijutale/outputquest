@@ -1,7 +1,5 @@
-import { connection } from "next/server";
-import { auth } from "@clerk/nextjs/server";
-import { prisma } from "@/lib/prisma";
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";
+import { getUser } from "@/features/user/_lib/fetcher";
 import {
 	isAcquiredByHeroLevel,
 	heroLevelAndMemberRelation,
@@ -23,39 +21,23 @@ interface PartyMemberDetailCardProps {
  * なかま詳細データを取得して表示するServer Component
  *
  * データフェッチ:
- * - connection() + auth() + prisma: ユーザー認証とDB取得（動的）
+ * - getUser(): ユーザー認証とDB取得（Request Memoization + use cache）
  * - getZennArticles(): Zenn記事取得（Request Memoization + use cache）
  */
 const PartyMemberDetailCard = async ({ partyId }: PartyMemberDetailCardProps) => {
-	// Dynamic Renderingを強制（cacheComponents有効時のプリレンダリング対策）
-	await connection();
-
 	try {
-		// 認証情報を取得
-		const { userId } = await auth();
+		// ユーザー情報を取得（Request Memoization + use cache）
+		const user = await getUser();
 
 		// ゲストユーザーの判定
-		let zennUsername = "aoyamadev"; // デフォルト値
-		let isGuestUser = true;
+		const zennUsername = user?.zennUsername || "aoyamadev";
+		const isGuestUser = !user?.zennUsername;
 		let currentLevel = 1;
 
-		if (userId) {
-			// 認証済みユーザーの場合、DBからzennUsernameを取得
-			const user = await prisma.user.findUnique({
-				where: { clerkId: userId },
-				select: {
-					zennUsername: true,
-				},
-			});
-
-			if (user?.zennUsername) {
-				zennUsername = user.zennUsername;
-				isGuestUser = false;
-
-				// Zenn記事を取得してレベルを計算
-				const articles = await getZennArticles(zennUsername, { fetchAll: true });
-				currentLevel = articles.length;
-			}
+		if (user?.zennUsername) {
+			// Zenn記事を取得してレベルを計算
+			const articles = await getZennArticles(zennUsername, { fetchAll: true });
+			currentLevel = articles.length;
 		}
 
 		// 仲間の入手状態を判定
