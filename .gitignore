@@ -54,4 +54,4 @@ _docs/
 .serena/
 
 # prisma
-src/generated/public/images/hero/backup/
+src/generated/
