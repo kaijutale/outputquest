@@ -49,6 +49,7 @@ const ConnectionZennForm = memo<ConnectionZennFormProps>(function ConnectionZenn
 					width={16}
 					height={16}
 					className={styles["zenn-logo-sm"]}
+					priority
 				/>
 				<span>Zennユーザー名</span>
 				<strong className="text-[#ffc630]">(必須)</strong>

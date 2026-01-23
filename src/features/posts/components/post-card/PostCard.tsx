@@ -90,6 +90,7 @@ const PostCard = ({ title, url, category, publishedAt, platformType }: PostCardP
 								width={14}
 								height={14}
 								className={`${styles["favicon"]}`}
+								priority
 							/>
 							<p className={`${styles["post-card__site-name-text"]}`}>{platformInfo.name}</p>
 						</>
