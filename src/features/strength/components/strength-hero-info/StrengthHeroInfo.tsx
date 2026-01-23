@@ -1,7 +1,5 @@
-import { connection } from "next/server";
-import { auth } from "@clerk/nextjs/server";
-import { prisma } from "@/lib/prisma";
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";
+import { getUser } from "@/features/user/_lib/fetcher";
 import { strengthHeroData } from "@/features/strength/data/strengthHeroData";
 import * as Strength from "@/features/strength/components";
 import styles from "./StrengthHeroInfo.module.css";
@@ -13,36 +11,16 @@ import styles from "./StrengthHeroInfo.module.css";
  * ItemCardList/PartyMemberCardListと同じパターンで2層分離
  *
  * データフェッチ:
- * - connection() + auth() + prisma: ユーザー認証とDB取得（動的）
+ * - getUser(): ユーザー認証とDB取得（Request Memoization + use cache）
  * - getZennArticles(): Zenn記事取得（Request Memoization + use cache）
- *
- * 注意: getUser()を使うとキャッシュの問題でユーザー間でデータが混在する
- * 可能性があるため、認証関連は直接呼び出しを維持
  */
 const StrengthHeroInfo = async () => {
-	// Dynamic Renderingを強制（cacheComponents有効時のプリレンダリング対策）
-	await connection();
-
 	try {
-		// 認証情報を取得
-		const { userId } = await auth();
+		// ユーザー情報を取得（Request Memoization + use cache）
+		const user = await getUser();
 
 		// ゲストユーザーの判定
-		let zennUsername = "aoyamadev"; // デフォルト値
-
-		if (userId) {
-			// 認証済みユーザーの場合、DBからzennUsernameを取得
-			const user = await prisma.user.findUnique({
-				where: { clerkId: userId },
-				select: {
-					zennUsername: true,
-				},
-			});
-
-			if (user?.zennUsername) {
-				zennUsername = user.zennUsername;
-			}
-		}
+		const zennUsername = user?.zennUsername || "aoyamadev";
 
 		// Zenn記事数を取得（全件取得）
 		const articles = await getZennArticles(zennUsername, { fetchAll: true });
