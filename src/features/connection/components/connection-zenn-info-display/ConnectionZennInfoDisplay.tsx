@@ -48,7 +48,9 @@ const ConnectionZennInfoDisplay: React.FC<ConnectionZennInfoDisplayProps> = ({
 							<span className={styles["article-count-title-text"]}>投稿した記事：</span>
 						</dt>
 						<dd className={styles["article-count-description"]}>
-							{loading ? (
+							{loading ||
+							userInfo.zennArticleCount === undefined ||
+							userInfo.zennArticleCount === null ? (
 								<LoadingIndicator text="" />
 							) : (
 								<>{userInfo.zennArticleCount}件</>
