@@ -43,9 +43,9 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 
 	return (
 		<div className={styles["party-grid-wrapper"]}>
-			{/* 実コンテンツ - 常にマウント（priority属性が効く） */}
+			{/* 実コンテンツ - 常にマウント（loading="eager"が効く） */}
 			<div className={styles["party-grid"]}>
-			{members.map((partyMember) => (
+			{members.map((partyMember, index) => (
 				<div className={styles["party-member-card-content"]} key={partyMember.id}>
 					<Link
 						href={`/party/${partyMember.id}`}
@@ -57,17 +57,19 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 								<Image
 									src="/images/plate/plate01.png"
 									alt="plate"
-									width={1000}
-									height={1000}
-									priority={true}
+									width={310}
+									height={310}
+									loading={index < 4 ? "eager" : "lazy"}
+									fetchPriority={index < 4 ? "high" : "auto"}
 									className={styles["acquired-party-member-icon-plate"]}
 								/>
 								<Image
 									src={`/images/party-page/acquired-icon/${partyMember.imagePath}`}
 									alt={partyMember.name || "勇者の仲間"}
-									width={1000}
-									height={1000}
-									priority={true}
+									width={310}
+									height={310}
+									loading={index < 4 ? "eager" : "lazy"}
+									fetchPriority={index < 4 ? "high" : "auto"}
 									className={`${styles["acquired-party-member-icon-image"]} ${
 										styles[`acquired-party-member-icon-image-${partyMember.id}`]
 									}`}
@@ -78,17 +80,19 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 								<Image
 									src="/images/plate/plate01.png"
 									alt="plate"
-									width={1000}
-									height={1000}
-									priority={true}
+									width={310}
+									height={310}
+									loading={index < 4 ? "eager" : "lazy"}
+									fetchPriority={index < 4 ? "high" : "auto"}
 									className={styles["acquired-party-member-icon-plate"]}
 								/>
 								<Image
 									src={`/images/party-page/unacquired-icon/${customMemberSilhouetteImages[partyMember.id]}`}
 									alt="まだ見ぬ仲間"
-									width={1000}
-									height={1000}
-									priority={true}
+									width={310}
+									height={310}
+									loading={index < 4 ? "eager" : "lazy"}
+									fetchPriority={index < 4 ? "high" : "auto"}
 									className={`${styles["unacquired-party-member-icon-image"]} ${
 										styles[`unacquired-party-member-icon-image-${partyMember.id}`]
 									}`}
