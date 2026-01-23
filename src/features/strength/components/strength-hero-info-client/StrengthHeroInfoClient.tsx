@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import heroPlateImage from "@/../public/images/hero/hero_plate.png";
 import styles from "./StrengthHeroInfoClient.module.css";
 
 type StrengthHeroInfoClientProps = {
@@ -27,11 +28,12 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 					<div className={styles["strength-hero-box"]}>
 						<div className={styles["strength-hero-icon-box"]}>
 							<Image
-								src={`/images/hero/hero_plate.png`}
+								src={heroPlateImage}
 								alt={"勇者"}
-								width={1000}
-								height={1000}
+								width={220}
+								height={220}
 								priority={true}
+								placeholder="blur"
 								className={`${styles["strength-hero-icon-image"]}`}
 							/>
 						</div>

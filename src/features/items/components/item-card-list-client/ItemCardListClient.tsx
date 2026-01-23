@@ -42,7 +42,7 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 		<div className={styles["items-grid-wrapper"]}>
 			{/* 実コンテンツ - 常にマウント（priority属性が効く） */}
 			<div className={styles["items-grid"]}>
-			{items.map((item) => (
+			{items.map((item, index) => (
 				<div className={styles["item-card-content"]} key={item.id}>
 					<Link
 						href={`/items/${item.id}`}
@@ -54,17 +54,17 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 								<Image
 									src="/images/plate/plate01.png"
 									alt="plate"
-									width={1000}
-									height={1000}
-									priority={true}
+									width={310}
+									height={310}
+									priority={index < 6}
 									className={styles["acquired-item-icon-plate"]}
 								/>
 								<Image
 									src={`/images/items-page/unacquired-icon/${customItemSilhouetteImages[item.id]}`}
 									alt="未入手のアイテム"
-									width={1000}
-									height={1000}
-									priority={true}
+									width={310}
+									height={310}
+									priority={index < 6}
 									className={`${styles["unacquired-item-icon-image"]} ${
 										styles[`unacquired-item-icon-image-${item.id}`]
 									}`}
@@ -75,17 +75,17 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 								<Image
 									src="/images/plate/plate01.png"
 									alt="plate"
-									width={1000}
-									height={1000}
-									priority={true}
+									width={310}
+									height={310}
+									priority={index < 6}
 									className={styles["acquired-item-icon-plate"]}
 								/>
 								<Image
 									src={`/images/items-page/acquired-icon/${item.image}`}
 									alt={item.name || "アイテム"}
-									width={1000}
-									height={1000}
-									priority={true}
+									width={310}
+									height={310}
+									priority={index < 6}
 									className={`${styles["acquired-item-icon-image"]} ${
 										styles[`acquired-item-icon-image-${item.id}`]
 									}`}
@@ -96,17 +96,17 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 								<Image
 									src="/images/plate/plate01.png"
 									alt="plate"
-									width={1000}
-									height={1000}
-									priority={true}
+									width={310}
+									height={310}
+									priority={index < 6}
 									className={styles["acquired-item-icon-plate"]}
 								/>
 								<Image
 									src={`/images/items-page/unacquired-icon/${customItemSilhouetteImages[item.id]}`}
 									alt="未入手のアイテム"
-									width={1000}
-									height={1000}
-									priority={true}
+									width={310}
+									height={310}
+									priority={index < 6}
 									className={`${styles["unacquired-item-icon-image"]} ${
 										styles[`unacquired-item-icon-image-${item.id}`]
 									}`}
