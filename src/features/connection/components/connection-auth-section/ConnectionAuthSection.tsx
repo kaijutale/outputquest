@@ -28,6 +28,7 @@ const ConnectionAuthSection: React.FC<ConnectionAuthSectionProps> = ({
 								width={18}
 								height={18}
 								className={styles["zenn-logo"]}
+								priority
 							/>
 							<span className="grid">Zennとの連携には</span>
 						</span>
@@ -56,6 +57,7 @@ const ConnectionAuthSection: React.FC<ConnectionAuthSectionProps> = ({
 						width={16}
 						height={16}
 						className={styles["zenn-logo-sm"]}
+						priority
 					/>
 					<span>Zennユーザー名</span>
 					<strong className="text-[#ffc630]">(必須)</strong>

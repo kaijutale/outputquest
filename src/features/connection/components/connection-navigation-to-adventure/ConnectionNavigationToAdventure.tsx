@@ -23,6 +23,7 @@ const ConnectionNavigationToAdventure: React.FC<ConnectionNavigationToAdventureP
 						width={17}
 						height={17}
 						className={styles["adventure-start-link-icon"]}
+						priority
 					/>
 					<span className={styles["adventure-start-link-text"]}>冒険をはじめる</span>
 				</Link>
