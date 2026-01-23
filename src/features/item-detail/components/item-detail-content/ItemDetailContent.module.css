@@ -549,7 +549,7 @@
 	display: block grid;
 	place-items: center;
 	background-color: var(--color-primary-brown-dark);
-	border: 1mm ridge #b69973;
+	border: 1mm ridge var(--color-border-primary);
 	padding-inline: 1.5px;
 	padding-block: 1.5px;
 }
@@ -578,7 +578,7 @@
 	display: block grid;
 	place-items: center;
 	background-color: var(--color-primary-brown-dark);
-	border: 1mm ridge #b69973;
+	border: 1mm ridge var(--color-border-primary);
 	padding-inline: 1.5px;
 	padding-block: 1.5px;
 }

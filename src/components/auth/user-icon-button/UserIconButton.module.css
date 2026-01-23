@@ -24,7 +24,7 @@
 	height: 100px;
 	order: 1;
 	background-color: var(--color-primary-brown-dark);
-	border: 3.5px solid #b69973;
+	border: 3.5px solid var(--color-border-primary);
 	border-radius: var(--border-rounded);
 	background-clip: border-box;
 	padding-inline: 3px;

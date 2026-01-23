@@ -45,7 +45,7 @@
 	display: block flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
 	/* border-radius: var(--border-radius-small); */
@@ -57,7 +57,7 @@
 	width: 100%;
 	display: block grid;
 	color: var(--color-primary-white);
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	border: 2px solid var(--color-primary-brown-light);
 	padding-inline: 15px;
 	padding-block: 12px 10px;
@@ -74,7 +74,7 @@
 .skeleton-activity-item-title {
 	width: 85%;
 	height: 27px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -95,7 +95,7 @@
 .skeleton-category {
 	width: 60px;
 	height: 28px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -105,7 +105,7 @@
 .skeleton-date {
 	width: 100px;
 	height: 28px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -123,7 +123,7 @@
 .skeleton-favicon {
 	width: 14px;
 	height: 14px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 2px;
@@ -133,7 +133,7 @@
 .skeleton-platform {
 	width: 40px;
 	height: 14px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 2px;
@@ -145,7 +145,7 @@
 	height: 24px;
 	display: block grid;
 	place-self: end;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;

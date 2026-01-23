@@ -18,7 +18,7 @@
 	grid-template-rows: subgrid;
 	grid-row: span 1;
 	background-color: var(--color-primary-brown-dark);
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
 }
@@ -29,7 +29,7 @@
 	place-items: center;
 	grid-row: span 1;
 	gap: 15px;
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	border: 2px solid var(--color-primary-brown-light);
 	padding-inline: 15px;
 	padding-block: 25px;

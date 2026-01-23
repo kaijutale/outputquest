@@ -83,6 +83,17 @@
 		/* zenn */
 		--color-zenn: #3ea8ff;
 
+		/* ボーダー */
+		--color-border-primary: #b69973;
+
+		/* 背景色 */
+		--color-bg-component: #ae926e;
+		--color-bg-button: #5a4734;
+
+		/* スケルトン */
+		--color-skeleton-base: #2a2a2a;
+		--color-skeleton-highlight: #3a3a3a;
+
 		/* 経験値バー関連 */
 		--bg-progress-gauge: #4a4a4a;
 		--color-progress-fill: #d98500;

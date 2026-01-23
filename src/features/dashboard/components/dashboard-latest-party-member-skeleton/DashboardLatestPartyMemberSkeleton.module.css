@@ -10,7 +10,7 @@
 .skeleton-section-title {
 	width: 200px;
 	height: 28px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -41,10 +41,10 @@
 .skeleton-party-member-guest {
 	min-width: 300px;
 	height: 140px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
-	border: 2.7mm ridge #b69973;
+	border: 2.7mm ridge var(--color-border-primary);
 	background-color: var(--color-primary-brown-dark);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
@@ -54,7 +54,7 @@
 .skeleton-party-share {
 	width: 200px;
 	height: 20px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;

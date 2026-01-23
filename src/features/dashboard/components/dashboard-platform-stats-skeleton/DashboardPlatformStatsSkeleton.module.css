@@ -2,7 +2,7 @@
 .skeleton-section-title {
 	width: 200px;
 	height: 28px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -39,10 +39,10 @@
 .skeleton-platform-card {
 	min-width: 200px;
 	height: 135.5px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	background-color: var(--color-primary-brown-dark);
 }
 
@@ -50,7 +50,7 @@
 .skeleton-platform-share {
 	width: 200px;
 	height: 20px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;

@@ -6,8 +6,8 @@
 	border-radius: var(--border-radius-small);
 	padding-block: 2.5px;
 	padding-inline: 2.5px;
-	background-color: #5a4734;
-	border: 2.5px solid #b69973;
+	background-color: var(--color-bg-button);
+	border: 2.5px solid var(--color-border-primary);
 	cursor: pointer;
 
 	&:hover {
@@ -26,7 +26,7 @@
 	position: relative;
 	display: block flow;
 	width: 100%;
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	border: 1.5px solid var(--color-primary-brown-light);
 	padding-block: 10px 11px;
 	padding-inline: 15px;
