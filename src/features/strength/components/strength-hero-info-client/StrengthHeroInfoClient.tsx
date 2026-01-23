@@ -44,8 +44,7 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 									alt="王冠"
 									width={100}
 									height={100}
-									loading="eager"
-									fetchPriority="high"
+									preload={true}
 									className={`${styles["strength-hero-name-icon"]}`}
 								/>
 								<span>
@@ -88,8 +87,7 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 								alt="EXP"
 								width={35}
 								height={35}
-								loading="eager"
-								fetchPriority="high"
+								preload={true}
 								className={`${styles["strength-level-progress-exp-icon"]}`}
 							/>
 							<div className={`${styles["strength-level-progress-gauge-box"]}`}>
