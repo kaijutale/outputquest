@@ -15,7 +15,7 @@
 	display: block grid;
 	grid-template-columns: auto;
 	gap: 20px;
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	border: 2px solid var(--color-primary-brown-light);
 }
 

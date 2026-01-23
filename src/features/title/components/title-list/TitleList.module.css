@@ -29,7 +29,7 @@
 	place-items: center;
 	grid-row: span 1;
 	gap: 15px;
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	border: 2px solid var(--color-primary-brown-light);
 	padding-inline: 15px;
 	padding-block: 25px;

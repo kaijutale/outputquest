@@ -19,7 +19,7 @@
 	place-items: center;
 	gap: 20px;
 	border: 2px solid var(--color-primary-brown-light);
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	padding-inline: 20px;
 	padding-block: 15px 25px;
 
