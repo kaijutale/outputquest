@@ -36,7 +36,7 @@
 .connect-button-content {
 	width: 100%;
 	height: 100%;
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	border: 1.5px solid var(--color-primary-brown-light);
 	place-items: center;
 	padding-block: 5px;

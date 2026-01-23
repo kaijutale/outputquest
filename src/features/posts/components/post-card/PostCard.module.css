@@ -15,7 +15,7 @@
 	padding-inline: 15px;
 	padding-block: 15px;
 	border: 2px solid var(--color-primary-brown-light);
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	transition: border 0.2s ease-in-out;
 
 	&:hover {

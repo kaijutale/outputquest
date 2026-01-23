@@ -37,7 +37,7 @@
 	padding-inline: 15px;
 	padding-block: 15px;
 	border: 2px solid var(--color-primary-brown-light);
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	min-height: 150px; /* CLS prevention */
 }
 

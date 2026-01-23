@@ -54,7 +54,7 @@
 	display: block grid;
 	place-items: center;
 	width: 100%;
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	border: 1.5px solid var(--color-primary-brown-light);
 	padding-block: 10px 11px;
 	padding-inline: 24px;

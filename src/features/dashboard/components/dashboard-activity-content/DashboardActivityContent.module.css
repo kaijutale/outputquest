@@ -56,7 +56,7 @@
 	width: 100%;
 	display: block grid;
 	color: var(--color-primary-white);
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	border: 2px solid var(--color-primary-brown-light);
 	padding-inline: 15px;
 	padding-block: 12px 10px;

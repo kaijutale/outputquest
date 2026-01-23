@@ -45,7 +45,7 @@
 
 .party-member-guest-user-message,
 .party-member-null-message {
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	border: 2px solid var(--color-primary-brown-light);
 	padding: 15px;
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
@@ -64,7 +64,7 @@
 	display: block grid;
 	grid-template-columns: auto 1fr;
 	gap: 25px;
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	border: 2px solid var(--color-primary-brown-light);
 	padding-block: 15px;
 	padding-inline: 20px;

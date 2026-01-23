@@ -13,7 +13,7 @@
 	grid-template-columns: auto;
 	grid-template-rows: auto 1fr auto;
 	gap: 10px;
-	background-color: var(--color-bg-component);
+	background-color: var(--color-bg-panel);
 	border: 2px solid var(--color-primary-brown-light);
 	padding-inline: 10px;
 	padding-block: 10px;
