@@ -4,7 +4,7 @@
 	max-width: 100%;
 	margin-inline: auto;
 	margin-block-start: 10px;
-	border: 4mm ridge #b69973;
+	border: 4mm ridge var(--color-border-primary);
 	background-color: var(--color-primary-brown-dark);
 	padding-inline: 3px;
 	padding-block: 3px;
@@ -19,7 +19,7 @@
 	place-items: center;
 	gap: 20px;
 	border: 2px solid var(--color-primary-brown-light);
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	padding-inline: 20px;
 	padding-block: 15px 25px;
 
@@ -41,7 +41,7 @@
 	font-size: 0.875rem;
 	font-weight: var(--font-weight-normal);
 	line-height: var(--leading-x-tight);
-	border: 2px solid #b69973;
+	border: 2px solid var(--color-border-primary);
 	padding-block: 7px 8px;
 	padding-inline: 15px;
 

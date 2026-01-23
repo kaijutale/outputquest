@@ -75,7 +75,7 @@
 .hero-info-name-box {
 	grid-area: name;
 	background-color: var(--color-primary-brown-dark);
-	border: 1.5mm ridge #b69973;
+	border: 1.5mm ridge var(--color-border-primary);
 	padding-block: 1.5px;
 	padding-inline: 1.5px;
 }
@@ -86,7 +86,7 @@
 	line-height: var(--leading-tight);
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
 	border: 1px solid var(--color-primary-brown-light);
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	align-items: center;
 	gap: 5px;
 	padding-block: 2px 3px;
@@ -161,7 +161,7 @@
 
 .hero-info-level-display-container {
 	background-color: var(--color-primary-brown-dark);
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	width: min-content;
 	height: 105px;
 	padding-block: 2.5px;
@@ -175,7 +175,7 @@
 }
 
 .hero-info-level-display-box {
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	border: 2px solid var(--color-primary-brown-light);
 	place-content: center;
 	place-items: center;

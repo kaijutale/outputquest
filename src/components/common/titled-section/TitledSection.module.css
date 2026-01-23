@@ -7,7 +7,7 @@
 .title-container {
 	width: fit-content;
 	background-color: var(--color-primary-brown-dark);
-	border: 2mm ridge #b69973;
+	border: 2mm ridge var(--color-border-primary);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
 }

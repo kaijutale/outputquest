@@ -22,7 +22,7 @@
 	grid-template-rows: subgrid;
 	grid-row: span 4;
 	background-color: var(--color-primary-brown-dark);
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	border-radius: var(--border-radius-small);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
@@ -37,7 +37,7 @@
 	padding-inline: 15px;
 	padding-block: 15px;
 	border: 2px solid var(--color-primary-brown-light);
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	min-height: 150px; /* CLS prevention */
 }
 
@@ -45,7 +45,7 @@
 .skeleton-title {
 	width: 85%;
 	height: 24px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -73,7 +73,7 @@
 .skeleton-category,
 .skeleton-date {
 	height: 28px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -98,7 +98,7 @@
 .skeleton-favicon {
 	width: 14px;
 	height: 14px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 2px;
@@ -107,7 +107,7 @@
 .skeleton-platform-text {
 	width: 40px;
 	height: 12px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 2px;

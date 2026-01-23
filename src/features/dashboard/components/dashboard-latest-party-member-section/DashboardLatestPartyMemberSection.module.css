@@ -37,7 +37,7 @@
 .party-member-guest-user-container,
 .party-member-null-container {
 	display: block grid;
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	background-color: var(--color-primary-brown-dark);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
@@ -45,7 +45,7 @@
 
 .party-member-guest-user-message,
 .party-member-null-message {
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	border: 2px solid var(--color-primary-brown-light);
 	padding: 15px;
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
@@ -55,7 +55,7 @@
 	display: block grid;
 	text-decoration: none;
 	background-color: var(--color-primary-brown-dark);
-	border: 2.7mm ridge #b69973;
+	border: 2.7mm ridge var(--color-border-primary);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
 }
@@ -64,7 +64,7 @@
 	display: block grid;
 	grid-template-columns: auto 1fr;
 	gap: 25px;
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	border: 2px solid var(--color-primary-brown-light);
 	padding-block: 15px;
 	padding-inline: 20px;
@@ -130,7 +130,7 @@
 	line-height: var(--leading-tight);
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
 	transition: text-shadow 0.15s ease-in-out;
-	border: 2px solid #b69973;
+	border: 2px solid var(--color-border-primary);
 	padding-block: 2px;
 	padding-inline: 8.5px;
 }

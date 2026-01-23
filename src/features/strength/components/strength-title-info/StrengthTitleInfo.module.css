@@ -1,5 +1,5 @@
 .strength-title-info {
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	background-color: var(--color-primary-brown-dark);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
@@ -10,7 +10,7 @@
 	display: block grid;
 	grid-template-columns: auto;
 	gap: 20px;
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	border: 2px solid var(--color-primary-brown-light);
 }
 
@@ -53,7 +53,7 @@
 	display: block grid;
 	place-items: center;
 	background-color: var(--color-primary-brown-dark);
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
 }

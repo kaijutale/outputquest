@@ -21,7 +21,7 @@
 	grid-template-rows: subgrid;
 	grid-row: span 4;
 	background-color: var(--color-primary-brown-dark);
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	border-radius: var(--border-radius-small);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;

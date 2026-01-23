@@ -1,7 +1,7 @@
 /* Container - matches strength-hero-info */
 .skeleton-container {
 	height: 100%;
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	background-color: var(--color-primary-brown-dark);
 	border-radius: var(--border-radius-small);
 	padding-inline: 2.5px;
@@ -15,7 +15,7 @@
 	grid-template-columns: auto;
 	grid-template-rows: auto 1fr auto;
 	gap: 10px;
-	background-color: #ae926e;
+	background-color: var(--color-bg-component);
 	border: 2px solid var(--color-primary-brown-light);
 	padding-inline: 10px;
 	padding-block: 10px;
@@ -70,7 +70,7 @@
 .skeleton-icon {
 	width: 110px;
 	height: 110px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -80,7 +80,7 @@
 .skeleton-name {
 	width: 140px;
 	height: 28px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: var(--border-radius-small);
@@ -97,7 +97,7 @@
 .skeleton-level-display-box {
 	display: block grid;
 	background-color: var(--color-primary-brown-dark);
-	border: 3mm ridge #b69973;
+	border: 3mm ridge var(--color-border-primary);
 	padding-block: 2px;
 	padding-inline: 2px;
 }
@@ -106,7 +106,7 @@
 .skeleton-level {
 	width: 100px;
 	height: 56px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: var(--border-radius-small);
@@ -130,7 +130,7 @@
 .skeleton-progress-label {
 	width: 150px;
 	height: 16px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -139,7 +139,7 @@
 .skeleton-progress-value {
 	width: 60px;
 	height: 20px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -155,7 +155,7 @@
 .skeleton-progress-icon {
 	width: 35px;
 	height: 16.33px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -164,7 +164,7 @@
 .skeleton-progress-gauge {
 	width: 100%;
 	height: 20px;
-	background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: var(--border-rounded);
