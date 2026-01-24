@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import heroPlateImage from "@/../public/images/hero/hero_plate.png";
 import styles from "./StrengthHeroInfoClient.module.css";
 
 type StrengthHeroInfoClientProps = {
@@ -27,11 +28,12 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 					<div className={styles["strength-hero-box"]}>
 						<div className={styles["strength-hero-icon-box"]}>
 							<Image
-								src={`/images/hero/hero_plate.png`}
+								src={heroPlateImage}
 								alt={"勇者"}
-								width={1000}
-								height={1000}
-								priority={true}
+								width={500}
+								height={500}
+								preload={true}
+								placeholder="blur"
 								className={`${styles["strength-hero-icon-image"]}`}
 							/>
 						</div>
@@ -42,7 +44,7 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 									alt="王冠"
 									width={100}
 									height={100}
-									priority={true}
+									preload={true}
 									className={`${styles["strength-hero-name-icon"]}`}
 								/>
 								<span>
@@ -85,7 +87,7 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 								alt="EXP"
 								width={35}
 								height={35}
-								priority={true}
+								preload={true}
 								className={`${styles["strength-level-progress-exp-icon"]}`}
 							/>
 							<div className={`${styles["strength-level-progress-gauge-box"]}`}>

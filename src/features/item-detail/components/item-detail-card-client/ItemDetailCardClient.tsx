@@ -28,17 +28,23 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 	acquiredImagePath,
 	unacquiredImagePath,
 }) => {
-	// スケルトンオーバーレイのフェードアウト用
 	const [showSkeleton, setShowSkeleton] = useState(true);
+	const [imageLoaded, setImageLoaded] = useState(false);
 
+	// 最大2.5秒でタイムアウト（UX観点で適切な上限）
 	useEffect(() => {
-		// props が変わるたびにスケルトンを表示してフェードアウト
+		setImageLoaded(false);
 		setShowSkeleton(true);
-		const timer = requestAnimationFrame(() => {
-			setShowSkeleton(false);
-		});
-		return () => cancelAnimationFrame(timer);
+		const timer = setTimeout(() => setShowSkeleton(false), 2500);
+		return () => clearTimeout(timer);
 	}, [itemId, isAcquired, isGuestUser]);
+
+	// 画像が読み込まれたら即座にスケルトンを非表示
+	useEffect(() => {
+		if (imageLoaded) {
+			setShowSkeleton(false);
+		}
+	}, [imageLoaded]);
 
 	return (
 		<div className={styles["item-detail-content"]}>
@@ -62,6 +68,7 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 									width={1000}
 									height={1000}
 									priority={true}
+									onLoad={() => setImageLoaded(true)}
 									className={`${styles["item-detail-image"]} ${
 										styles[`item-detail-image-${itemId}`]
 									}`}
@@ -73,6 +80,7 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 									width={60}
 									height={60}
 									priority={true}
+									onLoad={() => setImageLoaded(true)}
 									className={`${styles["item-detail-image"]} ${
 										styles[`item-detail-image-${itemId}`]
 									}`}
