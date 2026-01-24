@@ -40,7 +40,7 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 
 	return (
 		<div className={styles["items-grid-wrapper"]}>
-			{/* 実コンテンツ - 常にマウント（preloadでファーストビュー画像を早期読み込み） */}
+			{/* 実コンテンツ - 常にマウント（loading/fetchPriorityでファーストビュー画像を優先読み込み） */}
 			<div className={styles["items-grid"]}>
 			{items.map((item, index) => (
 				<div className={styles["item-card-content"]} key={item.id}>
@@ -56,7 +56,8 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									alt="plate"
 									width={550}
 									height={550}
-									preload={index < 8}
+									loading={index < 8 ? "eager" : "lazy"}
+									fetchPriority={index < 4 ? "high" : "auto"}
 									className={styles["acquired-item-icon-plate"]}
 								/>
 								<Image
@@ -64,7 +65,8 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									alt="未入手のアイテム"
 									width={300}
 									height={300}
-									preload={index < 8}
+									loading={index < 8 ? "eager" : "lazy"}
+									fetchPriority={index < 4 ? "high" : "auto"}
 									className={`${styles["unacquired-item-icon-image"]} ${
 										styles[`unacquired-item-icon-image-${item.id}`]
 									}`}
@@ -77,7 +79,8 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									alt="plate"
 									width={550}
 									height={550}
-									preload={index < 8}
+									loading={index < 8 ? "eager" : "lazy"}
+									fetchPriority={index < 4 ? "high" : "auto"}
 									className={styles["acquired-item-icon-plate"]}
 								/>
 								<Image
@@ -85,7 +88,8 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									alt={item.name || "アイテム"}
 									width={300}
 									height={300}
-									preload={index < 8}
+									loading={index < 8 ? "eager" : "lazy"}
+									fetchPriority={index < 4 ? "high" : "auto"}
 									className={`${styles["acquired-item-icon-image"]} ${
 										styles[`acquired-item-icon-image-${item.id}`]
 									}`}
@@ -98,7 +102,8 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									alt="plate"
 									width={550}
 									height={550}
-									preload={index < 8}
+									loading={index < 8 ? "eager" : "lazy"}
+									fetchPriority={index < 4 ? "high" : "auto"}
 									className={styles["acquired-item-icon-plate"]}
 								/>
 								<Image
@@ -106,7 +111,8 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									alt="未入手のアイテム"
 									width={300}
 									height={300}
-									preload={index < 8}
+									loading={index < 8 ? "eager" : "lazy"}
+									fetchPriority={index < 4 ? "high" : "auto"}
 									className={`${styles["unacquired-item-icon-image"]} ${
 										styles[`unacquired-item-icon-image-${item.id}`]
 									}`}
