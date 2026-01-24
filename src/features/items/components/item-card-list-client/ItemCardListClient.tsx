@@ -64,31 +64,7 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 							className={styles["item-card"]}
 							onClick={(e) => handleNavigation(e, `/items/${item.id}`)}
 						>
-							{isGuestUser ? (
-								<div className={styles["unacquired-item-icon"]}>
-									<Image
-										src="/images/plate/plate01.png"
-										alt="plate"
-										width={550}
-										height={550}
-										loading={index < 8 ? "eager" : "lazy"}
-										fetchPriority={index < 4 ? "high" : "auto"}
-										className={styles["acquired-item-icon-plate"]}
-									/>
-									<Image
-										src={`/images/items-page/unacquired-icon/${customItemSilhouetteImages[item.id]}`}
-										alt="未入手のアイテム"
-										width={300}
-										height={300}
-										loading={index < 8 ? "eager" : "lazy"}
-										fetchPriority={index < 4 ? "high" : "auto"}
-										onLoad={() => handleImageLoad(index)}
-										className={`${styles["unacquired-item-icon-image"]} ${
-											styles[`unacquired-item-icon-image-${item.id}`]
-										}`}
-									/>
-								</div>
-							) : item.acquired ? (
+							{!isGuestUser && item.acquired ? (
 								<div className={styles["acquired-item-icon"]}>
 									<Image
 										src="/images/plate/plate01.png"
