@@ -30,8 +30,8 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 							<Image
 								src={heroPlateImage}
 								alt={"勇者"}
-								width={220}
-								height={220}
+								width={500}
+								height={500}
 								preload={true}
 								placeholder="blur"
 								className={`${styles["strength-hero-icon-image"]}`}
