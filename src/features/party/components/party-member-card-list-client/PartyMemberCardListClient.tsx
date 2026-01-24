@@ -25,84 +25,105 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 		delay: 190,
 	});
 	const [isLoading, setIsLoading] = useState(true);
+	const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
-	// マウント後、最小表示時間を経てスケルトンをフェードアウト
-	// Suspenseのfallbackからの滑らかな切り替えを実現するため
+	// 最大2.5秒でタイムアウト（UX観点で適切な上限）
 	useEffect(() => {
-		const MINIMUM_SKELETON_DISPLAY_MS = 300;
+		const MAX_WAIT_MS = 2500;
 		const timerId = setTimeout(() => {
 			setIsLoading(false);
-		}, MINIMUM_SKELETON_DISPLAY_MS);
+		}, MAX_WAIT_MS);
 		return () => clearTimeout(timerId);
 	}, []);
+
+	// ファーストビュー画像が全て読み込まれたら即座にスケルトンを非表示
+	useEffect(() => {
+		const FIRST_VIEW_COUNT = 8;
+		const totalFirstView = Math.min(members.length, FIRST_VIEW_COUNT);
+		if (loadedImages.size >= totalFirstView) {
+			setIsLoading(false);
+		}
+	}, [loadedImages, members.length]);
 
 	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
 		e.preventDefault();
 		playClickSound(() => router.push(path));
 	};
 
+	const handleImageLoad = (index: number) => {
+		if (index < 8) {
+			setLoadedImages((prev) => new Set(prev).add(index));
+		}
+	};
+
 	return (
 		<div className={styles["party-grid-wrapper"]}>
-			{/* 実コンテンツ - 常にマウント（preloadでファーストビュー画像を早期読み込み） */}
+			{/* 実コンテンツ - 常にマウント（loading/fetchPriorityでファーストビュー画像を優先読み込み） */}
 			<div className={styles["party-grid"]}>
-			{members.map((partyMember, index) => (
-				<div className={styles["party-member-card-content"]} key={partyMember.id}>
-					<Link
-						href={`/party/${partyMember.id}`}
-						className={styles["party-member-card"]}
-						onClick={(e) => handleNavigation(e, `/party/${partyMember.id}`)}
-					>
-						{!isGuestUser && partyMember.acquired ? (
-							<div className={styles["acquired-party-member-icon"]}>
-								<Image
-									src="/images/plate/plate01.png"
-									alt="plate"
-									width={550}
-									height={550}
-									preload={index < 8}
-									className={styles["acquired-party-member-icon-plate"]}
-								/>
-								<Image
-									src={`/images/party-page/acquired-icon/${partyMember.imagePath}`}
-									alt={partyMember.name || "勇者の仲間"}
-									width={300}
-									height={300}
-									preload={index < 8}
-									className={`${styles["acquired-party-member-icon-image"]} ${
-										styles[`acquired-party-member-icon-image-${partyMember.id}`]
-									}`}
-								/>
+				{members.map((partyMember, index) => (
+					<div className={styles["party-member-card-content"]} key={partyMember.id}>
+						<Link
+							href={`/party/${partyMember.id}`}
+							className={styles["party-member-card"]}
+							onClick={(e) => handleNavigation(e, `/party/${partyMember.id}`)}
+						>
+							{!isGuestUser && partyMember.acquired ? (
+								<div className={styles["acquired-party-member-icon"]}>
+									<Image
+										src="/images/plate/plate01.png"
+										alt="plate"
+										width={550}
+										height={550}
+										loading={index < 8 ? "eager" : "lazy"}
+										fetchPriority={index < 4 ? "high" : "auto"}
+										className={styles["acquired-party-member-icon-plate"]}
+									/>
+									<Image
+										src={`/images/party-page/acquired-icon/${partyMember.imagePath}`}
+										alt={partyMember.name || "勇者の仲間"}
+										width={300}
+										height={300}
+										loading={index < 8 ? "eager" : "lazy"}
+										fetchPriority={index < 4 ? "high" : "auto"}
+										onLoad={() => handleImageLoad(index)}
+										className={`${styles["acquired-party-member-icon-image"]} ${
+											styles[`acquired-party-member-icon-image-${partyMember.id}`]
+										}`}
+									/>
+								</div>
+							) : (
+								<div className={styles["unacquired-party-member-icon"]}>
+									<Image
+										src="/images/plate/plate01.png"
+										alt="plate"
+										width={550}
+										height={550}
+										loading={index < 8 ? "eager" : "lazy"}
+										fetchPriority={index < 4 ? "high" : "auto"}
+										className={styles["acquired-party-member-icon-plate"]}
+									/>
+									<Image
+										src={`/images/party-page/unacquired-icon/${customMemberSilhouetteImages[partyMember.id]}`}
+										alt="まだ見ぬ仲間"
+										width={300}
+										height={300}
+										loading={index < 8 ? "eager" : "lazy"}
+										fetchPriority={index < 4 ? "high" : "auto"}
+										onLoad={() => handleImageLoad(index)}
+										className={`${styles["unacquired-party-member-icon-image"]} ${
+											styles[`unacquired-party-member-icon-image-${partyMember.id}`]
+										}`}
+									/>
+								</div>
+							)}
+							<div className={styles["party-member-name-box"]}>
+								<h2 className={styles["party-member-name"]}>
+									{isGuestUser || !partyMember.acquired ? "???" : partyMember.name}
+								</h2>
 							</div>
-						) : (
-							<div className={styles["unacquired-party-member-icon"]}>
-								<Image
-									src="/images/plate/plate01.png"
-									alt="plate"
-									width={550}
-									height={550}
-									preload={index < 8}
-									className={styles["acquired-party-member-icon-plate"]}
-								/>
-								<Image
-									src={`/images/party-page/unacquired-icon/${customMemberSilhouetteImages[partyMember.id]}`}
-									alt="まだ見ぬ仲間"
-									width={300}
-									height={300}
-									preload={index < 8}
-									className={`${styles["unacquired-party-member-icon-image"]} ${
-										styles[`unacquired-party-member-icon-image-${partyMember.id}`]
-									}`}
-								/>
-							</div>
-						)}
-						<div className={styles["party-member-name-box"]}>
-							<h2 className={styles["party-member-name"]}>
-								{isGuestUser || !partyMember.acquired ? "???" : partyMember.name}
-							</h2>
-						</div>
-					</Link>
-				</div>
-			))}
+						</Link>
+					</div>
+				))}
 			</div>
 
 			{/* Skeletonオーバーレイ - ローディング時のみ表示 */}

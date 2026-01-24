@@ -1,6 +1,6 @@
-import Image from "next/image";
 import styles from "./AboutGuideSection.module.css";
 import { AboutGuideItem as AboutGuideItemType } from "../../constants/aboutData";
+import AboutGuideIconClient from "../about-guide-icon-client/AboutGuideIconClient";
 
 type Props = AboutGuideItemType;
 
@@ -8,14 +8,7 @@ export default function AboutGuideItem({ title, description, iconSrc, alt }: Pro
 	return (
 		<div className={styles["about-section-list-content"]}>
 			<dt className={styles["about-section-list-content-title"]}>
-				<Image
-					src={iconSrc}
-					alt={alt}
-					width={1000}
-					height={1000}
-					priority={true}
-					className={`${styles["about-section-list-content-icon"]}`}
-				/>
+				<AboutGuideIconClient iconSrc={iconSrc} alt={alt} />
 				<span>{title}</span>
 			</dt>
 			<dd className={styles["about-section-list-content-description"]}>{description}</dd>

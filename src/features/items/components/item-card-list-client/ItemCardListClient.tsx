@@ -22,84 +22,105 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 		delay: 190,
 	});
 	const [isLoading, setIsLoading] = useState(true);
+	const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
-	// マウント後、最小表示時間を経てスケルトンをフェードアウト
-	// Suspenseのfallbackからの滑らかな切り替えを実現するため
+	// 最大2.5秒でタイムアウト（UX観点で適切な上限）
 	useEffect(() => {
-		const MINIMUM_SKELETON_DISPLAY_MS = 300;
+		const MAX_WAIT_MS = 2500;
 		const timerId = setTimeout(() => {
 			setIsLoading(false);
-		}, MINIMUM_SKELETON_DISPLAY_MS);
+		}, MAX_WAIT_MS);
 		return () => clearTimeout(timerId);
 	}, []);
+
+	// ファーストビュー画像が全て読み込まれたら即座にスケルトンを非表示
+	useEffect(() => {
+		const FIRST_VIEW_COUNT = 8;
+		const totalFirstView = Math.min(items.length, FIRST_VIEW_COUNT);
+		if (loadedImages.size >= totalFirstView) {
+			setIsLoading(false);
+		}
+	}, [loadedImages, items.length]);
 
 	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
 		e.preventDefault();
 		playClickSound(() => router.push(path));
 	};
 
+	const handleImageLoad = (index: number) => {
+		if (index < 8) {
+			setLoadedImages((prev) => new Set(prev).add(index));
+		}
+	};
+
 	return (
 		<div className={styles["items-grid-wrapper"]}>
-			{/* 実コンテンツ - 常にマウント（preloadでファーストビュー画像を早期読み込み） */}
+			{/* 実コンテンツ - 常にマウント（loading/fetchPriorityでファーストビュー画像を優先読み込み） */}
 			<div className={styles["items-grid"]}>
-			{items.map((item, index) => (
-				<div className={styles["item-card-content"]} key={item.id}>
-					<Link
-						href={`/items/${item.id}`}
-						className={styles["item-card"]}
-						onClick={(e) => handleNavigation(e, `/items/${item.id}`)}
-					>
-						{!isGuestUser && item.acquired ? (
-							<div className={styles["acquired-item-icon"]}>
-								<Image
-									src="/images/plate/plate01.png"
-									alt="plate"
-									width={550}
-									height={550}
-									preload={index < 8}
-									className={styles["acquired-item-icon-plate"]}
-								/>
-								<Image
-									src={`/images/items-page/acquired-icon/${item.image}`}
-									alt={item.name || "アイテム"}
-									width={300}
-									height={300}
-									preload={index < 8}
-									className={`${styles["acquired-item-icon-image"]} ${
-										styles[`acquired-item-icon-image-${item.id}`]
-									}`}
-								/>
+				{items.map((item, index) => (
+					<div className={styles["item-card-content"]} key={item.id}>
+						<Link
+							href={`/items/${item.id}`}
+							className={styles["item-card"]}
+							onClick={(e) => handleNavigation(e, `/items/${item.id}`)}
+						>
+							{!isGuestUser && item.acquired ? (
+								<div className={styles["acquired-item-icon"]}>
+									<Image
+										src="/images/plate/plate01.png"
+										alt="plate"
+										width={550}
+										height={550}
+										loading={index < 8 ? "eager" : "lazy"}
+										fetchPriority={index < 4 ? "high" : "auto"}
+										className={styles["acquired-item-icon-plate"]}
+									/>
+									<Image
+										src={`/images/items-page/acquired-icon/${item.image}`}
+										alt={item.name || "アイテム"}
+										width={300}
+										height={300}
+										loading={index < 8 ? "eager" : "lazy"}
+										fetchPriority={index < 4 ? "high" : "auto"}
+										onLoad={() => handleImageLoad(index)}
+										className={`${styles["acquired-item-icon-image"]} ${
+											styles[`acquired-item-icon-image-${item.id}`]
+										}`}
+									/>
+								</div>
+							) : (
+								<div className={styles["unacquired-item-icon"]}>
+									<Image
+										src="/images/plate/plate01.png"
+										alt="plate"
+										width={550}
+										height={550}
+										loading={index < 8 ? "eager" : "lazy"}
+										fetchPriority={index < 4 ? "high" : "auto"}
+										className={styles["acquired-item-icon-plate"]}
+									/>
+									<Image
+										src={`/images/items-page/unacquired-icon/${customItemSilhouetteImages[item.id]}`}
+										alt="未入手のアイテム"
+										width={300}
+										height={300}
+										loading={index < 8 ? "eager" : "lazy"}
+										fetchPriority={index < 4 ? "high" : "auto"}
+										onLoad={() => handleImageLoad(index)}
+										className={`${styles["unacquired-item-icon-image"]} ${
+											styles[`unacquired-item-icon-image-${item.id}`]
+										}`}
+									/>
+								</div>
+							)}
+							<div className={styles["item-name-box"]}>
+								<h2 className={styles["item-name"]}>
+									{isGuestUser || !item.acquired ? "???" : item.name}
+								</h2>
 							</div>
-						) : (
-							<div className={styles["unacquired-item-icon"]}>
-								<Image
-									src="/images/plate/plate01.png"
-									alt="plate"
-									width={550}
-									height={550}
-									preload={index < 8}
-									className={styles["acquired-item-icon-plate"]}
-								/>
-								<Image
-									src={`/images/items-page/unacquired-icon/${customItemSilhouetteImages[item.id]}`}
-									alt="未入手のアイテム"
-									width={300}
-									height={300}
-									preload={index < 8}
-									className={`${styles["unacquired-item-icon-image"]} ${
-										styles[`unacquired-item-icon-image-${item.id}`]
-									}`}
-								/>
-							</div>
-						)}
-						<div className={styles["item-name-box"]}>
-							<h2 className={styles["item-name"]}>
-								{isGuestUser || !item.acquired ? "???" : item.name}
-							</h2>
-						</div>
-					</Link>
-				</div>
-			))}
+						</Link>
+					</div>
+				))}
 			</div>
 
 			{/* Skeletonオーバーレイ - ローディング時のみ表示 */}
