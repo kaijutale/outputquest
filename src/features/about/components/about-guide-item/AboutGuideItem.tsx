@@ -1,6 +1,6 @@
 import styles from "./AboutGuideItem.module.css";
-import { AboutGuideItem as AboutGuideItemType } from "../../constants/aboutData";
-import * as About from "../index";
+import { AboutGuideItem as AboutGuideItemType } from "@/features/about/constants/aboutData";
+import * as About from "@/features/about/components";
 
 type Props = AboutGuideItemType;
 

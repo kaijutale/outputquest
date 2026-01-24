@@ -1,6 +1,6 @@
-import * as About from "../index";
 import styles from "./AboutGuideSection.module.css";
-import { ABOUT_GUIDE_ITEMS } from "../../constants/aboutData";
+import { ABOUT_GUIDE_ITEMS } from "@/features/about/constants/aboutData";
+import * as About from "@/features/about/components";
 
 export default function AboutGuideSection() {
 	return (
