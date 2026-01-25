@@ -3,7 +3,7 @@ import Image from "next/image";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
 import { getDashboardHeroData } from "@/features/dashboard/_lib/fetcher";
 import { getUser } from "@/features/user/_lib/fetcher";
-import HeroIconClient from "../hero-icon-client/HeroIconClient";
+import * as Dashboard from "@/features/dashboard/components";
 
 const DashboardHeroSection = async () => {
 	// Request Memoizationにより、他コンポーネントと同じフェッチを共有
@@ -33,7 +33,7 @@ const DashboardHeroSection = async () => {
 				{/* キャラクター情報 */}
 				<div className={`${styles["hero-info"]}`}>
 					<div className={`${styles["hero-info-box"]}`}>
-						<HeroIconClient heroName={heroData.name} />
+						<Dashboard.DashboardHeroIconClient heroName={heroData.name} />
 						<div className={styles["hero-info-name-box"]}>
 							<h3 className={`${styles["hero-info-name"]}`}>
 								<Image

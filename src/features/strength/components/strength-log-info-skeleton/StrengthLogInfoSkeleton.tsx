@@ -1,4 +1,4 @@
-import styles from "../strength-log-info/StrengthLogInfo.module.css";
+import styles from "./StrengthLogInfoSkeleton.module.css"
 import skeletonStyles from "./StrengthLogInfoSkeleton.module.css";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 

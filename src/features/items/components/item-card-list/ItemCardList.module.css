@@ -1,5 +1,6 @@
 .error-message {
 	text-align: center;
-	color: #ff4444;
+	color: var(--color-error);
 	padding: 20px;
+	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
 }

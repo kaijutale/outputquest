@@ -1,7 +1,7 @@
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";
 import { getUser } from "@/features/user/_lib/fetcher";
 import { getAdventureLogs, syncAdventureLogs } from "@/features/logs/services/logService";
-import StrengthLogInfo from "./StrengthLogInfo";
+import * as Strength from "@/features/strength/components";
 
 /**
  * StrengthLogInfoWrapper (Server Component)
@@ -20,7 +20,7 @@ const StrengthLogInfoWrapper = async () => {
 
 	// 未ログインまたはZenn未連携の場合は空のログを表示
 	if (!user?.zennUsername) {
-		return <StrengthLogInfo logs={[]} />;
+		return <Strength.StrengthLogInfo logs={[]} />;
 	}
 
 	// Zenn記事を取得してログを同期
@@ -30,7 +30,7 @@ const StrengthLogInfoWrapper = async () => {
 	// 同期後のログを取得して表示
 	const logs = await getAdventureLogs(user.clerkId);
 
-	return <StrengthLogInfo logs={logs} />;
+	return <Strength.StrengthLogInfo logs={logs} />;
 };
 
 export default StrengthLogInfoWrapper;

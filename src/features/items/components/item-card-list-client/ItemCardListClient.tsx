@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import { Item } from "@/features/items/types/items.types";
 import { customItemSilhouetteImages } from "@/features/items/data/itemsData";
-import ItemListSkeleton from "../item-list-skeleton/ItemListSkeleton";
+import ItemListSkeleton from "@/features/items/components/item-list-skeleton/ItemListSkeleton";
 
 interface ItemCardListClientProps {
 	items: Item[];

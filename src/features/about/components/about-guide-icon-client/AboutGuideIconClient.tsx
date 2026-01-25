@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from "../about-guide-section/AboutGuideSection.module.css";
+import styles from "./AboutGuideIconClient.module.css";
 
 interface AboutGuideIconClientProps {
 	iconSrc: string;
@@ -29,7 +29,7 @@ const AboutGuideIconClient: React.FC<AboutGuideIconClientProps> = ({ iconSrc, al
 	}, [imageLoaded]);
 
 	return (
-		<div className={styles["about-icon-wrapper"]}>
+		<div className={styles["about-guide-icon-wrapper"]}>
 			<Image
 				src={iconSrc}
 				alt={alt}
@@ -37,9 +37,9 @@ const AboutGuideIconClient: React.FC<AboutGuideIconClientProps> = ({ iconSrc, al
 				height={1000}
 				priority={true}
 				onLoad={() => setImageLoaded(true)}
-				className={styles["about-section-list-content-icon"]}
+				className={styles["about-guide-icon-image"]}
 			/>
-			{showSkeleton && <div className={styles["about-icon-skeleton"]} />}
+			{showSkeleton && <div className={styles["about-guide-icon-skeleton"]} />}
 		</div>
 	);
 };

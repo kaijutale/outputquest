@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
-import styles from "./DashboardLatestItemSection.module.css";
+import styles from "./DashboardLatestItemCard.module.css";
 import { customItemImages } from "@/features/items/data/itemsData";
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 	itemDescription: string;
 };
 
-export const DashboardLatestItemCard = ({ itemId, itemName, itemDescription }: Props) => {
+const DashboardLatestItemCard = ({ itemId, itemName, itemDescription }: Props) => {
 	const router = useRouter();
 	const { playClickSound } = useClickSound({
 		soundPath: "/audio/click-sound_decision.mp3",
@@ -27,20 +27,20 @@ export const DashboardLatestItemCard = ({ itemId, itemName, itemDescription }: P
 	};
 
 	return (
-		<div className={`${styles["last-item-box"]}`}>
+		<div className={`${styles["latest-item-box"]}`}>
 			<Link
 				href={`/items/${itemId}`}
-				className={`${styles["last-item-link"]}`}
+				className={`${styles["latest-item-link"]}`}
 				onClick={(e) => handleNavigation(e, `/items/${itemId}`)}
 			>
-				<div className={`${styles["last-item-icon-box"]}`}>
+				<div className={`${styles["latest-item-icon-box"]}`}>
 					<Image
 						src="/images/plate/plate01.png"
 						alt="plate"
 						width={1000}
 						height={1000}
 						priority={true}
-						className={styles["last-item-icon-plate"]}
+						className={styles["latest-item-icon-plate"]}
 					/>
 					<Image
 						src={
@@ -51,16 +51,18 @@ export const DashboardLatestItemCard = ({ itemId, itemName, itemDescription }: P
 						alt={itemName}
 						width={1000}
 						height={1000}
-						className={`${styles["last-item-icon"]} ${styles[`last-item-icon-${itemId}`]}`}
+						className={`${styles["latest-item-icon"]} ${styles[`latest-item-icon-${itemId}`]}`}
 					/>
 				</div>
-				<div className={`${styles["last-item-info"]}`}>
-					<div className={`${styles["last-item-name-box"]}`}>
-						<h3 className={`${styles["last-item-name"]}`}>{itemName}</h3>
+				<div className={`${styles["latest-item-info"]}`}>
+					<div className={`${styles["latest-item-name-box"]}`}>
+						<h3 className={`${styles["latest-item-name"]}`}>{itemName}</h3>
 					</div>
-					<p className={`${styles["last-item-description"]}`}>{itemDescription}</p>
+					<p className={`${styles["latest-item-description"]}`}>{itemDescription}</p>
 				</div>
 			</Link>
 		</div>
 	);
 };
+
+export default DashboardLatestItemCard;

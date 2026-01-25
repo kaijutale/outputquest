@@ -8,22 +8,13 @@ import {
 	customItemImages,
 	customItemSilhouetteImages,
 } from "@/features/items/data/itemsData";
-import ItemDetailCardClient from "../item-detail-card-client/ItemDetailCardClient";
+import * as ItemDetail from "@/features/item-detail/components";
 import styles from "./ItemDetailCard.module.css";
 
 interface ItemDetailCardProps {
 	itemId: number;
 }
 
-/**
- * ItemDetailCard (Server Component)
- *
- * アイテム詳細データを取得して表示するServer Component
- *
- * データフェッチ:
- * - getUser(): ユーザー認証とDB取得（Request Memoization + use cache）
- * - getZennArticles(): Zenn記事取得（Request Memoization + use cache）
- */
 const ItemDetailCard = async ({ itemId }: ItemDetailCardProps) => {
 	try {
 		// ユーザー情報を取得（Request Memoization + use cache）
@@ -63,7 +54,7 @@ const ItemDetailCard = async ({ itemId }: ItemDetailCardProps) => {
 
 		// Client Componentにデータを渡す
 		return (
-			<ItemDetailCardClient
+			<ItemDetail.ItemDetailCardClient
 				itemId={itemId}
 				isAcquired={isAcquired}
 				isGuestUser={isGuestUser}

@@ -1,4 +1,5 @@
 import styles from "./LogsPageHeader.module.css";
+
 const LogsPageHeader = () => {
 	return (
 		<div className={styles["logs-page-header"]}>
