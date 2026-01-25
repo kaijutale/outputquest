@@ -1,5 +1,4 @@
-import { getZennArticles } from "@/features/zenn/_lib/fetcher";
-import { getUser } from "@/features/user/_lib/fetcher";
+import { getUserWithArticles } from "@/features/user/_lib/fetcher";
 import {
 	isAcquiredByHeroLevel,
 	heroLevelAndMemberRelation,
@@ -19,26 +18,11 @@ interface PartyMemberDetailCardProps {
  * PartyMemberDetailCard (Server Component)
  *
  * なかま詳細データを取得して表示するServer Component
- *
- * データフェッチ:
- * - getUser(): ユーザー認証とDB取得（Request Memoization + use cache）
- * - getZennArticles(): Zenn記事取得（Request Memoization + use cache）
  */
 const PartyMemberDetailCard = async ({ partyId }: PartyMemberDetailCardProps) => {
 	try {
-		// ユーザー情報を取得（Request Memoization + use cache）
-		const user = await getUser();
-
-		// ゲストユーザーの判定
-		const zennUsername = user?.zennUsername || "aoyamadev";
-		const isGuestUser = !user?.zennUsername;
-		let currentLevel = 1;
-
-		if (user?.zennUsername) {
-			// Zenn記事を取得してレベルを計算
-			const articles = await getZennArticles(zennUsername, { fetchAll: true });
-			currentLevel = articles.length;
-		}
+		const { articleCount, isGuestUser } = await getUserWithArticles();
+		const currentLevel = isGuestUser ? 1 : articleCount;
 
 		// 仲間の入手状態を判定
 		const isAcquired = !isGuestUser && isAcquiredByHeroLevel(partyId, currentLevel);

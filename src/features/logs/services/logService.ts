@@ -7,6 +7,9 @@ import {
 	customMemberNames,
 } from "@/features/party/data/partyMemberData";
 import { titleNameData } from "@/shared/data/titleNameDate";
+import { getUser } from "@/features/user/_lib/fetcher";
+import { getZennArticles } from "@/features/zenn/_lib/fetcher";
+import { formatDateWithTime } from "@/utils/formatDate";
 
 interface Article {
 	id: number | string;
@@ -142,20 +145,6 @@ export interface FormattedLog {
 	formattedDate: string;
 }
 
-/**
- * 日付をフォーマットする関数
- */
-const formatDate = (date: Date): string => {
-	return `${date.getFullYear()}/${(date.getMonth() + 1)
-		.toString()
-		.padStart(2, "0")}/${date.getDate().toString().padStart(2, "0")} ${date
-		.getHours()
-		.toString()
-		.padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date
-		.getSeconds()
-		.toString()
-		.padStart(2, "0")}`;
-};
 
 /**
  * サーバーサイドでAdventureLogを取得する関数
@@ -185,6 +174,31 @@ export const getAdventureLogs = async (clerkId: string): Promise<FormattedLog[]>
 		type: log.type,
 		content: log.content,
 		occurredAt: log.occurredAt,
-		formattedDate: formatDate(log.occurredAt),
+		formattedDate: formatDateWithTime(log.occurredAt),
 	}));
+};
+
+/**
+ * 冒険ログを同期・取得する共通ユーティリティ関数
+ *
+ * LogsListWrapper と StrengthLogInfoWrapper で共通して使用される
+ * データフェッチロジックを抽象化
+ *
+ * @returns 同期済みの冒険ログ配列（未ログインまたはZenn未連携の場合は空配列）
+ */
+export const getAdventureLogsWithSync = async (): Promise<FormattedLog[]> => {
+	// ユーザー情報を取得（Request Memoization + use cache）
+	const user = await getUser();
+
+	// 未ログインまたはZenn未連携の場合は空配列を返す
+	if (!user?.zennUsername) {
+		return [];
+	}
+
+	// Zenn記事を取得してログを同期
+	const articles = await getZennArticles(user.zennUsername, { fetchAll: true });
+	await syncAdventureLogs(user.id, articles);
+
+	// 同期後のログを取得して返す
+	return await getAdventureLogs(user.clerkId);
 };

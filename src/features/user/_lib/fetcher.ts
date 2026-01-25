@@ -5,6 +5,8 @@ import { connection } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { CacheTags } from "@/lib/cache-tags";
+import { getZennArticles } from "@/features/zenn/_lib/fetcher";
+import { PostData } from "@/features/posts/types";
 
 /**
  * ユーザー情報の型定義
@@ -97,3 +99,41 @@ export const getUser = cache(async (): Promise<User> => {
 export const preloadUser = () => {
 	void getUser(); // Promiseを開始するだけ（awaitしない）
 };
+
+/**
+ * ユーザー情報とZenn記事を一緒に取得する共通ユーティリティ
+ *
+ * 複数のコンポーネントで共通して使用されるデータフェッチパターンを抽象化。
+ * - StrengthHeroInfo, StrengthTitleInfo
+ * - ItemCardList, ItemDetailCard
+ * - PartyMemberCardList, PartyMemberDetailCard
+ * - PostsListWithData
+ *
+ * @returns ユーザー情報、Zennユーザー名、ゲストフラグ、記事一覧、記事数
+ */
+export type UserWithArticles = {
+	user: User;
+	zennUsername: string;
+	isGuestUser: boolean;
+	articles: PostData[];
+	articleCount: number;
+};
+
+export const getUserWithArticles = cache(async (): Promise<UserWithArticles> => {
+	const user = await getUser();
+
+	// ゲストユーザーの判定（Zenn未連携の場合はデモユーザー）
+	const zennUsername = user?.zennUsername || "aoyamadev";
+	const isGuestUser = !user?.zennUsername;
+
+	// Zenn記事を取得（全件取得）
+	const articles = await getZennArticles(zennUsername, { fetchAll: true });
+
+	return {
+		user,
+		zennUsername,
+		isGuestUser,
+		articles,
+		articleCount: articles.length,
+	};
+});

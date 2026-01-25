@@ -1,5 +1,4 @@
-import { getZennArticles } from "@/features/zenn/_lib/fetcher";
-import { getUser } from "@/features/user/_lib/fetcher";
+import { getUserWithArticles } from "@/features/user/_lib/fetcher";
 import {
 	isAcquiredByHeroLevel,
 	heroLevelAndItemRelation,
@@ -17,19 +16,8 @@ interface ItemDetailCardProps {
 
 const ItemDetailCard = async ({ itemId }: ItemDetailCardProps) => {
 	try {
-		// ユーザー情報を取得（Request Memoization + use cache）
-		const user = await getUser();
-
-		// ゲストユーザーの判定
-		const zennUsername = user?.zennUsername || "aoyamadev";
-		const isGuestUser = !user?.zennUsername;
-		let currentLevel = 1;
-
-		if (user?.zennUsername) {
-			// Zenn記事を取得してレベルを計算
-			const articles = await getZennArticles(zennUsername, { fetchAll: true });
-			currentLevel = articles.length;
-		}
+		const { articleCount, isGuestUser } = await getUserWithArticles();
+		const currentLevel = isGuestUser ? 1 : articleCount;
 
 		// アイテムの入手状態を判定
 		const isAcquired = !isGuestUser && isAcquiredByHeroLevel(itemId, currentLevel);

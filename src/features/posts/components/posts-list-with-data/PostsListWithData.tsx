@@ -1,5 +1,4 @@
-import { getZennArticles } from "@/features/zenn/_lib/fetcher";
-import { getUser } from "@/features/user/_lib/fetcher";
+import { getUserWithArticles } from "@/features/user/_lib/fetcher";
 import { PlatformType } from "@/features/posts/types";
 import * as Posts from "@/features/posts/components";
 import styles from "./PostsListWithData.module.css";
@@ -8,21 +7,10 @@ import styles from "./PostsListWithData.module.css";
  * PostsListWithData (Server Component)
  *
  * Zenn記事一覧を取得して表示するServer Component
- *
- * データフェッチ:
- * - getUser(): ユーザー認証とDB取得（Request Memoization + use cache）
- * - getZennArticles(): Zenn記事取得（Request Memoization + use cache）
  */
 const PostsListWithData = async () => {
 	try {
-		// ユーザー情報を取得（Request Memoization + use cache）
-		const user = await getUser();
-
-		// ゲストユーザーの判定
-		const zennUsername = user?.zennUsername || "aoyamadev";
-
-		// Zenn記事を取得（全件取得）- use cache + Request Memoization
-		const articles = await getZennArticles(zennUsername, { fetchAll: true });
+		const { articles } = await getUserWithArticles();
 
 		// platformType: "zenn" を各記事に設定
 		const postsData = articles.map((article) => ({
