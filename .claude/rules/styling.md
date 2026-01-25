@@ -36,3 +36,16 @@
 - ファイル名: `ComponentName.module.css`
 - クラス名: ケバブケース（例: `user-info-list`）
 - CSS 変数を積極的に活用し、ハードコードを避ける
+
+### アンチパターン（禁止）
+
+- **クロスインポート禁止**: 他ディレクトリの CSS Modules を参照しない
+  ```tsx
+  // NG
+  import styles from "../other-component/OtherComponent.module.css";
+
+  // OK
+  import styles from "./ThisComponent.module.css";
+  ```
+- **1コンポーネント = 1 CSS Modules**: 新規コンポーネント作成時は必ず専用の CSS Modules を作成
+- **共有スタイル**: 複数コンポーネントで共有するスタイルは `globals.css` または共通の CSS 変数で対応

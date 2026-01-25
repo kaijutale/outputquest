@@ -11,6 +11,8 @@ import DashboardLatestPartyMemberSkeleton from "./dashboard-latest-party-member-
 import DashboardPlatformStatsSection from "./dashboard-platform-stats-section/DashboardPlatformStatsSection";
 import DashboardPlatformStatsSkeleton from "./dashboard-platform-stats-skeleton/DashboardPlatformStatsSkeleton";
 import DashboardHeroIconClient from "./dashboard-hero-icon-client/DashboardHeroIconClient";
+import DashboardLatestItemCard from "./dashboard-latest-item-card/DashboardLatestItemCard";
+import DashboardLatestPartyMemberCard from "./dashboard-latest-party-member-card/DashboardLatestPartyMemberCard";
 
 export {
 	DashboardActivityContent,
@@ -26,4 +28,6 @@ export {
 	DashboardPlatformStatsSection,
 	DashboardPlatformStatsSkeleton,
 	DashboardHeroIconClient,
+	DashboardLatestItemCard,
+	DashboardLatestPartyMemberCard,
 };

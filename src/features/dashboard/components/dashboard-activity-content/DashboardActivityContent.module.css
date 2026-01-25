@@ -144,20 +144,3 @@
 	color: var(--color-primary-yellow);
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
 }
-
-.error-message {
-	display: block grid;
-	place-items: center;
-	color: var(--color-error, #ff6b6b);
-	font-size: var(--font-size-small, 0.875rem);
-	background-color: rgba(255, 107, 107, 0.1);
-	padding: 15px;
-}
-
-.loading-indicator {
-	text-align: center;
-	padding: 10px;
-	color: var(--color-primary-white);
-	font-size: var(--font-size-small, 0.875rem);
-	opacity: 0.7;
-}

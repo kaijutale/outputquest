@@ -1,7 +1,7 @@
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";
 import { getUser } from "@/features/user/_lib/fetcher";
-import StrengthTitleInfoClient from "./StrengthTitleInfoClient";
 import styles from "./StrengthTitleInfo.module.css";
+import * as Strength from "@/features/strength/components";
 
 /**
  * StrengthTitleInfo (Server Component)
@@ -25,7 +25,7 @@ const StrengthTitleInfo = async () => {
 		const heroLevel = Math.max(articles.length, 1); // 最低レベル1
 
 		// Client Componentにデータを渡す
-		return <StrengthTitleInfoClient heroLevel={heroLevel} isGuestUser={isGuestUser} />;
+		return <Strength.StrengthTitleInfoClient heroLevel={heroLevel} isGuestUser={isGuestUser} />;
 	} catch (error) {
 		console.error("称号情報の取得エラー:", error);
 		return (

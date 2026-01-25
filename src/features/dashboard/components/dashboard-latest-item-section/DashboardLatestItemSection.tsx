@@ -8,7 +8,7 @@ import {
 import { getDashboardHeroData } from "@/features/dashboard/_lib/fetcher";
 import { getUser } from "@/features/user/_lib/fetcher";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
-import { DashboardLatestItemCard } from "./DashboardLatestItemCard";
+import * as Dashboard from "@/features/dashboard/components";
 
 const DashboardLatestItemSection = async () => {
 	// Request Memoizationにより、他コンポーネントと同じフェッチを共有
@@ -32,30 +32,30 @@ const DashboardLatestItemSection = async () => {
 	const itemDescription = itemId !== null ? customItemDescriptions[itemId] || "詳細不明" : "";
 
 	return (
-		<section className={`${styles["last-item-section"]}`}>
-			<h2 className={`${styles["last-item-title"]}`}>
+		<section className={`${styles["latest-item-section"]}`}>
+			<h2 className={`${styles["latest-item-title"]}`}>
 				<Image
 					src="/images/crown/crown02.png"
 					alt="王冠"
 					width={100}
 					height={100}
-					className={`${styles["last-item-title-icon"]}`}
+					className={`${styles["latest-item-title-icon"]}`}
 				/>
 				<span>最近入手したアイテム</span>
 			</h2>
-			<div className={`${styles["last-item-container"]}`}>
+			<div className={`${styles["latest-item-container"]}`}>
 				{isGuestUser ? (
-					<div className={styles["last-item-guest-user-container"]}>
-						<p className={styles["last-item-guest-user-message"]}>
+					<div className={styles["latest-item-guest-user-container"]}>
+						<p className={styles["latest-item-guest-user-message"]}>
 							ログインするとアイテムの情報が表示されます。
 						</p>
 					</div>
 				) : itemId === null ? (
-					<div className={styles["last-item-null-container"]}>
-						<p className={styles["last-item-null-message"]}>まだ入手したアイテムはありません。</p>
+					<div className={styles["latest-item-null-container"]}>
+						<p className={styles["latest-item-null-message"]}>まだ入手したアイテムはありません。</p>
 					</div>
 				) : (
-					<DashboardLatestItemCard
+					<Dashboard.DashboardLatestItemCard
 						itemId={itemId}
 						itemName={itemName}
 						itemDescription={itemDescription}
@@ -68,10 +68,10 @@ const DashboardLatestItemSection = async () => {
 				username=""
 				customText="最近入手したアイテムをXでシェアする"
 				customShareText={`【アイテムを入手した！】\n\n⭐️ 勇者は「${itemName}」を手に入れた！\n\n`}
-				className={`${styles["last-item-share-link"]}`}
-				iconWrapClassName={`${styles["last-item-share-icon-wrap"]}`}
-				iconClassName={`${styles["last-item-share-icon"]}`}
-				textClassName={`${styles["last-item-share-link-text"]}`}
+				className={`${styles["latest-item-share-link"]}`}
+				iconWrapClassName={`${styles["latest-item-share-icon-wrap"]}`}
+				iconClassName={`${styles["latest-item-share-icon"]}`}
+				textClassName={`${styles["latest-item-share-link-text"]}`}
 				iconWidth={11}
 				iconHeight={11}
 				isGuestUser={isGuestUser}
