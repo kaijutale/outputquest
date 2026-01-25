@@ -1,3 +1,104 @@
+.strength-log-info {
+	height: 100%;
+	border: 3mm ridge var(--color-border-primary);
+	background-color: var(--color-primary-brown-dark);
+	border-radius: var(--border-radius-small);
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
+}
+
+.strength-log-info-content {
+	height: 100%;
+	display: block grid;
+	grid-template-columns: auto;
+	gap: 20px;
+	background-color: var(--color-bg-panel);
+	border: 2px solid var(--color-primary-brown-light);
+}
+
+.strength-log-box {
+	display: block grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas:
+		"header"
+		"content"
+		"footer";
+	gap: 10px;
+	padding-inline: 10px;
+	padding-block: 10px;
+}
+
+.strength-log-title {
+	font-size: 1.25rem;
+	font-weight: var(--font-weight-x-bold);
+	text-align: center;
+	grid-area: header;
+	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+
+	@media (width < 768px) {
+		font-size: 1.125rem;
+	}
+}
+
+.strength-log-list-content {
+	display: block grid;
+	grid-area: content;
+}
+
+.strength-log-list-box {
+	width: 100%;
+	background-color: var(--color-primary-dark-gray);
+	border: 2px solid var(--color-primary-white);
+	border-radius: var(--border-radius-small);
+	padding-block-start: 10px;
+	overflow-y: scroll;
+}
+
+.strength-log-list {
+	width: 100%;
+	max-height: 208px;
+	display: block grid;
+	justify-content: center;
+	gap: 10px;
+	padding-inline: 10px;
+}
+
+.strength-log-item {
+	color: var(--color-primary-white);
+
+	&:last-child {
+		padding-block-end: 10px;
+	}
+}
+
+.strength-log-loading-text {
+	font-size: 0.875rem;
+	font-weight: var(--font-weight-normal);
+	display: block grid;
+	place-items: center;
+	padding-block-start: 15px;
+}
+
+.strength-log-link-box {
+	display: block grid;
+	place-items: center;
+	grid-area: footer;
+}
+
+.loading-indicator {
+	font-size: 1.125rem;
+
+	@media (width < 768px) {
+		font-size: 1rem;
+	}
+
+	@media (width < 640px) {
+		font-size: 0.875rem;
+	}
+}
+
+/* Skeleton固有スタイル */
 .skeleton-link {
 	font-size: 0.875rem;
 	font-weight: var(--font-weight-bold);
@@ -6,7 +107,6 @@
 	text-shadow: 1px 1px 0px var(--color-primary-black);
 }
 
-/* 実際のコンテンツと同じ高さを確保 */
 .skeleton-list {
 	min-height: 208px;
 	display: grid;
