@@ -45,3 +45,26 @@ export async function revalidateZennArticlesCache(username: string): Promise<voi
 		throw error;
 	}
 }
+
+/**
+ * Zenn連携後のキャッシュを一括無効化するServer Action
+ *
+ * Zenn連携完了後に呼び出し、ユーザー情報・Zenn記事・ダッシュボードの
+ * キャッシュを全て無効化する。
+ *
+ * @param clerkId - Clerk認証のユーザーID
+ * @param zennUsername - 連携したZennユーザー名
+ */
+export async function revalidateAfterZennConnection(
+	clerkId: string,
+	zennUsername: string
+): Promise<void> {
+	try {
+		revalidateTag(CacheTags.user(clerkId), "max");
+		revalidateTag(CacheTags.zennArticles(zennUsername), "max");
+		revalidateTag(CacheTags.dashboard(clerkId), "max");
+	} catch (error) {
+		console.error("Failed to revalidate cache after Zenn connection:", error);
+		throw error;
+	}
+}

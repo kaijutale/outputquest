@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useHero } from "@/contexts/HeroContext";
+import { revalidateAfterZennConnection } from "@/features/user/_actions/revalidate";
 import { UserInfo } from "../types";
 import { cleanUsername, isValidZennUsernameFormat } from "../utils";
 import { SUSPICIOUS_FIXED_COUNT } from "../constants";
@@ -128,6 +129,15 @@ export const useZennConnection = ({
 				} catch (_syncError) {
 					const successMessage = `Zennのアカウント連携が完了しました。記事データは後ほど同期されます。`;
 					showSuccessMessage(successMessage);
+				}
+
+				// Server Componentのキャッシュを無効化
+				if (user?.id) {
+					try {
+						await revalidateAfterZennConnection(user.id, username);
+					} catch (cacheError) {
+						console.error("キャッシュ無効化エラー:", cacheError);
+					}
 				}
 
 				// HeroContextのデータを更新
