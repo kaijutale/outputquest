@@ -5,6 +5,8 @@ import Link from "next/link";
 import styles from "./PostCard.module.css";
 import { PlatformType } from "@/features/posts/types";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { formatDateShort } from "@/utils/formatDate";
+import { PLATFORM_INFO, CATEGORY_DISPLAY } from "@/consts/zenn";
 
 type PostCardProps = {
 	title: string;
@@ -12,29 +14,6 @@ type PostCardProps = {
 	category?: string;
 	publishedAt?: string;
 	platformType?: PlatformType;
-};
-
-const PLATFORM_INFO: Record<PlatformType, { name: string; favicon: string }> = {
-	zenn: {
-		name: "Zenn",
-		favicon: "https://zenn.dev/images/logo-transparent.png",
-	},
-} as Record<PlatformType, { name: string; favicon: string }>;
-
-// 日付をフォーマットする関数
-const formatDate = (dateString: string): string => {
-	const date = new Date(dateString);
-	return date.toLocaleDateString("ja-JP", {
-		year: "numeric",
-		month: "numeric",
-		day: "numeric",
-	});
-};
-
-// カテゴリー表示用のマッピング
-const CATEGORY_DISPLAY = {
-	tech: "TECH",
-	idea: "IDEA",
 };
 
 const PostCard = ({ title, url, category, publishedAt, platformType }: PostCardProps) => {
@@ -76,7 +55,7 @@ const PostCard = ({ title, url, category, publishedAt, platformType }: PostCardP
 					{/* 投稿日表示 */}
 					{publishedAt && (
 						<div className={`${styles["post-card__date-box"]}`}>
-							<span className={`${styles["post-card__date"]}`}>{formatDate(publishedAt)}</span>
+							<span className={`${styles["post-card__date"]}`}>{formatDateShort(publishedAt)}</span>
 						</div>
 					)}
 				</div>

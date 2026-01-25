@@ -5,20 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { PostData } from "@/features/posts/types";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
-
-// カテゴリー表示用のマッピング
-const CATEGORY_DISPLAY = {
-	tech: "TECH",
-	idea: "IDEA",
-};
-
-// プラットフォーム情報
-const PLATFORM_INFO = {
-	zenn: {
-		name: "Zenn",
-		favicon: "https://zenn.dev/images/logo-transparent.png",
-	},
-};
+import { formatDateShort } from "@/utils/formatDate";
+import { PLATFORM_INFO, CATEGORY_DISPLAY } from "@/consts/zenn";
 
 type DashboardActivityContentProps = {
 	articles: PostData[];
@@ -30,24 +18,6 @@ const DashboardActivityContent = ({ articles }: DashboardActivityContentProps) =
 		volume: 0.5,
 		delay: 190,
 	});
-
-	// 日付を表示用にフォーマットする
-	const formatDate = (date: string | Date | undefined): string => {
-		if (!date) return "";
-		if (typeof date === "string") {
-			const dateObj = new Date(date);
-			return dateObj.toLocaleDateString("ja-JP", {
-				year: "numeric",
-				month: "numeric",
-				day: "numeric",
-			});
-		}
-		return date.toLocaleDateString("ja-JP", {
-			year: "numeric",
-			month: "numeric",
-			day: "numeric",
-		});
-	};
 
 	return (
 		<section className={`${styles["recent-activity-section"]}`}>
@@ -91,7 +61,7 @@ const DashboardActivityContent = ({ articles }: DashboardActivityContentProps) =
 
 										<div className={`${styles["recent-activity-item-date-container"]}`}>
 											<span className={`${styles["recent-activity-item-date"]}`}>
-												{formatDate(article.publishedAt || article.date)}
+												{formatDateShort(article.publishedAt || article.date)}
 											</span>
 										</div>
 									</div>
