@@ -1,5 +1,4 @@
-import styles from "./StrengthLogInfoSkeleton.module.css"
-import skeletonStyles from "./StrengthLogInfoSkeleton.module.css";
+import styles from "./StrengthLogInfoSkeleton.module.css";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 
 /**
@@ -13,7 +12,7 @@ const StrengthLogInfoSkeleton = () => {
 					<h2 className={styles["strength-log-title"]}>冒険ログ</h2>
 					<div className={styles["strength-log-list-content"]}>
 						<div className={styles["strength-log-list-box"]}>
-							<ul className={`${styles["strength-log-list"]} ${skeletonStyles["skeleton-list"]}`}>
+							<ul className={`${styles["strength-log-list"]} ${styles["skeleton-list"]}`}>
 								<li className={styles["strength-log-item"]}>
 									<div className={styles["strength-log-loading-text"]}>
 										<LoadingIndicator text="読み込み中" className={styles["loading-indicator"]} />
@@ -23,7 +22,7 @@ const StrengthLogInfoSkeleton = () => {
 						</div>
 					</div>
 					<div className={styles["strength-log-link-box"]}>
-						<span className={skeletonStyles["skeleton-link"]}>過去のログを全て確認する</span>
+						<span className={styles["skeleton-link"]}>過去のログを全て確認する</span>
 					</div>
 				</div>
 			</div>
