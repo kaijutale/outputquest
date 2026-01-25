@@ -1,5 +1,7 @@
 import { useState, useOptimistic, startTransition } from "react";
+import { useUser } from "@clerk/nextjs";
 import { useHero } from "@/contexts/HeroContext";
+import { revalidateAfterZennConnection } from "@/features/user/_actions/revalidate";
 
 import { UserInfo } from "../types";
 import { cleanUsername, isValidZennUsernameFormat } from "../utils";
@@ -25,6 +27,7 @@ export const useZennSync = ({
 	setZennUsername,
 	setError,
 }: UseZennSyncProps) => {
+	const { user } = useUser();
 	const { refetchHeroData } = useHero();
 
 	const [loading, setLoading] = useState(false);
@@ -153,6 +156,9 @@ export const useZennSync = ({
 	};
 
 	const handleReleaseConnection = async () => {
+		// 連携解除前のzennUsernameを保存（キャッシュ無効化に使用）
+		const oldZennUsername = userInfo?.zennUsername;
+
 		try {
 			const data = await updateUserProfileApi(
 				"",
@@ -169,6 +175,15 @@ export const useZennSync = ({
 					level: 1, // 連携解除時にlevelもリセット
 				});
 				setZennUsername("");
+
+				// Server Componentのキャッシュを無効化
+				if (user?.id && oldZennUsername) {
+					try {
+						await revalidateAfterZennConnection(user.id, oldZennUsername);
+					} catch (cacheError) {
+						console.error("キャッシュ無効化エラー:", cacheError);
+					}
+				}
 
 				// HeroContextのキャッシュをクリアして最新データを取得
 				try {
