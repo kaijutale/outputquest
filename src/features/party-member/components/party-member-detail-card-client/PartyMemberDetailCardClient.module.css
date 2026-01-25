@@ -10,6 +10,15 @@
 	}
 }
 
+.party-member-card-wrapper {
+	display: block grid;
+	place-items: center;
+
+	& > * {
+		grid-area: 1 / 1;
+	}
+}
+
 .party-member-card {
 	width: 360px;
 	height: auto;
@@ -74,10 +83,6 @@
 	@media (width < 768px) {
 		height: 150px;
 	}
-}
-
-.party-member-unknown-image {
-	width: 60px;
 }
 
 .party-member-image {
@@ -322,16 +327,6 @@
 	background-color: var(--color-primary-brown);
 	border: 1px solid var(--color-primary-brown-light);
 	padding: 4px 10px;
-}
-
-/* カードとスケルトンを重ねるラッパー */
-.party-member-card-wrapper {
-	display: block grid;
-	place-items: center;
-
-	& > * {
-		grid-area: 1 / 1;
-	}
 }
 
 /* Skeletonオーバーレイ */

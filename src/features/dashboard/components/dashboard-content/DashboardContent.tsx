@@ -15,14 +15,6 @@ import DashboardActivitySkeleton from "../dashboard-activity-skeleton/DashboardA
 import DashboardLatestPartyMemberSkeleton from "../dashboard-latest-party-member-skeleton/DashboardLatestPartyMemberSkeleton";
 import DashboardLatestItemSkeleton from "../dashboard-latest-item-skeleton/DashboardLatestItemSkeleton";
 
-/**
- * DashboardContent (Server Component)
- *
- * Granular Suspense Pattern:
- * 各セクションを独立したSuspense境界で囲み、
- * 個別にデータフェッチとローディング状態を管理する。
- * これにより、ユーザーは準備ができた部分から順次コンテンツを見ることができる。
- */
 const DashboardContent = () => {
 	return (
 		<div className={styles["dashboard-content-container"]}>

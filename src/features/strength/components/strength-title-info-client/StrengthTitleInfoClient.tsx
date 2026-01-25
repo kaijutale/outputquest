@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./StrengthTitleInfo.module.css";
+import styles from "./StrengthTitleInfoClient.module.css";
 import Link from "next/link";
 import { titleNameData } from "@/shared/data/titleNameDate";
 import { useRouter } from "next/navigation";

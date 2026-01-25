@@ -30,19 +30,12 @@
 	}
 }
 
-/* ローディングとエラー表示用のスタイル */
-.loading-text,
 .error-text {
-	color: var(--color-primary-white);
-	text-align: center;
 	padding: 20px;
 	font-size: 1rem;
-}
-
-.error-text {
 	display: block grid;
 	place-items: center;
-	color: var(--color-error, #ff4444);
+	color: var(--color-error);
 	background-color: var(--color-primary-dark-gray);
 	border: 2px solid var(--color-primary-white);
 	border-radius: var(--border-radius-small);

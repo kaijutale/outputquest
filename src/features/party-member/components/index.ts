@@ -1,5 +1,3 @@
-// Server Components (PartyMemberDetailCard) は barrel export できない
-// 直接 import する必要がある: import PartyMemberDetailCard from "./party-member-detail-card/PartyMemberDetailCard"
 import PartyMemberDetailCardClient from "./party-member-detail-card-client/PartyMemberDetailCardClient";
 import PartyMemberDetailContent from "./party-member-detail-content/PartyMemberDetailContent";
 import PartyMemberDetailSkeleton from "./party-member-detail-skeleton/PartyMemberDetailSkeleton";

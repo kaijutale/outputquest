@@ -1,10 +1,10 @@
-import { AboutSectionTitle } from "..";
 import styles from "./AboutIntroductionSection.module.css";
+import * as About from "@/features/about/components";
 
 export default function AboutIntroductionSection() {
 	return (
 		<section className={`${styles["about-section"]}`}>
-			<AboutSectionTitle title="はじめに" />
+			<About.AboutSectionTitle title="はじめに" />
 
 			<div>
 				<p className={styles["about-section-message"]}>

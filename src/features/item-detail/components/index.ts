@@ -1,5 +1,3 @@
-// Server Components (ItemDetailCard) は barrel export できない
-// 直接 import する必要がある: import ItemDetailCard from "./item-detail-card/ItemDetailCard"
 import ItemDetailCardClient from "./item-detail-card-client/ItemDetailCardClient";
 import ItemDetailContent from "./item-detail-content/ItemDetailContent";
 import ItemDetailFooter from "./item-detail-footer/ItemDetailFooter";

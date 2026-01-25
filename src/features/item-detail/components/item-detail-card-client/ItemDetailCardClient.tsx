@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from "../item-detail-content/ItemDetailContent.module.css";
-import ItemDetailSkeleton from "../item-detail-skeleton/ItemDetailSkeleton";
+import styles from "./ItemDetailCardClient.module.css";
+import * as ItemDetail from "@/features/item-detail/components";
 
 interface ItemDetailCardClientProps {
 	itemId: number;
@@ -123,7 +123,7 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 						showSkeleton ? styles["skeleton-overlay-visible"] : styles["skeleton-overlay-hidden"]
 					}`}
 				>
-					<ItemDetailSkeleton />
+					<ItemDetail.ItemDetailSkeleton />
 				</div>
 			</div>
 		</div>

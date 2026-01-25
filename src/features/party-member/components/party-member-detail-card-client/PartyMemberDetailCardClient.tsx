@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from "../party-member-detail-content/PartyMemberDetailContent.module.css";
-import PartyMemberDetailSkeleton from "../party-member-detail-skeleton/PartyMemberDetailSkeleton";
+import styles from "./PartyMemberDetailCardClient.module.css";
+import * as PartyMember from "@/features/party-member/components";
 
 interface PartyMemberDetailCardClientProps {
 	partyId: number;
@@ -123,7 +123,7 @@ const PartyMemberDetailCardClient: React.FC<PartyMemberDetailCardClientProps> = 
 						showSkeleton ? styles["skeleton-overlay-visible"] : styles["skeleton-overlay-hidden"]
 					}`}
 				>
-					<PartyMemberDetailSkeleton />
+					<PartyMember.PartyMemberDetailSkeleton />
 				</div>
 			</div>
 		</div>

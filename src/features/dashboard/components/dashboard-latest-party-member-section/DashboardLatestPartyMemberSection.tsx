@@ -8,7 +8,7 @@ import {
 import { getDashboardHeroData } from "@/features/dashboard/_lib/fetcher";
 import { getUser } from "@/features/user/_lib/fetcher";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
-import { DashboardLatestPartyMemberCard } from "./DashboardLatestPartyMemberCard";
+import * as Dashboard from "@/features/dashboard/components";
 
 const DashboardLatestPartyMemberSection = async () => {
 	// Request Memoizationにより、他コンポーネントと同じフェッチを共有
@@ -58,7 +58,7 @@ const DashboardLatestPartyMemberSection = async () => {
 						</p>
 					</div>
 				) : (
-					<DashboardLatestPartyMemberCard
+					<Dashboard.DashboardLatestPartyMemberCard
 						memberId={memberId}
 						memberName={memberName}
 						memberDescription={memberDescription}

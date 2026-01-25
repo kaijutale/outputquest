@@ -1,1 +1,0 @@
-export { ClerkProviderWrapper } from "./ClerkProviderWrapper";

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
-import styles from "./DashboardLatestPartyMemberSection.module.css";
+import styles from "./DashboardLatestPartyMemberCard.module.css";
 import { customMemberImages } from "@/features/party/data/partyMemberData";
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 	memberDescription: string;
 };
 
-export const DashboardLatestPartyMemberCard = ({
+const DashboardLatestPartyMemberCard = ({
 	memberId,
 	memberName,
 	memberDescription,
@@ -68,3 +68,5 @@ export const DashboardLatestPartyMemberCard = ({
 		</div>
 	);
 };
+
+export default DashboardLatestPartyMemberCard;

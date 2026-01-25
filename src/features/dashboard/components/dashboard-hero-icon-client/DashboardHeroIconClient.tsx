@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from "../dashboard-hero-section/DashboardHeroSection.module.css";
+import styles from "./DashboardHeroIconClient.module.css";
 
-interface HeroIconClientProps {
+interface DashboardHeroIconClientProps {
 	heroName: string;
 }
 
-const HeroIconClient: React.FC<HeroIconClientProps> = ({ heroName }) => {
+const DashboardHeroIconClient: React.FC<DashboardHeroIconClientProps> = ({ heroName }) => {
 	const [showSkeleton, setShowSkeleton] = useState(true);
 	const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -26,7 +26,7 @@ const HeroIconClient: React.FC<HeroIconClientProps> = ({ heroName }) => {
 	}, [imageLoaded]);
 
 	return (
-		<div className={styles["hero-info-icon-box"]}>
+		<div className={styles["dashboard-hero-icon-box"]}>
 			<Image
 				src="/images/hero/hero_plate.png"
 				alt={heroName}
@@ -34,11 +34,11 @@ const HeroIconClient: React.FC<HeroIconClientProps> = ({ heroName }) => {
 				height={1000}
 				priority={true}
 				onLoad={() => setImageLoaded(true)}
-				className={styles["hero-info-icon-image"]}
+				className={styles["dashboard-hero-icon-image"]}
 			/>
-			{showSkeleton && <div className={styles["hero-icon-skeleton"]} />}
+			{showSkeleton && <div className={styles["dashboard-hero-icon-skeleton"]} />}
 		</div>
 	);
 };
 
-export default HeroIconClient;
+export default DashboardHeroIconClient;

@@ -1,7 +1,7 @@
 import { getZennArticles } from "@/features/zenn/_lib/fetcher";
 import { getUser } from "@/features/user/_lib/fetcher";
 import { getAdventureLogs, syncAdventureLogs } from "@/features/logs/services/logService";
-import LogsList from "./LogsList";
+import * as Logs from "@/features/logs/components";
 
 /**
  * LogsListWrapper (Server Component)
@@ -20,7 +20,7 @@ const LogsListWrapper = async () => {
 
 	// 未ログインまたはZenn未連携の場合は空のログを表示
 	if (!user?.zennUsername) {
-		return <LogsList logs={[]} />;
+		return <Logs.LogsList logs={[]} />;
 	}
 
 	// Zenn記事を取得してログを同期
@@ -30,7 +30,7 @@ const LogsListWrapper = async () => {
 	// 同期後のログを取得して表示
 	const logs = await getAdventureLogs(user.clerkId);
 
-	return <LogsList logs={logs} />;
+	return <Logs.LogsList logs={logs} />;
 };
 
 export default LogsListWrapper;

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import styles from "./PartyMemberDetailContent.module.css";
-import * as PartyMemberDetail from "@/features/party-member/components";
+import * as PartyMember from "@/features/party-member/components";
 import {
 	heroLevelAndMemberRelation,
 	isAcquiredByHeroLevel,
@@ -175,7 +175,7 @@ const PartyMemberDetailContent: React.FC<PartyMemberDetailContentProps> = ({ par
 						isLoading ? styles["skeleton-overlay-visible"] : styles["skeleton-overlay-hidden"]
 					}`}
 				>
-					<PartyMemberDetail.PartyMemberDetailSkeleton />
+					<PartyMember.PartyMemberDetailSkeleton />
 				</div>
 			</div>
 		</div>
