@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
-import { UserInfo } from "../types";
-import { fetchUserInfo } from "../api";
+import { UserInfo } from "@/features/connection/types";
+import { fetchUserInfo } from "@/features/connection/api";
 
 interface UseUserInfoProps {
 	wasLoggedOut: boolean;

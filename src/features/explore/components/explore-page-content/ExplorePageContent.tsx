@@ -1,5 +1,5 @@
 import { getUser } from "@/features/user/_lib/fetcher";
-import ExplorePageClient from "../explore-page-client/ExplorePageClient";
+import ExplorePageClient from "@/features/explore/components/explore-page-client/ExplorePageClient";
 
 // Server Componentでユーザー情報を取得するラッパー
 const ExplorePageContent = async () => {

@@ -4,8 +4,8 @@ import "client-only";
 
 import { useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
-import { UserInfo } from "../types";
-import { SESSION_ID_KEY, LOGOUT_FLAG_KEY } from "../constants";
+import { UserInfo } from "@/features/connection/types";
+import { SESSION_ID_KEY, LOGOUT_FLAG_KEY } from "@/features/connection/constants";
 
 interface UseSignOutHandlerProps {
 	userInfo: UserInfo | null;

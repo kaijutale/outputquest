@@ -3,14 +3,14 @@ import { useUser } from "@clerk/nextjs";
 import { useHero } from "@/contexts/HeroContext";
 import { revalidateAfterZennConnection } from "@/features/user/_actions/revalidate";
 
-import { UserInfo } from "../types";
-import { cleanUsername, isValidZennUsernameFormat } from "../utils";
-import { SUSPICIOUS_FIXED_COUNT } from "../constants";
+import { UserInfo } from "@/features/connection/types";
+import { cleanUsername, isValidZennUsernameFormat } from "@/features/connection/utils";
+import { SUSPICIOUS_FIXED_COUNT } from "@/features/connection/constants";
 import {
 	syncZennArticles as syncZennArticlesApi,
 	updateUserProfile as updateUserProfileApi,
 	updateArticleCount,
-} from "../api";
+} from "@/features/connection/api";
 
 interface UseZennSyncProps {
 	userInfo: UserInfo | null;

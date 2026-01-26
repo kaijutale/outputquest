@@ -1,4 +1,4 @@
-import { PartyMember, PartyData } from "../types/party.types";
+import { PartyMember, PartyData } from "@/features/party/types/party.types";
 
 // メンバーIDと必要な勇者レベルの関係
 // キー: メンバーID, 値: そのメンバーを獲得するために必要な勇者レベル
