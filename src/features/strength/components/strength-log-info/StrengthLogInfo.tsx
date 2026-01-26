@@ -27,7 +27,7 @@ const StrengthLogInfo = ({ logs }: StrengthLogInfoProps) => {
 	const displayLogs =
 		logs.length > 0
 			? logs.slice(0, 15).map((log) => `${log.formattedDate} ${log.content}`)
-			: ["表示できる冒険ログはまだありません"];
+			: ["ゲストユーザーのため冒険ログはありません"];
 
 	return (
 		<div className={styles["strength-log-info"]}>

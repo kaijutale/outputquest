@@ -40,7 +40,7 @@ const TitlePageClient = ({ initialZennUsername }: Props) => {
 				// ゲストユーザー用のUI
 				<div className={`${styles["title-page-guest-container"]}`}>
 					<p className="text-sm sm:text-base grid place-items-center h-full bg-[#1a1a1a] px-[10px] py-[40px]">
-						ログインすると利用できる機能です
+						ゲストユーザーのため獲得した称号はありません
 					</p>
 					<Title.TitlePageFooter />
 				</div>
