@@ -264,17 +264,6 @@
 		--chart-4: 280 65% 60%;
 		--chart-5: 340 75% 55%;
 	}
-}
-
-@layer base {
-	* {
-	}
-	body {
-		@apply bg-background text-foreground;
-	}
-}
-
-@layer base {
 	* {
 		@apply border-border outline-ring/50;
 	}
