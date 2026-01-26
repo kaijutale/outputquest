@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import { PartyMember } from "@/features/party/types/party.types";
 import { customMemberSilhouetteImages } from "@/features/party/data/partyMemberData";
-import PartyListSkeleton from "../party-list-skeleton/PartyListSkeleton";
+import PartyListSkeleton from "@/features/party/components/party-list-skeleton/PartyListSkeleton";
 
 interface PartyMemberCardListClientProps {
 	members: PartyMember[];

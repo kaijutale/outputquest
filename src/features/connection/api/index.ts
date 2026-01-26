@@ -1,4 +1,4 @@
-import { UserInfo, ZennArticle } from "../types";
+import { UserInfo, ZennArticle } from "@/features/connection/types";
 
 // ユーザー情報を取得するAPI
 export const fetchUserInfo = async (): Promise<{

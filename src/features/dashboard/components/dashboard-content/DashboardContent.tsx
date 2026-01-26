@@ -2,18 +2,18 @@ import { Suspense } from "react";
 import styles from "./DashboardContent.module.css";
 
 // Components
-import DashboardHeroSection from "../dashboard-hero-section/DashboardHeroSection";
-import DashboardPlatformStatsSection from "../dashboard-platform-stats-section/DashboardPlatformStatsSection";
-import DashboardActivitySection from "../dashboard-activity-section/DashboardActivitySection";
-import DashboardLatestPartyMemberSection from "../dashboard-latest-party-member-section/DashboardLatestPartyMemberSection";
-import DashboardLatestItemSection from "../dashboard-latest-item-section/DashboardLatestItemSection";
+import DashboardHeroSection from "@/features/dashboard/components/dashboard-hero-section/DashboardHeroSection";
+import DashboardPlatformStatsSection from "@/features/dashboard/components/dashboard-platform-stats-section/DashboardPlatformStatsSection";
+import DashboardActivitySection from "@/features/dashboard/components/dashboard-activity-section/DashboardActivitySection";
+import DashboardLatestPartyMemberSection from "@/features/dashboard/components/dashboard-latest-party-member-section/DashboardLatestPartyMemberSection";
+import DashboardLatestItemSection from "@/features/dashboard/components/dashboard-latest-item-section/DashboardLatestItemSection";
 
 // Skeletons
-import DashboardHeroSkeleton from "../dashboard-hero-skeleton/DashboardHeroSkeleton";
-import DashboardPlatformStatsSkeleton from "../dashboard-platform-stats-skeleton/DashboardPlatformStatsSkeleton";
-import DashboardActivitySkeleton from "../dashboard-activity-skeleton/DashboardActivitySkeleton";
-import DashboardLatestPartyMemberSkeleton from "../dashboard-latest-party-member-skeleton/DashboardLatestPartyMemberSkeleton";
-import DashboardLatestItemSkeleton from "../dashboard-latest-item-skeleton/DashboardLatestItemSkeleton";
+import DashboardHeroSkeleton from "@/features/dashboard/components/dashboard-hero-skeleton/DashboardHeroSkeleton";
+import DashboardPlatformStatsSkeleton from "@/features/dashboard/components/dashboard-platform-stats-skeleton/DashboardPlatformStatsSkeleton";
+import DashboardActivitySkeleton from "@/features/dashboard/components/dashboard-activity-skeleton/DashboardActivitySkeleton";
+import DashboardLatestPartyMemberSkeleton from "@/features/dashboard/components/dashboard-latest-party-member-skeleton/DashboardLatestPartyMemberSkeleton";
+import DashboardLatestItemSkeleton from "@/features/dashboard/components/dashboard-latest-item-skeleton/DashboardLatestItemSkeleton";
 
 const DashboardContent = () => {
 	return (

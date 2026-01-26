@@ -1,5 +1,5 @@
 import { getUser } from "@/features/user/_lib/fetcher";
-import ConnectionPageClient from "../connection-page-client/ConnectionPageClient";
+import ConnectionPageClient from "@/features/connection/components/connection-page-client/ConnectionPageClient";
 
 // Server Componentでユーザー情報を取得するラッパー
 const ConnectionPageContent = async () => {

@@ -1,4 +1,4 @@
-import { Item, ItemsData } from "../types/items.types";
+import { Item, ItemsData } from "@/features/items/types/items.types";
 
 // キー（アイテムID）と値（勇者のレベル）の関係
 export const heroLevelAndItemRelation: { [key: number]: number } = {

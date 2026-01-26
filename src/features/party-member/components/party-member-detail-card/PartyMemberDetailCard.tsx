@@ -7,7 +7,7 @@ import {
 	customMemberImages,
 	customMemberSilhouetteImages,
 } from "@/features/party/data/partyMemberData";
-import PartyMemberDetailCardClient from "../party-member-detail-card-client/PartyMemberDetailCardClient";
+import PartyMemberDetailCardClient from "@/features/party-member/components/party-member-detail-card-client/PartyMemberDetailCardClient";
 import styles from "./PartyMemberDetailCard.module.css";
 
 interface PartyMemberDetailCardProps {

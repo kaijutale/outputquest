@@ -1,4 +1,4 @@
-import { PostData } from "../types";
+import { PostData } from "@/features/posts/types";
 
 // APIから記事データを取得する関数
 export const fetchZennArticles = async (

@@ -1,4 +1,4 @@
-import { CharacterImage } from "../types/homeCharacter.types";
+import { CharacterImage } from "@/features/home/types/homeCharacter.types";
 
 export const homeCharacterImages: CharacterImage[] = [
 	{
