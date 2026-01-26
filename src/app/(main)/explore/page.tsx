@@ -2,19 +2,10 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./ExplorePage.module.css";
-import * as Explore from "@/features/explore/components";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
-import { getUser } from "@/features/user/_lib/fetcher";
+import ExplorePageContent from "@/features/explore/components/explore-page-content/ExplorePageContent";
 
 export const metadata: Metadata = getPageMetadata("explore");
-
-// Server Componentでユーザー情報を取得するラッパー
-const ExplorePageContent = async () => {
-	const user = await getUser();
-	const initialZennUsername = user?.zennUsername ?? null;
-
-	return <Explore.ExplorePageClient initialZennUsername={initialZennUsername} />;
-};
 
 const ExplorePage = () => {
 	return (
