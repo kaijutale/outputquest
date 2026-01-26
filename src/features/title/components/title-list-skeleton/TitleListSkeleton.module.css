@@ -2,7 +2,7 @@
 .skeleton-list {
 	grid-area: list;
 	display: block grid;
-	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	height: 100%;
 	gap: 30px;
 	overflow-y: scroll;
@@ -21,9 +21,8 @@
 	grid-row: span 1;
 	background-color: var(--color-primary-brown-dark);
 	border: 3mm ridge var(--color-border-primary);
-	padding-inline: 5px;
-	padding-block: 5px;
-	border-radius: var(--border-radius-small);
+	padding-inline: 2.5px;
+	padding-block: 2.5px;
 }
 
 /* Item Box - matches title-page-list-item-box */
@@ -34,7 +33,7 @@
 	grid-row: span 1;
 	gap: 15px;
 	background-color: var(--color-primary-brown);
-	border: 1.5px solid var(--color-primary-brown-light);
+	border: 2px solid var(--color-primary-brown-light);
 	padding-inline: 15px;
 	padding-block: 25px;
 	min-height: 80px; /* CLS prevention */
@@ -44,7 +43,12 @@
 .skeleton-title {
 	width: 70%;
 	height: 22.5px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;

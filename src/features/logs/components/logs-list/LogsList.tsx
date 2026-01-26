@@ -14,7 +14,9 @@ const LogsList = ({ logs }: LogsListProps) => {
 		<ul className={styles["logs-page-list"]}>
 			{displayLogs.length === 0 ? (
 				<li className={styles["logs-page-list-item"]}>
-					<p className={styles["logs-page-list-item-text"]}>表示できる冒険ログはまだありません</p>
+					<p className={styles["logs-page-list-item-text"]}>
+						ゲストユーザーのため冒険ログはありません
+					</p>
 				</li>
 			) : (
 				displayLogs.map((log, index) => (
