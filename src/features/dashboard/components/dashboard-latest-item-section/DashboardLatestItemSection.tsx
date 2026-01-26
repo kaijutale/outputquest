@@ -66,7 +66,7 @@ const DashboardLatestItemSection = async () => {
 			<XShareButton
 				level={heroData.level}
 				username=""
-				customText="最近入手したアイテムをXでシェアする"
+				customText="アイテムをXでシェアする"
 				customShareText={`【アイテムを入手した！】\n\n⭐️ 勇者は「${itemName}」を手に入れた！\n\n`}
 				className={`${styles["latest-item-share-link"]}`}
 				iconWrapClassName={`${styles["latest-item-share-icon-wrap"]}`}

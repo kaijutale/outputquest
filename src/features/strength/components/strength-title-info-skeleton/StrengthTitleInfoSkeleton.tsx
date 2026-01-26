@@ -14,7 +14,7 @@ const StrengthTitleInfoSkeleton = () => {
 						</div>
 					</div>
 					<div className={styles["skeleton-link-box"]}>
-						<div className={styles["skeleton-link"]} />
+						<span className={styles["skeleton-link"]}>称号リストを確認する</span>
 					</div>
 				</div>
 			</div>

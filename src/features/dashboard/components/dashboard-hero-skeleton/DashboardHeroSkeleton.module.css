@@ -66,6 +66,7 @@
 	height: 170px;
 	display: grid;
 	place-items: center;
+	border: 3mm ridge var(--color-border-primary);
 
 	@media (max-width: 767px) {
 		width: 130px;
@@ -77,11 +78,15 @@
 .skeleton-hero-icon {
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	background-color: var(--color-primary-brown);
-	/* border-radius: var(--border-rounded); UI has no border radius on image usually, but keep if needed */
 }
 
 /* matches hero-info-name-box */
@@ -97,12 +102,16 @@
 .skeleton-hero-name {
 	width: 140px;
 	height: 28px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border: 1px solid var(--color-primary-brown-light);
 	background-color: var(--color-primary-brown);
-	/* border-radius: var(--border-radius-small); */
 }
 
 /* matches hero-info-level */
@@ -132,7 +141,12 @@
 	height: 105px;
 	display: grid;
 	place-self: end;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	background-color: var(--color-primary-brown-dark);
@@ -145,9 +159,14 @@
 
 /* matches hero-info-share-link */
 .skeleton-hero-share {
-	width: 80px;
+	width: 150px;
 	height: 20px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -163,7 +182,12 @@
 .skeleton-hero-progress-text {
 	height: 24px;
 	width: 200px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -179,8 +203,13 @@
 /* matches hero-info-level-progress-exp-icon */
 .skeleton-hero-exp-icon {
 	width: 35px;
-	height: 16.33px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	height: 20px;
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -190,7 +219,12 @@
 .skeleton-hero-progress-gauge {
 	width: 100%;
 	height: 20px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border: 2px solid var(--color-primary-white);
