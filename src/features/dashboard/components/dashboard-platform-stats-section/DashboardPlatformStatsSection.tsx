@@ -46,7 +46,7 @@ const DashboardPlatformStatsSection = async () => {
 				<XShareButton
 					level={zennStat.count}
 					username=""
-					customText="Zennの投稿数をXでシェアする"
+					customText="投稿数をXでシェアする"
 					customShareText={`【新たな記録！】\n\n⭐️ 勇者は Zennの投稿数が「${zennStat.count}本」になった！\n\n`}
 					className={`${styles["platform-stat-share-link"]}`}
 					iconWrapClassName={`${styles["platform-stat-share-icon-wrap"]}`}

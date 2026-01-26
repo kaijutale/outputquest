@@ -3,22 +3,29 @@
 	width: 100%;
 	display: grid;
 	grid-template-rows: auto 1fr;
-	gap: 15px;
+	gap: 35px;
+	padding-block: 20px;
+	padding-inline: 20px;
 }
 
 /* matches latest-party-member-title */
 .skeleton-section-title {
-	width: 200px;
-	height: 28px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
-	background-size: 200% 100%;
-	animation: shimmer 1.5s infinite;
-	border-radius: 4px;
-	margin-block-end: 15px;
+	display: block flex;
+	align-items: center;
+	gap: 7px;
+	font-size: 1.25rem;
+	font-weight: var(--font-weight-x-bold);
+	line-height: var(--leading-x-tight);
 
-	@media (max-width: 1023px) {
+	@media (width < 1024px) {
 		place-self: center;
+		font-size: 1.125rem;
 	}
+}
+
+.skeleton-section-title-icon{
+	width: 20px;
+	height: auto;
 }
 
 /* matches latest-party-member-container */
@@ -27,7 +34,6 @@
 	display: grid;
 	place-self: start;
 	gap: 10px;
-	margin-block-start: 20px;
 	padding-inline: 25px;
 
 	@media (max-width: 767px) {
@@ -41,10 +47,15 @@
 .skeleton-party-member-guest {
 	min-width: 300px;
 	height: 140px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
-	border: 2.7mm ridge var(--color-border-primary);
+	border: 3mm ridge var(--color-border-primary);
 	background-color: var(--color-primary-brown-dark);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
@@ -53,12 +64,16 @@
 /* matches latest-party-member-share-link-text */
 .skeleton-party-share {
 	width: 200px;
-	height: 20px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	height: 22px;
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
-	margin-top: 10px;
 	place-self: center;
 }
 

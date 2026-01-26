@@ -69,7 +69,7 @@ const DashboardLatestPartyMemberSection = async () => {
 			<XShareButton
 				level={heroData.level}
 				username=""
-				customText="最近仲間に加わったキャラをXでシェアする"
+				customText="仲間をXでシェアする"
 				customShareText={`【仲間が加わった！】\n\n⭐️ 勇者の仲間に「${memberName}」が加わった！\n\n`}
 				className={`${styles["party-member-share-link"]}`}
 				iconWrapClassName={`${styles["party-member-share-icon-wrap"]}`}

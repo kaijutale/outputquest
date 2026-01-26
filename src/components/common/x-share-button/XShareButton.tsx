@@ -79,7 +79,7 @@ const XShareButton: React.FC<XShareButtonProps> = ({
 		});
 	};
 
-	const displayText = customText || "現在のレベルをXでシェアする";
+	const displayText = customText || "レベルをXでシェアする";
 
 	return (
 		<Link href="#" onClick={handleXShare} className={className}>

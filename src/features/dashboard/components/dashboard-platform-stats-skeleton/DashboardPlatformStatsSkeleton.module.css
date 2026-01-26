@@ -1,16 +1,24 @@
 /* matches platform-stats-title, recent-activity-section-title, etc. */
 .skeleton-section-title {
-	width: 200px;
-	height: 28px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
-	background-size: 200% 100%;
-	animation: shimmer 1.5s infinite;
-	border-radius: 4px;
-	margin-block-end: 15px;
+	position: relative;
+	display: block flex;
+	align-items: center;
+	gap: 7px;
+	font-size: 1.25rem;
+	font-weight: var(--font-weight-x-bold);
+	line-height: var(--leading-x-tight);
+	color: var(--color-primary-white);
+	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
 
 	@media (max-width: 1023px) {
 		place-self: center;
+		font-size: 1.125rem;
 	}
+}
+
+.skeleton-section-title-icon {
+	width: 20px;
+	height: auto;
 }
 
 /* matches platform-stats-section */
@@ -39,7 +47,12 @@
 .skeleton-platform-card {
 	min-width: 200px;
 	height: 135.5px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border: 3mm ridge var(--color-border-primary);
@@ -49,8 +62,13 @@
 /* matches platform-stat-share-link-text */
 .skeleton-platform-share {
 	width: 200px;
-	height: 20px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	height: 22px;
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;

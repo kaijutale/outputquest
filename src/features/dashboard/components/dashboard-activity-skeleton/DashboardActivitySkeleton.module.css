@@ -9,7 +9,9 @@
 /* matches recent-activity-section-title */
 .skeleton-activity-title {
 	position: relative;
-	display: block grid;
+	display: block flex;
+	align-items: center;
+	gap: 7px;
 	font-size: 1.25rem;
 	font-weight: var(--font-weight-x-bold);
 	line-height: var(--leading-x-tight);
@@ -20,6 +22,11 @@
 		place-self: center;
 		font-size: 1.125rem;
 	}
+}
+
+.skeleton-activity-title-icon {
+	width: 20px;
+	height: auto;
 }
 
 /* matches recent-activity-list */
@@ -74,7 +81,12 @@
 .skeleton-activity-item-title {
 	width: 85%;
 	height: 27px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -95,7 +107,12 @@
 .skeleton-category {
 	width: 60px;
 	height: 28px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -105,7 +122,12 @@
 .skeleton-date {
 	width: 100px;
 	height: 28px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -123,7 +145,12 @@
 .skeleton-favicon {
 	width: 14px;
 	height: 14px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 2px;
@@ -133,7 +160,12 @@
 .skeleton-platform {
 	width: 40px;
 	height: 14px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 2px;
@@ -145,7 +177,12 @@
 	height: 24px;
 	display: block grid;
 	place-self: end;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
