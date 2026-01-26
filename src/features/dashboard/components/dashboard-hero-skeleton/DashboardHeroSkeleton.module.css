@@ -1,6 +1,6 @@
 /* matches hero-info-section */
 .skeleton-hero-section {
-	display: grid;
+	display: block grid;
 	gap: 35px;
 	padding-block-start: 10px;
 	padding-inline: 20px;
@@ -9,7 +9,7 @@
 /* matches hero-info-title */
 .skeleton-hero-title {
 	position: relative;
-	display: grid;
+	display: block grid;
 	font-size: 1.25rem;
 	font-weight: var(--font-weight-x-bold);
 	line-height: var(--leading-x-tight);
@@ -25,7 +25,7 @@
 /* matches hero-info-container */
 .skeleton-hero-container {
 	width: 100%;
-	display: grid;
+	display: block grid;
 	place-items: center;
 	padding-inline: 20px;
 
@@ -37,7 +37,7 @@
 /* matches hero-info */
 .skeleton-hero-info {
 	width: 100%;
-	display: grid;
+	display: block grid;
 	grid-template-columns: repeat(2, auto);
 	gap: 20px;
 
@@ -48,7 +48,7 @@
 
 /* matches hero-info-box */
 .skeleton-hero-box {
-	display: grid;
+	display: block grid;
 	grid-template-columns: auto;
 	grid-template-rows: auto auto 1fr;
 	grid-template-areas:
@@ -64,7 +64,7 @@
 	grid-area: icon;
 	width: 170px;
 	height: 170px;
-	display: grid;
+	display: block grid;
 	place-items: center;
 	border: 3mm ridge var(--color-border-primary);
 
@@ -116,14 +116,14 @@
 
 /* matches hero-info-level */
 .skeleton-hero-level {
-	display: grid;
+	display: block grid;
 	grid-template-columns: auto;
 	gap: 60px;
 }
 
 /* matches hero-info-level-header */
 .skeleton-hero-level-header {
-	display: grid;
+	display: block grid;
 	grid-template-columns: auto;
 	grid-template-rows: auto;
 	justify-content: end;
@@ -139,7 +139,7 @@
 .skeleton-hero-level-display {
 	min-width: 150px;
 	height: 105px;
-	display: grid;
+	display: block grid;
 	place-self: end;
 	background: linear-gradient(
 		90deg,
@@ -174,7 +174,7 @@
 
 /* matches hero-info-level-progress-box */
 .skeleton-hero-progress-box {
-	display: grid;
+	display: block grid;
 	gap: 12px;
 }
 
@@ -195,7 +195,7 @@
 
 /* matches hero-info-level-progress-gauge-container */
 .skeleton-hero-progress-gauge-container {
-	display: flex;
+	display: block flex;
 	align-items: center;
 	gap: 8px;
 }

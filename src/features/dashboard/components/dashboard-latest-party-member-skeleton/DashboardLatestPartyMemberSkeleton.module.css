@@ -1,7 +1,7 @@
 /* matches latest-party-member-section (and latest-item-section) */
 .skeleton-latest-section {
 	width: 100%;
-	display: grid;
+	display: block grid;
 	grid-template-rows: auto 1fr;
 	gap: 35px;
 	padding-block: 20px;
@@ -23,7 +23,7 @@
 	}
 }
 
-.skeleton-section-title-icon{
+.skeleton-section-title-icon {
 	width: 20px;
 	height: auto;
 }
@@ -31,7 +31,7 @@
 /* matches latest-party-member-container */
 .skeleton-party-member-container {
 	width: 100%;
-	display: grid;
+	display: block grid;
 	place-self: start;
 	gap: 10px;
 	padding-inline: 25px;

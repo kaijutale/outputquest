@@ -109,6 +109,6 @@
 
 .skeleton-list {
 	min-height: 208px;
-	display: grid;
+	display: block grid;
 	place-items: center;
 }

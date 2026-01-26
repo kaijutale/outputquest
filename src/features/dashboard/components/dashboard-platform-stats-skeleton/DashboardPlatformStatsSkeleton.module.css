@@ -24,7 +24,7 @@
 /* matches platform-stats-section */
 .skeleton-platform-stats {
 	width: 100%;
-	display: grid;
+	display: block grid;
 	grid-template-rows: auto 1fr;
 	gap: 15px;
 }
@@ -32,7 +32,7 @@
 /* matches platform-stats-container */
 .skeleton-platform-stats-container {
 	width: 100%;
-	display: grid;
+	display: block grid;
 	place-self: start;
 	gap: 10px;
 	margin-block-start: 20px;
