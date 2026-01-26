@@ -2,19 +2,10 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import { getPageMetadata } from "@/config/metadata";
 import styles from "./TitlePage.module.css";
-import * as Title from "@/features/title/components";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
-import { getUser } from "@/features/user/_lib/fetcher";
+import TitlePageContent from "@/features/title/components/title-page-content/TitlePageContent";
 
 export const metadata: Metadata = getPageMetadata("title");
-
-// Server Componentでユーザー情報を取得するラッパー
-const TitlePageContent = async () => {
-	const user = await getUser();
-	const initialZennUsername = user?.zennUsername ?? null;
-
-	return <Title.TitlePageClient initialZennUsername={initialZennUsername} />;
-};
 
 const TitlePage = () => {
 	return (
