@@ -17,7 +17,7 @@
 
 .release-message {
 	color: var(--color-primary-white);
-	background-color: var(--bg-color-message-release);
+	background-color: var(--color-primary-black);
 }
 
 .error-message {
