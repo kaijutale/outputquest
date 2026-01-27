@@ -43,7 +43,7 @@ const DashboardLatestPartyMemberCard = ({
 						alt="plate"
 						width={1000}
 						height={1000}
-						priority={true}
+						preload={true}
 						className={styles["party-member-icon-plate"]}
 					/>
 					<Image

@@ -35,7 +35,7 @@ const AboutGuideIconClient: React.FC<AboutGuideIconClientProps> = ({ iconSrc, al
 				alt={alt}
 				width={1000}
 				height={1000}
-				priority={true}
+				preload={true}
 				onLoad={() => setImageLoaded(true)}
 				className={styles["about-guide-icon-image"]}
 			/>

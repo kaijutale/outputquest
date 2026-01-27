@@ -32,7 +32,7 @@ const DashboardHeroIconClient: React.FC<DashboardHeroIconClientProps> = ({ heroN
 				alt={heroName}
 				width={550}
 				height={550}
-				priority={true}
+				preload={true}
 				onLoad={() => setImageLoaded(true)}
 				className={styles["dashboard-hero-icon-image"]}
 			/>
