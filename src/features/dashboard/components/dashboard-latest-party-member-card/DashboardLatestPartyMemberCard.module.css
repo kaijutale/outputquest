@@ -5,6 +5,7 @@
 	border: 2.7mm ridge var(--color-border-primary);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
+	filter: drop-shadow(0px 2px 1.5px var(--color-primary-black));
 }
 
 .party-member-link {
@@ -34,6 +35,7 @@
 	display: block grid;
 	place-items: center;
 	place-self: center;
+	filter: drop-shadow(0px 2px 1.5px var(--color-primary-black));
 }
 
 .party-member-icon-plate {
@@ -69,6 +71,7 @@
 	height: fit-content;
 	background-color: var(--color-primary-brown-dark);
 	padding: 2px;
+	filter: drop-shadow(0px 1px 1px var(--color-primary-black));
 }
 
 .party-member-name {
