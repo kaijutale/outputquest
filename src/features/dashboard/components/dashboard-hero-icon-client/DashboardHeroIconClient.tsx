@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import heroPlateImage from "@/../public/images/hero/hero_plate.png";
 import styles from "./DashboardHeroIconClient.module.css";
 import { useSkeletonWithTimeout } from "@/hooks/useSkeletonWithTimeout";
 
@@ -14,11 +15,12 @@ const DashboardHeroIconClient: React.FC<DashboardHeroIconClientProps> = ({ heroN
 	return (
 		<div className={styles["dashboard-hero-icon-box"]}>
 			<Image
-				src="/images/hero/hero_plate.png"
+				src={heroPlateImage}
 				alt={heroName}
 				width={550}
 				height={550}
 				preload={true}
+				placeholder="blur"
 				onLoad={onImageLoad}
 				className={styles["dashboard-hero-icon-image"]}
 			/>

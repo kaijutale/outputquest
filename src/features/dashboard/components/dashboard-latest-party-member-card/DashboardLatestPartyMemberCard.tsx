@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import plate01Image from "@/../public/images/plate/plate01.png";
 import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import styles from "./DashboardLatestPartyMemberCard.module.css";
@@ -39,11 +40,12 @@ const DashboardLatestPartyMemberCard = ({
 			>
 				<div className={`${styles["party-member-icon-box"]}`}>
 					<Image
-						src="/images/plate/plate01.png"
+						src={plate01Image}
 						alt="plate"
 						width={1000}
 						height={1000}
 						preload={true}
+						placeholder="blur"
 						className={styles["party-member-icon-plate"]}
 					/>
 					<Image
