@@ -64,7 +64,7 @@ pnpm prisma studio    # DB GUI
 
 - `width`/`height` を明示的に指定
 - デフォルトは `loading="lazy"`
-- ファーストビューのみ `priority={true}`
+- ファーストビューのみ `preload={true}`
 - `{isLoading ? ... : <Image />}` パターンは避ける（priority が効かなくなる）
 
 ### データフェッチ
