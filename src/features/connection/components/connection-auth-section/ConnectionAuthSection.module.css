@@ -25,6 +25,7 @@
 	padding-inline: 2.5px;
 	background-color: var(--color-bg-button);
 	border: 2.5px solid var(--color-border-primary);
+	filter: drop-shadow(0px 2px 1.5px var(--color-primary-black));
 
 	&.active:hover {
 		.connect-button-content {
@@ -134,4 +135,17 @@
 	@media (width < 640px) {
 		font-size: 0.875rem;
 	}
+}
+
+.zenn-input-disabled {
+	flex: 1 1 0%;
+	min-width: 0;
+	border: 3px solid #9ca3af;
+	background-color: var(--color-primary-white);
+	border-radius: 0.25rem;
+	padding-block: 0.5rem;
+	padding-inline: 0.75rem;
+	color: var(--color-primary-black);
+	cursor: not-allowed;
+	filter: drop-shadow(0px 2px 1.5px var(--color-primary-black));
 }

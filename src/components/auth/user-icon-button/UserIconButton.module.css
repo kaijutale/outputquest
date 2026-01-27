@@ -2,6 +2,7 @@
 	display: block grid;
 	transition: var(--transition-box-shadow);
 	border-radius: var(--border-rounded);
+	filter: drop-shadow(0px 2px 1.5px var(--color-primary-black));
 }
 
 .user-button-box {

@@ -25,6 +25,7 @@
 	/* Gridを使って背景とコンテンツを重ねる */
 	display: block grid;
 	place-items: center;
+	filter: drop-shadow(0px 2px 1.5px var(--color-primary-black));
 
 	/* 子要素（背景画像とコンテンツ）を同じセルに配置 */
 	& > * {
@@ -266,6 +267,7 @@
 	border: 1mm ridge var(--color-border-primary);
 	padding-inline: 1.5px;
 	padding-block: 1.5px;
+	filter: drop-shadow(0px 1.5px 1px var(--color-primary-black));
 }
 
 .party-member-title {
@@ -295,6 +297,7 @@
 	border: 1mm ridge var(--color-border-primary);
 	padding-inline: 1.5px;
 	padding-block: 1.5px;
+	filter: drop-shadow(0px 1.5px 1px var(--color-primary-black));
 }
 
 .party-member-description {

@@ -49,6 +49,7 @@
 	place-items: center;
 	background-color: var(--color-primary-brown-dark);
 	padding: 2px;
+	filter: drop-shadow(0px 1px 1px var(--color-primary-black));
 }
 
 .post-card__category,
