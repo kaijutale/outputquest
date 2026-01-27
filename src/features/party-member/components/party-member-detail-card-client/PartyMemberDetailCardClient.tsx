@@ -57,7 +57,7 @@ const PartyMemberDetailCardClient: React.FC<PartyMemberDetailCardClientProps> = 
 						width={1000}
 						height={1000}
 						className={styles["party-member-card-bg"]}
-						priority={true}
+						preload={true}
 					/>
 					<div className={styles["party-member-card-content"]}>
 						<div className={styles["party-member-image-box"]}>
@@ -67,7 +67,7 @@ const PartyMemberDetailCardClient: React.FC<PartyMemberDetailCardClientProps> = 
 									alt={memberName || "勇者の仲間"}
 									width={1000}
 									height={1000}
-									priority={true}
+									preload={true}
 									onLoad={() => setImageLoaded(true)}
 									className={`${styles["party-member-image"]} ${
 										styles[`party-member-image-${partyId}`]
@@ -79,7 +79,7 @@ const PartyMemberDetailCardClient: React.FC<PartyMemberDetailCardClientProps> = 
 									alt="まだ見ぬ仲間"
 									width={60}
 									height={60}
-									priority={true}
+									preload={true}
 									onLoad={() => setImageLoaded(true)}
 									className={`${styles["party-member-image"]} ${
 										styles[`party-member-image-${partyId}`]

@@ -39,7 +39,7 @@ const DashboardLatestItemCard = ({ itemId, itemName, itemDescription }: Props) =
 						alt="plate"
 						width={1000}
 						height={1000}
-						priority={true}
+						preload={true}
 						className={styles["latest-item-icon-plate"]}
 					/>
 					<Image

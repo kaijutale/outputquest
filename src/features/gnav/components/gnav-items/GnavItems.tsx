@@ -43,7 +43,7 @@ const GnavItems = () => {
 										alt={item.alt || item.title}
 										width={item.width || 20}
 										height={item.height || 20}
-										priority={true}
+										preload={true}
 										className={`${styles["gnav-item-icon"]}`}
 										data-nav-id={item.id}
 									/>

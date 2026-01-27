@@ -57,7 +57,7 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 						width={1000}
 						height={1000}
 						className={styles["item-detail-card-bg"]}
-						priority={true}
+						preload={true}
 					/>
 					<div className={styles["item-detail-card-content"]}>
 						<div className={styles["item-detail-image-box"]}>
@@ -67,7 +67,7 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 									alt={itemName || "アイテム"}
 									width={1000}
 									height={1000}
-									priority={true}
+									preload={true}
 									onLoad={() => setImageLoaded(true)}
 									className={`${styles["item-detail-image"]} ${
 										styles[`item-detail-image-${itemId}`]
@@ -79,7 +79,7 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 									alt="未入手のアイテム"
 									width={60}
 									height={60}
-									priority={true}
+									preload={true}
 									onLoad={() => setImageLoaded(true)}
 									className={`${styles["item-detail-image"]} ${
 										styles[`item-detail-image-${itemId}`]

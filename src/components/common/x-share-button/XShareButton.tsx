@@ -90,7 +90,7 @@ const XShareButton: React.FC<XShareButtonProps> = ({
 					width={iconWidth}
 					height={iconHeight}
 					className={iconClassName}
-					priority={true}
+					preload={true}
 				/>
 			</figure>
 			{showText && <span className={textClassName}>{displayText}</span>}

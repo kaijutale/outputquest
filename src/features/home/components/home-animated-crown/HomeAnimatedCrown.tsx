@@ -17,7 +17,7 @@ const HomeAnimatedCrown = () => {
 				ease: "easeInOut",
 			}}
 		>
-			<Image src="/images/crown/crown01.png" alt="crown" width={100} height={100} priority={true} />
+			<Image src="/images/crown/crown01.png" alt="crown" width={100} height={100} preload={true} />
 		</motion.div>
 	);
 };

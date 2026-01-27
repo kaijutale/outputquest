@@ -32,7 +32,7 @@
 ## Image コンポーネント
 
 - `{isLoading ? <Skeleton /> : <Image />}` パターンは避ける
-- この場合 `priority={true}` が効かなくなる
+- この場合 `preload={true}` が効かなくなる
 - Skeleton オーバーレイパターンを使用する
 
 ## CSS Modules

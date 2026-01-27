@@ -41,7 +41,7 @@ const DashboardHeroSection = async () => {
 									alt="王冠"
 									width={100}
 									height={100}
-									priority={true}
+									preload={true}
 									className={`${styles["hero-info-name-icon"]}`}
 								/>
 								{heroData.name}
@@ -95,7 +95,7 @@ const DashboardHeroSection = async () => {
 									alt="EXP"
 									width={35}
 									height={35}
-									priority={true}
+									preload={true}
 									className={`${styles["hero-info-level-progress-exp-icon"]}`}
 								/>
 								<div className={`${styles["hero-info-level-progress-gauge-box"]}`}>
