@@ -33,9 +33,6 @@ export default async function ItemDetailPage({ params }: { params: Promise<{ ite
 
 	return (
 		<>
-			{/* 動的にHeadを更新するコンポーネント */}
-			<ItemDetail.ItemDynamicHead itemId={itemIdNum} />
-
 			<h1 className={styles["item-detail-page-title"]}>アイテム詳細</h1>
 			<div className={styles["item-detail-container"]}>
 				{/* Server Component + Suspense パターン */}
