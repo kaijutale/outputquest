@@ -1,34 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import styles from "./AdventureStartLink.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
-import { useUser } from "@clerk/nextjs";
-import { UserInfo } from "@/features/connection/types";
+import { useZennConnectionStatus } from "@/hooks/useZennConnectionStatus";
 
 const AdventureStartLink = () => {
-	const { user, isLoaded } = useUser();
-	const [targetPath, setTargetPath] = useState<string>("/connection");
-
-	useEffect(() => {
-		const decidePath = async () => {
-			if (!isLoaded || !user) return;
-			try {
-				const res = await fetch("/api/user", { cache: "no-store" });
-				const data: { success: boolean; user?: UserInfo } = await res.json();
-				if (data.success && data.user?.zennUsername) {
-					setTargetPath("/dashboard");
-				}
-			} catch {
-				// ignore error and keep default
-			}
-		};
-		decidePath();
-		// user?.id only - using full user object causes unnecessary re-renders
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isLoaded, user?.id]);
+	const { isZennConnected } = useZennConnectionStatus();
+	const targetPath = isZennConnected ? "/dashboard" : "/connection";
 
 	const { playClickSound } = useClickSound({
 		soundPath: "/audio/click-sound_decision.mp3",

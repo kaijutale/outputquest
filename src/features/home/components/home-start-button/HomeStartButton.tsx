@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import { useUser } from "@clerk/nextjs";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import { useAudio } from "@/contexts/AudioContext";
+import { useZennConnectionStatus } from "@/hooks/useZennConnectionStatus";
 import styles from "./HomeStartButton.module.css";
 import Image from "next/image";
 import { motion } from "motion/react";
@@ -13,8 +12,7 @@ import { useHomeAnimation } from "@/features/home/contexts/HomeAnimationContext"
 
 const HomeStartButton = () => {
 	const router = useRouter();
-	const { user, isLoaded } = useUser();
-	const [isZennConnected, setIsZennConnected] = useState(false);
+	const { isZennConnected } = useZennConnectionStatus();
 	const { isMuted } = useAudio();
 	const { isImageVisible, isFirstVisit } = useHomeAnimation();
 
@@ -22,25 +20,6 @@ const HomeStartButton = () => {
 		soundPath: "/audio/start-sound.mp3",
 		volume: 1,
 	});
-
-	useEffect(() => {
-		if (isLoaded && user) {
-			const fetchUserStatus = async () => {
-				try {
-					const response = await fetch("/api/user");
-					if (response.ok) {
-						const data = await response.json();
-						if (data.success && data.user && data.user.zennUsername) {
-							setIsZennConnected(true);
-						}
-					}
-				} catch (error) {
-					console.error("Failed to fetch user status:", error);
-				}
-			};
-			fetchUserStatus();
-		}
-	}, [isLoaded, user]);
 
 	const destination = isZennConnected ? "/connection" : "/about";
 
