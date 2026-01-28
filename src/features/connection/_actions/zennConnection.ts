@@ -52,10 +52,7 @@ const transformZennArticle = (article: ZennApiArticle): ZennArticle => ({
 });
 
 // タイムアウト付き fetch
-const fetchWithTimeout = async (
-	url: string,
-	timeout: number = 8000
-): Promise<Response> => {
+const fetchWithTimeout = async (url: string, timeout: number = 8000): Promise<Response> => {
 	const controller = new AbortController();
 	const timeoutId = setTimeout(() => controller.abort(), timeout);
 
@@ -163,7 +160,8 @@ export async function connectZenn(
 		if (!isValidZennUsernameFormat(username)) {
 			return {
 				success: false,
-				error: "ユーザー名が無効です。小文字英数字 (a-z, 0-9)、アンダースコア (_)、ハイフン (-) のみ使用できます。",
+				error:
+					"ユーザー名が無効です。小文字英数字 (a-z, 0-9)、アンダースコア (_)、ハイフン (-) のみ使用できます。",
 			};
 		}
 
@@ -298,9 +296,7 @@ export async function connectZenn(
 /**
  * Zenn記事を同期するServer Action
  */
-export async function syncZennArticles(
-	zennUsername: string
-): Promise<ZennConnectionState> {
+export async function syncZennArticles(zennUsername: string): Promise<ZennConnectionState> {
 	try {
 		// 認証チェック
 		const { userId } = await auth();

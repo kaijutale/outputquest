@@ -17,13 +17,7 @@ interface ConnectionZennFormProps {
 }
 
 // 送信ボタンコンポーネント（useFormStatus を使用）
-function SubmitButton({
-	disabled,
-	hasUsername,
-}: {
-	disabled: boolean;
-	hasUsername: boolean;
-}) {
+function SubmitButton({ disabled, hasUsername }: { disabled: boolean; hasUsername: boolean }) {
 	const { pending } = useFormStatus();
 	const isDisabled = disabled || pending || !hasUsername;
 
@@ -35,9 +29,7 @@ function SubmitButton({
 			} ${isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
 			disabled={isDisabled}
 		>
-			<div className={`${styles["connect-button-content"]}`}>
-				{pending ? "連携中..." : "連携"}
-			</div>
+			<div className={`${styles["connect-button-content"]}`}>{pending ? "連携中..." : "連携"}</div>
 		</button>
 	);
 }
@@ -108,10 +100,7 @@ const ConnectionZennForm = memo<ConnectionZennFormProps>(function ConnectionZenn
 					placeholder="例: aoyamadev"
 					disabled={isPending}
 				/>
-				<SubmitButton
-					disabled={!isZennInfoLoaded}
-					hasUsername={!!localUsername}
-				/>
+				<SubmitButton disabled={!isZennInfoLoaded} hasUsername={!!localUsername} />
 			</form>
 			{state?.error ? (
 				""
