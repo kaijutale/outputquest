@@ -1,20 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, useTransition, useOptimistic } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import styles from "./ConnectionPageClient.module.css";
 import * as Connection from "@/features/connection/components";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useHero } from "@/contexts/HeroContext";
 import {
 	useSessionManagement,
 	useMessageStorage,
 	useUserInfo,
-	useZennConnection,
-	useZennSync,
 	useSignOutHandler,
 } from "@/features/connection/hooks";
+import {
+	syncZennArticles as syncZennArticlesAction,
+	releaseZennConnection as releaseZennConnectionAction,
+} from "@/features/connection/_actions/zennConnection";
+import { UserInfo } from "@/features/connection/types";
 
 // グローバル変数の型拡張
 declare global {
@@ -31,6 +35,8 @@ type Props = {
 export default function ConnectionPageClient({ initialZennUsername }: Props) {
 	const { user, isLoaded } = useUser();
 	const router = useRouter();
+	const { refetchHeroData } = useHero();
+
 	// サーバーサイドで取得した初期値を使用
 	const [zennUsername, setZennUsername] = useState(initialZennUsername ?? "");
 	const [wasLoggedOut, setWasLoggedOut] = useState(false);
@@ -40,6 +46,9 @@ export default function ConnectionPageClient({ initialZennUsername }: Props) {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 	const [releaseMessage, setReleaseMessage] = useState("");
+
+	// Server Actions 用の transition
+	const [isPending, startTransition] = useTransition();
 
 	const { playClickSound } = useClickSound({
 		soundPath: "/audio/click-sound_decision.mp3",
@@ -56,7 +65,7 @@ export default function ConnectionPageClient({ initialZennUsername }: Props) {
 		setZennUsername,
 	});
 
-	// メッセージストレージフック（最初に呼び出す）
+	// メッセージストレージフック
 	const { showSuccessMessage } = useMessageStorage({
 		setSuccess,
 		setReleaseMessage,
@@ -73,28 +82,6 @@ export default function ConnectionPageClient({ initialZennUsername }: Props) {
 		initialZennUsername,
 	});
 
-	// Zenn連携管理
-	const { updateUserProfile, loading: connectionLoading } = useZennConnection({
-		playClickSound,
-		showSuccessMessage,
-		setUserInfo,
-		setError,
-	});
-
-	// Zenn同期管理
-	const {
-		syncZennArticles,
-		handleReleaseConnection,
-		loading: syncLoading,
-		optimisticUser,
-	} = useZennSync({
-		userInfo,
-		showSuccessMessage,
-		setUserInfo,
-		setZennUsername,
-		setError,
-	});
-
 	// サインアウト処理
 	useSignOutHandler({
 		userInfo,
@@ -102,8 +89,11 @@ export default function ConnectionPageClient({ initialZennUsername }: Props) {
 		setUserInfo,
 	});
 
-	// 統合された状態管理
-	const loading = connectionLoading || syncLoading;
+	// 楽観的 UI 用
+	const [optimisticUser, addOptimistic] = useOptimistic<UserInfo | null, Partial<UserInfo>>(
+		userInfo,
+		(current, patch) => (current ? { ...current, ...patch } : current)
+	);
 
 	// 遅延付きページ遷移の処理
 	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
@@ -111,34 +101,94 @@ export default function ConnectionPageClient({ initialZennUsername }: Props) {
 		playClickSound(() => router.push(path));
 	};
 
-	// Zennアカウント連携処理
-	const handleUpdateUserProfile = async (username: string) => {
+	// Zenn連携成功時のコールバック
+	const handleConnectionSuccess = useCallback(
+		async (newUser: UserInfo, articleCount: number, message: string) => {
+			setError("");
+			setSuccess("");
+			setReleaseMessage("");
+			setUserInfo(newUser);
+			setZennUsername(newUser.zennUsername || "");
+			showSuccessMessage(message);
+
+			// HeroContext を更新
+			try {
+				await refetchHeroData();
+			} catch (e) {
+				console.error("HeroContext更新エラー:", e);
+			}
+		},
+		[setUserInfo, showSuccessMessage, refetchHeroData]
+	);
+
+	// Zenn連携エラー時のコールバック
+	const handleConnectionError = useCallback((errorMessage: string) => {
+		setError(errorMessage);
+		setSuccess("");
+		setReleaseMessage("");
+	}, []);
+
+	// Zenn記事同期処理（Server Action を使用）
+	const handleSyncZennArticles = useCallback(async () => {
+		if (!userInfo?.zennUsername) return;
+
 		setError("");
 		setSuccess("");
 		setReleaseMessage("");
-		setZennUsername(username); // 親state更新
-		const result = await updateUserProfile(username);
-		return result;
-	};
 
-	// Zenn記事同期処理
-	const handleSyncZennArticles = async (shouldRedirect = false) => {
-		setError("");
-		setSuccess("");
-		await syncZennArticles(zennUsername, shouldRedirect);
-	};
+		// 楽観的 UI 更新
+		startTransition(() => {
+			addOptimistic({ zennArticleCount: userInfo.zennArticleCount });
+		});
 
-	// 連携解除処理
-	const handleRelease = async () => {
-		setError("");
-		setSuccess("");
-		const result = await handleReleaseConnection();
+		const result = await syncZennArticlesAction(userInfo.zennUsername);
+
 		if (result.success) {
-			setReleaseMessage("Zennのアカウント連携を解除しました");
+			if (result.user) {
+				setUserInfo(result.user);
+				setZennUsername(result.user.zennUsername || "");
+			}
+			showSuccessMessage(result.message || "同期完了");
+
+			// HeroContext を更新
+			try {
+				await refetchHeroData();
+			} catch (e) {
+				console.error("HeroContext更新エラー:", e);
+			}
+		} else {
+			setError(result.error || "同期に失敗しました");
 		}
-	};
+	}, [userInfo, addOptimistic, setUserInfo, showSuccessMessage, refetchHeroData]);
+
+	// 連携解除処理（Server Action を使用）
+	const handleRelease = useCallback(async () => {
+		setError("");
+		setSuccess("");
+		setReleaseMessage("");
+
+		const result = await releaseZennConnectionAction();
+
+		if (result.success) {
+			if (result.user) {
+				setUserInfo(result.user);
+			}
+			setZennUsername("");
+			setReleaseMessage("Zennのアカウント連携を解除しました");
+
+			// HeroContext を更新
+			try {
+				await refetchHeroData();
+			} catch (e) {
+				console.error("HeroContext更新エラー:", e);
+			}
+		} else {
+			setError(result.error || "連携解除に失敗しました");
+		}
+	}, [setUserInfo, refetchHeroData]);
 
 	const displayUser = optimisticUser ?? userInfo;
+	const loading = isPending;
 
 	return (
 		<>
@@ -154,7 +204,7 @@ export default function ConnectionPageClient({ initialZennUsername }: Props) {
 					<Connection.ConnectionAuthSection
 						loading={loading}
 						zennUsername={zennUsername}
-						updateUserProfile={() => handleUpdateUserProfile(zennUsername)}
+						updateUserProfile={() => Promise.resolve(false)}
 					/>
 				) : (
 					<div className={styles["profile-info-container"]}>
@@ -183,18 +233,17 @@ export default function ConnectionPageClient({ initialZennUsername }: Props) {
 										<Connection.ConnectionButtonGroup
 											loading={loading}
 											userInfo={displayUser!}
-											onSync={() => handleSyncZennArticles(false)}
+											onSync={handleSyncZennArticles}
 											onRelease={handleRelease}
 										/>
 									</div>
 								</>
 							) : (
 								<Connection.ConnectionZennForm
-									zennUsername={zennUsername}
-									loading={loading}
-									error={error}
-									onUsernameChange={setZennUsername}
-									onSubmit={handleUpdateUserProfile}
+									initialUsername={zennUsername}
+									onSuccess={handleConnectionSuccess}
+									onError={handleConnectionError}
+									playClickSound={playClickSound}
 									isZennInfoLoaded={isZennInfoLoaded}
 								/>
 							)}

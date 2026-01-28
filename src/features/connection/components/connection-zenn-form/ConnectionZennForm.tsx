@@ -1,44 +1,79 @@
 "use client";
 
-import { memo, useState, useEffect, useCallback } from "react";
+import { memo, useState, useEffect, useCallback, useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import styles from "./ConnectionZennForm.module.css";
 import Image from "next/image";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
+import { connectZenn, ZennConnectionState } from "@/features/connection/_actions/zennConnection";
+import { UserInfo } from "@/features/connection/types";
 
 interface ConnectionZennFormProps {
-	zennUsername: string;
-	loading: boolean;
-	error: string;
-	onUsernameChange: (value: string) => void;
-	onSubmit: (username: string) => void;
+	initialUsername?: string;
+	onSuccess?: (user: UserInfo, articleCount: number, message: string) => void;
+	onError?: (error: string) => void;
+	playClickSound?: () => void;
 	isZennInfoLoaded?: boolean;
 }
 
+// 送信ボタンコンポーネント（useFormStatus を使用）
+function SubmitButton({ disabled, hasUsername }: { disabled: boolean; hasUsername: boolean }) {
+	const { pending } = useFormStatus();
+	const isDisabled = disabled || pending || !hasUsername;
+
+	return (
+		<button
+			type="submit"
+			className={`${styles["connect-button"]} ${
+				!pending && hasUsername ? styles["active"] : ""
+			} ${isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+			disabled={isDisabled}
+		>
+			<div className={`${styles["connect-button-content"]}`}>{pending ? "連携中..." : "連携"}</div>
+		</button>
+	);
+}
+
 const ConnectionZennForm = memo<ConnectionZennFormProps>(function ConnectionZennForm({
-	zennUsername,
-	loading,
-	error,
-	onUsernameChange,
-	onSubmit,
+	initialUsername = "",
+	onSuccess,
+	onError,
+	playClickSound,
 	isZennInfoLoaded = true,
 }) {
-	const [localUsername, setLocalUsername] = useState(zennUsername);
+	const [localUsername, setLocalUsername] = useState(initialUsername);
+	const [state, formAction, isPending] = useActionState<ZennConnectionState | null, FormData>(
+		connectZenn,
+		null
+	);
 
+	// 初期値の同期
 	useEffect(() => {
-		if (!localUsername && zennUsername) {
-			setLocalUsername(zennUsername);
+		if (!localUsername && initialUsername) {
+			setLocalUsername(initialUsername);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [zennUsername]);
+	}, [initialUsername]);
+
+	// Server Action の結果を処理
+	useEffect(() => {
+		if (state) {
+			if (state.success && state.user) {
+				onSuccess?.(state.user, state.articleCount || 0, state.message || "連携完了");
+			} else if (state.error) {
+				onError?.(state.error);
+			}
+		}
+	}, [state, onSuccess, onError]);
 
 	const handleChange = useCallback((value: string) => {
 		setLocalUsername(value);
 	}, []);
 
+	// フォーム送信時に音声を再生
 	const handleSubmit = useCallback(() => {
-		onUsernameChange(localUsername);
-		onSubmit(localUsername);
-	}, [localUsername, onSubmit, onUsernameChange]);
+		playClickSound?.();
+	}, [playClickSound]);
 
 	return (
 		<div className={`grid grid-cols-1 gap-2 ${styles["zenn-connect-area"]}`}>
@@ -54,35 +89,24 @@ const ConnectionZennForm = memo<ConnectionZennFormProps>(function ConnectionZenn
 				<span>Zennユーザー名</span>
 				<strong className="text-[#ffc630]">(必須)</strong>
 			</label>
-			<div className="flex flex-col sm:flex-row gap-3">
+			<form action={formAction} onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
 				<input
 					id="zenn-username"
+					name="zennUsername"
 					type="text"
 					value={localUsername}
 					onChange={(e) => handleChange(e.target.value)}
 					className={styles["zenn-input"]}
 					placeholder="例: aoyamadev"
-					disabled={loading}
+					disabled={isPending}
 				/>
-				<button
-					onClick={handleSubmit}
-					className={`${styles["connect-button"]} ${
-						!loading && localUsername ? styles["active"] : ""
-					} ${
-						loading || !localUsername || !isZennInfoLoaded
-							? "opacity-50 cursor-not-allowed"
-							: "cursor-pointer"
-					}`}
-					disabled={loading || !localUsername || !isZennInfoLoaded}
-				>
-					<div className={`${styles["connect-button-content"]}`}>連携</div>
-				</button>
-			</div>
-			{error ? (
+				<SubmitButton disabled={!isZennInfoLoaded} hasUsername={!!localUsername} />
+			</form>
+			{state?.error ? (
 				""
 			) : (
 				<div className="text-center mt-[12px]">
-					{loading && isZennInfoLoaded ? (
+					{isPending && isZennInfoLoaded ? (
 						<LoadingIndicator text="連携中" className={styles["loading-indicator"]} />
 					) : (
 						<p>Zennと連携が必要です。</p>
