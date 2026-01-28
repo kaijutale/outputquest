@@ -23,6 +23,7 @@
 	background-color: var(--bg-color-message-success);
 	border: 3px solid var(--color-primary-white);
 	border-radius: var(--border-radius-small);
+	filter: drop-shadow(0px 2px 1.5px var(--color-primary-black));
 
 	&:has(.sync-button:disabled) {
 		background-color: #9ca3af;
@@ -67,6 +68,7 @@
 	background-color: var(--color-zenn);
 	border: 3px solid var(--color-primary-white);
 	border-radius: var(--border-radius-small);
+	filter: drop-shadow(0px 2px 1.5px var(--color-primary-black));
 }
 
 .view-zenn-posts-link {
@@ -92,6 +94,7 @@
 	background-color: #a02722;
 	border: 3px solid var(--color-primary-white);
 	border-radius: var(--border-radius-small);
+	filter: drop-shadow(0px 2px 1.5px var(--color-primary-black));
 }
 
 .release-button {

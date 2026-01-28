@@ -24,6 +24,7 @@
 	border: 12px solid var(--color-primary-dark-gray);
 	border-radius: var(--border-radius-medium);
 	background-color: var(--color-primary-dark-gray);
+	filter: drop-shadow(0px 4px 2px var(--color-primary-black));
 }
 
 .header-container {

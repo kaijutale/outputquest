@@ -5,6 +5,7 @@
 	padding-block: 21px 12px;
 	border-radius: var(--border-radius-medium);
 	user-select: none;
+	filter: drop-shadow(0px 4px 2px var(--color-primary-black));
 }
 
 @media (width < 1024px) {
