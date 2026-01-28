@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./ItemDetailCardClient.module.css";
 import * as ItemDetail from "@/features/item-detail/components";
+import { useSkeletonWithTimeout } from "@/hooks/useSkeletonWithTimeout";
 
 interface ItemDetailCardClientProps {
 	itemId: number;
@@ -28,23 +28,7 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 	acquiredImagePath,
 	unacquiredImagePath,
 }) => {
-	const [showSkeleton, setShowSkeleton] = useState(true);
-	const [imageLoaded, setImageLoaded] = useState(false);
-
-	// 最大2.5秒でタイムアウト（UX観点で適切な上限）
-	useEffect(() => {
-		setImageLoaded(false);
-		setShowSkeleton(true);
-		const timer = setTimeout(() => setShowSkeleton(false), 2500);
-		return () => clearTimeout(timer);
-	}, [itemId, isAcquired, isGuestUser]);
-
-	// 画像が読み込まれたら即座にスケルトンを非表示
-	useEffect(() => {
-		if (imageLoaded) {
-			setShowSkeleton(false);
-		}
-	}, [imageLoaded]);
+	const { showSkeleton, onImageLoad } = useSkeletonWithTimeout([itemId, isAcquired, isGuestUser]);
 
 	return (
 		<div className={styles["item-detail-content"]}>
@@ -68,7 +52,7 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 									width={1000}
 									height={1000}
 									preload={true}
-									onLoad={() => setImageLoaded(true)}
+									onLoad={onImageLoad}
 									className={`${styles["item-detail-image"]} ${
 										styles[`item-detail-image-${itemId}`]
 									}`}
@@ -80,7 +64,7 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 									width={60}
 									height={60}
 									preload={true}
-									onLoad={() => setImageLoaded(true)}
+									onLoad={onImageLoad}
 									className={`${styles["item-detail-image"]} ${
 										styles[`item-detail-image-${itemId}`]
 									}`}

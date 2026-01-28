@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./PartyMemberDetailCardClient.module.css";
 import * as PartyMember from "@/features/party-member/components";
+import { useSkeletonWithTimeout } from "@/hooks/useSkeletonWithTimeout";
 
 interface PartyMemberDetailCardClientProps {
 	partyId: number;
@@ -28,23 +28,7 @@ const PartyMemberDetailCardClient: React.FC<PartyMemberDetailCardClientProps> = 
 	acquiredImagePath,
 	unacquiredImagePath,
 }) => {
-	const [showSkeleton, setShowSkeleton] = useState(true);
-	const [imageLoaded, setImageLoaded] = useState(false);
-
-	// 最大2.5秒でタイムアウト（UX観点で適切な上限）
-	useEffect(() => {
-		setImageLoaded(false);
-		setShowSkeleton(true);
-		const timer = setTimeout(() => setShowSkeleton(false), 2500);
-		return () => clearTimeout(timer);
-	}, [partyId, isAcquired, isGuestUser]);
-
-	// 画像が読み込まれたら即座にスケルトンを非表示
-	useEffect(() => {
-		if (imageLoaded) {
-			setShowSkeleton(false);
-		}
-	}, [imageLoaded]);
+	const { showSkeleton, onImageLoad } = useSkeletonWithTimeout([partyId, isAcquired, isGuestUser]);
 
 	return (
 		<div className={styles["party-member-content"]}>
@@ -68,7 +52,7 @@ const PartyMemberDetailCardClient: React.FC<PartyMemberDetailCardClientProps> = 
 									width={1000}
 									height={1000}
 									preload={true}
-									onLoad={() => setImageLoaded(true)}
+									onLoad={onImageLoad}
 									className={`${styles["party-member-image"]} ${
 										styles[`party-member-image-${partyId}`]
 									}`}
@@ -80,7 +64,7 @@ const PartyMemberDetailCardClient: React.FC<PartyMemberDetailCardClientProps> = 
 									width={60}
 									height={60}
 									preload={true}
-									onLoad={() => setImageLoaded(true)}
+									onLoad={onImageLoad}
 									className={`${styles["party-member-image"]} ${
 										styles[`party-member-image-${partyId}`]
 									}`}
