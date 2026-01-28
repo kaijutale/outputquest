@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./PartyMemberCardListClient.module.css";
 import Image from "next/image";
@@ -9,6 +8,7 @@ import { useClickSound } from "@/components/common/audio/click-sound/ClickSound"
 import { PartyMember } from "@/features/party/types/party.types";
 import { customMemberSilhouetteImages } from "@/features/party/data/partyMemberData";
 import PartyListSkeleton from "@/features/party/components/party-list-skeleton/PartyListSkeleton";
+import { useListSkeletonWithTimeout } from "@/hooks/useSkeletonWithTimeout";
 
 interface PartyMemberCardListClientProps {
 	members: PartyMember[];
@@ -25,36 +25,11 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 		volume: 0.5,
 		delay: 190,
 	});
-	const [isLoading, setIsLoading] = useState(true);
-	const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
-
-	// 最大2.5秒でタイムアウト（UX観点で適切な上限）
-	useEffect(() => {
-		const MAX_WAIT_MS = 2500;
-		const timerId = setTimeout(() => {
-			setIsLoading(false);
-		}, MAX_WAIT_MS);
-		return () => clearTimeout(timerId);
-	}, []);
-
-	// ファーストビュー画像が全て読み込まれたら即座にスケルトンを非表示
-	useEffect(() => {
-		const FIRST_VIEW_COUNT = 8;
-		const totalFirstView = Math.min(members.length, FIRST_VIEW_COUNT);
-		if (loadedImages.size >= totalFirstView) {
-			setIsLoading(false);
-		}
-	}, [loadedImages, members.length]);
+	const { isLoading, onImageLoad } = useListSkeletonWithTimeout(members.length);
 
 	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
 		e.preventDefault();
 		playClickSound(() => router.push(path));
-	};
-
-	const handleImageLoad = (index: number) => {
-		if (index < 8) {
-			setLoadedImages((prev) => new Set(prev).add(index));
-		}
 	};
 
 	return (
@@ -86,7 +61,7 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 										height={300}
 										loading={index < 8 ? "eager" : "lazy"}
 										fetchPriority={index < 4 ? "high" : "auto"}
-										onLoad={() => handleImageLoad(index)}
+										onLoad={() => onImageLoad(index)}
 										className={`${styles["acquired-party-member-icon-image"]} ${
 											styles[`acquired-party-member-icon-image-${partyMember.id}`]
 										}`}
@@ -110,7 +85,7 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 										height={300}
 										loading={index < 8 ? "eager" : "lazy"}
 										fetchPriority={index < 4 ? "high" : "auto"}
-										onLoad={() => handleImageLoad(index)}
+										onLoad={() => onImageLoad(index)}
 										className={`${styles["unacquired-party-member-icon-image"]} ${
 											styles[`unacquired-party-member-icon-image-${partyMember.id}`]
 										}`}

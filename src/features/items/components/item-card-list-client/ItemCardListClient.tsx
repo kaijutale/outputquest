@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./ItemCardListClient.module.css";
@@ -9,6 +8,7 @@ import { useClickSound } from "@/components/common/audio/click-sound/ClickSound"
 import { Item } from "@/features/items/types/items.types";
 import { customItemSilhouetteImages } from "@/features/items/data/itemsData";
 import ItemListSkeleton from "@/features/items/components/item-list-skeleton/ItemListSkeleton";
+import { useListSkeletonWithTimeout } from "@/hooks/useSkeletonWithTimeout";
 
 interface ItemCardListClientProps {
 	items: Item[];
@@ -22,36 +22,11 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 		volume: 0.5,
 		delay: 190,
 	});
-	const [isLoading, setIsLoading] = useState(true);
-	const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
-
-	// 最大2.5秒でタイムアウト（UX観点で適切な上限）
-	useEffect(() => {
-		const MAX_WAIT_MS = 2500;
-		const timerId = setTimeout(() => {
-			setIsLoading(false);
-		}, MAX_WAIT_MS);
-		return () => clearTimeout(timerId);
-	}, []);
-
-	// ファーストビュー画像が全て読み込まれたら即座にスケルトンを非表示
-	useEffect(() => {
-		const FIRST_VIEW_COUNT = 8;
-		const totalFirstView = Math.min(items.length, FIRST_VIEW_COUNT);
-		if (loadedImages.size >= totalFirstView) {
-			setIsLoading(false);
-		}
-	}, [loadedImages, items.length]);
+	const { isLoading, onImageLoad } = useListSkeletonWithTimeout(items.length);
 
 	const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
 		e.preventDefault();
 		playClickSound(() => router.push(path));
-	};
-
-	const handleImageLoad = (index: number) => {
-		if (index < 8) {
-			setLoadedImages((prev) => new Set(prev).add(index));
-		}
 	};
 
 	return (
@@ -83,7 +58,7 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 										height={300}
 										loading={index < 8 ? "eager" : "lazy"}
 										fetchPriority={index < 4 ? "high" : "auto"}
-										onLoad={() => handleImageLoad(index)}
+										onLoad={() => onImageLoad(index)}
 										className={`${styles["acquired-item-icon-image"]} ${
 											styles[`acquired-item-icon-image-${item.id}`]
 										}`}
@@ -107,7 +82,7 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 										height={300}
 										loading={index < 8 ? "eager" : "lazy"}
 										fetchPriority={index < 4 ? "high" : "auto"}
-										onLoad={() => handleImageLoad(index)}
+										onLoad={() => onImageLoad(index)}
 										className={`${styles["unacquired-item-icon-image"]} ${
 											styles[`unacquired-item-icon-image-${item.id}`]
 										}`}
