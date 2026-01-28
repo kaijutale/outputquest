@@ -16,6 +16,7 @@ export type User = {
 	clerkId: string;
 	email: string | null;
 	zennUsername: string | null;
+	zennArticleCount: number;
 	createdAt: Date;
 	updatedAt: Date;
 } | null;
@@ -43,6 +44,7 @@ async function getCachedUserData(clerkId: string): Promise<User> {
 				clerkId: true,
 				email: true,
 				zennUsername: true,
+				zennArticleCount: true,
 				createdAt: true,
 				updatedAt: true,
 			},
@@ -136,4 +138,55 @@ export const getUserWithArticles = cache(async (): Promise<UserWithArticles> => 
 		articles,
 		articleCount: articles.length,
 	};
+});
+
+/**
+ * HeroProvider用の初期データを取得する関数
+ *
+ * サーバーサイドでユーザーの記事数を取得し、HeroProviderの初期化に使用。
+ * - ログインユーザー: DBの zennArticleCount を使用
+ * - ゲストユーザー: null を返す（クライアントでaoyamadevのデータを取得）
+ *
+ * 注意: この関数はroot layoutで呼ばれるため、プリレンダリング時の
+ * connection()エラーを適切にハンドリングする必要がある。
+ *
+ * @returns 初期レベル（記事数）またはnull
+ */
+export type HeroInitialData = {
+	level: number;
+	isGuestUser: boolean;
+} | null;
+
+export const getHeroInitialData = cache(async (): Promise<HeroInitialData> => {
+	try {
+		// auth()を直接使用（connection()を使わない）
+		// プリレンダリング中は userId が null になるだけでエラーにはならない
+		const { userId } = await auth();
+
+		if (!userId) {
+			return null;
+		}
+
+		// キャッシュされたユーザーデータを取得
+		const user = await getCachedUserData(userId);
+
+		if (!user) {
+			return null;
+		}
+
+		// Zenn未連携の場合はnullを返す（クライアントでフォールバック処理）
+		if (!user.zennUsername) {
+			return null;
+		}
+
+		// ログイン済み＆Zenn連携済みの場合、DBの記事数をレベルとして返す
+		return {
+			level: Math.max(user.zennArticleCount, 1),
+			isGuestUser: false,
+		};
+	} catch {
+		// エラー時はnullを返す
+		// クライアント側のHeroProviderがフォールバック処理を行う
+		return null;
+	}
 });
