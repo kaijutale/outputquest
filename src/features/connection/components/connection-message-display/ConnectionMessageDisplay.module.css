@@ -4,6 +4,7 @@
 	font-size: 0.875rem;
 	font-weight: var(--font-weight-bold);
 	line-height: var(--leading-tight);
+	color: var(--color-primary-white);
 	border: 2px solid var(--color-primary-white);
 	padding-block: 12px;
 	padding-inline: 24px;
@@ -16,17 +17,14 @@
 }
 
 .release-message {
-	color: var(--color-primary-white);
 	background-color: var(--color-primary-black);
 }
 
 .error-message {
-	color: var(--color-error);
 	background-color: var(--bg-color-message-error);
 }
 
 .success-message {
-	color: var(--color-primary-white);
 	background-color: var(--bg-color-message-success);
 }
 
