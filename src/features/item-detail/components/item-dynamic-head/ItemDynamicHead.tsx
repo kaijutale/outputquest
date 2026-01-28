@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useHero } from "@/contexts/HeroContext";
+import { useZennConnectionStatus } from "@/hooks/useZennConnectionStatus";
 import {
 	isAcquiredByHeroLevel,
 	customItemNames,
@@ -21,48 +22,7 @@ interface ItemDynamicHeadProps {
 const ItemDynamicHead: React.FC<ItemDynamicHeadProps> = ({ itemId }) => {
 	const { user, isLoaded } = useUser();
 	const { heroData, isLoading } = useHero();
-	const [userZennInfo, setUserZennInfo] = useState<{
-		zennUsername?: string;
-	} | null>(null);
-	const [isZennInfoLoaded, setIsZennInfoLoaded] = useState(false);
-
-	// ユーザーのZenn連携情報を取得
-	useEffect(() => {
-		const fetchUserZennInfo = async () => {
-			if (!isLoaded) {
-				setIsZennInfoLoaded(false);
-				return;
-			}
-
-			if (!user) {
-				setUserZennInfo(null);
-				setIsZennInfoLoaded(true);
-				return;
-			}
-
-			setIsZennInfoLoaded(false);
-
-			try {
-				const userRes = await fetch("/api/user");
-				const userData = await userRes.json();
-
-				if (userData.success) {
-					setUserZennInfo(userData.user);
-				} else {
-					setUserZennInfo(null);
-				}
-			} catch (err) {
-				console.error("ユーザー情報取得エラー:", err);
-				setUserZennInfo(null);
-			} finally {
-				setIsZennInfoLoaded(true);
-			}
-		};
-
-		fetchUserZennInfo();
-		// user?.id only - using full user object causes unnecessary re-renders
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isLoaded, user?.id]);
+	const { zennUsername, isLoaded: isZennInfoLoaded } = useZennConnectionStatus();
 
 	useEffect(() => {
 		// ロード中は何もしない
@@ -85,7 +45,7 @@ const ItemDynamicHead: React.FC<ItemDynamicHeadProps> = ({ itemId }) => {
 		const twitterImageAltMeta = document.querySelector('meta[name="twitter:image:alt"]');
 
 		// ゲストユーザーまたはZenn未連携ユーザーの場合はゲスト用メタデータを表示
-		const isGuestUser = !user || !userZennInfo?.zennUsername;
+		const isGuestUser = !user || !zennUsername;
 
 		if (isGuestUser) {
 			const guestTitle = "未入手のアイテム";
@@ -172,7 +132,7 @@ const ItemDynamicHead: React.FC<ItemDynamicHeadProps> = ({ itemId }) => {
 				twitterImageMeta.setAttribute("content", `${window.location.origin}${unacquiredImageUrl}`);
 			if (twitterImageAltMeta) twitterImageAltMeta.setAttribute("content", unacquiredTitle);
 		}
-	}, [itemId, heroData.level, isLoading, user, isLoaded, userZennInfo, isZennInfoLoaded]);
+	}, [itemId, heroData.level, isLoading, user, isLoaded, zennUsername, isZennInfoLoaded]);
 
 	return null; // 何もレンダリングしない
 };
