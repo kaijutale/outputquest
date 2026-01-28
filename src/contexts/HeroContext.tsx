@@ -41,15 +41,44 @@ const CACHE_DURATION = 5 * 60 * 1000;
 // メモリキャッシュ
 const heroDataCache = new Map<string, CacheEntry>();
 
+// RSC初期データの型（fetcher.tsと同じ型）
+export type HeroInitialData = {
+	level: number;
+	isGuestUser: boolean;
+} | null;
+
 // Providerコンポーネント
-export const HeroProvider = ({ children }: { children: ReactNode }) => {
+interface HeroProviderProps {
+	children: ReactNode;
+	initialData?: HeroInitialData;
+}
+
+export const HeroProvider = ({ children, initialData }: HeroProviderProps) => {
 	const { user, isLoaded } = useUser();
-	const [heroData, setHeroData] = useState<HeroData>({
-		...strengthHeroData,
-		level: 1,
+
+	// 初期データがある場合はそれを使用、なければデフォルト値
+	const [heroData, setHeroData] = useState<HeroData>(() => {
+		if (initialData) {
+			return {
+				...strengthHeroData,
+				level: initialData.level,
+				currentExp: 40,
+				nextLevelExp: 100,
+				remainingArticles: 1,
+			};
+		}
+		return {
+			...strengthHeroData,
+			level: 1,
+		};
 	});
-	const [isLoading, setIsLoading] = useState(true);
+
+	// 初期データがある場合はローディング完了状態で開始
+	const [isLoading, setIsLoading] = useState(!initialData);
 	const [error, setError] = useState<string | null>(null);
+
+	// 初期データをキャッシュに保存（マウント時に1回のみ）
+	const initialDataCachedRef = useRef(false);
 
 	// AbortControllerのrefを管理
 	const abortControllerRef = useRef<AbortController | null>(null);
@@ -131,6 +160,24 @@ export const HeroProvider = ({ children }: { children: ReactNode }) => {
 			}
 
 			if (isLoaded && user) {
+				// RSC初期データがある場合は初回フェッチをスキップ
+				// （キャッシュ設定前でも初期データを信頼する）
+				if (initialData && retryCount === 0 && !initialDataCachedRef.current) {
+					// キャッシュに保存してフラグを立てる
+					const initialHeroData: HeroData = {
+						...strengthHeroData,
+						level: initialData.level,
+						currentExp: 40,
+						nextLevelExp: 100,
+						remainingArticles: 1,
+					};
+					setCachedHeroData(user.id, initialHeroData);
+					initialDataCachedRef.current = true;
+					setIsLoading(false);
+					setError(null);
+					return;
+				}
+
 				// キャッシュをチェック
 				const cachedData = getCachedHeroData(user.id);
 				if (cachedData && retryCount === 0) {
@@ -297,7 +344,7 @@ export const HeroProvider = ({ children }: { children: ReactNode }) => {
 				}
 			}
 		},
-		[isLoaded, user, getCachedHeroData, setCachedHeroData]
+		[isLoaded, user, getCachedHeroData, setCachedHeroData, initialData]
 	);
 
 	// 外部から呼び出し可能な再取得関数（キャッシュを無効化）

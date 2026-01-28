@@ -4,7 +4,7 @@ import { baseMetadata } from "@/config/metadata";
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/header/Header";
 import { Footer } from "@/components/layout/footer/Footer";
-import { HeroProvider } from "@/contexts/HeroContext";
+import HeroProviderWrapper from "@/components/providers/HeroProviderWrapper";
 import CommonContainer from "@/components/common/container/CommonContainer";
 import "@/styles/globals.css";
 import { ControlViewport } from "@/components/layout/control-viewport/ControlViewport";
@@ -63,7 +63,7 @@ export default function RootLayout({
 				>
 					<SignOutHandler>
 						<AudioProvider>
-							<HeroProvider>
+							<HeroProviderWrapper>
 								<HomeAnimationProvider>
 									<CommonContainer>
 										<ControlViewport />
@@ -72,7 +72,7 @@ export default function RootLayout({
 										<Footer />
 									</CommonContainer>
 								</HomeAnimationProvider>
-							</HeroProvider>
+							</HeroProviderWrapper>
 						</AudioProvider>
 					</SignOutHandler>
 				</ClerkProviderWrapper>
