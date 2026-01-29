@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import heroPlateImage from "@/../public/images/hero/hero_plate.png";
 import crown01EdgeImage from "@/../public/images/crown/crown01-edge.png";
