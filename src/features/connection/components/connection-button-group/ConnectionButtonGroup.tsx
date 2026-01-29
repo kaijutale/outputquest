@@ -1,6 +1,6 @@
 import { RefreshCcw, Unplug, Newspaper } from "lucide-react";
 import styles from "./ConnectionButtonGroup.module.css";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import Link from "next/link";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 

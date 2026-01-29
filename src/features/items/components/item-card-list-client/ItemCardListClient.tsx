@@ -5,7 +5,7 @@ import Image from "next/image";
 import plate01Image from "@/../public/images/plate/plate01.png";
 import styles from "./ItemCardListClient.module.css";
 import { useRouter } from "next/navigation";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import { Item } from "@/features/items/types/items.types";
 import { customItemSilhouetteImages } from "@/features/items/data/itemsData";
 import ItemListSkeleton from "@/features/items/components/item-list-skeleton/ItemListSkeleton";

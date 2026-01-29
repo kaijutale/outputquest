@@ -3,7 +3,7 @@
 import { navigationItems } from "@/features/navigation/data/navigationItems";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import styles from "./GnavItems.module.css";
 import Image from "next/image";
 

@@ -8,7 +8,7 @@ import type { UIMessage, TextUIPart } from "ai";
 import styles from "./ExploreArticleAnalysis.module.css";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 import Link from "next/link";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 
 interface ExploreArticleAnalysisProps {
 	userZennInfo?: {

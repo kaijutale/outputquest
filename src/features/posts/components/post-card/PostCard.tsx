@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./PostCard.module.css";
 import { PlatformType } from "@/features/posts/types";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import { formatDateShort } from "@/utils/formatDate";
 import { PLATFORM_INFO, CATEGORY_DISPLAY } from "@/consts/zenn";
 

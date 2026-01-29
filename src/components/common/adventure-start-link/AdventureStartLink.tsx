@@ -3,7 +3,7 @@
 import styles from "./AdventureStartLink.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import { useZennConnectionStatus } from "@/hooks/useZennConnectionStatus";
 
 const AdventureStartLink = () => {

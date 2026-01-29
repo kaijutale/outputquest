@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import styles from "./ConnectionPageClient.module.css";
 import * as Connection from "@/features/connection/components";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import { useHero } from "@/contexts/HeroContext";
 import {
 	useSessionManagement,

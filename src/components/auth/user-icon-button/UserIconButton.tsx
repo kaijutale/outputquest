@@ -2,7 +2,7 @@
 
 import { useAuth, UserButton } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import styles from "./UserIconButton.module.css";
 
 interface UserIconButtonProps {

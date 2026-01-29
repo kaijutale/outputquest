@@ -4,7 +4,7 @@ import styles from "./DashboardActivityContent.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { PostData } from "@/features/posts/types";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import { formatDateShort } from "@/utils/formatDate";
 import { PLATFORM_INFO, CATEGORY_DISPLAY } from "@/consts/zenn";
 
