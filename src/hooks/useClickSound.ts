@@ -2,7 +2,7 @@
 
 import "client-only";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Howl } from "howler";
 import { useAudio } from "@/contexts/AudioContext";
 
@@ -15,7 +15,7 @@ interface ClickSoundOptions {
 
 // クリックサウンドを再生するカスタムフック (Howler.js使用)
 export const useClickSound = (options: ClickSoundOptions = {}) => {
-	const [sound, setSound] = useState<Howl | null>(null);
+	const soundRef = useRef<Howl | null>(null);
 	const { isMuted } = useAudio();
 
 	// デフォルト値の設定
@@ -34,24 +34,26 @@ export const useClickSound = (options: ClickSoundOptions = {}) => {
 			html5: true,
 		});
 
-		setSound(howlSound);
+		soundRef.current = howlSound;
 
 		return () => {
 			howlSound.stop();
 			howlSound.unload();
+			soundRef.current = null;
 		};
 	}, [soundPath, volume]);
 
 	// グローバルなミュート状態をHowlインスタンスに同期する
 	useEffect(() => {
-		if (sound) {
-			sound.mute(isMuted);
+		if (soundRef.current) {
+			soundRef.current.mute(isMuted);
 		}
-	}, [sound, isMuted]);
+	}, [isMuted]);
 
 	// クリックサウンドを再生する関数
 	const playClickSound = useCallback(
 		(callback?: () => void) => {
+			const sound = soundRef.current;
 			if (sound) {
 				// 既に再生中の場合は停止してから再生
 				if (sound.playing()) {
@@ -68,7 +70,7 @@ export const useClickSound = (options: ClickSoundOptions = {}) => {
 				callback();
 			}
 		},
-		[sound, delay]
+		[delay]
 	);
 
 	return { playClickSound };
