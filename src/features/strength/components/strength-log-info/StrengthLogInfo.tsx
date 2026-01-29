@@ -3,7 +3,7 @@
 import styles from "./StrengthLogInfo.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import type { FormattedLog } from "@/features/logs/services/logService";
 
 interface StrengthLogInfoProps {

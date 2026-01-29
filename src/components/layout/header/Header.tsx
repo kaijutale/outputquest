@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import AudioPlayer from "@/components/common/audio/audio-player/AudioPlayer";
 import { usePathname } from "next/navigation";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import HamburgerMenu from "@/components/elements/hamburger-menu/HamburgerMenu";
 import Gnav from "@/components/layout/gnav/Gnav";
 import styles from "./Header.module.css";

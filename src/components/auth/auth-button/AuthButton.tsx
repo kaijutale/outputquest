@@ -2,7 +2,7 @@
 
 import { SignInButton, useAuth } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import styles from "./AuthButton.module.css";
 
 const AuthButton = () => {

@@ -4,7 +4,6 @@ import "client-only";
 
 import { useCallback, useEffect, useState } from "react";
 import { Howl } from "howler";
-import styles from "./ClickSound.module.css";
 import { useAudio } from "@/contexts/AudioContext";
 
 // クリックサウンドのオプションタイプ定義
@@ -74,28 +73,3 @@ export const useClickSound = (options: ClickSoundOptions = {}) => {
 
 	return { playClickSound };
 };
-
-// クリックサウンドを適用できるボタンコンポーネント
-const ClickSound: React.FC<{
-	onClick?: () => void;
-	className?: string;
-	children: React.ReactNode;
-	soundPath?: string;
-	volume?: number;
-	delay?: number; // 遅延時間を追加
-}> = ({ onClick, className, children, soundPath, volume, delay }) => {
-	const { playClickSound } = useClickSound({ soundPath, volume, delay });
-
-	// 元のonClickとクリックサウンドを組み合わせる
-	const handleClick = () => {
-		playClickSound(onClick);
-	};
-
-	return (
-		<button className={`${styles.clickButton} ${className || ""}`} onClick={handleClick}>
-			{children}
-		</button>
-	);
-};
-
-export default ClickSound;

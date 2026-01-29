@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import styles from "./DashboardLatestItemCard.module.css";
 import { customItemImages } from "@/features/items/data/itemsData";
 

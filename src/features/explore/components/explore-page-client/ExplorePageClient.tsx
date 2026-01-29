@@ -7,7 +7,7 @@ import { DefaultChatTransport } from "ai";
 import dynamic from "next/dynamic";
 import styles from "./ExplorePageClient.module.css";
 import { fetchZennArticles } from "@/features/posts/services";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import Image from "next/image";
 import LoadingIndicator from "@/components/common/loading-indicator/LoadingIndicator";
 

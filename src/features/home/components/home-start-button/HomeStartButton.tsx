@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 import { useAudio } from "@/contexts/AudioContext";
 import { useZennConnectionStatus } from "@/hooks/useZennConnectionStatus";
 import styles from "./HomeStartButton.module.css";

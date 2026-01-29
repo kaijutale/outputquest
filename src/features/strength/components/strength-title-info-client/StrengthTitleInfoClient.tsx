@@ -4,7 +4,7 @@ import styles from "./StrengthTitleInfoClient.module.css";
 import Link from "next/link";
 import { titleNameData } from "@/shared/data/titleNameDate";
 import { useRouter } from "next/navigation";
-import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
+import { useClickSound } from "@/hooks/useClickSound";
 
 type Props = {
 	heroLevel: number;
