@@ -28,6 +28,7 @@ export const Header = () => {
 	// audioPlayer の定義をここに移動
 	const audioPlayer = (
 		<motion.div
+			className={shouldAnimateAudio && !isImageVisible ? "pointer-events-none" : "pointer-events-auto"}
 			initial={shouldAnimateAudio ? { opacity: 0 } : { opacity: 1 }}
 			animate={shouldAnimateAudio ? { opacity: isImageVisible ? 1 : 0 } : { opacity: 1 }}
 			transition={
