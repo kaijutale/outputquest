@@ -263,7 +263,7 @@
 	min-width: 60px;
 	display: block flex;
 	justify-content: end;
-	align-items: end;
+	align-items: baseline;
 	gap: 5px;
 }
 

@@ -169,7 +169,7 @@
 
 .strength-level-progress-info-remaining-articles {
 	display: block flex;
-	align-items: end;
+	align-items: baseline;
 	gap: 5px;
 }
 

@@ -2,7 +2,6 @@
 	height: 100%;
 	border: 3mm ridge var(--color-border-primary);
 	background-color: var(--color-primary-brown-dark);
-	border-radius: var(--border-radius-small);
 	padding-inline: 2.5px;
 	padding-block: 2.5px;
 }
