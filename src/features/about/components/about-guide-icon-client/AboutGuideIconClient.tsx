@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import styles from "./AboutGuideIconClient.module.css";
-import { useSkeletonWithTimeout } from "@/hooks/useSkeletonWithTimeout";
 
 interface AboutGuideIconClientProps {
 	iconSrc: string;
@@ -10,8 +9,6 @@ interface AboutGuideIconClientProps {
 }
 
 const AboutGuideIconClient: React.FC<AboutGuideIconClientProps> = ({ iconSrc, alt }) => {
-	const { showSkeleton, onImageLoad } = useSkeletonWithTimeout([iconSrc]);
-
 	return (
 		<div className={styles["about-guide-icon-wrapper"]}>
 			<Image
@@ -20,10 +17,10 @@ const AboutGuideIconClient: React.FC<AboutGuideIconClientProps> = ({ iconSrc, al
 				width={100}
 				height={100}
 				preload={true}
-				onLoad={onImageLoad}
+				placeholder="blur"
+				blurDataURL={iconSrc}
 				className={styles["about-guide-icon-image"]}
 			/>
-			{showSkeleton && <div className={styles["about-guide-icon-skeleton"]} />}
 		</div>
 	);
 };
