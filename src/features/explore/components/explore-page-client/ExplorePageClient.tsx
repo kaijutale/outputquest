@@ -148,18 +148,7 @@ const ExplorePageClient = ({ initialZennUsername }: Props) => {
 										height={18}
 										className={styles["explore-analyze-button-icon"]}
 									/>
-									{isAnalyzing || status === "streaming" ? (
-										<div className={styles["explore-analyze-button-loading-indicator"]}>
-											<span>探索中</span>
-											<span className={styles["loading-dots"]}>
-												<span className={styles["loading-dot"]}>.</span>
-												<span className={styles["loading-dot"]}>.</span>
-												<span className={styles["loading-dot"]}>.</span>
-											</span>
-										</div>
-									) : (
-										<span>探索する</span>
-									)}
+									<span>探索する</span>
 								</span>
 							</button>
 						</div>
