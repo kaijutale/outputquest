@@ -2,6 +2,7 @@
 
 import { Fragment } from "react";
 import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import type { UIMessage, TextUIPart } from "ai";
 import styles from "./ExploreArticleAnalysis.module.css";
@@ -31,12 +32,18 @@ const ExploreArticleAnalysis: React.FC<ExploreArticleAnalysisProps> = ({
 	error,
 }) => {
 	const { user } = useUser();
+	const router = useRouter();
 
 	const { playClickSound } = useClickSound({
 		soundPath: "/audio/click-sound_decision.mp3",
 		volume: 0.5,
 		delay: 190, // 190ミリ秒 = 0.19秒の遅延
 	});
+
+	const handleConnectionLinkClick = (e: React.MouseEvent) => {
+		e.preventDefault();
+		playClickSound(() => router.push("/connection"));
+	};
 
 	// 読み込み中はローディングを表示する（遷移時などDynamic Importのloadingが出ない場合への対応）
 	if (!isLoaded || !isZennInfoLoaded) {
@@ -68,7 +75,7 @@ const ExploreArticleAnalysis: React.FC<ExploreArticleAnalysisProps> = ({
 						<Link
 							href="/connection"
 							className={styles["to-the-link-page-button"]}
-							onClick={() => playClickSound()}
+							onClick={handleConnectionLinkClick}
 						>
 							<span className={styles["to-the-link-page-button-text"]}>連携ページへ</span>
 						</Link>
