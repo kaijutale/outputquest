@@ -39,6 +39,7 @@ const DashboardLatestItemSection = async () => {
 					alt="王冠"
 					width={100}
 					height={100}
+					preload={true}
 					className={`${styles["latest-item-title-icon"]}`}
 				/>
 				<span>最近入手したアイテム</span>

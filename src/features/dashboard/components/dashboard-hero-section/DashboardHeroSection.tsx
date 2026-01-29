@@ -1,5 +1,7 @@
 import styles from "./DashboardHeroSection.module.css";
 import Image from "next/image";
+import crown02Image from "@/../public/images/crown/crown02.png";
+import crown01EdgeImage from "@/../public/images/crown/crown01-edge.png";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
 import { getDashboardHeroData } from "@/features/dashboard/_lib/fetcher";
 import { getUser } from "@/features/user/_lib/fetcher";
@@ -21,10 +23,11 @@ const DashboardHeroSection = async () => {
 		<section className={`${styles["hero-info-section"]}`}>
 			<h2 className={`${styles["hero-info-title"]}`}>
 				<Image
-					src="/images/crown/crown02.png"
+					src={crown02Image}
 					alt="王冠"
 					width={100}
 					height={100}
+					preload={true}
 					className={`${styles["hero-info-title-icon"]}`}
 				/>
 				<span>勇者のレベル</span>
@@ -37,15 +40,17 @@ const DashboardHeroSection = async () => {
 						<div className={styles["hero-info-name-box"]}>
 							<h3 className={`${styles["hero-info-name"]}`}>
 								<Image
-									src="/images/crown/crown01-edge.png"
+									src={crown01EdgeImage}
 									alt="王冠"
 									width={100}
 									height={100}
 									preload={true}
 									className={`${styles["hero-info-name-icon"]}`}
 								/>
-								{heroData.name}
-								{`(${zennUsername})`}
+								<span>
+									{heroData.name}
+									{`(${zennUsername})`}
+								</span>
 							</h3>
 						</div>
 					</div>

@@ -8,8 +8,10 @@
 
 /* matches hero-info-title */
 .skeleton-hero-title {
+	display: block flex;
+	align-items: center;
+	gap: 7px;
 	position: relative;
-	display: block grid;
 	font-size: 1.25rem;
 	font-weight: var(--font-weight-x-bold);
 	line-height: var(--leading-x-tight);
@@ -20,6 +22,11 @@
 		place-self: center;
 		font-size: 1.125rem;
 	}
+}
+
+.skeleton-hero-title-icon {
+	width: 20px;
+	height: auto;
 }
 
 /* matches hero-info-container */

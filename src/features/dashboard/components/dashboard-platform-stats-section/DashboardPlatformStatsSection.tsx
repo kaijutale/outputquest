@@ -1,6 +1,7 @@
 import styles from "./DashboardPlatformStatsSection.module.css";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
 import Image from "next/image";
+import crown02Image from "@/../public/images/crown/crown02.png";
 import { getDashboardHeroData } from "@/features/dashboard/_lib/fetcher";
 import { getUser } from "@/features/user/_lib/fetcher";
 
@@ -22,10 +23,11 @@ const DashboardPlatformStatsSection = async () => {
 		<section className={`${styles["platform-stats-section"]}`}>
 			<h2 className={`${styles["platform-stats-title"]}`}>
 				<Image
-					src="/images/crown/crown02.png"
+					src={crown02Image}
 					alt="王冠"
 					width={100}
 					height={100}
+					preload={true}
 					className={`${styles["platform-stats-title-icon"]}`}
 				/>
 				<span>投稿状況</span>

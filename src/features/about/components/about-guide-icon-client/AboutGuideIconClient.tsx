@@ -17,8 +17,8 @@ const AboutGuideIconClient: React.FC<AboutGuideIconClientProps> = ({ iconSrc, al
 			<Image
 				src={iconSrc}
 				alt={alt}
-				width={1000}
-				height={1000}
+				width={100}
+				height={100}
 				preload={true}
 				onLoad={onImageLoad}
 				className={styles["about-guide-icon-image"]}

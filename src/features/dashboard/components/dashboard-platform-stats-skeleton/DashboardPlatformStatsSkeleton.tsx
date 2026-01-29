@@ -10,6 +10,7 @@ const DashboardPlatformStatsSkeleton = () => {
 					alt="王冠"
 					width={100}
 					height={100}
+					preload={true}
 					className={`${styles["skeleton-section-title-icon"]}`}
 				/>
 				<span>投稿状況</span>

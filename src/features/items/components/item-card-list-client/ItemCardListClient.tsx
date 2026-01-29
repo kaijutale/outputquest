@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import plate01Image from "@/../public/images/plate/plate01.png";
 import styles from "./ItemCardListClient.module.css";
 import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
@@ -43,7 +44,7 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 							{!isGuestUser && item.acquired ? (
 								<div className={styles["acquired-item-icon"]}>
 									<Image
-										src="/images/plate/plate01.png"
+										src={plate01Image}
 										alt="plate"
 										width={550}
 										height={550}
@@ -54,8 +55,8 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									<Image
 										src={`/images/items-page/acquired-icon/${item.image}`}
 										alt={item.name || "アイテム"}
-										width={300}
-										height={300}
+										width={200}
+										height={200}
 										loading={index < 8 ? "eager" : "lazy"}
 										fetchPriority={index < 4 ? "high" : "auto"}
 										onLoad={() => onImageLoad(index)}
@@ -67,7 +68,7 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 							) : (
 								<div className={styles["unacquired-item-icon"]}>
 									<Image
-										src="/images/plate/plate01.png"
+										src={plate01Image}
 										alt="plate"
 										width={550}
 										height={550}
@@ -78,8 +79,8 @@ const ItemCardListClient: React.FC<ItemCardListClientProps> = ({ items, isGuestU
 									<Image
 										src={`/images/items-page/unacquired-icon/${customItemSilhouetteImages[item.id]}`}
 										alt="未入手のアイテム"
-										width={300}
-										height={300}
+										width={200}
+										height={200}
 										loading={index < 8 ? "eager" : "lazy"}
 										fetchPriority={index < 4 ? "high" : "auto"}
 										onLoad={() => onImageLoad(index)}

@@ -27,6 +27,7 @@ const DashboardActivityContent = ({ articles }: DashboardActivityContentProps) =
 					alt="王冠"
 					width={100}
 					height={100}
+					preload={true}
 					className={`${styles["recent-activity-section-title-icon"]}`}
 				/>
 				<span>最近の記録</span>

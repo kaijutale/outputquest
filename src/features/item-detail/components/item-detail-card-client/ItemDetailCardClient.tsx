@@ -38,8 +38,8 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 					<Image
 						src="/images/card/card-bg.png"
 						alt="card background"
-						width={1000}
-						height={1000}
+						width={400}
+						height={400}
 						className={styles["item-detail-card-bg"]}
 						preload={true}
 					/>
@@ -49,8 +49,8 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 								<Image
 									src={acquiredImagePath}
 									alt={itemName || "アイテム"}
-									width={1000}
-									height={1000}
+									width={200}
+									height={200}
 									preload={true}
 									onLoad={onImageLoad}
 									className={`${styles["item-detail-image"]} ${
@@ -61,8 +61,8 @@ const ItemDetailCardClient: React.FC<ItemDetailCardClientProps> = ({
 								<Image
 									src={unacquiredImagePath}
 									alt="未入手のアイテム"
-									width={60}
-									height={60}
+									width={200}
+									height={200}
 									preload={true}
 									onLoad={onImageLoad}
 									className={`${styles["item-detail-image"]} ${

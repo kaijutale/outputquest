@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import heroPlateImage from "@/../public/images/hero/hero_plate.png";
+import crown01EdgeImage from "@/../public/images/crown/crown01-edge.png";
 import styles from "./StrengthHeroInfoClient.module.css";
 
 type StrengthHeroInfoClientProps = {
@@ -30,17 +31,16 @@ const StrengthHeroInfoClient = ({ heroData, zennUsername }: StrengthHeroInfoClie
 							<Image
 								src={heroPlateImage}
 								alt={"勇者"}
-								width={500}
-								height={500}
+								width={250}
+								height={250}
 								preload={true}
-								placeholder="blur"
 								className={`${styles["strength-hero-icon-image"]}`}
 							/>
 						</div>
 						<div className={styles["strength-hero-name-box"]}>
 							<h3 className={`${styles["strength-hero-name"]}`}>
 								<Image
-									src="/images/crown/crown01-edge.png"
+									src={crown01EdgeImage}
 									alt="王冠"
 									width={100}
 									height={100}

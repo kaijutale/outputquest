@@ -10,6 +10,7 @@ const DashboardActivitySkeleton = () => {
 					alt="王冠"
 					width={100}
 					height={100}
+					preload={true}
 					className={`${styles["skeleton-activity-title-icon"]}`}
 				/>
 				<span>最近の記録</span>

@@ -49,16 +49,16 @@ const HomeStartButton = () => {
 				<Image
 					src="/images/button/start-button/start-button.png"
 					alt="はじめる"
-					width={1000}
-					height={1000}
+					width={250}
+					height={250}
 					className={styles["start-btn-image"]}
 					preload={true}
 				/>
 				<Image
 					src="/images/button/start-button/start-button-hover.png"
 					alt="はじめる - ホバー"
-					width={1000}
-					height={1000}
+					width={250}
+					height={250}
 					className={styles["start-btn-image-hover"]}
 					preload={true}
 				/>
