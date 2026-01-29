@@ -46,7 +46,7 @@ export function HeroBg() {
 				transition={{ duration: isFirstVisit ? 3 : 0, ease: "easeInOut" }}
 			>
 				<Image
-					src="/images/top-bg/castle-background.jpg"
+					src="/images/top-bg/opening.jpg"
 					alt=""
 					fill
 					priority
@@ -66,7 +66,7 @@ export function HeroBg() {
 				{viewState === "video" && (
 					<motion.video
 						key="hero-video"
-						src="/videos/top-bg/castle-background.mp4"
+						src="/videos/top-bg/opening.mp4"
 						className="absolute inset-0 size-full object-cover"
 						autoPlay
 						muted
