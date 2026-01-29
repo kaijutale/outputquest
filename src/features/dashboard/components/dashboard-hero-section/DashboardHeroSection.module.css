@@ -110,7 +110,7 @@
 	font-size: 0.75rem;
 	font-weight: var(--font-weight-normal);
 	line-height: var(--leading-tight);
-	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 	border: 1px solid var(--color-primary-brown-light);
 	background-color: var(--color-bg-panel);
 	align-items: center;

@@ -49,7 +49,7 @@
 	background-color: var(--color-bg-panel);
 	border: 2px solid var(--color-primary-brown-light);
 	padding: 15px;
-	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 }
 
 .party-member-share-link {

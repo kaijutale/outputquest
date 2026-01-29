@@ -59,7 +59,7 @@
 	border: 1.5px solid var(--color-primary-brown-light);
 	padding-block: 10px 11px;
 	padding-inline: 24px;
-	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 	transition: padding-inline-start 0.2s;
 
 	&:before {
@@ -122,7 +122,7 @@
 	background-color: var(--color-primary-brown-dark);
 	border: 2px solid var(--color-primary-brown-light);
 	padding-block: 7px 40px;
-	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 }
 
 .explore-response {

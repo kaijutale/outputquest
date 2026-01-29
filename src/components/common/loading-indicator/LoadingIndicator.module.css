@@ -3,7 +3,7 @@
 	font-weight: var(--font-weight-x-bold);
 	line-height: var(--leading-none);
 	color: var(--color-primary-white);
-	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 	display: block flex;
 	align-items: center;
 	justify-content: center;

@@ -27,7 +27,7 @@
 	font-size: 1.25rem;
 	font-weight: var(--font-weight-x-bold);
 	text-align: center;
-	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 
 	@media (width < 768px) {
 		font-size: 1.125rem;
@@ -78,7 +78,7 @@
 
 	&.strength-title-detail-content-default {
 		background: var(--color-title-bg-default);
-		text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+		text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 	}
 
 	&.strength-title-detail-content-lv10 {
@@ -139,7 +139,7 @@
 	line-height: var(--leading-x-tight);
 	color: var(--color-primary-white);
 	font-style: normal;
-	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 
 	@media (width < 768px) {
 		font-size: 1rem;

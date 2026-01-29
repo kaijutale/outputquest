@@ -2,5 +2,5 @@
 	color: var(--color-error);
 	text-align: center;
 	padding: 20px;
-	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 }

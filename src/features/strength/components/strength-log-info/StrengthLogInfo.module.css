@@ -33,7 +33,7 @@
 	font-weight: var(--font-weight-x-bold);
 	text-align: center;
 	grid-area: header;
-	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 
 	@media (width < 768px) {
 		font-size: 1.125rem;

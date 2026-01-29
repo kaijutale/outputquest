@@ -28,7 +28,7 @@
 	text-wrap: pretty;
 	font-size: 1.125rem;
 	font-weight: var(--font-weight-normal);
-	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
+	text-shadow: 1.5px 1.5px 0.5px var(--color-primary-black);
 	transition: text-shadow 0.15s ease-in-out;
 
 	@media (width < 1024px) {
