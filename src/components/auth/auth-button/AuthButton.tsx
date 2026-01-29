@@ -1,8 +1,8 @@
 "use client";
 
 import { SignInButton, useAuth } from "@clerk/nextjs";
-import { useState, useEffect } from "react";
 import { useClickSound } from "@/hooks/useClickSound";
+import { useMounted } from "@/hooks/useMounted";
 import styles from "./AuthButton.module.css";
 
 const AuthButton = () => {
@@ -14,12 +14,7 @@ const AuthButton = () => {
 		delay: 190, // 190ミリ秒 = 0.19秒の遅延
 	});
 	// クライアントサイドでのみレンダリングするための状態
-	const [mounted, setMounted] = useState(false);
-
-	// クライアントサイドでのみ実行される
-	useEffect(() => {
-		setMounted(true);
-	}, []);
+	const mounted = useMounted();
 
 	// サーバーサイドレンダリング時は何も表示しない
 	if (!mounted) {
