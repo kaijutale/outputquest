@@ -27,7 +27,7 @@ const DashboardPlatformStatsSection = async () => {
 					alt="王冠"
 					width={100}
 					height={100}
-					placeholder="blur"
+					preload={true}
 					className={`${styles["platform-stats-title-icon"]}`}
 				/>
 				<span>投稿状況</span>

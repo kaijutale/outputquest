@@ -40,6 +40,7 @@ const DashboardLatestPartyMemberSection = async () => {
 					alt="王冠"
 					width={100}
 					height={100}
+					preload={true}
 					className={`${styles["party-member-title-icon"]}`}
 				/>
 				<span>最近仲間に加わったキャラクター</span>

@@ -38,8 +38,8 @@ const DashboardLatestItemCard = ({ itemId, itemName, itemDescription }: Props) =
 					<Image
 						src={plate01Image}
 						alt="plate"
-						width={1000}
-						height={1000}
+						width={200}
+						height={200}
 						preload={true}
 						placeholder="blur"
 						className={styles["latest-item-icon-plate"]}
@@ -51,8 +51,8 @@ const DashboardLatestItemCard = ({ itemId, itemName, itemDescription }: Props) =
 								: "/images/items-page/unacquired-icon/mark_question.svg"
 						}
 						alt={itemName}
-						width={1000}
-						height={1000}
+						width={200}
+						height={200}
 						className={`${styles["latest-item-icon"]} ${styles[`latest-item-icon-${itemId}`]}`}
 					/>
 				</div>

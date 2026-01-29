@@ -42,8 +42,8 @@ const DashboardLatestPartyMemberCard = ({
 					<Image
 						src={plate01Image}
 						alt="plate"
-						width={1000}
-						height={1000}
+						width={200}
+						height={200}
 						preload={true}
 						placeholder="blur"
 						className={styles["party-member-icon-plate"]}
@@ -55,8 +55,8 @@ const DashboardLatestPartyMemberCard = ({
 								: "/images/party-page/unacquired-icon/mark_question.svg"
 						}
 						alt={memberName}
-						width={1000}
-						height={1000}
+						width={200}
+						height={200}
 						className={`${styles["party-member-icon"]} ${styles[`party-member-icon-${memberId}`]}`}
 					/>
 				</div>

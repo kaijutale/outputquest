@@ -3,6 +3,7 @@
 import Link from "next/link";
 import styles from "./PartyMemberCardListClient.module.css";
 import Image from "next/image";
+import plate01Image from "@/../public/images/plate/plate01.png";
 import { useRouter } from "next/navigation";
 import { useClickSound } from "@/components/common/audio/click-sound/ClickSound";
 import { PartyMember } from "@/features/party/types/party.types";
@@ -46,7 +47,7 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 							{!isGuestUser && partyMember.acquired ? (
 								<div className={styles["acquired-party-member-icon"]}>
 									<Image
-										src="/images/plate/plate01.png"
+										src={plate01Image}
 										alt="plate"
 										width={550}
 										height={550}
@@ -57,8 +58,8 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 									<Image
 										src={`/images/party-page/acquired-icon/${partyMember.imagePath}`}
 										alt={partyMember.name || "勇者の仲間"}
-										width={300}
-										height={300}
+										width={200}
+										height={200}
 										loading={index < 8 ? "eager" : "lazy"}
 										fetchPriority={index < 4 ? "high" : "auto"}
 										onLoad={() => onImageLoad(index)}
@@ -70,7 +71,7 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 							) : (
 								<div className={styles["unacquired-party-member-icon"]}>
 									<Image
-										src="/images/plate/plate01.png"
+										src={plate01Image}
 										alt="plate"
 										width={550}
 										height={550}
@@ -81,8 +82,8 @@ const PartyMemberCardListClient: React.FC<PartyMemberCardListClientProps> = ({
 									<Image
 										src={`/images/party-page/unacquired-icon/${customMemberSilhouetteImages[partyMember.id]}`}
 										alt="まだ見ぬ仲間"
-										width={300}
-										height={300}
+										width={200}
+										height={200}
 										loading={index < 8 ? "eager" : "lazy"}
 										fetchPriority={index < 4 ? "high" : "auto"}
 										onLoad={() => onImageLoad(index)}

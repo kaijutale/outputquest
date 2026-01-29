@@ -38,8 +38,8 @@ const PartyMemberDetailCardClient: React.FC<PartyMemberDetailCardClientProps> = 
 					<Image
 						src="/images/card/card-bg.png"
 						alt="card background"
-						width={1000}
-						height={1000}
+						width={400}
+						height={400}
 						className={styles["party-member-card-bg"]}
 						preload={true}
 					/>
@@ -49,8 +49,8 @@ const PartyMemberDetailCardClient: React.FC<PartyMemberDetailCardClientProps> = 
 								<Image
 									src={acquiredImagePath}
 									alt={memberName || "勇者の仲間"}
-									width={1000}
-									height={1000}
+									width={200}
+									height={200}
 									preload={true}
 									onLoad={onImageLoad}
 									className={`${styles["party-member-image"]} ${
@@ -61,8 +61,8 @@ const PartyMemberDetailCardClient: React.FC<PartyMemberDetailCardClientProps> = 
 								<Image
 									src={unacquiredImagePath}
 									alt="まだ見ぬ仲間"
-									width={60}
-									height={60}
+									width={200}
+									height={200}
 									preload={true}
 									onLoad={onImageLoad}
 									className={`${styles["party-member-image"]} ${

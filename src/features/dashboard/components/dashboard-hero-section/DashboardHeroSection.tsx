@@ -27,7 +27,7 @@ const DashboardHeroSection = async () => {
 					alt="王冠"
 					width={100}
 					height={100}
-					placeholder="blur"
+					preload={true}
 					className={`${styles["hero-info-title-icon"]}`}
 				/>
 				<span>勇者のレベル</span>
@@ -45,11 +45,12 @@ const DashboardHeroSection = async () => {
 									width={100}
 									height={100}
 									preload={true}
-									placeholder="blur"
 									className={`${styles["hero-info-name-icon"]}`}
 								/>
-								{heroData.name}
-								{`(${zennUsername})`}
+								<span>
+									{heroData.name}
+									{`(${zennUsername})`}
+								</span>
 							</h3>
 						</div>
 					</div>
