@@ -2,10 +2,10 @@ import styles from "./DashboardHeroSection.module.css";
 import Image from "next/image";
 import crown02Image from "@/../public/images/crown/crown02.png";
 import crown01EdgeImage from "@/../public/images/crown/crown01-edge.png";
+import heroPlateImage from "@/../public/images/hero/hero_plate.png";
 import XShareButton from "@/components/common/x-share-button/XShareButton";
 import { getDashboardHeroData } from "@/features/dashboard/_lib/fetcher";
 import { getUser } from "@/features/user/_lib/fetcher";
-import * as Dashboard from "@/features/dashboard/components";
 
 const DashboardHeroSection = async () => {
 	// Request Memoizationにより、他コンポーネントと同じフェッチを共有
@@ -36,7 +36,16 @@ const DashboardHeroSection = async () => {
 				{/* キャラクター情報 */}
 				<div className={`${styles["hero-info"]}`}>
 					<div className={`${styles["hero-info-box"]}`}>
-						<Dashboard.DashboardHeroIconClient heroName={heroData.name} />
+						<div className={styles["hero-info-icon-box"]}>
+						<Image
+							src={heroPlateImage}
+							alt={heroData.name}
+							width={250}
+							height={250}
+							preload={true}
+							className={styles["hero-info-icon-image"]}
+						/>
+					</div>
 						<div className={styles["hero-info-name-box"]}>
 							<h3 className={`${styles["hero-info-name"]}`}>
 								<Image
