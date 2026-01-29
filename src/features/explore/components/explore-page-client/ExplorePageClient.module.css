@@ -197,14 +197,14 @@
 	}
 }
 
-.loading-indicator {
-	font-size: 1.125rem;
+.btn-loading-indicator {
+	font-size: 0.875rem;
+}
+
+.content-loading-indicator {
+	font-size: 1rem;
 
 	@media (width < 768px) {
-		font-size: 1rem;
-	}
-
-	@media (width < 640px) {
 		font-size: 0.875rem;
 	}
 }
