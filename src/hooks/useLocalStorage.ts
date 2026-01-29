@@ -3,6 +3,7 @@
 import "client-only";
 
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { storage } from "@/utils/storage";
 
 export function useLocalStorage<T>(key: string, initialValue: T): [T, Dispatch<SetStateAction<T>>] {
 	// サーバーサイドレンダリング時は初期値のみを使用
@@ -14,34 +15,29 @@ export function useLocalStorage<T>(key: string, initialValue: T): [T, Dispatch<S
 		// サーバーサイドレンダリング時は実行しない
 		if (typeof window === "undefined") return;
 
-		try {
-			const item = localStorage.getItem(key);
-			if (item) {
+		const item = storage.get(key);
+		if (item) {
+			try {
 				setStoredValue(JSON.parse(item));
-			} else {
-				// アイテムがない場合は初期値を設定
-				localStorage.setItem(key, JSON.stringify(initialValue));
+			} catch {
+				// JSON パースに失敗した場合は初期値を使用
 			}
-		} catch (_error) {
-			// Cache Componentsモードでstorageアクセスが制限される場合は
-			// 初期値をそのまま使用
+		} else {
+			// アイテムがない場合は初期値を設定
+			storage.set(key, JSON.stringify(initialValue));
 		}
 	}, [key, initialValue]);
 
 	// 値を設定する関数
 	const setValue: Dispatch<SetStateAction<T>> = (value) => {
-		try {
-			// 新しい値を状態に設定
-			const valueToStore = value instanceof Function ? value(storedValue) : value;
-			setStoredValue(valueToStore);
+		// 新しい値を状態に設定
+		const valueToStore = value instanceof Function ? value(storedValue) : value;
+		setStoredValue(valueToStore);
 
-			// サーバーサイドレンダリング時は実行しない
-			if (typeof window !== "undefined") {
-				// ローカルストレージに保存
-				localStorage.setItem(key, JSON.stringify(valueToStore));
-			}
-		} catch (_error) {
-			// Cache Componentsモードでstorageアクセスが制限される場合は無視
+		// サーバーサイドレンダリング時は実行しない
+		if (typeof window !== "undefined") {
+			// ローカルストレージに保存
+			storage.set(key, JSON.stringify(valueToStore));
 		}
 	};
 
