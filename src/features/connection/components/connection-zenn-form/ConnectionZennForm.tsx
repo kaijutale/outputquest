@@ -29,7 +29,7 @@ function SubmitButton({ disabled, hasUsername }: { disabled: boolean; hasUsernam
 			} ${isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
 			disabled={isDisabled}
 		>
-			<div className={`${styles["connect-button-content"]}`}>{pending ? "連携中..." : "連携"}</div>
+			<div className={`${styles["connect-button-content"]}`}>連携</div>
 		</button>
 	);
 }
