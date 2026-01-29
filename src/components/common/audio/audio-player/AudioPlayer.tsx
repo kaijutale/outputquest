@@ -2,7 +2,7 @@
 
 import "client-only";
 
-import { useEffect, useState, useCallback, memo } from "react";
+import { useEffect, useState, useCallback, useRef, memo } from "react";
 import { Howl } from "howler";
 import Image from "next/image";
 import styles from "./AudioPlayer.module.css";
@@ -18,7 +18,7 @@ interface AudioPlayerProps {
 const AudioPlayer = memo(({ src, className = "audio-button", volume = 1 }: AudioPlayerProps) => {
 	const [isPlaying, setIsPlaying] = useState(false);
 	const { isMuted, toggleMute } = useAudio();
-	const [sound, setSound] = useState<Howl | null>(null);
+	const soundRef = useRef<Howl | null>(null);
 
 	const handleClick = useCallback(() => {
 		toggleMute();
@@ -44,20 +44,25 @@ const AudioPlayer = memo(({ src, className = "audio-button", volume = 1 }: Audio
 			},
 		});
 
-		setSound(newSound);
+		soundRef.current = newSound;
+
 		return () => {
 			newSound.unload();
+			soundRef.current = null;
 		};
 	}, [src, volume]);
 
 	useEffect(() => {
+		const sound = soundRef.current;
 		if (!sound) return;
+
 		sound.mute(isMuted);
 
-		if (!isMuted && !isPlaying) {
+		// ミュート解除時に再生開始
+		if (!isMuted && !sound.playing()) {
 			sound.play();
 		}
-	}, [sound, isMuted, isPlaying]);
+	}, [isMuted]);
 
 	return (
 		<div className={styles["audio-button-container"]}>
