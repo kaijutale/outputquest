@@ -4,6 +4,7 @@ import "client-only";
 
 import { useEffect, Dispatch, SetStateAction } from "react";
 import { LOGOUT_FLAG_KEY } from "@/features/connection/constants";
+import { storage } from "@/utils/storage";
 
 // ローカルストレージのキー
 const SUCCESS_MESSAGE_KEY = "zenn_success_message";
@@ -22,29 +23,25 @@ export const useMessageStorage = ({
 }: UseMessageStorageProps) => {
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			try {
-				// 成功メッセージを取得
-				const savedSuccessMessage = localStorage.getItem(SUCCESS_MESSAGE_KEY);
-				if (savedSuccessMessage) {
-					setSuccess(savedSuccessMessage);
-					localStorage.removeItem(SUCCESS_MESSAGE_KEY);
-				}
+			// 成功メッセージを取得
+			const savedSuccessMessage = storage.get(SUCCESS_MESSAGE_KEY);
+			if (savedSuccessMessage) {
+				setSuccess(savedSuccessMessage);
+				storage.remove(SUCCESS_MESSAGE_KEY);
+			}
 
-				// 連携解除メッセージを取得
-				const savedReleaseMessage = localStorage.getItem(RELEASE_MESSAGE_KEY);
-				if (savedReleaseMessage) {
-					setReleaseMessage(savedReleaseMessage);
-					localStorage.removeItem(RELEASE_MESSAGE_KEY);
-				}
+			// 連携解除メッセージを取得
+			const savedReleaseMessage = storage.get(RELEASE_MESSAGE_KEY);
+			if (savedReleaseMessage) {
+				setReleaseMessage(savedReleaseMessage);
+				storage.remove(RELEASE_MESSAGE_KEY);
+			}
 
-				// ログアウトフラグを確認
-				const logoutFlag = localStorage.getItem(LOGOUT_FLAG_KEY);
-				if (logoutFlag === "true") {
-					setWasLoggedOut(true);
-					localStorage.removeItem(LOGOUT_FLAG_KEY);
-				}
-			} catch (_error) {
-				// Cache Componentsモードでstorageアクセスが制限される場合は無視
+			// ログアウトフラグを確認
+			const logoutFlag = storage.get(LOGOUT_FLAG_KEY);
+			if (logoutFlag === "true") {
+				setWasLoggedOut(true);
+				storage.remove(LOGOUT_FLAG_KEY);
 			}
 		}
 	}, [setSuccess, setReleaseMessage, setWasLoggedOut]);

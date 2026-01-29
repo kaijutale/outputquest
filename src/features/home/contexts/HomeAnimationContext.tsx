@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, use, useState, useEffect, ReactNode } from "react";
+import { storage } from "@/utils/storage";
 
 interface HomeAnimationContextType {
 	isAnimationStarted: boolean;
@@ -21,21 +22,15 @@ export const HomeAnimationProvider = ({ children }: { children: ReactNode }) => 
 		// SSR中はsessionStorageにアクセスしない
 		if (typeof window === "undefined") return;
 
-		try {
-			const hasVisited = sessionStorage.getItem("hero-visited");
+		const hasVisited = storage.get("hero-visited", "session");
 
-			if (hasVisited) {
-				setIsFirstVisit(false);
-				setIsAnimationStarted(true);
-				setIsImageVisible(true);
-			} else {
-				setIsFirstVisit(true);
-				sessionStorage.setItem("hero-visited", "true");
-			}
-		} catch (_error) {
-			// Cache Componentsモードでstorageアクセスが制限される場合は
-			// 初回訪問として扱う
+		if (hasVisited) {
+			setIsFirstVisit(false);
+			setIsAnimationStarted(true);
+			setIsImageVisible(true);
+		} else {
 			setIsFirstVisit(true);
+			storage.set("hero-visited", "true", "session");
 		}
 	}, []);
 
