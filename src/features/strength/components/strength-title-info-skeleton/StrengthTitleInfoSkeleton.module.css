@@ -100,7 +100,7 @@
 .skeleton-link {
 	color: var(--color-primary-white);
 	opacity: 0.5;
-	text-shadow: 1px 1px 0px var(--color-primary-black);
+	text-shadow: 1px 1px 0.5px var(--color-primary-black);
 }
 
 @keyframes skeleton-shimmer {

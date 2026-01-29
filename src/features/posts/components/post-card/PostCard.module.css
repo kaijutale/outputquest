@@ -73,7 +73,7 @@
 	align-items: center;
 	gap: 5px;
 	margin-block-start: 10px;
-	text-shadow: 1.25px 1.25px 0px var(--color-primary-black);
+	text-shadow: 1.25px 1.25px 0.5px var(--color-primary-black);
 }
 
 .post-card__site-name-text {

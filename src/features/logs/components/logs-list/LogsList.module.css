@@ -21,7 +21,7 @@
 	font-size: 0.875rem;
 	font-weight: var(--font-weight-normal);
 	line-height: var(--leading-normal);
-	text-shadow: 1px 1px 0 var(--color-primary-black);
+	text-shadow: 1px 1px 0.5px var(--color-primary-black);
 }
 
 .logs-page-list-item-loading-text {

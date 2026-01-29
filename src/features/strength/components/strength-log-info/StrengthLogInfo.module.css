@@ -98,7 +98,7 @@
 	position: relative;
 	padding-block-end: 3px;
 	padding-inline: 3px;
-	text-shadow: 1px 1px 0px var(--color-primary-black);
+	text-shadow: 1px 1px 0.5px var(--color-primary-black);
 	transition: text-shadow 0.1s ease-in-out;
 
 	&:hover {
