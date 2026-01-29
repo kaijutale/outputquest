@@ -77,7 +77,6 @@
 .recent-activity-item-title {
 	width: fit-content;
 	text-wrap: pretty;
-	word-break: auto-phrase;
 	font-size: 1.125rem;
 	font-weight: var(--font-weight-normal);
 	text-shadow: 1.5px 1.5px 0px var(--color-primary-black);
