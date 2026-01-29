@@ -218,7 +218,7 @@
 	font-weight: var(--font-weight-x-bold);
 	line-height: var(--leading-none);
 	color: var(--color-primary-white);
-	text-shadow: 2px 2px 0px var(--color-primary-black);
+	text-shadow: 2px 2px 0.5px var(--color-primary-black);
 }
 
 .hero-info-level-display-text {

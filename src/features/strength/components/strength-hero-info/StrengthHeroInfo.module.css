@@ -125,7 +125,7 @@
 	padding-inline: 10px;
 	border: 2px solid var(--color-primary-brown-light);
 	background-color: var(--color-bg-panel);
-	text-shadow: 2px 2px 0px var(--color-primary-black);
+	text-shadow: 2px 2px 0.5px var(--color-primary-black);
 }
 
 .strength-level-display-text {
