@@ -46,6 +46,7 @@ next-env.d.ts
 
 # docs
 _docs/
+.docs/templates/
 
 # Claude Code local settings
 .claude/settings.local.json
