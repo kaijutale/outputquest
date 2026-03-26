@@ -301,8 +301,7 @@ OUTPUT QUESTのプライバシーポリシーを確認できます。
 outputquest/
 ├── .clerk/                                          # Clerk 認証設定
 ├── .claude/                                         # Claude Code設定
-├── .cursor/                                         # Cursor Rules
-├── .serena/                                         # Serena MCP
+├── .docs/                                           # 詳細ドキュメント（アーキテクチャ、規約、テスト方針）
 ├── .vscode/                                         # VS Code 設定
 ├── .next/                                           # Next.jsビルド・キャッシュファイル
 ├── prisma/                                          # データベース関連ファイル
