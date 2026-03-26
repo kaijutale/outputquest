@@ -1,5 +1,7 @@
 # アーキテクチャ
 
+> TL;DR: Next.js 16 App Router + Clerk認証 + Supabase DB + Gemini AI。RSCデフォルト、features/でドメイン分割。
+
 ## ディレクトリ構造
 
 ```
@@ -44,18 +46,20 @@ src/
 
 ## 状態管理
 
-- **グローバル**: React Context (AudioContext, HeroContext - 10分TTL)
-- **ローカル**: useState, useLocalStorage
-- **サーバー**: Server Components で直接フェッチ
+| スコープ | 手段 | 備考 |
+|---|---|---|
+| グローバル | React Context | AudioContext, HeroContext（10分TTL） |
+| ローカル | useState, useLocalStorage | コンポーネント内 |
+| サーバー | Server Components | 直接フェッチ、キャッシュ活用 |
 
 ## 主要機能
 
-| ページ             | 機能                              |
-| ------------------ | --------------------------------- |
-| Dashboard          | レベル、投稿数、報酬表示          |
-| Posts (学びの書)   | Zenn記事一覧                      |
+| ページ | 機能 |
+|---|---|
+| Dashboard | レベル、投稿数、報酬表示 |
+| Posts (学びの書) | Zenn記事一覧 |
 | Explore (記事探索) | AI記事テーマ提案 (Gemini 2.5 Pro) |
-| Strength (つよさ)  | レベル、称号、冒険ログ            |
-| Party (なかま)     | キャラクターコレクション          |
-| Items (アイテム)   | アイテムコレクション              |
-| Connection (連携)  | Clerk認証 + Zennアカウント連携    |
+| Strength (つよさ) | レベル、称号、冒険ログ |
+| Party (なかま) | キャラクターコレクション |
+| Items (アイテム) | アイテムコレクション |
+| Connection (連携) | Clerk認証 + Zennアカウント連携 |

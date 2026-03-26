@@ -1,105 +1,47 @@
-# OUTPUT QUEST - プロジェクト指示
+# OUTPUT QUEST
 
-Zenn記事執筆をゲーム化したRPG風学習支援Webアプリ。記事投稿でレベルアップし、称号・アイテム・仲間を獲得する。
+Zenn記事執筆をゲーム化したRPG風学習支援Webアプリ。記事投稿でレベルアップし、称号・アイテム・仲間を獲得。
+スコープ外: モバイルアプリ、Zenn以外のプラットフォーム連携、課金機能
 
-## 必須ルール
+## Stack
 
-- **pnpm のみ使用** - npm/yarn は禁止
-- **破壊的変更は確認必須** - 大規模リファクタリングは事前承認を得る
-- **技術スタックのバージョン変更禁止** - 変更には承認が必要
-- **既存パターンに従う** - 新機能実装前に類似機能を調査
-- **雑な対応は絶対禁止** - 一時ファイルは作業完了後に必ず削除、問題を gitignore 等で隠さない、根本解決を常に優先
+Next.js 16 (App Router) / React 19 / TypeScript (strict) / Tailwind + CSS Modules / shadcn/ui / Motion / Clerk / Supabase + Prisma / Vercel AI SDK + Gemini
 
-## 技術スタック
-
-| カテゴリ  | 技術                                       |
-| --------- | ------------------------------------------ |
-| Framework | Next.js 16.0.0 (App Router) + React 19.2.0 |
-| Language  | TypeScript 5.9.3 (strict mode)             |
-| Styling   | Tailwind CSS v4.1.16 + CSS Modules         |
-| UI        | shadcn/ui + Radix UI                       |
-| Animation | Motion (Framer Motion) v12.23.24           |
-| Auth      | Clerk v6.34.1                              |
-| DB        | Supabase (PostgreSQL) + Prisma ORM v6.18.0 |
-| AI        | Vercel AI SDK v5.0.78 + Gemini 2.5 Pro     |
-
-## 開発コマンド
-
-```bash
-pnpm dev              # 開発サーバー起動
-pnpm build            # プロダクションビルド
-pnpm lint:fix         # ESLint + Prettier 自動修正
-pnpm prisma generate  # Prisma Client 生成
-pnpm prisma studio    # DB GUI
-```
-
-## コーディング規約
-
-### ファイル命名
-
-- コンポーネント: `PascalCase.tsx`
-- モジュール/ユーティリティ: `camelCase.ts`
-- CSS Modules: `ComponentName.module.css`
-- API Routes: `kebab-case/route.ts`
-
-### コンポーネント構成
-
-- **ページ固有**: `src/app/**/<page>/`
-- **共有**: `src/components/` (auth/, common/, elements/, layout/, ui/)
-- **機能別**: `src/features/<domain>/components/`
-  ```ts
-  import * as Party from "@/features/party/components";
-  <Party.MemberCard />
-  ```
-
-### Next.js 16 機能
-
-- React Compiler 有効 (`reactCompiler: true`)
-- Cache Components 有効 (`cacheComponents: true`)
-- Server Components がデフォルト
-- `use server` で Server Actions
-- ISR: `export const revalidate = <seconds>`
-
-### Image コンポーネント
-
-- `width`/`height` を明示的に指定
-- デフォルトは `loading="lazy"`
-- ファーストビューのみ `preload={true}`
-- `{isLoading ? ... : <Image />}` パターンは避ける（priority が効かなくなる）
-
-### データフェッチ
-
-- Server Components: `fetch` + `cache`/`revalidate`
-- 変更処理: Server Actions (`use server`)
-- クライアント: useEffect + fetch（必要時のみ）
-
-### エラーハンドリング
-
-- API: 4xx/5xx + 明確なエラーメッセージ
-- UI: Sonner toast
-- 機密情報のログ出力禁止
-
-## Git ルール
-
-### 状態確認
-
-- **セッション開始時の git status はスナップショット** - 会話中に更新されないため古い可能性がある
-- **現在の状態を参照する前に必ず `git status` を実行** - 未コミット判断やコミット提案の前に最新状態を確認する
-
-### コミット形式
+## Structure
 
 ```
-<type>(<scope>): <subject>
+src/app/          -- App Router、ページ、API Routes
+src/components/   -- 共有UI (auth/, common/, elements/, layout/, ui/)
+src/features/     -- 機能モジュール（domain別 components/hooks/types/utils）
+src/lib/          -- ライブラリ/ユーティリティ
+src/contexts/     -- React Context (AudioContext, HeroContext)
+src/config/       -- 環境設定
+.docs/            -- 詳細ドキュメント
 ```
 
-| type     | 用途             |
-| -------- | ---------------- |
-| feat     | 新機能           |
-| fix      | バグ修正         |
-| refactor | リファクタリング |
-| docs     | ドキュメント     |
-| chore    | メンテナンス     |
+## Rules
 
-## 詳細ルール
+- pnpmのみ（理由: npm/yarnとのlockfile競合防止）
+- 破壊的変更は確認必須（理由: 影響範囲が広い）
+- 技術スタックのバージョン変更禁止（理由: 承認フロー必要）
+- RSCデフォルト。`'use client'`は必要時のみ（理由: パフォーマンス + バンドルサイズ）
+- 既存コードのパターンに従う
+- 雑な対応禁止 -- 一時ファイル放置、gitignoreで隠す等（理由: 根本解決優先）
 
-言語固有のガイドライン、テスト規約などは `.claude/rules/` を参照。
+## Commands
+
+dev:   `pnpm dev`
+build: `pnpm build`
+lint:  `pnpm lint:fix`
+db:    `pnpm prisma generate` / `pnpm prisma studio`
+
+## Git
+
+- コミット前に `git status` 実行（セッション開始時の状態は古い可能性あり）
+- 形式: `<type>(<scope>): <subject>`
+- type: feat / fix / refactor / docs / chore / style
+
+## Docs
+
+- `.docs/index.md` -- ドキュメント入口
+- `.claude/rules/` -- パス固有ルール（styling, security, pitfalls）
