@@ -44,15 +44,12 @@ next-env.d.ts
 # clerk configuration (can include secrets)
 /.clerk/
 
-# docs
-_docs/
+# logs
 .docs/templates/
 
 # Claude Code local settings
 .claude/settings.local.json
 
-# Serena MCP server files
-.serena/
 
 # prisma
 src/generated/
