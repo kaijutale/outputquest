@@ -8,7 +8,6 @@
 |---|---|
 | [architecture.md](./architecture.md) | 設計判断、データフロー、状態管理、主要機能 |
 | [conventions.md](./conventions.md) | コーディング規約、Next.js機能、データフェッチ |
-| [testing.md](./testing.md) | テスト方針、ツール、配置ルール |
 
 ## 関連ルール（.claude/rules/）
 
