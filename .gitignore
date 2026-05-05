@@ -45,7 +45,10 @@ next-env.d.ts
 /.clerk/
 
 # logs
-.docs/templates/
+.docs/logs/local/
+
+# plans
+.docs/plans/
 
 # Claude Code local settings
 .claude/settings.local.json
