@@ -20,10 +20,10 @@
 		"deploy": "prisma migrate deploy",
 		"postinstall": "prisma generate",
 		"start": "next start",
-		"lint": "next lint",
-		"format:write": "prettier --write . --ignore-path .gitignore",
-		"format:check": "prettier --check . --ignore-path .gitignore",
-		"lint:fix": "eslint --fix . && prettier --write . --ignore-path .gitignore"
+		"lint": "eslint .",
+		"format:write": "prettier --write . --ignore-path .gitignore --ignore-path .prettierignore",
+		"format:check": "prettier --check . --ignore-path .gitignore --ignore-path .prettierignore",
+		"lint:fix": "eslint --fix . && prettier --write . --ignore-path .gitignore --ignore-path .prettierignore"
 	},
 	"dependencies": {
 		"@ai-sdk/google": "3.0.6",
