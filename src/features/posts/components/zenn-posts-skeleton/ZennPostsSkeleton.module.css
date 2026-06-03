@@ -45,7 +45,12 @@
 .skeleton-title {
 	width: 85%;
 	height: 24px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -73,7 +78,12 @@
 .skeleton-category,
 .skeleton-date {
 	height: 28px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 4px;
@@ -98,7 +108,12 @@
 .skeleton-favicon {
 	width: 14px;
 	height: 14px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 2px;
@@ -107,7 +122,12 @@
 .skeleton-platform-text {
 	width: 40px;
 	height: 12px;
-	background: linear-gradient(90deg, var(--color-skeleton-base) 25%, var(--color-skeleton-highlight) 50%, var(--color-skeleton-base) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--color-skeleton-base) 25%,
+		var(--color-skeleton-highlight) 50%,
+		var(--color-skeleton-base) 75%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 	border-radius: 2px;
