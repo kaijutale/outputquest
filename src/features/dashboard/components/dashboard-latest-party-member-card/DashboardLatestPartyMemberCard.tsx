@@ -14,11 +14,7 @@ type Props = {
 	memberDescription: string;
 };
 
-const DashboardLatestPartyMemberCard = ({
-	memberId,
-	memberName,
-	memberDescription,
-}: Props) => {
+const DashboardLatestPartyMemberCard = ({ memberId, memberName, memberDescription }: Props) => {
 	const router = useRouter();
 	const { playClickSound } = useClickSound({
 		soundPath: "/audio/click-sound_decision.mp3",

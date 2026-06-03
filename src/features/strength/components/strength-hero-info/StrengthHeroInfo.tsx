@@ -77,7 +77,9 @@ const StrengthHeroInfo = async () => {
 					<div className={styles["strength-level-progress-info"]}>
 						<div className={`${styles["strength-level-progress-box"]}`}>
 							<div className={`${styles["strength-level-progress-content"]}`}>
-								<span className={`${styles["strength-level-progress-text"]}`}>次のレベルまで：</span>
+								<span className={`${styles["strength-level-progress-text"]}`}>
+									次のレベルまで：
+								</span>
 								<div className={`${styles["strength-level-progress-info-remaining-articles"]}`}>
 									<em className={`${styles["strength-level-progress-info-remaining-articles-em"]}`}>
 										{heroData.remainingArticles}

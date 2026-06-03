@@ -129,7 +129,7 @@ const ExplorePageClient = ({ initialZennUsername }: Props) => {
 
 					{!isLoaded ? (
 						<div className="grid place-items-center px-4">
-							<LoadingIndicator text="読み込み中"  className={styles["btn-loading-indicator"]} />
+							<LoadingIndicator text="読み込み中" className={styles["btn-loading-indicator"]} />
 						</div>
 					) : !isGuestUser ? (
 						<div className={styles["explore-analysis-controls"]}>

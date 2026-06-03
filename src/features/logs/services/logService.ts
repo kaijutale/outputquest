@@ -145,7 +145,6 @@ export interface FormattedLog {
 	formattedDate: string;
 }
 
-
 /**
  * サーバーサイドでAdventureLogを取得する関数
  * Zenn連携しているユーザーのみログを返す

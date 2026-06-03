@@ -37,15 +37,15 @@ const DashboardHeroSection = async () => {
 				<div className={`${styles["hero-info"]}`}>
 					<div className={`${styles["hero-info-box"]}`}>
 						<div className={styles["hero-info-icon-box"]}>
-						<Image
-							src={heroPlateImage}
-							alt={heroData.name}
-							width={250}
-							height={250}
-							preload={true}
-							className={styles["hero-info-icon-image"]}
-						/>
-					</div>
+							<Image
+								src={heroPlateImage}
+								alt={heroData.name}
+								width={250}
+								height={250}
+								preload={true}
+								className={styles["hero-info-icon-image"]}
+							/>
+						</div>
 						<div className={styles["hero-info-name-box"]}>
 							<h3 className={`${styles["hero-info-name"]}`}>
 								<Image
