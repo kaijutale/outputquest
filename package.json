@@ -26,8 +26,8 @@
 		"lint:fix": "eslint --fix . && prettier --write . --ignore-path .gitignore --ignore-path .prettierignore"
 	},
 	"dependencies": {
-		"@ai-sdk/google": "3.0.6",
-		"@ai-sdk/react": "3.0.25",
+		"@ai-sdk/google": "3.0.80",
+		"@ai-sdk/react": "3.0.197",
 		"@clerk/nextjs": "6.36.7",
 		"@clerk/types": "4.101.10",
 		"@google/generative-ai": "0.24.1",
@@ -35,7 +35,7 @@
 		"@prisma/adapter-pg": "7.2.0",
 		"@prisma/client": "7.2.0",
 		"@radix-ui/react-slot": "1.2.4",
-		"ai": "6.0.24",
+		"ai": "6.0.195",
 		"class-variance-authority": "0.7.1",
 		"client-only": "0.0.1",
 		"clsx": "2.1.1",
