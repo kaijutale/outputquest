@@ -68,7 +68,7 @@ const fetchWithTimeoutAndRetry = async (
 			if (bustCache || attempt > 1) {
 				const separator = url.includes("?") ? "&" : "?";
 				const timestamp = Date.now();
-				const randomId = Math.random().toString(36).substring(2, 15);
+				const randomId = crypto.randomUUID();
 				fetchUrl = `${url}${separator}_t=${timestamp}&_retry=${attempt}&_r=${randomId}`;
 			}
 

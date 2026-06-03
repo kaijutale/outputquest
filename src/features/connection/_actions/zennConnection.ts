@@ -81,7 +81,7 @@ const fetchZennArticles = async (
 }> => {
 	try {
 		const timestamp = Date.now();
-		const randomId = Math.random().toString(36).substring(2, 15);
+		const randomId = crypto.randomUUID();
 		const apiUrl = `https://zenn.dev/api/articles?username=${encodeURIComponent(username)}&_t=${timestamp}&_r=${randomId}`;
 
 		const response = await fetchWithTimeout(apiUrl);
@@ -177,7 +177,7 @@ export async function connectZenn(
 
 		// 4. 疑わしい固定カウントチェック（APIバグ対策）
 		if (zennResponse.totalCount === SUSPICIOUS_FIXED_COUNT) {
-			const randomUsername = `test_${Math.random().toString(36).substring(2, 10)}`;
+			const randomUsername = `test_${crypto.randomUUID().slice(0, 8)}`;
 			const testResponse = await fetchZennArticles(randomUsername);
 
 			if (testResponse.success && testResponse.totalCount === SUSPICIOUS_FIXED_COUNT) {
@@ -331,7 +331,7 @@ export async function syncZennArticles(zennUsername: string): Promise<ZennConnec
 
 		// 疑わしい固定カウントチェック
 		if (zennResponse.totalCount === SUSPICIOUS_FIXED_COUNT) {
-			const randomUsername = `test_${Math.random().toString(36).substring(2, 10)}`;
+			const randomUsername = `test_${crypto.randomUUID().slice(0, 8)}`;
 			const testResponse = await fetchZennArticles(randomUsername);
 
 			if (testResponse.success && testResponse.totalCount === SUSPICIOUS_FIXED_COUNT) {
