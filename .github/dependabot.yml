@@ -1,0 +1,66 @@
+# Dependabot は依存更新の PR(提案)を自動生成するのみ。
+# 実際のバージョン変更はレビュー+マージ(人間判断)で確定 = CLAUDE.md「承認フロー必要」を満たす。
+# auto-merge は意図的に設定しない(全 PR を人間レビュー必須に保つ)。
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    versioning-strategy: "increase"
+    groups:
+      next:
+        patterns:
+          - "next"
+          - "eslint-config-next"
+          - "@next/*"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react*"
+          - "babel-plugin-react-compiler"
+      ai-sdk:
+        patterns:
+          - "ai"
+          - "@ai-sdk/*"
+          - "@google/generative-ai"
+      clerk-auth:
+        patterns:
+          - "@clerk/*"
+          - "svix"
+      prisma-db:
+        patterns:
+          - "prisma"
+          - "@prisma/*"
+          - "pg"
+          - "@types/pg"
+      ui:
+        patterns:
+          - "@phosphor-icons/*"
+          - "@radix-ui/*"
+          - "lucide-react"
+          - "react-icons"
+          - "motion"
+          - "class-variance-authority"
+          - "clsx"
+          - "tailwind-merge"
+          - "tailwindcss-animate"
+      styling:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
+          - "postcss"
+      dev-tooling:
+        patterns:
+          - "eslint*"
+          - "@eslint/*"
+          - "prettier*"
+          - "typescript"
+          - "@types/node"
+          - "@types/howler"
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
