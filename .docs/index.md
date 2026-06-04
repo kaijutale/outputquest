@@ -8,6 +8,7 @@
 |---|---|
 | [architecture.md](./architecture.md) | 設計判断、データフロー、状態管理、主要機能 |
 | [conventions.md](./conventions.md) | コーディング規約、Next.js機能、データフェッチ |
+| [testing.md](./testing.md) | テスト方針、Vitest 設定、Tier 1（純粋関数）の範囲 |
 
 ## 関連ルール（.claude/rules/）
 
