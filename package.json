@@ -29,7 +29,7 @@
 	},
 	"dependencies": {
 		"@ai-sdk/google": "3.0.80",
-		"@ai-sdk/react": "3.0.197",
+		"@ai-sdk/react": "3.0.199",
 		"@clerk/nextjs": "6.39.3",
 		"@clerk/types": "4.101.25",
 		"@google/generative-ai": "0.24.1",
@@ -37,7 +37,7 @@
 		"@prisma/adapter-pg": "7.8.0",
 		"@prisma/client": "7.8.0",
 		"@radix-ui/react-slot": "1.2.4",
-		"ai": "6.0.195",
+		"ai": "6.0.197",
 		"class-variance-authority": "0.7.1",
 		"client-only": "0.0.1",
 		"clsx": "2.1.1",
