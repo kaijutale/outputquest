@@ -33,6 +33,7 @@ src/config/       -- 環境設定
 dev:   `pnpm dev`
 build: `pnpm build`
 lint:  `pnpm lint:fix`
+test:  `pnpm test` (watch) / `pnpm test:run` (CI)
 db:    `pnpm prisma generate` / `pnpm prisma studio`
 
 ## Git
